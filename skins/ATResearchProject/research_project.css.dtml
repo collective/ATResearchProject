@@ -1,0 +1,380 @@
+/*
+ * This file is used with ATResearchProject content types. To override
+ * the products style sheets modify ploneCustom.css.
+ * 
+ *
+ * If possible, leave this file untouched to make sure, that updates
+ * of the ATResearchProject work well on your site...
+ *
+ */
+ 
+/* <dtml-with base_properties> loading base_properties */
+/* <dtml-call "REQUEST.set('portal_url', portal_url())"> setting portal_url */
+/* <dtml-let atrpAbstractBoxBackground="'#9fbfdf'"
+             atrpAbstractBoxBorder="'1px solid ' + globalBorderColor"
+             atrpAbstractBoxWidth="'18pt'"
+             atrpAbstractBarBackground="'white'"
+             atrpAbstractBarBorder="'0 none ' + globalBorderColor"
+             atrpAbstractHeadBackground="'transparent'"
+             atrpAbstractHeadBorder="'0 none ' + globalBorderColor"
+             atrpAbstractHeadFontColor="globalFontColor"
+             atrpAbstractContentBackground="'#f7f7f7'"
+             atrpAbstractContentBorder="'1px solid ' + globalBorderColor"
+             atrpAbstractContentFontColor="globalFontColor"
+
+             atrpProjectInfoBoxBackground="'#bbd6e3'" 
+             atrpProjectInfoBoxBorder="'1px solid ' + globalBorderColor" 
+             atrpProjectInfoBoxWidth="'18pt'"
+             atrpProjectInfoBarBackground="'white'"
+             atrpProjectInfoBarBorder="'0 none ' + globalBorderColor"
+             atrpProjectInfoHeadBackground="'transparent'"
+             atrpProjectInfoHeadBorder="'0 none ' + globalBorderColor"
+             atrpProjectInfoHeadFontColor="globalFontColor"
+             atrpProjectInfoContentBackground="'white'"
+             atrpProjectInfoContentBorder="'1px solid ' + globalBorderColor"
+             atrpProjectInfoContentFontColor="globalFontColor"
+
+             atrpSubprojectInfoBoxBackground="'#bbd6e3'" 
+             atrpSubprojectInfoBoxBorder="'1px solid ' + globalBorderColor" 
+             atrpSubprojectInfoBoxWidth="'18pt'"
+             atrpSubprojectInfoBarBackground="'#e4eef7'"
+             atrpSubprojectInfoBarBorder="'1px solid white'"
+             atrpSubprojectInfoHeadBackground="'transparent'"
+             atrpSubprojectInfoHeadBorder="'0 none ' + globalBorderColor"
+             atrpSubprojectInfoHeadFontColor="globalFontColor"
+             atrpSubprojectInfoContentBackground="'white'"
+             atrpSubprojectInfoContentBorder="'1px solid ' + globalBorderColor"
+             atrpSubprojectInfoContentFontColor="globalFontColor"
+
+             atrpProjectLogoBoxBackground="'white'" 
+             atrpProjectLogoBoxBorder="'0 none ' + backgroundColor" 
+             atrpProjectLogoBoxWidth="'18pt'"
+             atrpProjectLogoBarBackground="'white'"
+             atrpProjectLogoBarBorder="'0 none ' + globalBorderColor"
+             atrpProjectLogoHeadBackground="'transparent'"
+             atrpProjectLogoHeadBorder="'0 none ' + globalBorderColor"
+             atrpProjectLogoHeadFontColor="globalFontColor"
+             atrpProjectLogoContentBackground="'white'"
+             atrpProjectLogoContentBorder="'0 none ' + globalBorderColor"
+             atrpProjectLogoContentFontColor="globalFontColor"
+
+             atrpSubprojectLogoBoxBackground="'white'" 
+             atrpSubprojectLogoBoxBorder="'0 none ' + backgroundColor" 
+             atrpSubprojectLogoBoxWidth="'18pt'"
+             atrpSubprojectLogoBarBackground="'white'"
+             atrpSubprojectLogoBarBorder="'0 none ' + globalBorderColor"
+             atrpSubprojectLogoHeadBackground="'transparent'"
+             atrpSubprojectLogoHeadBorder="'0 none ' + globalBorderColor"
+             atrpSubprojectLogoHeadFontColor="globalFontColor"
+             atrpSubprojectLogoContentBackground="'#f7f7f7'"
+             atrpSubprojectLogoContentBorder="'1px solid ' + globalBorderColor"
+             atrpSubprojectLogoContentFontColor="globalFontColor"
+
+             > dtml color and style definitions */
+
+/* PROJECT ABSTRACT BOX */
+
+.atrpAbstractBox {
+	background: &dtml-atrpAbstractBoxBackground;;
+        border-right: &dtml-atrpAbstractBoxBorder;;
+        width: &dtml-atrpAbstractBoxWidth;;
+        padding: 0;
+	margin: 0 0 0 0;
+}
+.atrpAbstractBar {
+	background: &dtml-atrpAbstractBarBackground;;
+	border: &dtml-atrpAbstractBarBorder;;
+	padding: 4pt;
+	margin: 0 0 0 2em;
+}
+.atrpAbstractBarGap {
+        width: 1ex;
+	background: &dtml-atrpAbstractBarBackground;;
+}
+.atrpAbstractHead {
+	background: &dtml-atrpAbstractHeadBackground;;
+	border: &dtml-atrpAbstractHeadBorder;;
+        color: &dtml-atrpAbstractHeadFontColor;;
+        font-weight: bold;
+	padding: 0;
+        margin: 0;
+}
+.atrpAbstractProjectContent {
+	background: &dtml-atrpAbstractContentBackground;;
+        border: &dtml-atrpAbstractContentBorder;;
+        color: &dtml-atrpAbstractContentFontColor;;
+        text-align: justify;
+        vertical-align: top;
+	padding: 4pt;
+        margin: 0;
+}
+.atrpAbstractSubprojectContent {
+	background: &dtml-atrpAbstractContentBackground;;
+        border-top: &dtml-atrpAbstractContentBorder;;
+        border-bottom: &dtml-atrpAbstractContentBorder;;
+        border-left: &dtml-atrpAbstractContentBorder;;
+        color: &dtml-atrpAbstractContentFontColor;;
+        text-align: justify;
+        vertical-align: top;
+	padding: 4pt;
+        margin: 0;
+}
+.atrpAbstractContentTopGap {
+        width: 1ex;
+        height: 24pt;
+	background: &dtml-atrpAbstractContentBackground;;
+        border-top: &dtml-atrpAbstractContentBorder;;
+}
+.atrpAbstractContentMiddleGap {
+        width: 1ex;
+	background: &dtml-atrpAbstractContentBackground;;
+        border-right: &dtml-atrpAbstractContentBorder;;
+}
+.atrpAbstractContentBottomGap {
+        width: 1ex;
+        height: 24pt;
+	background: &dtml-atrpAbstractContentBackground;;
+        border-bottom: &dtml-atrpAbstractContentBorder;;
+}
+
+/* PROJECT INFO BOX */
+
+.atrpProjectInfoBox {
+	background: &dtml-atrpProjectInfoBoxBackground;;
+        border-right: &dtml-atrpProjectInfoBoxBorder;;
+        width: &dtml-atrpProjectInfoBoxWidth;;
+        padding: 0;
+	margin: 0;
+}
+.atrpProjectInfoBar {
+	background: &dtml-atrpProjectInfoBarBackground;;
+	border: &dtml-atrpProjectInfoBarBorder;;
+	text-align: left;
+	padding: 4pt;
+	margin: 0 0 0 2em;
+}
+.atrpProjectInfoBarGap {
+        width: 1ex;
+}
+.atrpProjectInfoHead {
+	background: &dtml-atrpProjectInfoHeadBackground;;
+	border: &dtml-atrpProjectInfoHeadBorder;;
+        color: &dtml-atrpProjectInfoHeadFontColor;;
+        font-weight: bold;
+	padding: 0;
+        margin: 0;
+}
+.atrpProjectInfoContent {
+	background: &dtml-atrpProjectInfoContentBackground;;
+	border-top: &dtml-atrpProjectInfoContentBorder;;
+	border-left: &dtml-atrpProjectInfoContentBorder;;
+        color: &dtml-atrpProjectInfoContentFontColor;;
+        text-align: left;
+        vertical-align: top;
+	padding: 6pt;
+        margin: 0;
+	
+.atrpProjectInfoContentGap {
+        width: 1ex;
+}
+}
+ul.atrpProjectInfoList {
+	list-style-type: none;
+}
+
+/* SUBPROJECT INFO BOX */
+
+.atrpSubprojectInfoBox {
+	background: &dtml-atrpSubprojectInfoBoxBackground;;
+        border-left: &dtml-atrpSubprojectInfoBoxBorder;;
+        width: &dtml-atrpSubprojectInfoBoxWidth;;
+        padding: 0;
+	margin: 0;
+}
+.atrpSubprojectInfoBar {
+	background: &dtml-atrpSubprojectInfoBarBackground;;
+	border-left: &dtml-atrpSubprojectInfoBarBorder;;
+	border-bottom: &dtml-atrpSubprojectInfoBarBorder;;
+	text-align: left;
+        width: 40%;
+	padding: 4pt;
+	margin: 0 0 0 2em;
+}
+.atrpSubprojectInfoBarGap {
+        width: 2ex;
+}
+.atrpSubprojectInfoHead {
+	background: &dtml-atrpSubprojectInfoHeadBackground;;
+	border: &dtml-atrpSubprojectInfoHeadBorder;;
+        color: &dtml-atrpSubprojectInfoHeadFontColor;;
+        font-weight: bold;
+	padding: 0;
+        margin: 0;
+}
+.atrpSubprojectInfoContent {
+	background: &dtml-atrpSubprojectInfoContentBackground;;
+	border-top: &dtml-atrpSubprojectInfoContentBorder;;
+	border-left: &dtml-atrpSubprojectInfoContentBorder;;
+        color: &dtml-atrpSubprojectInfoContentFontColor;;
+        text-align: left;
+        vertical-align: top;
+	padding: 6pt;
+        margin: 0;
+}
+.atrpSubprojectInfoContentGap {
+        width: 1ex;
+}
+ul.atrpSubprojectInfoList {
+	list-style-type: none;
+}
+
+/* PROJECT LOGO BOX */
+
+.atrpProjectLogoBox {
+	background: &dtml-atrpProjectLogoBoxBackground;;
+        border: &dtml-atrpProjectLogoBoxBorder;;
+        width: &dtml-atrpProjectLogoBoxWidth;;
+        padding: 0;
+	margin: 0;
+}
+.atrpProjectLogoBar {
+	background: &dtml-atrpProjectLogoBarBackground;;
+	border: &dtml-atrpProjectLogoBarBorder;;
+	padding: 4pt;
+	margin:0 0 0 2em;
+}
+.atrpProjectLogoBarWidth {
+       width: 400px;
+}
+.atrpProjectLogoHead {
+	background: &dtml-atrpProjectLogoHeadBackground;;
+	border: &dtml-atrpProjectLogoHeadBorder;;
+        color: &dtml-atrpProjectLogoHeadFontColor;;
+        font-weight: bold;
+	padding: 0;
+        margin: 0;
+}
+.atrpProjectLogoContent {
+	background: &dtml-atrpProjectLogoContentBackground;;
+	border: &dtml-atrpProjectLogoContentBorder;;
+        color: &dtml-atrpProjectLogoContentFontColor;;
+        text-align: center;
+        vertical-align: middle;
+	padding: 6pt;
+        margin: 0;
+}
+.atrpSubprojectLogoBox {
+	background: &dtml-atrpSubprojectLogoBoxBackground;;
+        border: &dtml-atrpSubprojectLogoBoxBorder;;
+        width: &dtml-atrpSubprojectLogoBoxWidth;;
+        padding: 0;
+	margin: 0;
+}
+.atrpSubprojectLogoBar {
+	background: &dtml-atrpSubprojectLogoBarBackground;;
+	border: &dtml-atrpSubprojectLogoBarBorder;;
+	padding: 4pt;
+	margin:0 0 0 2em;
+}
+.atrpSubprojectLogoBarWidth {
+       width: 200px;
+}
+.atrpSubprojectLogoHead {
+	background: &dtml-atrpSubprojectLogoHeadBackground;;
+	border: &dtml-atrpSubprojectLogoHeadBorder;;
+        color: &dtml-atrpSubprojectLogoHeadFontColor;;
+        font-weight: bold;
+	padding: 0;
+        margin: 0;
+}
+.atrpSubprojectLogoContent {
+	background: &dtml-atrpSubprojectLogoContentBackground;;
+        border-top: &dtml-atrpSubprojectLogoContentBorder;;
+        border-bottom: &dtml-atrpSubprojectLogoContentBorder;;
+        border-right: &dtml-atrpSubprojectLogoContentBorder;;
+        color: &dtml-atrpSubprojectLogoContentFontColor;;
+        text-align: center;
+        vertical-align: top;
+	padding-top: 12pt;
+        margin: 0;
+}
+
+/* </dtml-let> */
+/* </dtml-with> */
+
+/* DOCUMENTATION ON PRE-DEFINED PROPERTIES FROM PLONE */
+
+ /* You can insert colors and other variables from Plone's 
+    base_properties by doing:
+    
+    & dtml-variableName ; (without the spaces, excluded here to not make it render)
+    
+    Example:
+    
+    myLink {
+        color: & dtml-fontColor ;   (again, without the spaces)
+    }
+ 
+   This means you can generate your own elements that use Plone's defaults,
+   and respect any customizations people have done. See base_properties for
+   the default values.
+ 
+   These are the available properties:
+   
+   logoName - the file name of the portal logo
+   
+   fontFamily - the font family used for all text that is not headers
+   
+   fontBaseSize - the base font size that everything is calculated from
+   
+   fontColor - the main font color
+   
+   fontSmallSize - used for various elements like buttons and discreet text
+   
+   discreetColor - the font color of discreet text
+
+   backgroundColor - the background color 
+   
+   linkColor - the color used on normal links
+
+   linkActiveColor - color used on active links
+
+   linkVisitedColor - color used on visited links
+   
+   borderWidth - the width of most borders in Plone
+   
+   borderStyle - the style of the border lines, normally solid
+   
+   borderStyleAnnotations - style of border lines on comments etc
+   
+   globalBorderColor - the border color used on the main tabs, the portlets etc
+   
+   globalBackgroundColor - background color for the selected tabs, portlet headings etc
+   
+   globalFontColor - the color of the font in the tabs and in portlet headings
+   
+   headingFontFamily - font family for h1/h2/h3/h4/h5/h6 headlines
+   
+   contentViewBorderColor - the content view tabs border color
+   
+   contentViewBackgroundColor - the content view tabs background color
+   
+   contentViewFontColor - the font color used in the content view tabs
+   
+   inputFontColor - the font color used for input elements
+   
+   textTransform - whether to lowercase text in portlets, tabs etc.
+   
+   evenRowBackgroundColor - the background color of even rows in listings
+   
+   oddRowBackgroundColor - the background color of even rows in listings
+   
+   notifyBorderColor - border color of notification elements like the status message, the calendar focus
+   
+   notifyBackgroundColor - background color of notification elements like the status message, the calendar focus
+   
+   helpBackgroundColor - background color of information pop-ups (currently not used)
+          
+ */
+
+

@@ -1,0 +1,1221 @@
+# Translation of ATResearchProject to English
+# Mike Gabriel <m.gabriel@sunweavers.net>, 2005-2006
+msgid ""
+msgstr ""
+"Project-Id-Version: ATResearchProject 0.4.0\n"
+"POT-Creation-Date: 2005-12-30 23:31+0100\n"
+"PO-Revision-Date: 2006-06-12 19:30+0100\n"
+"Last-Translator: Mike Gabriel <m.gabriel@sunweavers.net>\n"
+"Language-Team: netzwerkteam OEZK <plone-developers@ecology.uni-kiel.de>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0\n"
+"Language-Code: en\n"
+"Language-Name: English\n"
+"Preferred-Encodings: utf-8 latin1\n"
+"Domain: atresearchproject\n"
+"X-Is-Fallback-For: en-au en-bz en-ca en-ie en-jm en-nz en-ph en-za en-tt en-gb en-us en-zw\n"
+
+#: skins/ATResearchProject/rplist_criterion_save.cpy:32
+msgid "Changes saved."
+msgstr "Changes saved."
+
+#. Default: "Contractor(s)"
+#: skins/ATResearchProject/research_project_macros.pt
+msgid "Contractor(s)"
+msgstr "Contractor(s)"
+
+#. Default: "Cooperation partner(s)"
+#: skins/research_project_macros.pt
+msgid "Cooperation partner(s)"
+msgstr "Cooperation partner(s)"
+
+#. Default: "End of Research Project's runtime"
+#: config.py
+msgid "End of Research Project's runtime"
+msgstr "End of Research Project's runtime"
+
+#. Default: "End of Research Subproject's runtime"
+#: config.py
+msgid "End of Research Subproject's runtime"
+msgstr "End of Research Subproject's runtime"
+
+#. Default: "External institute(s)"
+#: skins/research_project_macros.pt
+msgid "External institute(s)"
+msgstr "External institute(s)"
+
+#. Default: "Former staff"
+#: skins/research_project_macros.pt
+msgid "Former staff"
+msgstr "Former staff"
+
+#. Default: "Former student staff"
+#: skins/research_project_macros.pt
+msgid "Former student staff"
+msgstr "Former student staff"
+
+#. Default: "Project coordination"
+#: skins/ATResearchProject/research_project_macros.pt
+msgid "Project coordination"
+msgstr "Project coordination"
+
+#. Default: "Research Project - Contractor"
+#: config.py
+msgid "Research Project - Contractor"
+msgstr "Research Project - Contractor"
+
+#. Default: "Research Project - Cooperation Partner"
+#: config.py
+msgid "Research Project - Cooperation Partner"
+msgstr "Research Project - Cooperation Partner"
+
+#. Default: "Research Project - Former Staff Member"
+#: config.py
+msgid "Research Project - Former Staff Member"
+msgstr "Research Project - Former Staff Member"
+
+#. Default: "Research Project - Former Student Staff Member"
+#: config.py
+msgid "Research Project - Former Student Staff Member"
+msgstr "Research Project - Former Student Staff Member"
+
+#. Default: "Research Project - Involved Department"
+#: config.py
+msgid "Research Project - Involved Department"
+msgstr "Research Project - Involved Department"
+
+#. Default: "Research Project - Keywords"
+#: config.py
+msgid "Research Project - Keywords"
+msgstr "Research Project - Keywords"
+
+#. Default: "Research Project - Official Title"
+#: config.py
+msgid "Research Project - Official Title"
+msgstr "Research Project - Official Title"
+
+#. Default: "Research Project - Project Coordinator"
+#: config.py
+msgid "Research Project - Project Coordinator"
+msgstr "Research Project - Project Coordinator"
+
+#. Default: "Research Project - Scientific Coordinator"
+#: config.py
+msgid "Research Project - Scientific Coordinator"
+msgstr "Research Project - Scientific Coordinator"
+
+#. Default: "Research Project - Scientific Staff Member"
+#: config.py
+msgid "Research Project - Scientific Staff Member"
+msgstr "Research Project - Scientific Staff Member"
+
+#. Default: "Research Project - Student Staff Member"
+#: config.py
+msgid "Research Project - Student Staff Member"
+msgstr "Research Project - Student Staff Member"
+
+#. Default: "Research Project - Technical Staff Member"
+#: config.py
+msgid "Research Project - Technical Staff Member"
+msgstr "Research Project - Technical Staff Member"
+
+#. Default: "Research Project - Third-party funded"
+#: config.py
+msgid "Research Project - Third-party funded"
+msgstr "Research Project - Third-party funded"
+
+#. Default: "Research Project - Title"
+#: config.py
+msgid "Research Project - Title"
+msgstr "Research Project - Title"
+
+#. Default: "Research Project - Website Path"
+#: config.py
+msgid "Research Project - Website Path"
+msgstr "Research Project - Website Path"
+
+#. Default: "Research Projects"
+#: tool/ResearchProjectTool.py
+#: skins/ATResearchProject/research_project_list_view.pt
+msgid "Research Projects"
+msgstr "Research Projects"
+
+#. Default: "Research Subproject - Cooperation Partner"
+#: config.py
+msgid "Research Subproject - Cooperation Partner"
+msgstr "Research Subproject - Cooperation Partner"
+
+#. Default: "Research Subproject - External Institute"
+#: config.py
+msgid "Research Subproject - External Institute"
+msgstr "Research Subproject - External Institute"
+
+#. Default: "Research Subproject - Former Staff Member"
+#: config.py
+msgid "Research Subproject - Former Staff Member"
+msgstr "Research Subproject - Former Staff Member"
+
+#. Default: "Research Subproject - Former Student Staff Member"
+#: config.py
+msgid "Research Subproject - Former Student Staff Member"
+msgstr "Research Subproject - Former Student Staff Member"
+
+#. Default: "Research Subproject - Involved Department"
+#: config.py
+msgid "Research Subproject - Involved Department"
+msgstr "Research Subproject - Involved Department"
+
+#. Default: "Research Subproject - Keywords"
+#: config.py
+msgid "Research Subproject - Keywords"
+msgstr "Research Subproject - Keywords"
+
+#. Default: "Research Subproject - Official Title"
+#: config.py
+msgid "Research Subproject - Official Title"
+msgstr "Research Subproject - Official Title"
+
+#. Default: "Research Subproject - Scientific Coordinator"
+#: config.py
+msgid "Research Subproject - Scientific Coordinator"
+msgstr "Research Subproject - Scientific Coordinator"
+
+#. Default: "Research Subproject - Scientific Staff Member"
+#: config.py
+msgid "Research Subproject - Scientific Staff Member"
+msgstr "Research Subproject - Scientific Staff Member"
+
+#. Default: "Research Subproject - Student Staff Member"
+#: config.py
+msgid "Research Subproject - Student Staff Member"
+msgstr "Research Subproject - Student Staff Member"
+
+#. Default: "Research Subproject - Technical Staff Member"
+#: config.py
+msgid "Research Subproject - Technical Staff Member"
+msgstr "Research Subproject - Technical Staff Member"
+
+#. Default: "Research Subproject - Title"
+#: config.py
+msgid "Research Subproject - Title"
+msgstr "Research Subproject - Title"
+
+#. Default: "Research Subproject - Website Path"
+#: config.py
+msgid "Research Subproject - Website Path"
+msgstr "Research Subproject - Website Path"
+
+#. Default: "Scientific coordination"
+#: skins/ATResearchProject/research_project_macros.pt
+#: skins/ATResearchProject/research_subprojects_overview.pt
+msgid "Scientific coordination"
+msgstr "Scientific coordination"
+
+#. Default: "Scientific staff"
+#: skins/research_project_macros.pt
+msgid "Scientific staff"
+msgstr "Scientific staff"
+
+#. Default: "Search all Research Project Info Fields"
+#: config.py
+msgid "Search all Research Project Info Fields"
+msgstr "Search all Research Project Info Fields"
+
+#. Default: "Search all Research Project Text Fields"
+#: config.py
+msgid "Search all Research Project Text Fields"
+msgstr "Search all Research Project Text Fields"
+
+#. Default: "Search all Research Subproject Info Fields"
+#: config.py
+msgid "Search all Research Subproject Info Fields"
+msgstr "Search all Research Subproject Info Fields"
+
+#. Default: "Search all Research Subroject Text Fields"
+#: config.py
+msgid "Search all Research Subproject Text Fields"
+msgstr "Search all Research Subproject Text Fields"
+
+#. Default: "Start of Research Project's runtime"
+#: config.py
+msgid "Start of Research Project's runtime"
+msgstr "Start of Research Project's runtime"
+
+#. Default: "Start of Research Subproject's runtime"
+#: config.py
+msgid "Start of Research Subproject's runtime"
+msgstr "Start of Research Subproject's runtime"
+
+#. Default: "Student staff"
+#: skins/research_project_macros.pt
+msgid "Student staff"
+msgstr "Student staff"
+
+#. Default: "Subprojects"
+#: skins/ATResearchProject/research_project_macros.pt
+msgid "Subprojects"
+msgstr "Subprojects"
+
+#. Default: "Technical staff"
+#: skins/research_project_macros.pt
+msgid "Technical staff"
+msgstr "Technical staff"
+
+#. Default: "This criterion allows it to restrict query results for research projects to the selected website paths."
+#: config.py
+msgid "This criterion allows it to restrict query results for research projects to the selected website paths."
+msgstr "This criterion allows it to restrict query results for research projects to the selected website paths."
+
+#. Default: "This criterion allows it to restrict query results for research subprojects to the selected website paths."
+#: config.py
+msgid "This criterion allows it to restrict query results for research subprojects to the selected website paths."
+msgstr "This criterion allows it to restrict query results for research subprojects to the selected website paths."
+
+#. Default: "This criterion looks at all information fields in research project objects."
+#: config.py
+msgid "This criterion looks at all information fields in research project objects."
+msgstr "This criterion looks at all information fields in research project objects."
+
+#. Default: "This criterion looks at all information fields in research subproject objects."
+#: config.py
+msgid "This criterion looks at all information fields in research subproject objects."
+msgstr "This criterion looks at all information fields in research subproject objects."
+
+#. Default: "This criterion looks at all searchable text passages in research project objects."
+#: config.py
+msgid "This criterion looks at all searchable text passages in research project objects."
+msgstr "This criterion looks at all searchable text passages in research project objects."
+
+#. Default: "This criterion looks at all searchable text passages in research subproject objects."
+#: config.py
+msgid "This criterion looks at all searchable text passages in research subproject objects."
+msgstr "This criterion looks at all searchable text passages in research subproject objects."
+
+#. Default: "Title"
+#: skins/ATResearchProject/research_project_list_view.pt
+msgid "Title"
+msgstr "Title"
+
+#. Default: "For now please use the ZMI's PropertyManager of the PortalTypes tool to manage the allowed content types in folderish ATResearchProject objects."
+#: skins/ATResearchProject/prefs_atrptool_contenttypes.pt
+msgid "description_atrptool_contenttypes"
+msgstr "For now please use the ZMI's PropertyManager of the PortalTypes tool to manage the allowed content types in folderish ATResearchProject objects."
+
+#. Default: "For now please use the ZMI's PropertyManager of the ResearchProjectTool to manage department names within ATResearchProject content objects."
+#: skins/ATResearchProject/prefs_atrptool_departments.pt
+msgid "description_atrptool_departments"
+msgstr "For now please use the ZMI's PropertyManager of the ResearchProjectTool to manage department names within ATResearchProject content objects."
+
+#. Default: "The research project tool can be used to easily customize the site-wide setup of the ATResearchProject content types. Be aware that changes committed here also affect already existing research project, subproject, research field and research project list content objects."
+#: skins/ATResearchProject/prefs_atrptool_info.pt
+msgid "description_atrptool_info"
+msgstr "The research project tool can be used to easily customize the site-wide setup of the research project content types. Be aware that changes committed here also affect already existing research project, subproject and research project list content objects."
+
+#. Default: "No research projects have been found matching this context."
+#: skins/ATResearchProject/research_project_list_view.pt
+msgid "description_no_rp_in_rplist"
+msgstr "No research projects have been found matching this context."
+
+#. Default: "No subprojects have been found matching this context."
+#: skins/ATResearchProject/research_project_list_view.pt
+msgid "description_no_rsp_in_rplist"
+msgstr "No subprojects have been found matching this context."
+
+#. Default: "Project Structure"
+#: skins/ATResearchProject/research_project_view.pt
+msgid "head_researchproject_tree"
+msgstr "Project Structure"
+
+#. Default: "Subproject Structure"
+#: skins/ATResearchProject/research_subproject_view.pt
+msgid "head_researchsubproject_tree"
+msgstr "Subproject Structure"
+
+#. Default: "Related Research Projects"
+#: skins/ATResearchProject/research_project_macros.pt
+msgid "header_related_researchprojects"
+msgstr "Related Research Projects"
+
+#. Default: "Research Project Site Configuration - Allowed Content Types"
+#: skins/ATResearchProject/prefs_atrptool_contenttypes.pt
+msgid "heading_atrptool_contenttypes"
+msgstr "Research Project Site Configuration - Allowed Content Types"
+
+#. Default: "Research Project Site Configuration - Department Names"
+#: skins/ATResearchProject/prefs_atrptool_departments.pt
+msgid "heading_atrptool_departments"
+msgstr "Research Project Site Configuration - Department Names"
+
+#. Default: "Research Project Site Configuration - Information"
+#: skins/ATResearchProject/prefs_atrptool_info.pt
+msgid "heading_atrptool_info"
+msgstr "Research Project Site Configuration - Information"
+
+#. Default: "Write a short abstract for your research project that can be displayed in search results and research project lists. Keep it condensed (10 lines at maximum)."
+#: schemata.py
+msgid "help_abstract_researchproject"
+msgstr "Write a short abstract for your research project that will be displayed in search results and research project lists. Keep it condensed (10 lines at maximum)."
+
+#. Default: "Write a short abstract about your subproject that will be displayed in search results and research project lists. Keep it condensed (10 lines at maximum)."
+#: schemata.py
+msgid "help_abstract_researchsubproject"
+msgstr "Write a short abstract for your subproject that will be displayed in search results and research project lists. Keep it condensed (10 lines at maximum)."
+
+#. Default: "Enter a list of authors here, if the creator of this research project object differs from the author of its contents (e.g. &raquo;Bill Goats &lt;member:bgoats&gt;&laquo; or merely &raquo;&lt;member:bgoats&gt;&laquo;; if the named person exists on your site the specified &lt;member:xxx&gt;-tag can be added to link the user's name to his/her home page on this site)."
+#: schemata.py
+msgid "help_authors_researchproject"
+msgstr "Enter a list of authors here, if the creator of this research project object differs from the author of its contents (e.g. &raquo;Bill Goats &lt;member:bgoats&gt;&laquo; or merely &raquo;&lt;member:bgoats&gt;&laquo;; if the named person exists on your site the specified &lt;member:xxx&gt;-tag can be added to link the user's name to his/her home page on this site)."
+
+#. Default: "Enter a list of authors here, if the creator of this research subproject object differs from the author of its contents (e.g. &raquo;Bill Goats &lt;member:bgoats&gt;&laquo; or merely &raquo;&lt;member:bgoats&gt;&laquo;; if the named person exists on your site the specified &lt;member:xxx&gt;-tag can be added to link the user's name to his/her home page on this site)."
+#: schemata.py
+msgid "help_authors_researchsubproject"
+msgstr "Enter a list of authors here, if the creator of this research subproject object differs from the author of its contents (e.g. &raquo;Bill Goats &lt;member:bgoats&gt;&laquo; or merely &raquo;&lt;member:bgoats&gt;&laquo;; if the named person exists on your site the specified &lt;member:xxx&gt;-tag can be added to link the user's name to his/her home page on this site)."
+
+#. Default: "Here you can give more detailed information on your research project. However, keep in mind that people on the internet prefer text passages not exceeding 10-15 lines. If you want to provide even more precise information on some project aspects create documents in this research project folder and hyperlink them from within this information text."
+#: schemata.py
+msgid "help_body_researchproject"
+msgstr "Here you can give more detailed information on your research project. However, keep in mind that people on the internet prefer text passages not exceeding 10-15 lines. If you want to provide even more precise information on some project aspects create documents in this research project folder and hyperlink them from within this information text."
+
+#. Default: "Here you can give more detailed information on your research subproject. However, keep in mind that people on the internet prefer text passages not exceeding 10-15 lines. If you want to provide even more precise information on some subproject aspects create documents in this subproject folder and hyperlink them from within this information text."
+#: schemata.py
+msgid "help_body_researchsubproject"
+msgstr "Here you can give more detailed information on your research subproject. However, keep in mind that people on the internet prefer text passages not exceeding 10-15 lines. If you want to provide even more precise information on some subproject aspects create documents in this subproject folder and hyperlink them from within this information text."
+
+#. Default: "If the offered range of years in the selection dropdown box does not meet your requirements, please click on the little calendar icon at the end of the next line. A calendar applet will appear that you can choose any date required from."
+#: schemata.py
+msgid "help_calendar_researchproject"
+msgstr "If the offered range of years in the selection dropdown box does not meet your requirements, please click on the little calendar icon at the end of the next line. A calendar applet will appear that you can choose any date required from."
+
+#. Default: "Tick this checkbox if you want &raquo;Research Subprojects&laquo; to be cascade with &raquo;Research Projects&laquo;."
+#: schemata.py
+msgid "help_cascade_researchsubprojects_researchprojectlist"
+msgstr "Tick this checkbox if you want &raquo;Research Subprojects&laquo; to be cascade with &raquo;Research Projects&laquo;."
+
+#. Default: "A research project list is a composition of search criteria. Here you should describe the characteristics of your search criteria for this research project list."
+#: schemata.py
+msgid "help_comment_researchprojectlist"
+msgstr "A research project list is a composition of search criteria. Here you should describe the characteristics of your search criteria for this research project list."
+
+#. Default: "Contracting parties mostly provide the financial basis of research projects (e.g. &raquo;Greenpeace&laquo; - if you want to subtly link to the Greenpeace site use &raquo;Greenpeace &lt;url:http://www.greenpeace.com&gt;&laquo;)."
+#: schemata.py
+msgid "help_contractors_researchproject"
+msgstr "Contracting parties mostly provide the financial basis of research projects (e.g. &raquo;Greenpeace&laquo; - if you want to subtly link to the Greenpeace site use &raquo;Greenpeace &lt;url:http://www.greenpeace.com&gt;&laquo;)."
+
+#. Default: "Name cooperation partners (other research institutes, official bodies, NGOs etc.) of the research project here (e.g. &raquo;+++ sunweavers.net +++&laquo; - if you want to subtly link to the SunweaversNet site use &raquo;+++ sunweavers.net +++ &lt;url:http://www.sunweavers.net&gt;&raquo;)."
+#: schemata.py
+msgid "help_cooperationpartners_researchproject"
+msgstr "Name cooperation partners (other research institutes, official bodies, NGOs etc.) of the research project here (e.g. &raquo;+++ sunweavers.net +++&laquo; - if you want to subtly link to the SunweaversNet site use &raquo;+++ sunweavers.net +++ &lt;url:http://www.sunweavers.net&gt;&raquo;)."
+
+#. Default: "Name cooperation partners (other research institutes, official bodies, NGOs etc.) of this research subproject here (e.g. &raquo;+++ sunweavers.net +++ &lt;url:http://www.sunweavers.net&gt;&raquo;)."
+#: schemata.py
+msgid "help_cooperationpartners_researchsubproject"
+msgstr "Name cooperation partners (other research institutes, official bodies, NGOs etc.) of this research subproject here (e.g. &raquo;+++ sunweavers.net +++ &lt;url:http://www.sunweavers.net&gt;&raquo;)."
+
+#. Default: "If you chose to list nested Research Project Lists at the bottom of this Research Project List, you may also want to customize the nested Research Project Lists' headline. Leave this field empty and a default headline will be used."
+#: schemata.py
+msgid "help_custom_nested_lists_head_researchprojectlist"
+msgstr "If you chose to list nested Research Project Lists at the bottom of this Research Project List, you may also want to customize the nested Research Project Lists' headline. Leave this field empty and a default headline will be used."
+
+#. Default: "Give a description for this research field."
+#: schemata.py
+msgid "help_description_researchfield"
+msgstr "Give a description for this research field."
+
+#. Default: "Give a description for this research project list."
+#: schemata.py
+msgid "help_description_researchprojectlist"
+msgstr "Give a description for this research project list."
+
+#. Default: "Tick this checkbox if you want abstracts of &raquo;Research Projects&laquo; to be displayed in the project list at the bottom of this &raquo;Research Field&laquo;."
+#: schemata.py
+msgid "help_display_abstracts_researchfield"
+msgstr "Tick this checkbox if you want abstracts of &raquo;Research Projects&laquo; to be displayed in the project list at the bottom of this &raquo;Research Field&laquo;."
+
+#. Default: "Tick this checkbox if you want the contracting parties of &raquo;Research Projects&laquo; to be displayed in the project list at the bottom of this &raquo;Research Field&laquo;."
+#: schemata.py
+msgid "help_display_contractors_researchfield"
+msgstr "Tick this checkbox if you want the contracting parties of &raquo;Research Projects&laquo; to be displayed in the project list at the bottom of this &raquo;Research Field&laquo;."
+
+#. Default: "Tick this checkbox if you want the project coordinator(s) of &raquo;Research Projects&laquo; to be displayed in the project list at the bottom of this &raquo;Research Field&laquo;."
+#: schemata.py
+msgid "help_display_projectcoordinators_researchfield"
+msgstr "Tick this checkbox if you want the project coordinator(s) of &raquo;Research Projects&laquo; to be displayed in the project list at the bottom of this &raquo;Research Field&laquo;."
+
+#. Default: "Tick this checkbox if you want the project runtime to be displayed in the project list at the bottom of this &raquo;Research Field&laquo;."
+#: schemata.py
+msgid "help_display_projectruntime_researchfield"
+msgstr "Tick this checkbox if you want the project runtime to be displayed in the project list at the bottom of this &raquo;Research Field&laquo;."
+
+#. Default: "Tick this checkbox if you want &raquo;Research Projects&laquo; to be displayed in this &raquo;Research Project List&laquo;."
+#: schemata.py
+msgid "help_display_researchprojects_researchprojectlist"
+msgstr "Tick this checkbox if you want &raquo;Research Projects&laquo; to be displayed in this &raquo;Research Project List&laquo;."
+
+#. Default: "Tick this checkbox if you want &raquo;Research Subprojects&laquo; to be displayed in this &raquo;Research Project List&laquo;."
+#: schemata.py
+msgid "help_display_researchsubprojects_researchprojectlist"
+msgstr "Tick this checkbox if you want &raquo;Research Subprojects&laquo; to be displayed in this &raquo;Research Project List&laquo;."
+
+#. Default: "Tick this checkbox if you want abstracts (or keywords if no abstract is available) of &raquo;Research Projects&laquo; to be displayed in the non-tabular view of this &raquo;Research Project List&laquo;."
+#: schemata.py
+msgid "help_display_rpabstracts_researchprojectlist"
+msgstr "Tick this checkbox if you want abstracts (or keywords if no abstract is available) of &raquo;Research Projects&laquo; to be displayed in the non-tabular view of this &raquo;Research Project List&laquo;."
+
+#. Default: "Tick this checkbox if you want the contracting parties of &raquo;Research Projects&laquo; to be displayed in the non-tabular view of this &raquo;Research Project List&laquo;."
+#: schemata.py
+msgid "help_display_rpcontractors_researchprojectlist"
+msgstr "Tick this checkbox if you want the contracting parties of &raquo;Research Projects&laquo; to be displayed in the non-tabular view of this &raquo;Research Project List&laquo;."
+
+#. Default: "Tick this checkbox if you want a headline 'Research Projects' above the actual &raquo;Research Project&laquo; listing."
+#: schemata.py
+msgid "help_display_rpheadline_researchprojectlist"
+msgstr "Tick this checkbox if you want a headline 'Research Projects' above the actual &raquo;Research Project&laquo; listing."
+
+#. Default: "Tick this checkbox if you want the project coordinator(s) of &raquo;Research Projects&laquo; to be displayed in the non-tabular view of this &raquo;Research Project List&laquo;. If you select the tabular view further below this option will be ignored."
+#: schemata.py
+msgid "help_display_rpprojectcoordinators_researchprojectlist"
+msgstr "Tick this checkbox if you want the project coordinator(s) of &raquo;Research Projects&laquo; to be displayed in the non-tabular view of this &raquo;Research Project List&laquo;. If you select the tabular view further below this option will be ignored."
+
+#. Default: "Tick this checkbox if you want the &raquo;Research Project&laquo; runtime to be displayed in the non-tabular view of this &raquo;Research Project List&laquo;. If you select the tabular view further below this option will be ignored."
+#: schemata.py
+msgid "help_display_rpruntime_researchprojectlist"
+msgstr "Tick this checkbox if you want the &raquo;Research Project&laquo; runtime to be displayed in the non-tabular view of this &raquo;Research Project List&laquo;. If you select the tabular view further below this option will be ignored."
+
+#. Default: "Tick this checkbox if you want abstracts (or keywords if no abstract is available) of &raquo;Research Subprojects&laquo; to be displayed in the non-tabular view of this &raquo;Research Project List&laquo;."
+#: schemata.py
+msgid "help_display_rspabstracts_researchprojectlist"
+msgstr "Tick this checkbox if you want abstracts (or keywords if no abstract is available) of &raquo;Research Subprojects&laquo; to be displayed in the non-tabular view of this &raquo;Research Project List&laquo;."
+
+#. Default: "Tick this checkbox if you want a headline 'Subprojects' above the actual &raquo;Research Subproject&laquo; listing."
+#: schemata.py
+msgid "help_display_rspheadline_researchprojectlist"
+msgstr "Tick this checkbox if you want a headline 'Subprojects' above the actual &raquo;Research Subproject&laquo; listing."
+
+#. Default: "Tick this checkbox if you want the &raquo;Research Subproject&laquo; runtime to be displayed in the non-tabular view of this &raquo;Research Project List&laquo;. If you select the tabular view further below this option will be ignored."
+#: schemata.py
+msgid "help_display_rspruntime_researchprojectlist"
+msgstr "Tick this checkbox if you want the &raquo;Research Subproject&laquo; runtime to be displayed in the non-tabular view of this &raquo;Research Project List&laquo;. If you select the tabular view further below this option will be ignored."
+
+#. Default: "Tick this checkbox if you want the scientific coordinator(s) of &raquo;Research Subprojects&laquo; to be displayed in the non-tabular view of this &raquo;Research Project List&laquo;. If you select the tabular view further below this option will be ignored."
+#: schemata.py
+msgid "help_display_rspscientificcoordinators_researchprojectlist"
+msgstr "Tick this checkbox if you want the scientific coordinator(s) of &raquo;Research Subprojects&laquo; to be displayed in the non-tabular view of this &raquo;Research Project List&laquo;. If you select the tabular view further below this option will be ignored."
+
+#. Default: "Some subprojects of your research project might be delegated to other institutes. Name those institutes here (e.g. &raquo;Botanical Garden Copenhagen &lt;url:http://www.botanic-garden.ku.dk/eng/&gt;&laquo;)."
+#: schemata.py
+msgid "help_externalinstitutes_researchsubproject"
+msgstr "Some subprojects of your research project might be delegated to other institutes. Name those institutes here (e.g. &raquo;Botanical Garden Copenhagen &lt;url:http://www.botanic-garden.ku.dk/eng/&gt;&laquo;)."
+
+#. Default: "Enter URLs here that provide further information on this research field in the world wide web (e.g. &raquo;http://www.biodiv.org/&laquo; or Biodiversity &lt;&raquo;url:http://www.biodiv.org/&gt;&laquo;)."
+#: schemata.py
+msgid "help_externallinks_researchfield"
+msgstr "Enter URLs here that provide further information on this research field in the world wide web (e.g. &raquo;http://www.biodiv.org/&laquo; or &raquo;Biodiversity &lt;url:http://www.biodiv.org/&gt;&laquo;)."
+
+#. Default: "Enter URLs for further research project information in the world wide web here (e.g. &raquo;http://www.ecology.uni-kiel.de&laquo; or &raquo;Ecology Centre, Kiel University &lt;url:http://www.ecology.uni-kiel.de&gt;&laquo;)."
+#: schemata.py
+msgid "help_externallinks_researchproject"
+msgstr "Enter URLs for further research project information in the world wide web here (e.g. &raquo;http://www.ecology.uni-kiel.de&laquo; or &raquo;Ecology Centre, Kiel University &lt;url:http://www.ecology.uni-kiel.de&gt;&laquo;)."
+
+#. Default: "Enter URLs for further subproject information in the world wide web here (e.g. &raquo;http://www.ecology.uni-kiel.de&laquo; or &raquo;Ecology Centre, Kiel University &lt;url:http://www.ecology.uni-kiel.de&gt;&laquo;)."
+#: schemata.py
+msgid "help_externallinks_researchsubproject"
+msgstr "Enter URLs for further subproject information in the world wide web here (e.g. &raquo;http://www.ecology.uni-kiel.de&laquo; or &raquo;Ecology Centre, Kiel University &lt;url:http://www.ecology.uni-kiel.de&gt;&laquo;)."
+
+#. Default: "This checkbox affects authenticated members on portals with workflow state filtering enabled. If this checkbox is marked, this Research Project List will only show published (or whatever your site admin defined in the navigation tree properties) research projects/subprojects - regardless of the user's authentication status or portal privileges. If this checkbox is not ticked, authenticated members will additionally see research projects/subprojects they have Manager, Owner or Reviewer privileges on. If unsure, say yes here."
+#: schemata.py
+msgid "help_filterworkflowstates_researchprojectlist"
+msgstr "This checkbox affects authenticated members on portals with workflow state filtering enabled. If this checkbox is marked, this Research Project List will only show published (or whatever your site admin defined in the navigation tree properties) research projects/subprojects - regardless of the user's authentication status or portal privileges. If this checkbox is not ticked, authenticated members will additionally see research projects/subprojects they have Manager, Owner or Reviewer privileges on. If unsure, say yes here."
+
+#. Default: "Please list former staff members here (e.g. &raquo;Bob Andrews B.A. &lt;mailto:bandrews@somecompany.com&gt;&laquo;). If the checkbox below is ticked, former staff members of subprojects (if any) will be added to the research project's former staff list when this project is viewed."
+#: schemata.py
+msgid "help_formerstaffmembers_researchproject"
+msgstr "Please list former staff members here (e.g. &raquo;Bob Andrews B.A. &lt;mailto:bandrews@somecompany.com&gt;&laquo;). If the checkbox below is ticked, former staff members of subprojects (if any) will be added to the research project's former staff list when this project is viewed."
+
+#. Default: "Please list former staff members of this subproject here (e.g. &raquo;Peter Shaw M.Sc. &lt;mailto:pshaw@othercompany.com&gt;&laquo;)."
+#: schemata.py
+msgid "help_formerstaffmembers_researchsubproject"
+msgstr "Please list former staff members of this subproject here (e.g. &raquo;Peter Shaw M.Sc. &lt;mailto:pshaw@othercompany.com&gt;&laquo;)."
+
+#. Default: "Please list former student staff members of your project here (e.g. &raquo;Justus Jonas &lt;mailto:jjonas@threequestions.infot&gt;&laquo;). If the checkbox below is ticked, former student staff members of subprojects (if any) will be added to the research project's former student staff list when this project is viewed."
+#: schemata.py
+msgid "help_formerstudentstaffmembers_researchproject"
+msgstr "Please list former student staff members of your project here (e.g. &raquo;Justus Jonas &lt;mailto:jjonas@threequestions.infot&gt;&laquo;). If the checkbox below is ticked, former student staff members of subprojects (if any) will be added to the research project's former student staff list when this project is viewed."
+
+#. Default: "Please list former student staff members and research contributors of this subproject here (e.g. &raquo;Richard Kirrin &lt;mailto:rkirrin@famousfivemail.co.uk&gt;&laquo;)."
+#: schemata.py
+msgid "help_formerstudentstaffmembers_researchsubproject"
+msgstr "Please list former student staff members and research contributors of this subproject here (e.g. &raquo;Richard Kirrin &lt;mailto:rkirrin@famousfivemail.co.uk&gt;&laquo;)."
+
+#. Default: "Within a &raquo;Research Project&laquo; folder you can create &raquo;Subprojects&laquo;. Tick this checkbox if you want to merge former staff members of inherent &raquo;Subprojects&laquo; with the research project's former staff member list whenever this research project is viewed."
+#: schemata.py
+msgid "help_inherit_formerstaffmembers_researchproject"
+msgstr "Within a &raquo;Research Project&laquo; folder you can create &raquo;Subprojects&laquo;. Tick this checkbox if you want to merge former staff members of inherent &raquo;Subprojects&laquo; with the research project's former staff member list whenever this research project is viewed."
+
+#. Default: "Within a &raquo;Subproject&laquo; folder you can create further sublevel-&raquo;Subprojects&laquo;. Tick this checkbox if you want to merge former staff members of inherent &raquo;Subprojects&laquo; with this subproject's former staff member list whenever this subproject is viewed."
+#: schemata.py
+msgid "help_inherit_formerstaffmembers_researchsubproject"
+msgstr "Within a &raquo;Subproject&laquo; folder you can create further sublevel-&raquo;Subprojects&laquo;. Tick this checkbox if you want to merge former staff members of inherent &raquo;Subprojects&laquo; with this subproject's former staff member list whenever this subproject is viewed."
+
+#. Default: "Within a &raquo;Research Project&laquo; folder you can create &raquo;Subprojects&laquo;. Tick this checkbox if you want to merge former student staff members of inherent &raquo;Subprojects&laquo; with the research project's former student staff member list whenever this research project is viewed."
+#: schemata.py
+msgid "help_inherit_formerstudentstaffmembers_researchproject"
+msgstr "Within a &raquo;Research Project&laquo; folder you can create &raquo;Subprojects&laquo;. Tick this checkbox if you want to merge former student staff members of inherent &raquo;Subprojects&laquo; with the research project's former student staff member list whenever this research project is viewed."
+
+#. Default: "Within a &raquo;Subproject&laquo; folder you can create further sublevel-&raquo;Subprojects&laquo;. Tick this checkbox if you want to merge former student staff members of inherent &raquo;Subprojects&laquo; with this subproject's former staff member list whenever this subproject is viewed."
+#: schemata.py
+msgid "help_inherit_formerstudentstaffmembers_researchsubproject"
+msgstr "Within a &raquo;Subproject&laquo; folder you can create further sublevel-&raquo;Subprojects&laquo;. Tick this checkbox if you want to merge former student staff members of inherent &raquo;Subprojects&laquo; with this subproject's former staff member list whenever this subproject is viewed."
+
+#. Default: "Within a &raquo;Research Project&laquo; folder you can create &raquo;Subprojects&laquo;. Tick this checkbox if you want to merge scientific staff members of inherent &raquo;Subprojects&laquo; with the research project's scientific staff member list whenever this research project is viewed."
+#: schemata.py
+msgid "help_inherit_scientificstaffmembers_researchproject"
+msgstr "Within a &raquo;Research Project&laquo; folder you can create &raquo;Subprojects&laquo;. Tick this checkbox if you want to merge scientific staff members of inherent &raquo;Subprojects&laquo; with the research project's scientific staff member list whenever this research project is viewed."
+
+#. Default: "Within a &raquo;Subproject&laquo; folder you can create further sublevel-&raquo;Subprojects&laquo;. Tick this checkbox if you want to merge scientific staff members of inherent &raquo;Subprojects&laquo; with this subproject's scientific staff member list whenever this subproject is viewed."
+#: schemata.py
+msgid "help_inherit_scientificstaffmembers_researchsubproject"
+msgstr "Within a &raquo;Subproject&laquo; folder you can create further sublevel-&raquo;Subprojects&laquo;. Tick this checkbox if you want to merge scientific staff members of inherent &raquo;Subprojects&laquo; with this subproject's scientific staff member list whenever this subproject is viewed."
+
+#. Default: "Within a &raquo;Research Project&laquo; folder you can create &raquo;Subprojects&laquo;. Tick this checkbox if you want to merge student staff members of inherent &raquo;Subprojects&laquo; with the research project's student staff member list whenever this research project is viewed."
+#: schemata.py
+msgid "help_inherit_studentstaffmembers_researchproject"
+msgstr "Within a &raquo;Research Project&laquo; folder you can create &raquo;Subprojects&laquo;. Tick this checkbox if you want to merge student staff members of inherent &raquo;Subprojects&laquo; with the research project's student staff member list whenever this research project is viewed."
+
+#. Default: "Within a &raquo;Subproject&laquo; folder you can create further sublevel-&raquo;Subprojects&laquo;. Tick this checkbox if you want to merge student staff members of inherent &raquo;Subprojects&laquo; with this subproject's student staff member list whenever this subproject is viewed."
+#: schemata.py
+msgid "help_inherit_studentstaffmembers_researchsubproject"
+msgstr "Within a &raquo;Subproject&laquo; folder you can create further sublevel-&raquo;Subprojects&laquo;. Tick this checkbox if you want to merge student staff members of inherent &raquo;Subprojects&laquo; with this subproject's student staff member list whenever this subproject is viewed."
+
+#. Default: "Within a &raquo;Research Project&laquo; folder you can create &raquo;Subprojects&laquo;. Tick this checkbox if you want to merge technical staff members of inherent &raquo;Subprojects&laquo; with the research project's technical staff member list whenever this research project is viewed."
+#: schemata.py
+msgid "help_inherit_technicalstaffmembers_researchproject"
+msgstr "Within a &raquo;Research Project&laquo; folder you can create &raquo;Subprojects&laquo;. Tick this checkbox if you want to merge technical staff members of inherent &raquo;Subprojects&laquo; with the research project's technical staff member list whenever this research project is viewed."
+
+#. Default: "Within a &raquo;Subproject&laquo; folder you can create further sublevel-&raquo;Subprojects&laquo;. Tick this checkbox if you want to merge technical staff members of inherent &raquo;Subprojects&laquo; with this subproject's technical staff member list whenever this subproject is viewed."
+#: schemata.py
+msgid "help_inherit_technicalstaffmembers_researchsubproject"
+msgstr ".Within a &raquo;Subproject&laquo; folder you can create further sublevel-&raquo;Subprojects&laquo;. Tick this checkbox if you want to merge technical staff members of inherent &raquo;Subprojects&laquo; with this subproject's technical staff member list whenever this subproject is viewed."
+
+#. Default: "Select departments within your institute that are involved in this research project."
+#: schemata.py
+msgid "help_involveddepartments_researchproject"
+msgstr "Select departments within your institute that are involved in this research project."
+
+#. Default: "Select departments within your institute that are involved in this subproject."
+#: schemata.py
+msgid "help_involveddepartments_researchsubproject"
+msgstr "Select departments within your institute that are involved in this research subproject."
+
+#. Default: "As an alternative to a very short abstract you can specify a list of keywords here that match on your research project contents (a single keyword each line)."
+#: schemata.py
+msgid "help_keywords_researchproject"
+msgstr "As an alternative to a very short abstract you can specify a list of keywords here that match on your research project contents (a single keyword each line)."
+
+#. Default: "As an alternative to a very short abstract you can specify a list of keywords here that match on your subproject contents (a single keyword each line)."
+#: schemata.py
+msgid "help_keywords_researchsubproject"
+msgstr "As an alternative to a very short abstract you can specify a list of keywords here that match on your subproject contents (a single keyword each line)."
+
+#. Default: "An image width of 400 pixels is recommended. The logo will also be displayed on research subproject pages."
+#: schemata.py
+msgid "help_logo_researchproject"
+msgstr "An image width of 400 pixels is recommended. The logo will also be displayed on research subproject pages."
+
+#. Default: "This field should contain the offcial research project title (e.g. &raquo;Wetland Ecology and Technology&laquo;)."
+#: schemata.py
+msgid "help_officialtitle_researchproject"
+msgstr "This field should contain the offcial research project title (e.g. &raquo;Wetland Ecology and Technology&laquo;)."
+
+#. Default: "This field should contain the offcial subproject title (e.g. &raquo;The Ecology and Limits of Fen Renaturation&laquo;)."
+#: schemata.py
+msgid "help_officialtitle_researchsubproject"
+msgstr "This field should contain the offcial subproject title (e.g. &raquo;The Ecology and Limits of Fen Renaturation&laquo;)."
+
+#. Default: "The project coordinator is THE person (or a group of persons) in charge of everything (e.g. &raquo;Dr. Jane Smith &lt;member:jsmith&gt;&laquo; or merely &raquo;&lt;member:jsmith&gt;&laquo;; if the named person exists on your site the specified &lt;member:xxx&gt;-tag can be added to link the user's name to his/her home page on this site)."
+#: schemata.py
+msgid "help_projectcoordinators_researchproject"
+msgstr "The project coordinator is THE person (or a group of persons) in charge of everything (e.g. &raquo;Dr. Jane Smith  &lt;member:jsmith&gt;&laquo; or merely &raquo;&lt;member:jsmith&gt;&laquo;; if the named person exists on your site the specified &lt;member:xxx&gt;-tag can be added to link the user's name to his/her home page on this site)."
+
+#. Default: "If this research project is related to one or several research fields on your site, please select the research fields in question here."
+#: schemata.py
+msgid "help_researchfields_researchproject"
+msgstr "If this research project is related to one or several research fields on your site, please select the research fields in question here."
+
+#. Default: "If scientific coordination does not differ from project coordination, leave this field empty."
+#: schemata.py
+msgid "help_scientificcoordinators_researchproject"
+msgstr "If scientific coordination does not differ from project coordination, leave this field empty."
+
+#. Default: "Scientific coordination of subprojects can differ from scientific coordination of the global research project context. Name persons in charge here (e.g. &raquo;Dr. Gary Stewart &lt;member:gstewart&gt;&laquo; or merely &raquo;&lt;member:gstewart&gt;&laquo;)."
+#: schemata.py
+msgid "help_scientificcoordinators_researchsubproject"
+msgstr "Scientific coordination of subprojects can differ from scientific coordination of the global research project context. Name persons in charge here (e.g. &raquo;Dr. Gary Stewart  &lt;member:gstewart&gt;&laquo; or merely &raquo;&lt;member:gstewart&gt;&laquo;)."
+
+#. Default: "Please list scientific project staff members and research contributors here (e.g. &raquo;Peter Miller M.Sc. &lt;member:pmiller&gt;&laquo; - in case a scientific staff member is not a member of your site: &raquo;Peter Miller M.Sc. &lt;mailto:pmiller@otherinstitute.edu&gt;&laquo;). If the checkbox below is ticked, scientific staff members of subprojects (if any) will be added to the research project's scientific staff list when this project is viewed."
+#: schemata.py
+msgid "help_scientificstaffmembers_researchproject"
+msgstr "Please list scientific project staff members and research contributors here (e.g. &raquo;Peter Miller M.Sc. &lt;member:pmiller&gt;&laquo; - in case a scientific staff member is not a member of your site: &raquo;Peter Miller M.Sc. &lt;mailto:pmiller@otherinstitute.edu&gt;&laquo;). If the checkbox below is ticked, scientific staff members of subprojects (if any) will be added to the research project scientific staff list when this project is viewed."
+
+#. Default: "Please list scientific staff members and research contributors of this subproject here (e.g. &raquo;Peter Miller M.Sc. &lt;member:pmiller&gt;&laquo; - for the case that a person is not a member of your site use &raquo;Peter Miller M.Sc. &lt;mailto:pmiller@otherinstitute.edu&gt;&laquo;)."
+#: schemata.py
+msgid "help_scientificstaffmembers_researchsubproject"
+msgstr "Please list scientific staff members and research contributors of this subproject here (e.g. &raquo;Peter Miller M.Sc. &lt;member:pmiller&gt;&laquo; - for the case that a person is not a member of your site use &raquo;Peter Miller M.Sc. &lt;mailto:pmiller@otherinstitute.edu&gt;&laquo;)."
+
+#. Default: "Please list student staff members of your project here (e.g. &raquo;Janet Furter &lt;member:jfurter&gt;&laquo; - in case a student staff member is not a member of your site: &raquo;Janet Furter &lt;mailto:jfurter@webmail.net&gt;&laquo;). If the checkbox below is ticked, student staff members of subprojects (if any) will be added to the research project's student staff list when this project is viewed."
+#: schemata.py
+msgid "help_studentstaffmembers_researchproject"
+msgstr "Please list student staff members of your project here (e.g. &raquo;Janet Furter &lt;member:jfurter&gt;&laquo; - in case a student staff member is not a member of your site: &raquo;Janet Furter &lt;mailto:jfurter@webmail.net&gt;&laquo;). If the checkbox below is ticked, student staff members of subprojects (if any) will be added to the research project student staff list when this project is viewed."
+
+#. Default: "Please list student staff members and research contributors of this subproject here (e.g. &raquo;Julian Kirrin &lt;member:jkirrin&gt;&laquo; - for the case that a person is not a member of your site use &raquo;Julian Kirrin &lt;mailto:jkirrin@famousfivemail.co.uk&gt;&laquo;)."
+#: schemata.py
+msgid "help_studentstaffmembers_researchsubproject"
+msgstr "Please list student staff members and research contributors of this subproject here (e.g. &raquo;Julia Kirrin &lt;member:jkirrin&gt;&laquo; - for the case that a person is not a member of your site use &raquo;Julian Kirrin &lt;mailto:jkirrin@famousfivemail.co.uk&gt;&laquo;)."
+
+#. Default: "Please list technical staff members and other assitants here (e.g. &raquo;George Scott &lt;member:gscott&gt;&laquo; - in case a technical staff member is not a member of your site: &raquo;George Scott &lt;mailto:gscott@otherinstitute.edu&gt;&laquo;). If the checkbox below is ticked, technical staff members of subprojects (if any) will be added to the research project's technical staff list when this project is viewed."
+#: schemata.py
+msgid "help_technicalstaffmembers_researchproject"
+msgstr "Please list technical staff members and other assitants here (e.g. &raquo;George Scott &lt;member:gscott&gt;&laquo; - in case a technical staff member is not a member of your site: &raquo;George Scott &lt;mailto:gscott@otherinstitute.edu&gt;&laquo;). If the checkbox below is ticked, technical staff members of subprojects (if any) will be added to the research project technical staff list when this project is viewed."
+
+#. Default: "Please list technical staff members and other assistants of this subproject here (e.g. &raquo;George Scott &lt;member:gscott&gt;&laquo; - for the case that a person is not a member of your site use &raquo;George Scott &lt;mailto:pmiller@otherinstitute.edu&gt;&laquo;)."
+#: schemata.py
+msgid "help_technicalstaffmembers_researchsubproject"
+msgstr "Please list technical staff members and other assistants of this subproject here (e.g. &raquo;George Scott &lt;member:gscott&gt;&laquo; - for the case that a person is not a member of your site use &raquo;George Scott &lt;mailto:pmiller@otherinstitute.edu&gt;&laquo;)."
+
+#. Default: "Tick this checkbox if this research project is third-party funded."
+#: schemata.py
+msgid "help_thirdpartyfunded_researchproject"
+msgstr "Tick this checkbox if this research project is third-party funded."
+
+#. Default: "Research Project Lists can contain further (nested) Research Project Lists. Mark this checkbox if you want to list up nested items at the end of this Research Project List."
+#: schemata.py
+msgid "help_view_nested_lists_researchprojectlist"
+msgstr "Research Project Lists can contain further (nested) Research Project Lists. Mark this checkbox if you want to list up nested items at the end of this Research Project List."
+
+#. Default: "Abstract"
+#: schemata.py
+msgid "label_abstract_researchproject"
+msgstr "Abstract"
+
+#. Default: "Abstract"
+#: schemata.py
+msgid "label_abstract_researchsubproject"
+msgstr "Abstract"
+
+#. Default: "Allowed Content Types"
+#: skins/ATResearchProject/prefs_atrptool_contenttypes.pt
+#: skins/ATResearchProject/prefs_atrptool_departments.pt
+#: skins/ATResearchProject/prefs_atrptool_info.pt
+msgid "label_atrptool_contenttypes"
+msgstr "Allowed Content Types"
+
+#. Default: "Department Names"
+#: skins/ATResearchProject/prefs_atrptool_contenttypes.pt
+#: skins/ATResearchProject/prefs_atrptool_departments.pt
+#: skins/ATResearchProject/prefs_atrptool_info.pt
+msgid "label_atrptool_departments"
+msgstr "Department Names"
+
+#. Default: "Information"
+#: skins/ATResearchProject/prefs_atrptool_contenttypes.pt
+#: skins/ATResearchProject/prefs_atrptool_departments.pt
+#: skins/ATResearchProject/prefs_atrptool_info.pt
+msgid "label_atrptool_info"
+msgstr "Information"
+
+#. Default: "Authors"
+#: schemata.py
+msgid "label_authors_researchproject"
+msgstr "Authors"
+
+#. Default: "Authors"
+#: schemata.py
+msgid "label_authors_researchsubproject"
+msgstr "Authors"
+
+#. Default: "More specific Information on this Research Project"
+#: schemata.py
+msgid "label_body_researchproject"
+msgstr "More specific Information on this Research Project"
+
+#. Default: "More specific Information on this Research Subproject"
+#: schemata.py
+msgid "label_body_researchsubproject"
+msgstr "More specific Information on this Research Subproject"
+
+#. Default: "Cascade Research Subprojects"
+#: schemata.py
+msgid "label_cascade_researchsubprojects_researchprojectlist"
+msgstr "Cascade Research Subprojects"
+
+#. Default: "Comment"
+#: schemata.py
+msgid "label_comment_researchprojectlist"
+msgstr "Comment"
+
+#. Default: "composed by ${author}"
+#: skins/ATResearchProject/research_project_byline.pt
+msgid "label_composed_by_author"
+msgstr "composed by ${author}"
+
+#. Default: "Contractor(s) or contracting Organization(s)"
+#: schemata.py
+msgid "label_contractors_researchproject"
+msgstr "Contractor(s) or contracting Organization(s)"
+
+#. Default: "In Cooperation with"
+#: schemata.py
+msgid "label_cooperationpartners_researchproject"
+msgstr "In Cooperation with"
+
+#. Default: "In Cooperation with"
+#: schemata.py
+msgid "label_cooperationpartners_researchsubproject"
+msgstr "In Cooperation with"
+
+#. Default: "created by ${author}"
+#: skins/ATResearchProject/research_project_byline.pt
+msgid "label_created by_author"
+msgstr "created by ${author}"
+
+#. Default: "Custom Headline for nested Research Project Lists"
+#: schemata.py
+msgid "label_custom_nested_lists_head_researchprojectlist"
+msgstr "Custom Headline for nested Research Project Lists"
+
+#. Default: "Description"
+#: schemata.py
+msgid "label_description_researchfield"
+msgstr "Description"
+
+#. Default: "Description"
+#: schemata.py
+msgid "label_description_researchprojectlist"
+msgstr "Description"
+
+#. Default: "Display Abstracts of Research Projects"
+#: schemata.py
+msgid "label_display_abstracts_researchfield"
+msgstr "Display Abstracts of Research Projects"
+
+#. Default: "Display Project Contractors"
+#: schemata.py
+msgid "label_display_contractors_researchfield"
+msgstr "Display Project Contractor(s)"
+
+#. Default: "Display Project Coordinators of Research Projects"
+#: schemata.py
+msgid "label_display_projectcoordinators_researchfield"
+msgstr "Display Project Coordinators of Research Projects"
+
+#. Default: "Display Project Runtime"
+#: schemata.py
+msgid "label_display_projectruntime_researchfield"
+msgstr "Display Project Runtime"
+
+#. Default: "Display Research Projects"
+#: schemata.py
+msgid "label_display_researchprojects_researchprojectlist"
+msgstr "Display Research Projects"
+
+#. Default: "Display Research Subprojects"
+#: schemata.py
+msgid "label_display_researchsubprojects_researchprojectlist"
+msgstr "Display Research Subprojects"
+
+#. Default: "Display Abstracts (or Keywords) of Research Projects"
+#: schemata.py
+msgid "label_display_rpabstracts_researchprojectlist"
+msgstr "Display Abstracts (or Keywords) of Research Projects"
+
+#. Default: "Display Contractors of Research Projects"
+#: schemata.py
+msgid "label_display_rpcontractors_researchprojectlist"
+msgstr "Display Contractor(s) of Research Projects"
+
+#. Default: "Display Headline above Research Project Listing"
+#: schemata.py
+msgid "label_display_rpheadline_researchprojectlist"
+msgstr "Display Headline above Research Project Listing"
+
+#. Default: "Display Project Coordinators of Research Projects"
+#: schemata.py
+msgid "label_display_rpprojectcoordinators_researchprojectlist"
+msgstr "Display Project Coordinators of Research Projects"
+
+#. Default: "Display Research Project Runtime"
+#: schemata.py
+msgid "label_display_rpruntime_researchprojectlist"
+msgstr "Display Research Project Runtime"
+
+#. Default: "Display Abstracts (or Keywords) of Research Subprojects"
+#: schemata.py
+msgid "label_display_rspabstracts_researchprojectlist"
+msgstr "Display Abstracts (or Keywords) of Research Subprojects"
+
+#. Default: "Display Headline above Research Subproject Listing"
+#: schemata.py
+msgid "label_display_rspheadline_researchprojectlist"
+msgstr "Display Headline above Research Subroject Listing"
+
+#. Default: "Display Research Subroject Runtime"
+#: schemata.py
+msgid "label_display_rspruntime_researchprojectlist"
+msgstr "Display Research Subroject Runtime"
+
+#. Default: "Display Scientific Coordinators of Research Subrojects"
+#: schemata.py
+msgid "label_display_rspscientificcoordinators_researchprojectlist"
+msgstr "Display Scientific Coordinators of Research Subrojects"
+
+#. Default: "External Institute(s)"
+#: schemata.py
+msgid "label_externalinstitutes_researchsubproject"
+msgstr "External Institute(s)"
+
+#. Default: "External internet links with further information on this research field"
+#: schemata.py
+msgid "label_externallinks_researchfield"
+msgstr "External internet links with further information on this research field"
+
+#. Default: "External internet links with further information on this research project"
+#: schemata.py
+msgid "label_externallinks_researchproject"
+msgstr "External internet links with further information on this research project"
+
+#. Default: "External internet links with further information on this subproject"
+#: schemata.py
+msgid "label_externallinks_researchsubproject"
+msgstr "External internet links with further information on this subproject"
+
+#. Default: "Force Workflow State Filtering for authenticated Members"
+#: schemata.py
+msgid "label_filterworkflowstates_researchprojectlist"
+msgstr "Force Workflow State Filtering for authenticated Members"
+
+#. Default: "Former Staff"
+#: schemata.py
+msgid "label_formerstaffmembers_researchproject"
+msgstr "Former Staff"
+
+#. Default: "Former Staff"
+#: schemata.py
+msgid "label_formerstaffmembers_researchsubproject"
+msgstr "Former Staff"
+
+#. Default: "Former Student Staff"
+#: schemata.py
+msgid "label_formerstudentstaffmembers_researchproject"
+msgstr "Former Student Staff"
+
+#. Default: "Former Student Staff"
+#: schemata.py
+msgid "label_formerstudentstaffmembers_researchsubproject"
+msgstr "Former Student Staff"
+
+#. Default: "Inherit Former Staff Member Lists"
+#: schemata.py
+msgid "label_inherit_formerstaffmembers_researchproject"
+msgstr "Inherit Former Staff Member Lists"
+
+#. Default: "Inherit Former Staff Member Lists"
+#: schemata.py
+msgid "label_inherit_formerstaffmembers_researchsubproject"
+msgstr "Inherit Former Staff Member Lists"
+
+#. Default: "Inherit Former Student Staff Member Lists"
+#: schemata.py
+msgid "label_inherit_formerstudentstaffmembers_researchproject"
+msgstr "Inherit Former Student Staff Member Lists"
+
+#. Default: "Inherit Former Student Staff Member Lists"
+#: schemata.py
+msgid "label_inherit_formerstudentstaffmembers_researchsubproject"
+msgstr "Inherit Former Student Staff Member Lists"
+
+#. Default: "Inherit Scientific Staff Member Lists"
+#: schemata.py
+msgid "label_inherit_scientificstaffmembers_researchproject"
+msgstr "Inherit Scientific Staff Member Lists"
+
+#. Default: "Inherit Scientific Staff Member Lists"
+#: schemata.py
+msgid "label_inherit_scientificstaffmembers_researchsubproject"
+msgstr "Inherit Scientific Staff Member Lists"
+
+#. Default: "Inherit Student Staff Member Lists"
+#: schemata.py
+msgid "label_inherit_studentstaffmembers_researchproject"
+msgstr "Inherit Student Staff Member Lists"
+
+#. Default: "Inherit Student Staff Member Lists"
+#: schemata.py
+msgid "label_inherit_studentstaffmembers_researchsubproject"
+msgstr "Inherit Student Staff Member Lists"
+
+#. Default: "Inherit Technical Staff Member Lists"
+#: schemata.py
+msgid "label_inherit_technicalstaffmembers_researchproject"
+msgstr "Inherit Technical Staff Member Lists"
+
+#. Default: "Inherit Technical Staff Member Lists"
+#: schemata.py
+msgid "label_inherit_technicalstaffmembers_researchsubproject"
+msgstr "Inherit Technical Staff Member Lists"
+
+#. Default: "Involved Departments"
+#: schemata.py
+msgid "label_involveddepartments_researchproject"
+msgstr "Involved Departments"
+
+#. Default: "Involved Departments"
+#: schemata.py
+msgid "label_involveddepartments_researchsubproject"
+msgstr "Involved Departments"
+
+#. Default: "Keywords"
+#: schemata.py
+msgid "label_keywords_researchproject"
+msgstr "Keywords"
+
+#. Default: "Keywords"
+#: schemata.py
+msgid "label_keywords_researchsubproject"
+msgstr "Keywords"
+
+#. Default: "Logo (optional)"
+#: schemata.py
+msgid "label_logo_researchproject"
+msgstr "Logo (optional)"
+
+#. Default: "Official Project Title"
+#: schemata.py
+msgid "label_officialtitle_researchproject"
+msgstr "Official Project Title"
+
+#. Default: "Official Subproject Title"
+#: schemata.py
+msgid "label_officialtitle_researchsubproject"
+msgstr "Official Subproject Title"
+
+#. Default: "Project Coordination"
+#: schemata.py
+msgid "label_projectcoordinators_researchproject"
+msgstr "Project Coordination"
+
+#. Default: "Research Field Context"
+#: schemata.py
+msgid "label_researchfields_researchproject"
+msgstr "Research Field Context"
+
+#. Default: "End of Project Runtime"
+#: schemata.py
+msgid "label_runtimeend_researchproject"
+msgstr "End of Project Runtime"
+
+#. Default: "End of Subproject Runtime"
+#: schemata.py
+msgid "label_runtimeend_researchsubproject"
+msgstr "End of Sub-Project Runtime"
+
+#. Default: "Begin of Project Runtime"
+#: schemata.py
+msgid "label_runtimestart_researchproject"
+msgstr "Begin of Project Runtime"
+
+#. Default: "Begin of Subproject Runtime"
+#: schemata.py
+msgid "label_runtimestart_researchsubproject"
+msgstr "Begin of Sub-Project Runtime"
+
+#. Default: "Scientific Coordination"
+#: schemata.py
+msgid "label_scientificcoordinators_researchproject"
+msgstr "Scientific Coordination"
+
+#. Default: "Scientific Coordination"
+#: schemata.py
+msgid "label_scientificcoordinators_researchsubproject"
+msgstr "Scientific Coordination"
+
+#. Default: "Scientific Staff"
+#: schemata.py
+msgid "label_scientificstaffmembers_researchproject"
+msgstr "Scientific Staff"
+
+#. Default: "Scientific Staff"
+#: schemata.py
+msgid "label_scientificstaffmembers_researchsubproject"
+msgstr "Scientific Staff"
+
+#. Default: "Student Staff"
+#: schemata.py
+msgid "label_studentstaffmembers_researchproject"
+msgstr "Student Staff"
+
+#. Default: "Student Staff"
+#: schemata.py
+msgid "label_studentstaffmembers_researchsubproject"
+msgstr "Student Staff"
+
+#. Default: "Technical Staff"
+#: schemata.py
+msgid "label_technicalstaffmembers_researchproject"
+msgstr "Technical Staff"
+
+#. Default: "Technical Staff"
+#: schemata.py
+msgid "label_technicalstaffmembers_researchsubproject"
+msgstr "Technical Staff"
+
+#. Default: "Third-party funded research project"
+#: schemata.py
+msgid "label_thirdpartyfunded_researchproject"
+msgstr "Third-party funded research project"
+
+#. Default: "View nested Research Project Lists"
+#: schemata.py
+msgid "label_view_nested_lists_researchprojectlist"
+msgstr "View nested Research Project Lists"
+
+#. Default: "Research project context"
+#: skins/ATResearchProject/research_project_macros.pt
+msgid "of_researchproject"
+msgstr "Research project context"
+
+#. Default: "Research Field"
+#: skins/ATResearchProject/research_field_view.pt
+msgid "portaltype_researchfield"
+msgstr "Research Field"
+
+#. Default: "Research Project"
+#: skins/ATResearchProject/prefs_atrptool_contenttypes.pt
+#: skins/ATResearchProject/research_project_macros.pt
+msgid "portaltype_researchproject"
+msgstr "Research Project"
+
+#. Default: "Subproject"
+#: skins/ATResearchProject/prefs_atrptool_contenttypes.pt
+#: skins/ATResearchProject/research_project_macros.pt
+msgid "portaltype_subproject"
+msgstr "Subproject"
+
+#. Default: "If only a sort order and no search criteria (cf. box above) is specified, all research projects and subprojects available on this site will be listed."
+#: skins/ATResearchProject/rplist_criterion_edit_form.cpt
+msgid "researchprojectlist_help_sortcriteria"
+msgstr "If only a sort order and no search criteria (cf. box above) is specified, all research projects and subprojects available on this site will be listed."
+
+#. Default: "Sort order for Research Projects"
+#: skins/ATResearchProject/rplist_criterion_edit_form.cpt
+msgid "researchprojectlist_label_criteria_field_name_rp"
+msgstr "Sort order for Research Projects"
+
+#. Default: "Sort order for Research Subprojects"
+#: skins/ATResearchProject/rplist_criterion_edit_form.cpt
+msgid "researchprojectlist_label_criteria_field_name_rsp"
+msgstr "Sort order for Research Subprojects"
+
+#. Default: "Contained Research Project Lists:"
+#: skins/ATResearchProject/research_project_list_view.pt
+msgid "sub_rplists_heading"
+msgstr "Contained Research Project Lists:"
+
+#. Default: "Sublevel project within"
+#: skins/ATResearchProject/research_project_macros.pt
+msgid "subproject_of_subproject"
+msgstr "Sublevel project within"
+
+#. Default: "Department names"
+#: skins/ATResearchProject/prefs_atrptool_departments.pt
+msgid "tool_department_names"
+msgstr "Department names"
+
+#. Default: "Since"
+#: skins/ATResearchProject/research_project_macros.pt
+msgid "view_capital_since"
+msgstr "Since"
+
+#. Default: "Further information on this research field in the WWW"
+#: skins/ATResearchProject/research_field_view.pt
+msgid "view_researchfield_externallinks"
+msgstr "Further information on this research field in the WWW"
+
+#. Default: "Abstract"
+#: skins/ATResearchProject/research_project_macros.pt
+msgid "view_researchproject_abstract"
+msgstr "Abstract"
+
+#. Default: "Departments involved in this research project"
+#: skins/ATResearchProject/research_project_view.pt
+msgid "view_researchproject_departments"
+msgstr "Departments involved in this research project"
+
+#. Default: "Further information on this research project in the WWW"
+#: skins/ATResearchProject/research_project_view.pt
+msgid "view_researchproject_externallinks"
+msgstr "Further information on this research project in the WWW"
+
+#. Default: "Research Project Information"
+#: skins/ATResearchProject/research_project_macros.pt
+msgid "view_researchproject_infohead"
+msgstr "Research Project Information"
+
+#. Default: "Keywords"
+#: skins/ATResearchProject/research_project_macros.pt
+msgid "view_researchproject_keywords"
+msgstr "Keywords"
+
+#. Default: "Runtime"
+#: skins/ATResearchProject/research_project_macros.pt
+msgid "view_researchproject_runtime"
+msgstr "Runtime"
+
+#. Default: "Abstract"
+#: skins/ATResearchProject/research_project_macros.pt
+msgid "view_researchsubproject_abstract"
+msgstr "Abstract"
+
+#. Default: "Departments involved in this subproject"
+#: skins/ATResearchProject/research_subproject_view.pt
+msgid "view_researchsubproject_departments"
+msgstr "Departments are involved in this subproject"
+
+#. Default: "Further information on this subproject in the WWW"
+#: skins/ATResearchProject/research_subproject_view.pt
+msgid "view_researchsubproject_externallinks"
+msgstr "Further information on this subproject in the WWW"
+
+#. Default: "Subproject Information"
+#: skins/ATResearchProject/research_project_macros.pt
+msgid "view_researchsubproject_infohead"
+msgstr "Subproject Information"
+
+#. Default: "Keywords"
+#: skins/ATResearchProject/research_project_macros.pt
+#: skins/ATResearchProject/research_subprojects_overview.pt
+msgid "view_researchsubproject_keywords"
+msgstr "Keywords"
+
+#. Default: "Runtime"
+#: skins/ATResearchProject/research_project_macros.pt
+msgid "view_researchsubproject_runtime"
+msgstr "Project runtime"
+
+#. Default: "since"
+#: skins/ATResearchProject/research_project_macros.pt
+#: skins/ATResearchProject/research_subprojects_overview.pt
+msgid "view_since"
+msgstr "since"
+
+#. Default: "Note: No research fields have been found on this site. Create some Research Fields at some other location on this site first, publish them and only then they can be referenced from within a Research Project. This feature is optional, so ignore it, if you do not want to define research fields on your site."
+#: skins/ATResearchProject/research_project_researchfieldreference_inandoutwidget.pt
+#: skins/ATResearchProject/research_project_researchfieldreference_referencewidget.pt
+msgid "widget_noresearchfieldsfound"
+msgstr "Note: No research fields have been found on this site. Create some Research Fields at some other location on this site first, publish them and only then they can be referenced from within a Research Project. This feature is optional, so ignore it, if you do not want to define research fields on your site."
+
+#. Default: "until"
+#: skins/ATResearchProject/research_project_macros.pt
+msgid "word_till"
+msgstr "until"
+

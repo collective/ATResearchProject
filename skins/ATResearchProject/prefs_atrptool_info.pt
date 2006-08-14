@@ -1,0 +1,72 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      lang="en"
+      metal:use-macro="here/prefs_main_template/macros/master"
+      i18n:domain="atresearchproject">
+		  
+<metal:block fill-slot="top_slot" tal:define="dummy python:request.set('disable_border',1)" />
+			       
+<body>
+			       
+<div metal:fill-slot="prefs_configlet_content">
+  <div id="content" class="documentEditable"
+       i18n:domain="atresearchproject"
+       tal:condition="python:checkPermission('Manage groups', here)">
+
+    <ul class="contentViews">
+       <li class="selected">
+           <a href=""
+              tal:attributes="href string:$here_url/$template_id"
+              i18n:translate="label_atrptool_info">Information</a>
+       </li>
+       <li class="">
+           <a href=""
+              tal:attributes="href string:$here_url/prefs_atrptool_departments"
+              i18n:translate="label_atrptool_departments">Department Names</a>
+       </li>
+       <li class="">
+           <a href=""
+              tal:attributes="href string:$here_url/prefs_atrptool_contenttypes"
+              i18n:translate="label_atrptool_contenttypes">Allowed Content Types</a>
+       </li>
+    </ul>
+    
+    <div class="contentActions">
+    &nbsp;
+    </div>
+
+    <div metal:use-macro="here/global_statusmessage/macros/portal_message">
+             Portal status message
+    </div>
+   
+    <div class="configlet"
+         i18n:domain="atresearchproject">
+    
+    <h1 i18n:translate="heading_atrptool_info">Research Project Site Configuration - Information</h1>
+    <a href="" class="link-parent"
+       tal:attributes="href string: $portal_url/plone_control_panel"
+       i18n:domain="plone"
+       i18n:translate="label_up_to_plone_setup">
+       Up to Site Setup
+    </a>
+
+    <p i18n:translate="description_atrptool_info">
+      The research project tool can be used to easily customize the site-wide setup of the ATResearchProject content types.
+      Be aware that changes committed here also affect already existing &raquo;research project&laquo;, &raquo;subproject&laquo;, &raquo;research field&laquo; and
+      &raquo;research project list&laquo; content objects.       
+    </p>
+    
+    </div>
+  
+  </div>
+
+  <div id="content" class="documentEditable"
+       tal:condition="python:not checkPermission('Manage groups', here)">
+
+    <tal:block replace="here/raiseUnauthorized" />
+
+  </div>
+
+</div>
+			       
+</body>
+</html>		       																																																																																																																																																																																																																																																																																																																																																																																		    

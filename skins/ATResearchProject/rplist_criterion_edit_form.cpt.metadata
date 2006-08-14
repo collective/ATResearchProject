@@ -1,0 +1,18 @@
+[default]
+title = Edit ResearchProjectList Criteria
+
+[validators]
+validators..AddCriterion = rplist_validate_add_criterion
+validators..SetSortCriterionRP = rplist_validate_set_sort_rp, rplist_validate_set_sort_rsp
+validators..Remove = rplist_validate_remove_criterion
+validators =
+
+[actions]
+action.failure=traverse_to:string:rplist_criterion_edit_form
+action.success=traverse_to:string:rplist_criterion_save
+action.success..Cancel=redirect_to:string:rplist_criterion_edit_form
+action.success..Save=traverse_to:string:rplist_criterion_save
+action.success..Remove=traverse_to:string:rplist_criterion_remove
+action.success..AddCriterion=traverse_to:string:rplist_criterion_add
+action.success..SetSortCriterion=traverse_to:string:rplist_criterion_set_sort
+

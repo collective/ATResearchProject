@@ -1,0 +1,795 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US"
+      lang="en-US"
+      i18n:domain="plone">
+
+<body>
+		  
+<!-- ResearchProject / ResearchSubproject MACROS -->
+
+<metal:head metal:define-macro="projecthead">
+
+  <div metal:use-macro="here/document_actions/macros/document_actions">
+       Document actions (print, sendto etc)
+  </div>
+    
+  <h1 class="documentFirstHeading">
+    <span tal:condition="python: here.portal_type == 'ResearchProject'" tal:omit-tag="">
+      <span i18n:domain="atresearchproject" i18n:translate="portaltype_researchproject" tal:omit-tag="">Research Project</span>:</span>
+    <span tal:condition="python: here.portal_type == 'ResearchSubproject'" tal:omit-tag="">
+      <span i18n:domain="atresearchproject" i18n:translate="portaltype_subproject" tal:omit-tag="">Subproject</span>:</span>
+	  
+    <span tal:content="object_title">Title or id</span>
+  </h1>
+
+  <div metal:use-macro="here/research_project_byline/macros/byline">
+       Document byline
+  </div>
+
+  <p class="discreet"
+     tal:condition="python: here.portal_type == 'ResearchSubproject'"
+     i18n:domain="atresearchproject">
+                
+    <span tal:define="superior_subproject python: here.getSuperiorResearchSubprojectObject()"
+          tal:condition="superior_subproject">
+            
+    <span i18n:translate="subproject_of_subproject" tal:omit-tag="">Sublevel project within</span>:
+    &raquo;<a href="" tal:attributes="href python: superior_subproject.absolute_url()"><span tal:content="python: superior_subproject.Description()" tal:omit-tag="" /></a>&laquo;
+    <br />
+                
+    </span>
+
+    <span i18n:translate="of_researchproject" tal:omit-tag="">Research project context</span>:
+    &raquo;<a href="" tal:attributes="href here/getResearchProjectUrl"><span tal:content="here/getResearchProjectOfficialTitle" tal:omit-tag="" /></a>&laquo;
+  </p>
+
+</metal:head>
+  
+<metal:abstract metal:define-macro="projectabstract">
+
+  <tal:if tal:condition="python: here.portal_type == 'ResearchProject' and (here.getResearchProjectAbstract() or here.getResearchProjectKeywords())">
+      <table class="IEfixTableLayout" width="100%" cellpadding="0" cellspacing="0" border="0" 
+             style="margin-bottom: 2em; clear: both;">
+
+        <tr>
+        <td class="atrpAbstractBox">&nbsp;</td>
+  
+        <td class="atrpAbstractBar">
+          <span class="atrpAbstractHead">
+            <span tal:condition="here/getResearchProjectOfficialTitle"
+                  tal:replace="structure here/getResearchProjectOfficialTitle" tal:omit-tag="">Official Title
+            </span>
+          </span>
+        </td>
+        </tr>
+        <tr>      
+        <td colspan="2" 
+            class="atrpAbstractProjectContent"
+            i18n:domain="atresearchproject"
+            tal:condition="python: here.getResearchProjectAbstract() or here.getResearchProjectKeywords()">
+          <p tal:condition="here/getResearchProjectAbstract">
+              <b i18n:translate="view_researchproject_abstract">Abstract</b><b>: </b>
+              <span tal:replace="structure here/getResearchProjectAbstract" />
+          </p>                                                 
+          <p class="discreet" tal:condition="python: here.getResearchProjectKeywords() and here.getResearchProjectAbstract()">
+              <b i18n:translate="view_researchproject_keywords">Keywords</b><b>:</b><br />
+              <tal:define tal:define="keywords here/getResearchProjectKeywords">
+                 <i><span tal:replace="python: keywords[0]" tal:omit-tag="" /><tal:cond tal:condition="python: (len(keywords) > 1)"><tal:loop tal:repeat="keyword python: keywords[1:]">,
+                 <span tal:replace="string:${keyword}" tal:omit-tag="" /></tal:loop>
+                 </tal:cond>
+                 </i>
+              </tal:define>
+          </p>
+          <p tal:condition="python: here.getResearchProjectKeywords() and not here.getResearchProjectAbstract()">
+             <b i18n:translate="view_researchproject_keywords">Keywords</b><b>:</b><br />
+             <tal:define tal:define="keywords here/getResearchProjectKeywords">
+                 <i><span tal:replace="python: keywords[0]" tal:omit-tag="" /><tal:cond tal:condition="python: (len(keywords) > 1)"><tal:loop tal:repeat="keyword python: keywords[1:]">,
+                 <span tal:replace="string:${keyword}" tal:omit-tag="" /></tal:loop>
+                 </tal:cond>
+                 </i>
+             </tal:define>
+          </p>
+        </td>      
+
+        </tr>
+    </table>      
+  </tal:if>   
+      
+  <tal:if tal:condition="python: here.portal_type == 'ResearchSubproject' and (here.getResearchSubprojectAbstract() or here.getResearchSubprojectKeywords())">
+
+      <table class="IEfixTableLayout" width="100%" cellpadding="0" cellspacing="0" border="0" 
+             style="margin-bottom: 2em;">
+
+        <tr>
+          <td class="atrpAbstractBox"></td>
+  
+          <td class="atrpAbstractBar">
+            <span class="atrpAbstractHead">
+	        <span tal:condition="here/Description"
+                      tal:replace="structure here/Description" tal:omit-tag="">Official Title
+                </span>
+            </span>
+        
+          </td>
+
+          <td class="atrpAbstractBarGap">&nbsp;</td>									    
+      
+          <td class="atrpSubprojectLogoBox"></td>
+  
+          <td class="atrpSubprojectLogoBar atrpSubprojectLogoBarWidth"></td>
+        </tr>
+        <tr>
+        <td rowspan="3" colspan="2"
+            class="atrpAbstractSubprojectContent"
+            i18n:domain="atresearchproject"
+            tal:condition="python: here.getResearchSubprojectAbstract() or here.getResearchSubprojectKeywords()">
+          <p tal:condition="here/getResearchSubprojectAbstract">
+            <b i18n:translate="view_researchsubproject_abstract">Abstract</b><b>: </b>
+            <span tal:replace="structure here/getResearchSubprojectAbstract" />
+          </p>
+            
+          <p class="discreet" tal:condition="python: here.getResearchSubprojectKeywords() and here.getResearchSubprojectAbstract()">
+            <b i18n:translate="view_researchsubproject_keywords">Keywords</b><b>:</b><br />
+            <tal:define tal:define="keywords here/getResearchSubprojectKeywords">
+                <i><span tal:replace="python: keywords[0]" tal:omit-tag="" /><tal:cond tal:condition="python: (len(keywords) > 1)"><tal:loop tal:repeat="keyword python: keywords[1:]">,
+                <span tal:replace="string:${keyword}" tal:omit-tag="" /></tal:loop>
+                </tal:cond>    
+                </i>          
+            </tal:define>    
+        
+          </p>
+              
+          <p tal:condition="python: here.getResearchSubprojectKeywords() and not here.getResearchSubprojectAbstract()">
+            <b i18n:translate="view_researchsubproject_keywords">Keywords</b><b>:</b><br />
+            <tal:define tal:define="keywords here/getResearchSubprojectKeywords">
+                <i><span tal:replace="python: keywords[0]" tal:omit-tag="" /><tal:cond tal:condition="python: (len(keywords) > 1)"><tal:loop tal:repeat="keyword python: keywords[1:]">,
+                <span tal:replace="string:${keyword}" tal:omit-tag="" /></tal:loop>
+                </tal:cond>    
+                </i>          
+            </tal:define>    
+          </p>    
+      
+      </td>
+      <td class="atrpAbstractContentTopGap">&nbsp;</td>									    
+      
+      <td rowspan="3" colspan="2" 
+          width="200"
+          class="atrpSubprojectLogoContent">
+          
+      <metal:block metal:use-macro="here/research_project_macros/macros/projectlogocontent" />
+    
+      </td>
+      </tr>     
+      <tr>
+        <td class="atrpAbstractContentMiddleGap">&nbsp;</td>									    
+      </tr>  
+      <tr>
+        <td class="atrpAbstractContentBottomGap">&nbsp;</td>									    
+      </tr>
+
+    </table>
+
+  </tal:if>   
+
+  <tal:simple-description tal:condition="python: ((here.portal_type == 'ResearchProject') and not (here.getResearchProjectAbstract() or here.getResearchProjectKeywords())) or ((here.portal_type == 'ResearchSubproject') and not (here.getResearchSubprojectAbstract() or here.getResearchSubprojectKeywords()))">      
+
+    <p class="documentDescription" 
+       tal:condition="here/Description">
+
+       <span tal:replace="structure here/Description" tal:omit-tag="" />
+
+    </p>       
+  
+  </tal:simple-description>
+  
+</metal:abstract>
+
+<metal:projectinfo metal:define-macro="projectinfo">
+
+  <div align="center">
+  <table class="IEfixTableLayout" width="100%" cellspacing="0" cellpadding="0" border="0"
+         style="margin-bottom: 2em;">
+
+    <tr>
+      <td class="atrpProjectInfoBox">&nbsp;</td>
+      <td class="atrpProjectInfoBar">
+      
+      <metal:block metal:use-macro="here/research_project_macros/macros/projectinfohead" />
+      
+      </td>
+      <tal:logo tal:condition="here/getLogo">
+      <td class="atrpProjectInfoBarGap">&nbsp;</td>									    
+      <td class="atrpProjectLogoBox">&nbsp;</td>
+      <td class="atrpProjectLogoBar artpProjectLogoBarWidth">
+          
+      <metal:block metal:use-macro="here/research_project_macros/macros/projectlogohead" />
+    
+      </td>
+      </tal:logo>
+    </tr>
+
+    <tr>
+      <td colspan="2" class="atrpProjectInfoContent">
+      
+      <metal:block metal:use-macro="here/research_project_macros/macros/projectinfocontent" />
+      
+      </td>
+      <tal:logo tal:condition="here/getLogo">
+      <td class="atrpProjectInfoContentGap">&nbsp;</td>									    
+      <td colspan="2" class="atrpProjectLogoContent">
+          
+      <metal:block metal:use-macro="here/research_project_macros/macros/projectlogocontent" />
+    
+      </td>
+      </tal:logo>
+    </tr>
+  </table>
+  </div>					
+  
+</metal:projectinfo>  
+
+<metal:projectinfo metal:define-macro="projectinfohead">
+
+      <span class="atrpProjectInfoHead" 
+            i18n:domain="atresearchproject"
+            i18n:translate="view_researchproject_infohead">Research Project Information</span>
+
+</metal:projectinfo>
+
+<metal:projectinfo metal:define-macro="projectinfocontent">
+
+  <div i18n:domain="atresearchproject">
+
+      <!-- PROJECT RUNTIME -->
+      <span tal:condition="here/getResearchProjectRuntimeEnd" tal:omit-tag="">
+        <b i18n:translate="view_researchproject_runtime">Runtime</b><b>:</b>
+          <span tal:replace="python: here.toLocalizedTime(here.getResearchProjectRuntimeStart(), long_format=0)" />
+          <span i18n:translate="word_till" tal:omit-tag="">until</span>
+          <span tal:replace="python: here.toLocalizedTime(here.getResearchProjectRuntimeEnd(), long_format=0)" />
+      </span>
+          
+      <span tal:condition="not: here/getResearchProjectRuntimeEnd" tal:omit-tag="">
+        <b i18n:translate="view_researchproject_runtime">Runtime</b><b>:</b>
+          <span i18n:translate="view_capital_since" tal:omit-tag="">Since</span>
+          <span tal:replace="python: here.toLocalizedTime(here.getResearchProjectRuntimeStart(), long_format=0)" />
+      </span>
+        
+      <!-- OTHER LINES FIELDS -->
+      <tal:loop tal:repeat="method python: [('Project coordination',here.getResearchProjectProjectCoordinators(extended_field_format='structure')),('Scientific coordination',here.getResearchProjectScientificCoordinators(extended_field_format='structure')),('Scientific staff',here.getResearchProjectInheritedScientificStaffMembers(extended_field_format='structure')),('Technical staff',here.getResearchProjectInheritedTechnicalStaffMembers(extended_field_format='structure')),('Student staff',here.getResearchProjectInheritedStudentStaffMembers(extended_field_format='structure')),('Former staff',here.getResearchProjectInheritedFormerStaffMembers(extended_field_format='structure')),('Former student staff',here.getResearchProjectInheritedFormerStudentStaffMembers(extended_field_format='structure')),('Cooperation partner(s)',here.getResearchProjectCooperationPartners(extended_field_format='structure')),('Contractor(s)',here.getResearchProjectContractors(extended_field_format='structure')),]">
+      
+        <div tal:condition="python: method[1]">
+          <b tal:content="python: method[0]"
+  	     i18n:translate="">Project Coordinator, Scientific Coordinator, Staff Members, etc.</b><b>:</b>
+            <tal:first tal:replace="structure python: method[1][0]" /><tal:list tal:condition="python: method[1][1:]" tal:repeat="item python: method[1][1:]">; <tal:rest tal:replace="structure item" /></tal:list>
+	
+        </div>
+
+      </tal:loop>
+
+  </div>
+
+</metal:projectinfo>
+
+<metal:logo metal:define-macro="projectlogohead">
+
+    <div>
+
+      <tal:block tal:condition="python: here.portal_type == 'ResearchProject'">
+        <span class="atrpProjectLogoHead">&nbsp;</span>
+      </tal:block>
+      <tal:block tal:condition="python: here.portal_type == 'ResearchSubproject'">
+        <span class="atrpSubprojectLogoHead">&nbsp;</span>
+      </tal:block>
+
+    </div>
+
+</metal:logo>
+
+<metal:logo metal:define-macro="projectlogocontent">
+
+    
+        <tal:block tal:condition="python: here.portal_type == 'ResearchProject'">
+          <tal:img tal:replace="structure python:here.getLogoTag(scale='preview')" />
+        </tal:block>
+
+        <tal:block tal:condition="python: here.portal_type == 'ResearchSubproject'">
+          <tal:img tal:replace="structure python:here.getLogoTag(scale='mini')" />
+        </tal:block>
+        
+
+</metal:logo>
+
+<metal:subprojectinfo metal:define-macro="subprojectinfo">
+
+  <div align="center">
+  <table class="IEfixTableLayout" width="100%" cellspacing="0" cellpadding="0" border="0"
+         style="margin-bottom: 2em;">
+
+    <tr>
+      <td class="atrpProjectInfoBox">&nbsp;</td>
+      <td class="atrpProjectInfoBar">
+      
+      <metal:block metal:use-macro="here/research_project_macros/macros/projectinfohead" />
+      
+      </td>
+      <td class="atrpSubprojectInfoBarGap">&nbsp;</td>									    
+      
+      <td class="atrpSubprojectInfoBox">&nbsp;</td>
+      <td class="atrpSubprojectInfoBar">
+          
+      <metal:block metal:use-macro="here/research_project_macros/macros/subprojectinfohead" />
+    
+      </td>
+    </tr>
+
+    <tr>
+      <td colspan="2" class="atrpProjectInfoContent">
+      
+      <metal:block metal:use-macro="here/research_project_macros/macros/projectinfocontent" />
+      
+      </td>
+      <td class="atrpSubprojectInfoContentGap">&nbsp;</td>
+      <td colspan="2" class="atrpSubprojectInfoContent">
+          
+      <metal:block metal:use-macro="here/research_project_macros/macros/subprojectinfocontent" />
+    
+      </td>
+    </tr>
+  </table>
+  </div>					
+  
+</metal:subprojectinfo>  
+
+<metal:subprojectinfo metal:define-macro="subprojectinfohead">
+
+      <span class="atrpSubprojectInfoHead" 
+            i18n:domain="atresearchproject"
+            i18n:translate="view_researchsubproject_infohead">Subproject Information</span>
+
+</metal:subprojectinfo>
+
+<metal:subprojectinfo metal:define-macro="subprojectinfocontent">
+
+  <div i18n:domain="atresearchproject">
+
+      <!-- SUBPROJECT RUNTIME -->
+      <span tal:condition="here/getResearchSubprojectRuntimeEnd" tal:omit-tag="">
+        <b i18n:translate="view_researchsubproject_runtime">Runtime</b><b>:</b>
+          <span tal:replace="python: here.toLocalizedTime(here.getResearchSubprojectRuntimeStart(), long_format=0)" />
+          <span i18n:translate="word_till" tal:omit-tag="">until</span>
+          <span tal:replace="python: here.toLocalizedTime(here.getResearchSubprojectRuntimeEnd(), long_format=0)" />
+      </span>
+          
+      <span tal:condition="not: here/getResearchSubprojectRuntimeEnd" tal:omit-tag="">
+        <b i18n:translate="view_researchsubproject_runtime">Runtime</b><b>:</b>
+          <span i18n:translate="view_capital_since" tal:omit-tag="">Since</span>
+          <span tal:replace="python: here.toLocalizedTime(here.getResearchSubprojectRuntimeStart(), long_format=0)" />
+      </span>
+        
+      <!-- OTHER LINES FIELDS -->
+      <tal:loop tal:repeat="method python: [('Scientific coordination',here.getResearchSubprojectScientificCoordinators(extended_field_format='structure')),('Scientific staff',here.getResearchSubprojectInheritedScientificStaffMembers(extended_field_format='structure')),('Technical staff',here.getResearchSubprojectInheritedTechnicalStaffMembers(extended_field_format='structure')),('Student staff',here.getResearchSubprojectInheritedStudentStaffMembers(extended_field_format='structure')),('Former staff',here.getResearchSubprojectInheritedFormerStaffMembers(extended_field_format='structure')),('Former student staff',here.getResearchSubprojectInheritedFormerStudentStaffMembers(extended_field_format='structure')),('External institute(s)',here.getResearchSubprojectExternalInstitutes(extended_field_format='structure')),('Cooperation partner(s)',here.getResearchSubprojectCooperationPartners(extended_field_format='structure')),]">
+      
+        <div tal:condition="python: method[1]">
+          <b i18n:translate=""
+	     tal:content="python: method[0]">Project Coordinator, Scientific Coordinator, Staff Members, etc.</b><b>:</b>
+            <span tal:replace="structure python: method[1][0]" /><tal:list tal:condition="python: method[1][1:]" tal:repeat="item python: method[1][1:]">; <span tal:replace="structure item" /></tal:list>
+	
+        </div>
+
+      </tal:loop>
+      
+  </div>
+
+</metal:subprojectinfo>
+
+<metal:body metal:define-macro="projectbody">
+
+  <span tal:content="structure python: here.getBody(mimetype='text/html')"/>
+
+  <br />
+  
+  <!-- EXTERNAL LINKS -->
+  <metal:slot metal:define-slot="externalLinksSlot">
+  EXTERNAL LINKS <br />
+  </metal:slot>
+      
+  <br />
+  
+</metal:body>
+
+<metal:tree metal:define-macro="projecttree">
+
+  <div style="clear: both;" tal:define="project_tree here/research_project_tree"
+       tal:condition="project_tree"
+       align="center">
+  <table width="100%">
+  <tr><td align="left" valign="top">
+
+    <hr />
+
+    <div metal:define-slot="projecttreeHeadSlot">
+    </div>
+
+    <div tal:replace="structure python: project_tree" />
+  </td></tr>
+  
+  </table>
+  </div>
+
+</metal:tree>
+
+<metal:foot metal:define-macro="projectfoot">
+
+  <div style="clear:both;" />
+  
+  <!-- INVOLVED DEPARTMENTS -->
+  <metal:slot metal:define-slot="projectDepartments">
+  </metal:slot>
+      
+  <div metal:use-macro="here/document_relateditems/macros/relatedItems">
+      show related items if they exist
+  </div>
+  
+</metal:foot>
+
+<!-- ResearchField MACROS -->
+    
+<metal:relatedprojects-listing metal:define-macro="relatedprojects-listing">
+    <tal:research-projects tal:define="atrp_tool here/portal_researchproject;
+			  	       projectlist  python: atrp_tool.getWfFilteredResearchProjectsListForField(here, sort_on='researchProjectRuntimeStart', sort_order='reverse')"
+                           tal:condition="projectlist">
+      
+      <hr style="clear:both;"/>
+       
+      <h4 i18n:domain="atresearchproject"><span i18n:translate="header_related_researchprojects" tal:omit-tag="">Related Research Projects</span>:</h4>
+
+      <br />
+      
+      <table cellspacing="0" cellpadding="0" border="0">
+
+      <tal:project-list repeat="project projectlist">
+
+	<tr>
+        <tal:boolswitch tal:condition="here/getResearchFieldDisplayProjectRuntime">
+	<tal:td tal:condition="project/getResearchProjectRuntimeEnd">
+	<td style="vertical-align: top; width: 1em;">
+
+          <nobr><b>
+            <span tal:replace="python: project.toLocalizedTime(project.getResearchProjectRuntimeStart(), long_format=0)" />
+            -
+            <span tal:replace="python: project.toLocalizedTime(project.getResearchProjectRuntimeEnd(), long_format=0)" /></b>
+          </nobr>
+        </td>
+        </tal:td>
+            
+	<tal:td tal:condition="not: project/getResearchProjectRuntimeEnd">
+        <td style="vertical-align: top; width: 1em;">
+
+          <nobr><b>
+            <span i18n:domain="atresearchproject"
+                  i18n:translate="view_capital_since" tal:omit-tag="">Since</span>
+            <span tal:replace="python: project.toLocalizedTime(project.getResearchProjectRuntimeStart(), long_format=0)" /></b>
+          </nobr>
+        </td>
+        </tal:td>
+	</tal:boolswitch>
+        
+	<td style="vertical-align: top;padding-left:4pt;">
+
+	<b><a href="" tal:attributes="href project/absolute_url">
+  	  <span tal:content="project/Title" tal:omit-tag="" /></a></b>
+
+        </td>
+
+	</tr>
+	
+	<tr>
+	<td colspan="2">
+	<div style="padding-left: 24pt; margin-top: 4pt;">
+	
+          <span tal:replace="structure project/Description" tal:omit-tag="" />
+	  
+	</div>  
+	</td>
+	</tr>
+	
+        <tr>
+
+	<td colspan="2">
+
+	<div style="padding-left: 24pt; margin-top: 4pt;">
+	
+        <tal:displayprojectcoordinators tal:define="projectCoordinators python: project.getResearchProjectProjectCoordinators(extended_field_format='structure')">
+          <tal:if tal:condition="python: here.getResearchFieldDisplayProjectCoordinators() and project.getResearchProjectProjectCoordinators()">
+          <span i18n:domain="atresearchproject"
+                i18n:translate="">Project coordination</span>:
+            <span tal:replace="structure python: projectCoordinators[0]" /><tal:list tal:condition="python: projectCoordinators[1:]" tal:repeat="item python: projectCoordinators[1:]">; <span tal:replace="structure item" /></tal:list>
+          </tal:if>
+        </tal:displayprojectcoordinators>
+        
+        </div>
+
+	<div style="padding-left: 24pt; margin-top: 4pt;">
+	
+        <tal:displaycontractors tal:define="projectContractors python: project.getResearchProjectContractors(extended_field_format='structure')">
+          <tal:if tal:condition="python: here.getResearchFieldDisplayContractors() and project.getResearchProjectContractors()">
+          <span i18n:domain="atresearchproject"
+                i18n:translate="">Contractor(s)</span>:
+            <span tal:replace="structure python: projectContractors[0]" /><tal:list tal:condition="python: projectContractors[1:]" tal:repeat="item python: projectContractors[1:]">; <span tal:replace="structure item" /></tal:list>
+          </tal:if>
+        </tal:displaycontractors>
+        
+        </div>
+        
+	<p class="discreet" style="padding-left: 24pt; margin-top: 4pt; text-align: justify;"
+           tal:condition="python: here.getResearchFieldDisplayAbstract() and project.getResearchProjectAbstract()">
+	
+          <span tal:replace="project/getResearchProjectAbstract" />
+	 
+	</p>
+	<p class="discreet" style="padding-left: 24pt; margin-top: 4pt; text-align: justify;"
+           tal:condition="python: not here.getResearchFieldDisplayAbstract() or not project.getResearchProjectAbstract()">
+	 
+	</p>
+	</td>
+
+	</tr>
+
+      </tal:project-list>
+      </table>
+
+  </tal:research-projects>		   
+
+</metal:relatedprojects-listing>    
+    
+<!-- ResearchProjectList MACROS -->
+
+<metal:researchprojects-listing metal:define-macro="researchprojects-listing">
+
+  <tal:project-list tal:repeat="project python: [ topic.getObject() for topic in topicContents ]">
+
+    <div i18n:domain="atresearchproject"
+    	 tal:define="project_roles python: mtool.getAuthenticatedMember().getRolesInContext(project);
+                     project_wf_state project/review_state | python: here.portal_workflow.getInfoFor(project, 'review_state', '');
+	             project_wf_state_class python:'state-' + normalizeString(project_wf_state);
+                     navtool here/portal_properties/navtree_properties | nothing" 
+          tal:condition="python: [ role for role in project_roles if role in ('Manager', 'Reviewer', 'Owner', ) ] or (navtool and (project_wf_state in navtool.getProperty('wf_states_to_show')))">
+          
+        <b class="contenttype-researchproject">
+	<a class="" href="" 
+	   tal:attributes="href project/absolute_url;
+	                   class string:$project_wf_state_class visualIconPadding">
+  	  
+  	    <span tal:content="project/Title" tal:omit-tag="" /></a>  
+        
+	</b>
+
+        <tal:runtime tal:condition="here/getResearchProjectListDisplayRuntimeResearchProjects">
+        <span tal:condition="python: (project.portal_type == 'ResearchProject') and project.getResearchProjectRuntimeEnd()" tal:omit-tag="">
+          (<span tal:replace="python: project.toLocalizedTime(project.getResearchProjectRuntimeStart(), long_format=0)" />
+          <span>-</span>
+          <span tal:replace="python: project.toLocalizedTime(project.getResearchProjectRuntimeEnd(), long_format=0)" />)
+        </span>
+        <span tal:condition="python: (project.portal_type == 'ResearchProject') and (not project.getResearchProjectRuntimeEnd())" tal:omit-tag="">
+          (<span i18n:translate="view_since">since</span> <span tal:replace="python: project.toLocalizedTime(project.getResearchProjectRuntimeStart(), long_format=0)" />)
+        </span>
+        </tal:runtime>
+
+        <tal:description tal:condition="project/Description">
+            <br /><span tal:replace="structure project/Description" tal:omit-tag="" />
+        </tal:description>
+        
+	<div style="padding-left: 24pt; margin-top: 4pt;">
+	
+        <tal:displayprojectcoordinators tal:define="projectCoordinators python: project.getResearchProjectProjectCoordinators(extended_field_format='structure')">
+          <tal:if tal:condition="python: here.getResearchProjectListDisplayProjectCoordinatorsResearchProjects() and project.getResearchProjectProjectCoordinators()">
+          <span i18n:domain="atresearchproject"
+                i18n:translate="">Project coordination</span>:
+            <span tal:replace="structure python: projectCoordinators[0]" /><tal:list tal:condition="python: projectCoordinators[1:]" tal:repeat="item python: projectCoordinators[1:]">; <span tal:replace="structure item" /></tal:list>
+          </tal:if>
+        </tal:displayprojectcoordinators>
+        
+        </div>
+
+	<div style="padding-left: 24pt; margin-top: 4pt;">
+	
+        <tal:displaycontractors tal:define="projectContractors python: project.getResearchProjectContractors(extended_field_format='structure')">
+          <tal:if tal:condition="python: here.getResearchProjectListDisplayContractorsResearchProjects() and project.getResearchProjectContractors()">
+          <span i18n:domain="atresearchproject"
+                i18n:translate="">Contractor(s)</span>:
+            <span tal:replace="structure python: projectContractors[0]" /><tal:list tal:condition="python: projectContractors[1:]" tal:repeat="item python: projectContractors[1:]">; <span tal:replace="structure item" /></tal:list>
+          </tal:if>
+        </tal:displaycontractors>
+        
+        </div>
+
+	<p class="discreet" 
+           style="padding-left: 24pt; margin-top: 4pt; text-align: justify;" 
+           tal:condition="here/getResearchProjectListDisplayAbstractsResearchProjects">
+           
+	   <span tal:condition="project/getResearchProjectAbstract"
+		 tal:replace="structure project/getResearchProjectAbstract" 
+		 tal:omit-tag="" />
+	   <span tal:condition="python: not project.getResearchProjectAbstract() and project.getResearchProjectKeywords()"
+		 tal:omit-tag="">
+		 <b i18n:translate="view_researchproject_keywords">Keywords</b><b>:</b>
+                   <tal:define tal:define="keywords project/getResearchProjectKeywords">
+                   <i><span tal:replace="python: keywords[0]" tal:omit-tag="" /><tal:cond tal:condition="python: (len(keywords) > 1)"><tal:loop tal:repeat="keyword python: keywords[1:]">,
+                   <span tal:replace="string:${keyword}" tal:omit-tag="" /></tal:loop>
+                   </tal:cond>
+                   </i>
+                   </tal:define>
+	   </span>
+        </p>
+	
+	<p class="discreet" 
+           style="padding-left: 2ex;" 
+           tal:condition="not: here/getResearchProjectListDisplayAbstractsResearchProjects" />
+
+	<div style="padding-left: 24pt;"
+	     tal:define="cascaded_subprojects python: project.listResearchSubprojects(filter_wf_states=True)"
+	     tal:condition="python: here.getResearchProjectListCascadeResearchSubprojects() and cascaded_subprojects">
+
+	     <tal:cascaded-subprojects define="dummy python: here.setPortalTypeToQuery('ResearchSubproject');
+	                                       topicContents python:here.queryCatalog(batch=False);">
+	     
+  	       <h4 tal:condition="python: here.getResearchProjectListDisplayHeadlineResearchSubprojects() and topicContents"
+	           i18n:domain="atresearchproject"
+	  	   i18n:translate="">Subprojects</h4>
+	     
+	        <metal:inline-subprojects metal:use-macro="here/research_project_macros/macros/researchsubprojects-listing" />
+	     
+             </tal:cascaded-subprojects>
+	     
+	</div>
+
+    </div>
+    
+  </tal:project-list>			   
+      			 
+</metal:researchprojects-listing>    
+
+<metal:researchsubprojects-listing metal:define-macro="researchsubprojects-listing">
+
+  <tal:subproject-list tal:repeat="subproject python: [ topic.getObject() for topic in topicContents ]">
+
+    <tal:cascade-filter tal:condition="python: not here.getResearchProjectListCascadeResearchSubprojects() or subproject in cascaded_subprojects">
+
+      <div i18n:domain="atresearchproject"
+    	   tal:define="subproject_roles python: mtool.getAuthenticatedMember().getRolesInContext(subproject);
+                       subproject_wf_state subproject/review_state | python: wtool.getInfoFor(subproject, 'review_state', '');
+	               subproject_wf_state_class python:'state-' + normalizeString(subproject_wf_state);
+                       navtool here/portal_properties/navtree_properties | nothing;" 
+           tal:condition="python: [ role for role in subproject_roles if role in ('Manager', 'Reviewer', 'Owner', ) ] or (navtool and (subproject_wf_state in navtool.getProperty('wf_states_to_show')))">
+
+        <b class="contenttype-researchsubproject">
+	<a class="" href="" 
+	   tal:attributes="href subproject/absolute_url;
+	                   class string:$subproject_wf_state_class visualIconPadding">
+  	  
+	    <span tal:content="subproject/Title" tal:omit-tag="" /></a>  
+        
+	</b>
+
+        <tal:runtime tal:condition="here/getResearchProjectListDisplayRuntimeResearchSubprojects">
+        <span tal:condition="python: (subproject.portal_type == 'ResearchSubproject') and subproject.getResearchSubprojectRuntimeEnd()" tal:omit-tag="">
+          (<span tal:replace="python: subproject.toLocalizedTime(subproject.researchSubprojectRuntimeStart, long_format=0)" />
+          <span>-</span>
+          <span tal:replace="python: subproject.toLocalizedTime(subproject.researchSubprojectRuntimeEnd, long_format=0)" />)
+        </span>
+        <span tal:condition="python: (subproject.portal_type == 'ResearchSubproject') and (not subproject.getResearchSubprojectRuntimeEnd())" tal:omit-tag="">
+          (<span i18n:translate="view_since">since</span> <span tal:replace="python: subproject.toLocalizedTime(subproject.researchSubprojectRuntimeStart, long_format=0)" />)
+        </span>
+        </tal:runtime>
+          
+        <tal:description tal:condition="subproject/Description">
+            <br /><span tal:replace="structure subproject/Description" tal:omit-tag="" />
+        </tal:description>
+
+	<div style="padding-left: 24pt; margin-top: 4pt;">
+	
+        <tal:displaysubprojectcoordinators tal:define="subprojectCoordinators python: subproject.getResearchSubprojectScientificCoordinators(extended_field_format='structure')">
+          <tal:if tal:condition="python: here.getResearchProjectListDisplayScientificCoordinatorsResearchSubprojects() and subproject.getResearchSubprojectScientificCoordinators()">
+          <span i18n:domain="atresearchproject"
+                i18n:translate="">Scientific coordination</span>:
+            <span tal:replace="structure python: subprojectCoordinators[0]" /><tal:list tal:condition="python: subprojectCoordinators[1:]" tal:repeat="item python: subprojectCoordinators[1:]">; <span tal:replace="structure item" /></tal:list>
+          </tal:if>
+        </tal:displaysubprojectcoordinators>
+	
+        </div>
+
+	<p class="discreet" 
+           style="padding-left: 24pt; margin-top: 4pt; text-align: justify;" 
+           tal:condition="here/getResearchProjectListDisplayAbstractsResearchSubprojects">
+	   
+	   <span tal:condition="subproject/getResearchSubprojectAbstract"
+	         tal:replace="structure subproject/getResearchSubprojectAbstract" 
+	         tal:omit-tag="" />
+	   
+	   <span tal:condition="python: not subproject.getResearchSubprojectAbstract() and subproject.getResearchSubprojectKeywords()"
+		 tal:omit-tag="">
+		 <b i18n:translate="view_researchsubproject_keywords">Keywords</b><b>:</b>
+                   <tal:define tal:define="keywords subproject/getResearchSubprojectKeywords">
+                   <i><span tal:replace="python: keywords[0]" tal:omit-tag="" /><tal:cond tal:condition="python: (len(keywords) > 1)"><tal:loop tal:repeat="keyword python: keywords[1:]">,
+                   <span tal:replace="string:${keyword}" tal:omit-tag="" /></tal:loop>
+                   </tal:cond>
+                   </i>
+                   </tal:define>
+	   </span>
+	</p>   
+
+	<p class="discreet" 
+           style="padding-left: 2ex;" 
+           tal:condition="not: here/getResearchProjectListDisplayAbstractsResearchSubprojects" />
+
+      </div>
+
+    </tal:cascade-filter>
+    
+  </tal:subproject-list>
+      			 
+</metal:researchsubprojects-listing>    
+
+<table summary="criteria">
+<tr>
+<metal:criterion metal:define-macro="rplist_criterion_edit">
+   <tal:define-block tal:define="schematas criterion/Schemata;
+                                 fieldsets python:[key for key in schematas.keys() if key != 'metadata'];
+                                 default_fieldset python:(not schematas or schematas.has_key('default'))
+                                                          and 'default' or fieldsets[0];
+                                 fieldset request/fieldset|options/fieldset|default_fieldset;
+                                 index python:here.portal_researchproject.getRPListCriteriaIndex(criterion.Field());
+                                 edit_macros here/edit_macros/macros;
+                                 criterionid criterion/getId;"
+                                 >
+
+      <td style="padding: 0.5em; align: center;">
+        <input class="noborder"
+	       type="checkbox" 
+               value="" 
+               name="criterion_ids:list" 
+               id=""
+               tal:attributes="value criterionid; 
+                               id string:cb_${criterionid}"
+               />
+      </td>
+      
+      <td style="padding: 0.5em;">
+         <span tal:content="python:index.friendlyName or index.index" i18n:domain="atresearchproject" i18n:translate="" />
+         <div class="formHelp" tal:content="index/description" i18n:domain="atresearchproject" i18n:translate="" />
+      </td>
+      <td style="padding: 0.5em;">
+
+        <div i18n:translate="" tal:content="criterion/Description" />
+
+        <div id="" 
+             i18n:translate=""
+             class="formHelp"
+             style="visibilitys:hidden"
+             tal:content="criterion/Description"
+             tal:attributes="id string:${criterionid}_help;"
+             >
+        String
+        </div>
+
+        <input type="hidden" 
+               name="criteria.id:records" 
+               value=""
+               tal:attributes="value criterionid"
+               />
+
+        <tal:fields repeat="field python: schematas[fieldset].fields()">
+          <tal:editable tal:condition="python:field.mode != 'r'">
+              <metal:fieldMacro use-macro="python: criterion.widget('%s_%s' % (criterionid, field.getName()),
+                                           field = field,
+                                           mode='edit')"/>
+          </tal:editable>
+        </tal:fields>
+      </td>
+
+  </tal:define-block>
+</metal:criterion>
+</tr>
+</table>
+
+</body>
+</html>

@@ -1,0 +1,249 @@
+# Translation of ATResearchProject to English
+# Mike Gabriel <m.gabriel@sunweavers.net>, 2005-2006
+msgid ""
+msgstr ""
+"Project-Id-Version: ATResearchProject 0.4.0\n"
+"POT-Creation-Date: 2005-12-30 23:31+0100\n"
+"PO-Revision-Date: 2006-01-29 12:06+0100\n"
+"Last-Translator: Mike Gabriel <m.gabriel@sunweavers.net>\n"
+"Language-Team: netzwerkteam OEZK <plone-developers@ecology.uni-kiel.de>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0\n"
+"Language-Code: en\n"
+"Language-Name: English\n"
+"Preferred-Encodings: utf-8 latin1\n"
+"Domain: plone\n"
+"X-Is-Fallback-For: en-au en-bz en-ca en-ie en-jm en-nz en-ph en-za en-tt en-gb en-us en-zw\n"
+
+#. Default: "Research Field"
+#: ResearchField.py
+msgid "Research Field"
+msgstr "Research Field"
+
+#. Default: "Research Project List"
+#: ResearchProjectList.py
+msgid "Research Project List"
+msgstr "Research Project List"
+
+#. Default: "Research Project"
+#: ResearchProject.py
+msgid "Research Project"
+msgstr "Research Project"
+
+#. Default: "Subproject"
+#: ResearchSubproject.py
+msgid "Subproject"
+msgstr "Subproject"
+
+#. Default: "Research Projects"
+#: tool/ResearchProjectTool.py
+msgid "Research Projects"
+msgstr "Research Projects"
+
+#. Default: "Use this content type to depict your institute's research fields. Afterwards, research projects and subprojects can easily reference existing research fields."
+#: ResearchField.py
+msgid "description_edit_researchfield"
+msgstr "Use this content type to depict your institute's research fields. Afterwards, research projects and subprojects can easily reference existing research fields."
+
+#. Default: "Use this folderish content type to specify a research project search criterion. According to the specified search criterion, a research project list always renders a current list of research projects and subprojects on your site."
+#: ResearchProjectList.py
+msgid "description_edit_researchprojectlist"
+msgstr "Use this folderish content type to specify a research project search criterion. According to the specified search criterion, a research project list always renders a current list of research projects and subprojects on your site."
+
+#. Default: "Use this folderish content type to characterize the set up of scientific research projects."
+#: ResearchProject.py
+msgid "description_edit_researchproject"
+msgstr "Use this folderish content type to characterize the set up of scientific research projects."
+
+#. Default: "A subproject folder offers the possbility to substructure a research project."
+#: ResearchSubproject.py
+msgid "description_edit_researchsubproject"
+msgstr "A subproject folder offers the possbility to substructure a research project."
+
+#. Default: "For the title of this research project use a short name as it has to fit in the navigation tree of this site (e.g. &raquo;Wetlands&laquo;)."
+#: schemata.py
+msgid "help_title_researchproject"
+msgstr "For the title of this research project use a short name as it has to fit in the navigation tree of this site (e.g. &raquo;Wetlands&laquo;)."
+
+#. Default: "For the title of this subproject use a short name as it has to fit in the navigation tree of this site (e.g. &raquo;Fen Renaturation&laquo;)."
+#: schemata.py
+msgid "help_title_researchsubproject"
+msgstr "For the title of this subproject use a short name as it has to fit in the navigation tree of this site (e.g. &raquo;Fen Renaturation&laquo;)."
+
+#. Default: "For the title of this research field use a short name as it has to fit in the navigation tree of this site (e.g. raquo;Biodiversity&laquo;)."
+#: schemata.py
+msgid "help_title_researchfield"
+msgstr "For the title of this research field use a short name as it has to fit in the navigation tree of this site (e.g. raquo;Biodiversity&laquo;)."
+
+#. Default: "For the title of this research project list use a short name as it has to fit in the navigation tree of this site (e.g. &raquo;Active Projects&laquo;)."
+#: schemata.py
+msgid "help_title_researchprojectlist"
+msgstr "For the title of this research project list use a short name as it has to fit in the navigation tree of this site (e.g. &raquo;Active Projects&laquo;)."
+
+#. Default: "Reference other items on your site here."
+#: schemata.py
+msgid "help_related_items"
+msgstr "Reference other items on your site here."
+
+#. Default: "Add"
+#: skins/rplist_criterion_edit_form.pt
+msgid "label_add"
+msgstr "Add"
+
+#: ./content/ResearchProjectInternalFolder.py
+#. Default: "research_subprojects_overview"
+msgid "research_subprojects_overview"
+msgstr "subproject overview"
+
+#: ./config.py
+#. Default: "Research Project - Keywords"
+msgid "Research Project - Keywords"
+msgstr "Research Project - Keywords"
+
+#: ./config.py
+#. Default: "Research Project - Project Coordinator"
+msgid "Research Project - Project Coordinator"
+msgstr "Research Project - Project Coordinator"
+
+#: ./config.py
+#. Default: "Research Project - Contractor"
+msgid "Research Project - Contractor"
+msgstr "Research Project - Contractor"
+
+#: ./config.py
+#. Default: "Research Project - Third-party funded"
+msgid "Research Project - Third-party funded"
+msgstr "Research Project - Third-party funded"
+
+#: ./config.py
+#. Default: "Research Project - Scientific Coordinator"
+msgid "Research Project - Scientific Coordinator"
+msgstr "Research Project - Scientific Coordinator"
+
+#: ./config.py
+#. Default: "Research Project - Scientific Staff Member"
+msgid "Research Project - Scientific Staff Member"
+msgstr "Research Project - Scientific Staff Member"
+
+#: ./config.py
+#. Default: "Research Project - Technical Staff Member"
+msgid "Research Project - Technical Staff Member"
+msgstr "Research Project - Technical Staff Member"
+
+#: ./config.py
+#. Default: "Research Project - Student Staff Member"
+msgid "Research Project - Student Staff Member"
+msgstr "Research Project - Student Staff Member"
+
+#: ./config.py
+#. Default: "Research Project - Former Staff Member"
+msgid "Research Project - Former Staff Member"
+msgstr "Research Project - Former Staff Member"
+
+#: ./config.py
+#. Default: "Research Project - Former Student Staff Member"
+msgid "Research Project - Former Student Staff Member"
+msgstr "Research Project - Former Student Staff Member"
+
+#: ./config.py
+#. Default: "Research Project - Cooperation Partner"
+msgid "Research Project - Cooperation Partner"
+msgstr "Research Project - Cooperation Partner"
+
+#: ./config.py
+#. Default: "Research Project - Involved Department"
+msgid "Research Project - Involved Department"
+msgstr "Research Project - Involved Department"
+
+#: ./config.py
+#. Default: "Research Subproject - Keywords"
+msgid "Research Subproject - Keywords"
+msgstr "Research Subproject - Keywords"
+
+#: ./config.py
+#. Default: "Research Subproject - Scientific Coordinator"
+msgid "Research Subproject - Scientific Coordinator"
+msgstr "Research Subproject - Scientific Coordinator"
+
+#: ./config.py
+#. Default: "Research Subproject - Scientific Staff Member"
+msgid "Research Subproject - Scientific Staff Member"
+msgstr "Research Subproject - Scientific Staff Member"
+
+#: ./config.py
+#. Default: "Research Subproject - Technical Staff Member"
+msgid "Research Subproject - Technical Staff Member"
+msgstr "Research Subproject - Technical Staff Member"
+
+#: ./config.py
+#. Default: "Research Subproject - Student Staff Member"
+msgid "Research Subproject - Student Staff Member"
+msgstr "Research Subproject - Student Staff Member"
+
+#: ./config.py
+#. Default: "Research Subproject - Former Staff Member"
+msgid "Research Subproject - Former Staff Member"
+msgstr "Research Subproject - Former Staff Member"
+
+#: ./config.py
+#. Default: "Research Subproject - Former Student Staff Member"
+msgid "Research Subproject - Former Student Staff Member"
+msgstr "Research Subproject - Former Student Staff Member"
+
+#: ./config.py
+#. Default: "Research Subproject - External Institute"
+msgid "Research Subproject - External Institute"
+msgstr "Research Subproject - External Institute"
+
+#: ./config.py
+#. Default: "Research Subproject - Cooperation Partner"
+msgid "Research Subproject - Cooperation Partner"
+msgstr "Research Subproject - Cooperation Partner"
+
+#: ./config.py
+#. Default: "Research Subproject - Involved Department"
+msgid "Research Subproject - Involved Department"
+msgstr "Research Subproject - Involved Department"
+
+#: ./config.py
+#. Default: "Start of Research Project's runtime"
+msgid "Start of Research Project's runtime"
+msgstr "Start of Research Project's runtime"
+
+#: ./config.py
+#. Default: "End of Research Project's runtime"
+msgid "End of Research Project's runtime"
+msgstr "End of Research Project's runtime"
+
+#: ./config.py
+#. Default: "Research Project - Title"
+msgid "Research Project - Title"
+msgstr "Research Project - Title"
+
+#: ./config.py
+#. Default: "Research Project - Official Title"
+msgid "Research Project - Official Title"
+msgstr "Research Project - Official Title"
+
+#: ./config.py
+#. Default: "Start of Research Subproject's runtime"
+msgid "Start of Research Subproject's runtime"
+msgstr "Start of Research Subproject's runtime"
+
+#: ./config.py
+#. Default: "End of Research Subproject's runtime"
+msgid "End of Research Subproject's runtime"
+msgstr "End of Research Subproject's runtime"
+
+#: ./config.py
+#. Default: "Research Subproject - Title"
+msgid "Research Subproject - Title"
+msgstr "Research Subproject - Title"
+
+#: ./config.py
+#. Default: "Research Subproject - Official Title"
+msgid "Research Subproject - Official Title"
+msgstr "Research Subproject - Official Title"
+

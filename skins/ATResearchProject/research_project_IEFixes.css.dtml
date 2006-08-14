@@ -1,0 +1,20 @@
+/*
+ * This file is used with ATMemberInfo content types. To override
+ * the products style sheets modify ploneCustom.css.
+ * 
+ *
+ * If possible, leave this file untouched to make sure, that updates
+ * of the ATMemberInfo work well on your site...
+ *
+ */
+ 
+/* <dtml-with base_properties> loading base_properties */
+/* <dtml-call "REQUEST.set('portal_url', portal_url())"> setting portal_url */
+
+/* MEMBER INFO IE CSS-FIXES */
+
+table.IEfixTableLayout {
+    table-layout: fixed;
+}    
+
+/* </dtml-with>

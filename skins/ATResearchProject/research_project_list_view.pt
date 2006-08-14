@@ -1,0 +1,212 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      lang="en"
+      metal:use-macro="here/main_template/macros/master"
+      i18n:domain="plone">
+
+<body>
+
+<div metal:fill-slot="main">
+<metal:main_macro define-macro="main">
+    <metal:body define-macro="body_macro">
+
+        <div metal:use-macro="here/document_actions/macros/document_actions">
+             Document actions (print, sendto etc)
+        </div>
+
+        <h1 tal:content="here/title_or_id" class="documentFirstHeading">
+            Title or id
+        </h1>
+
+        <!--a href=""
+           class="link-parent"
+           tal:define="parent_url python:here.navigationParent(here, template_id)"
+           tal:condition="parent_url"
+           tal:attributes="href parent_url"
+           i18n:translate="go_to_parent_url">
+            Up one level
+        </a-->
+
+        <div class="documentDescription">
+            <span tal:replace="structure here/Description" tal:omit-tag="" />
+        </div>
+
+        <p tal:condition="here/researchProjectListComment">
+        
+          <span tal:replace="structure here/researchProjectListComment" />
+
+        </p>
+
+	<metal:listingmacro define-macro="listing">
+        <tal:portaltype-loop define="portal_types python: (('ResearchProject', 'Research Projects', here.getResearchProjectListDisplayResearchProjects(), here.getResearchProjectListDisplayHeadlineResearchProjects()), ('ResearchSubproject','Subprojects', here.getResearchProjectListDisplayResearchSubprojects(), here.getResearchProjectListDisplayHeadlineResearchSubprojects() and not here.getResearchProjectListCascadeResearchSubprojects()))"
+	                     repeat="portal_type portal_types">
+	
+          <tal:if condition="python: portal_type[2]">
+          <tal:topiccontents define="dummy python: here.setPortalTypeToQuery(portal_type[0]);
+	                             subprojects_in_cascade python: ();
+				     topicContents python:here.queryCatalog(batch=True);
+				     batch topicContents;">
+
+	  <tal:head tal:condition="python: portal_type[3]">
+	  <h3 style="padding-top:8pt;" 
+	      i18n:domain="atresearchproject" i18n:translate="" 
+	      tal:content="python: portal_type[1]" 
+	      />
+  	  <hr width="10%" align="left" />
+	  </tal:head>
+	  
+	  
+            <tal:listing condition="topicContents">
+            <a style='text-align: right' href="#"
+               tal:condition="nocall: here/asPDF|nothing"
+               tal:attributes="href string:${here_url}/asPDF/atct_topic_pdf_template/atct_topic_pdf"
+               i18n:translate="label_download_as_pdf"
+               i18n:domain="atcontenttypes">
+                Download PDF
+            </a>
+
+
+            <!-- Navigation -->
+            <div metal:use-macro="here/batch_macros/macros/navigation" />
+
+            <tal:default condition="python: (not here.getCustomView()) and (here.getPortalTypeToQuery() == 'ResearchProject')"
+	                 tal:define="cascaded_subprojects python: ();">
+                <metal:listing metal:use-macro="here/research_project_macros/macros/researchprojects-listing">
+                    <!--metal:empty metal:fill-slot="no_items_in_listing"></metal:empty-->
+                </metal:listing>
+            </tal:default>
+            <tal:default tal:condition="python: (not here.getCustomView()) and (here.getPortalTypeToQuery() == 'ResearchSubproject')"
+		         tal:define="cascaded_subprojects python: ();">
+   	        <metal:listing metal:use-macro="here/research_project_macros/macros/researchsubprojects-listing">
+                    <!--metal:empty metal:fill-slot="no_items_in_listing"></metal:empty-->
+                </metal:listing>
+            </tal:default>
+
+            <tal:custom condition="here/getCustomView|nothing"
+                        define="vocab python:here.listMetaDataFields(False)">
+
+                <table class="listing"
+                       summary="Content listing"
+                       cellpadding="0" cellspacing="0" width="100%"
+                       i18n:domain="plone"
+                       i18n:attributes="summary summary_content_listing;">
+                     <thead>
+                        <tr>
+                            <th tal:repeat="field here/getCustomViewFields"
+                                tal:content="python:vocab.getValue(field, field)"
+                                i18n:domain="atresearchproject"
+                                i18n:translate=""/>
+                        </tr>
+                     </thead>
+                     <tbody>
+                        <tal:brain tal:repeat="obj topicContents"
+                                   i18n:domain="atresearchproject">
+                        <tr tal:define="oddrow repeat/obj/odd;">
+
+                            <tal:fields repeat="field here/getCustomViewFields"
+                                        define="url obj/getURL;
+                                                obj_type obj/portal_type;
+                                                obj_typeinfo python: here.portal_types.getTypeInfo(obj_type);
+                                                icon python:portal_url+'/'+ obj_typeinfo.getIcon();
+                                                title_or_id obj/pretty_title_or_id">
+                            <tal:block define="topic python: obj.getObject();
+			                       value python: topic.getField(field) and topic.getFieldValue(topic.getField(field).accessor, extended_field_format='structure');">
+                                <td valign="top" align="center"
+				    tal:condition="python: ('Runtime' in field) and (value != None)"
+                                    tal:content="structure python:here.toLocalizedTime(value, long_format=0)" />
+                                <td valign="top"
+				    tal:condition="python: ('Runtime' in field) and (value == None)"
+                                    tal:content="string: " />
+                                <td valign="middle"
+				    tal:condition="python: (field != 'Title') and ('Runtime' not in field)"
+                                    tal:content="structure python:here.research_project_formatCatalogMetadata(value)" />
+                                <td valign="top"
+				    tal:condition="python: field == 'Title'">
+                                    <a href="#" tal:attributes="href url">
+                                        <img src="#"
+                                             height="16"
+                                             width="16"
+                                             tal:attributes="src icon"/>
+                                    </a>
+
+                                    <a href="#" tal:condition="python: obj.portal_type == 'Image'"
+                                                tal:attributes="href string:${url}/view"
+                                                tal:content="title_or_id" />
+
+                                    <a href="#"
+                                       tal:condition="python: obj.portal_type == 'Link'"
+                                       tal:attributes="href obj/getRemoteUrl;"
+                                       class="link-plain"
+                                       tal:content="title_or_id" />
+
+                                    <a href="#" tal:condition="python: obj.portal_type not in ['Link', 'Image']"
+                                                tal:attributes="href url"
+                                                tal:content="title_or_id" />
+
+                                </td>
+                            </tal:block>
+                            </tal:fields>
+                        </tr>
+                        </tal:brain>
+                     </tbody>
+                </table>
+            </tal:custom>
+
+            </tal:listing>
+
+            <p class="discreet"
+               tal:condition="python: (portal_type[0] == 'ResearchProject') and (not topicContents and here.listCriteria())"
+               i18n:domain="atresearchproject"
+               i18n:translate="description_no_rp_in_rplist">
+                No research projects have been found matching this context.
+            </p>
+
+            <p class="discreet"
+               tal:condition="python: (not here.getResearchProjectListCascadeResearchSubprojects() and (portal_type[0] == 'ResearchSubproject')) and (not topicContents and here.listCriteria())"
+               i18n:domain="atresearchproject"
+               i18n:translate="description_no_rsp_in_rplist">
+                No subprojects have been found matching this context.
+            </p>
+
+            <p class="discreet"
+               tal:condition="python: (not here.listCriteria() and ((portal_type[0] == 'ResearchProject') or ((portal_type[0] == 'ResearchSubproject') and not here.getResearchProjectListCascadeResearchSubprojects())))"
+               i18n:domain="atcontenttypes"
+               i18n:translate="description_no_criteria_in_topic">
+                There are currently no criteria on which to search.
+                Please add them using the 'criteria' tab.
+            </p>
+
+            <!-- Navigation -->
+            <div metal:use-macro="here/batch_macros/macros/navigation" />
+
+          </tal:topiccontents>
+          </tal:if>
+	</tal:portaltype-loop>  
+        </metal:listingmacro>
+    </metal:body>
+
+    <metal:subtopics-listing define-macro="folderlisting_macro">
+        <tal:subtopics condition="python: here.hasSubtopics() and here.getResearchProjectListViewNestedLists()"
+                       define="folderContents python: here.getFolderContents({'portal_type': 'ResearchProjectList','meta_type': 'ATResearchProjectList',})">
+            <h2 tal:condition="here/getResearchProjectListCustomNestedListsHead"
+		tal:content="here/getResearchProjectListCustomNestedListsHead">
+                Custom headline for contained Research Project Lists:
+            </h2>
+            <h2 tal:condition="not: here/getResearchProjectListCustomNestedListsHead"
+                i18n:domain="atresearchproject"
+		i18n:translate="sub_rplists_heading">
+                Contained Research Project Lists:
+            </h2>
+            <metal:list metal:use-macro="here/base/macros/folderlisting"/>
+        </tal:subtopics>
+    </metal:subtopics-listing>
+    
+    <div metal:use-macro="here/document_relateditems/macros/relatedItems">
+	show related items if they exist
+    </div>
+    
+</metal:main_macro>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,87 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US"
+      lang="en-US"
+      i18n:domain="plone"
+      metal:use-macro="here/main_template/macros/master">
+
+
+<metal:cssslot fill-slot="css_slot">
+  <style type="text/css"
+         media="all"
+         tal:condition="exists: portal/research_project.css"
+         tal:content="string:@import url($portal_url/research_project.css);" />
+  <!-- Internet Explorer ATResearchProject CSS-FIXES -->
+  <tal:iefixstart replace="structure string:&lt;!--[if lt IE 7]&gt;" />
+  <style type="text/css"
+         media="all"
+         tal:condition="exists: portal/research_project_IEFixes.css"
+         tal:content="string:@import url($portal_url/research_project_IEFixes.css);" />
+  <tal:iefixend replace="structure string:&lt;![endif]--&gt;" />
+</metal:cssslot>
+			     
+<body>
+<metal:main fill-slot="main">
+  <metal:main-macro metal:define-macro="main">
+
+  <metal:block metal:use-macro="here/research_project_macros/macros/projecthead" />
+
+  <metal:block metal:use-macro="here/research_project_macros/macros/projectabstract" />
+
+  <metal:block metal:use-macro="here/research_project_macros/macros/subprojectinfo" />
+
+  <metal:block metal:use-macro="here/research_project_macros/macros/projectbody">
+
+    <!-- EXTERNAL LINKS -->
+    <metal:slot metal:fill-slot="externalLinksSlot">
+      	
+      <span style="clear: both;" />
+      <div tal:condition="here/getResearchSubprojectExternalLinks"
+           tal:define="externalLinks python: here.getResearchSubprojectExternalLinks(extended_field_format='structure')"
+           i18n:domain="atresearchproject">
+        <br />
+	<b i18n:translate="view_researchsubproject_externallinks">Further information on this subproject in the WWW</b><b>:</b>
+        <ul tal:repeat="externalLink externalLinks">
+          <li style="list-style-image: none; list-style: none;">
+              <span tal:replace="structure externalLink" tal:omit-tag="" /></li>
+	</ul>
+      </div>
+    </metal:slot>
+
+  </metal:block>
+  
+  <metal:block metal:use-macro="here/research_project_macros/macros/projecttree">
+    <div metal:fill-slot="projecttreeHeadSlot"
+         i18n:domain="atresearchproject">
+      <h3 i18n:translate="head_researchsubproject_tree">Subproject Structure</h3>
+    </div>
+  </metal:block>
+
+  <metal:block metal:use-macro="here/research_project_macros/macros/projectfoot">
+
+    <!-- INVOLVED DEPARTMENTS -->
+    <metal:slot metal:fill-slot="projectDepartments">
+    
+      <div tal:condition="here/getResearchSubprojectInvolvedDepartments"
+           i18n:domain="atresearchproject">
+          <hr />
+          <b i18n:translate="view_researchsubproject_departments">Departments involved in this subproject</b><b>:</b>
+          <ul tal:repeat="involvedDepartment here/getResearchSubprojectInvolvedDepartments">
+	
+	    <li style="list-style-image: none; list-style: none;">
+              <a href="" tal:attributes="href python: here.portal_researchproject.getDepartmentUrlById(involvedDepartment)">
+	      <span tal:content="python: here.portal_researchproject.getDepartmentLongnameById(involvedDepartment)" />
+	      </a>
+	    </li>
+	
+          </ul>
+       </div>
+
+    </metal:slot>
+								   
+  </metal:block>
+
+  </metal:main-macro>
+</metal:main>
+</body>
+</html>
+
+

@@ -1,0 +1,119 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US"
+      lang="en-US"
+      i18n:domain="plone"
+      metal:use-macro="here/main_template/macros/master">
+
+
+<metal:cssslot fill-slot="css_slot">
+  <style type="text/css"
+         media="all"
+         tal:condition="exists: portal/research_project.css"
+         tal:content="string:@import url($portal_url/research_project.css);" />
+</metal:cssslot>
+			     
+<body>
+<metal:main fill-slot="main">
+  <metal:main-macro metal:define-macro="main">
+
+    <div metal:use-macro="here/document_actions/macros/document_actions">
+         Document actions (print, sendto etc)
+    </div>
+	     
+    <h1 tal:content="here/title_or_id" class="documentFirstHeading">
+         Title or id
+    </h1>
+						 
+    <a 	href=""
+        class="link-parent"
+	tal:define="parent_url python:here.navigationParent(here, template_id)"
+	tal:condition="parent_url"
+	tal:attributes="href parent_url"
+	i18n:translate="go_to_parent_url">
+	    Up one level
+    </a>
+																    
+    <div class="documentDescription">
+        <span tal:replace="structure here/Description" tal:omit-tag="" />
+    </div>
+
+  <tal:definitions tal:define="folderContents here/getFolderContents">
+  <tal:loop tal:repeat="subproject_brain folderContents">
+
+    <tal:noothercontent tal:condition="python: subproject_brain.portal_type == 'ResearchSubproject'"
+                        tal:define="subproject subproject_brain/getObject">
+      <div i18n:domain="atresearchproject"
+    	   tal:define="subproject_roles python: mtool.getAuthenticatedMember().getRolesInContext(subproject);
+                       subproject_wf_state subproject/review_state | python: wtool.getInfoFor(subproject, 'review_state', '');
+	               subproject_wf_state_class python:'state-' + normalizeString(subproject_wf_state);
+                       navtool here/portal_properties/navtree_properties | nothing;" 
+           tal:condition="python: [ role for role in subproject_roles if role in ('Manager', 'Reviewer', 'Owner', ) ] or (navtool and (subproject_wf_state in navtool.getProperty('wf_states_to_show')))">
+
+        <b class="contenttype-researchsubproject">
+	<a class="" href="" 
+	   tal:attributes="href subproject/absolute_url;
+	                   class string:$subproject_wf_state_class visualIconPadding">
+  	  
+	    <span tal:content="subproject/Title" tal:omit-tag="" /></a>  
+        
+	</b>
+
+        <tal:runtime>
+        <span tal:condition="python: (subproject.portal_type == 'ResearchSubproject') and subproject.getResearchSubprojectRuntimeEnd()" tal:omit-tag="">
+          (<span tal:replace="python: subproject.toLocalizedTime(subproject.researchSubprojectRuntimeStart, long_format=0)" />
+          <span>-</span>
+          <span tal:replace="python: subproject.toLocalizedTime(subproject.researchSubprojectRuntimeEnd, long_format=0)" />)
+        </span>
+        <span tal:condition="python: (subproject.portal_type == 'ResearchSubproject') and (not subproject.getResearchSubprojectRuntimeEnd())" tal:omit-tag="">
+          (<span i18n:translate="view_since">since</span> <span tal:replace="python: subproject.toLocalizedTime(subproject.researchSubprojectRuntimeStart, long_format=0)" />)
+        </span>
+        </tal:runtime>
+          
+        <tal:description tal:condition="subproject/Description">
+            <br /><span tal:replace="structure subproject/Description" tal:omit-tag="" />
+        </tal:description>
+
+	<div style="padding-left: 24pt; margin-top: 4pt;">
+	
+        <tal:displaysubprojectcoordinators tal:define="subprojectCoordinators python: subproject.getResearchSubprojectScientificCoordinators(extended_field_format='structure')">
+          <tal:if tal:condition="python: subproject.getResearchSubprojectScientificCoordinators()">
+          <span i18n:domain="atresearchproject"
+                i18n:translate="">Scientific coordination</span>:
+            <span tal:replace="structure python: subprojectCoordinators[0]" /><tal:list tal:condition="python: subprojectCoordinators[1:]" tal:repeat="item python: subprojectCoordinators[1:]">; <span tal:replace="structure item" /></tal:list>
+          </tal:if>
+        </tal:displaysubprojectcoordinators>
+	
+        </div>
+
+	<p class="discreet" 
+           style="padding-left: 24pt; margin-top: 4pt; text-align: justify;">
+	   
+	   <span tal:condition="subproject/getResearchSubprojectAbstract"
+	         tal:replace="structure subproject/getResearchSubprojectAbstract" 
+	         tal:omit-tag="" />
+	   
+	   <span tal:condition="python: not subproject.getResearchSubprojectAbstract() and subproject.getResearchSubprojectKeywords()"
+		 tal:omit-tag="">
+		 <b i18n:translate="view_researchsubproject_keywords">Keywords</b><b>:</b>
+                   <tal:define tal:define="keywords subproject/getResearchSubprojectKeywords">
+                   <i><span tal:replace="python: keywords[0]" tal:omit-tag="" /><tal:cond tal:condition="python: (len(keywords) > 1)"><tal:loop tal:repeat="keyword python: keywords[1:]">,
+                   <span tal:replace="string:${keyword}" tal:omit-tag="" /></tal:loop>
+                   </tal:cond>
+                   </i>
+                   </tal:define>
+	   </span>
+	</p>   
+
+      </div>
+
+    </tal:noothercontent>
+    
+  </tal:loop>
+  </tal:definitions>
+
+  </metal:main-macro>
+
+</metal:main>
+</body>
+</html>
+
+

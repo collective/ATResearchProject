@@ -1,0 +1,56 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US"
+      lang="en"
+      i18n:domain="plone"
+      metal:use-macro="here/main_template/macros/master">
+		  
+<body>
+
+  <metal:main fill-slot="main">
+    <metal:main-macro metal:define-macro="main">
+
+    <div metal:use-macro="here/document_actions/macros/document_actions">
+      Document actions (print, sendto etc)
+    </div>
+	   
+    <h1 class="documentFirstHeading">
+      <span i18n:domain="atresearchproject"
+            i18n:translate="portaltype_researchfield" tal:omit-tag="">Research Field</span>: <span tal:content="object_title">Title or id</span>
+    </h1>
+			      
+    <div metal:use-macro="here/document_byline/macros/byline">
+       Document byline
+    </div>
+
+
+    <!-- DESCRIPTION -->
+    <p class="documentDescription"
+       tal:condition="here/Description">
+       <span tal:content="here/Description" tal:omit-tag="" />
+    </p>
+
+    <!-- BODY -->
+    <span tal:content="structure python: here.getBody(mimetype='text/html')"/>
+
+    <!-- EXTERNAL LINKS -->
+    <div tal:condition="here/getResearchFieldExternalLinks"
+         tal:define="externalLinks python: here.getResearchFieldExternalLinks(extended_field_format='structure')">
+     <b i18n:domain="atresearchproject"
+        i18n:translate="view_researchfield_externallinks">Further information on this research field in the WWW</b><b>:</b>
+     <ul style="list-style-type: none;"
+         tal:repeat="externalLink externalLinks">
+       <li><span tal:replace="structure externalLink" tal:omit-tag="" /></li>
+     </ul>
+    </div>
+    
+    <metal:listing metal:use-macro="here/research_project_macros/macros/relatedprojects-listing" />
+    
+    <div metal:use-macro="here/document_relateditems/macros/relatedItems">
+      show related items if they exist
+    </div>
+
+    </metal:main-macro>
+  </metal:main>
+
+</body>
+
+</html>
