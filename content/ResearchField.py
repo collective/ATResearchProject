@@ -88,6 +88,7 @@ class ResearchField(BrowserDefaultMixin, BaseContent):
 	      'name': 'Sharing',
 	      'action': 'string:${object_url}/folder_localrole_form',
 	      'permissions': (permissions.ManageProperties,),
+              'condition': 'python: object.portal_membership.checkPermission("ManageProperties", object)',
 	    },
     )
 
