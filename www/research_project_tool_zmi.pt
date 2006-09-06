@@ -1,0 +1,10 @@
+<html>
+<body>
+<span tal:replace="structure here/manage_tabs" />
+
+<p>Site wide configuration for the ATResearchProject ContentTypes.</p>
+
+nothing here yet...
+
+</body>
+</html>

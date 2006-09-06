@@ -1,0 +1,5 @@
+ATResearchProjects depends on Zope 2.8.x / Plone 2.1.x and some other Products:
+
+  o TextIndexNG2
+
+  
