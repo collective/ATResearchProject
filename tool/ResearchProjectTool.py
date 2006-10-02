@@ -31,8 +31,6 @@ from OFS.SimpleItem import SimpleItem
 from OFS.PropertyManager import PropertyManager
 from ZODB.PersistentList import PersistentList
 from Products.CMFCore.Expression import Expression
-from Products.CMFCore.ActionInformation import ActionInformation
-from Products.CMFCore.ActionProviderBase import ActionProviderBase
 from Products.CMFCore.permissions import View, ManagePortal
 from Products.CMFCore.utils import getToolByName
 from Products.CMFCore.utils import UniqueObject
@@ -50,7 +48,7 @@ from Products.ATResearchProject.config import PROJECTLIST_SORTFIELDS
 from Products.ATContentTypes.tool.topic import TopicIndex
 view_permission = ManagePortal
 
-class ResearchProjectSiteConfiguration(UniqueObject, SimpleItem, PropertyManager, ActionProviderBase):
+class ResearchProjectSiteConfiguration(UniqueObject, SimpleItem, PropertyManager):
     """Tool for managing site-wide research project variables
        as well as some resources of the ResearchProject and Subproject
        entries.
@@ -61,7 +59,7 @@ class ResearchProjectSiteConfiguration(UniqueObject, SimpleItem, PropertyManager
     title = ATRP_TOOL_NAME
     plone_tool = True
     
-    __implements__ = (SimpleItem.__implements__, ActionProviderBase.__implements__,)
+    __implements__ = (SimpleItem.__implements__,)
     
     security = ClassSecurityInfo()
     infoPage = PageTemplateFile(WWW_DIR + '/research_project_tool_zmi.pt', globals())
@@ -71,22 +69,8 @@ class ResearchProjectSiteConfiguration(UniqueObject, SimpleItem, PropertyManager
         ({'label':'Information', 'action':'infoPage'},
         SimpleItem.manage_options[0])
 	+ PropertyManager.manage_options
-	+ ActionProviderBase.manage_options
 	+ AccessControl.Owned.Owned.manage_options
 	+ SimpleItem.manage_options[2:]
-        )
-
-    _actions = (
-        ActionInformation(
-            id='research_project_summary_view',
-            title='Research Projects',
-	    description='Site wide; sorted by name, executive department, year etc.',
-            action=Expression(text='string: ${portal_url}/research_project_summary_view'),
-            permissions=(View,),
-            category='portal_tabs',
-            condition=None,
-            visible=1,
-            ),
         )
 
     _properties = PropertyManager._properties + (

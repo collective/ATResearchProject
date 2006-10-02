@@ -58,6 +58,25 @@ def addPrefsPanel(self, out):
 		     description='Side-wide configuration for the ATResearchProject content types.')
 	out.write ("Installed the research project site configuration tool into the control panel.\n")
 
+def addActions(self, out):
+    ap=getToolByName(self, 'portal_actions')
+    
+    # Check if the old 'download' action still exists and remove it
+    if ap is not None:
+        new_actions = [a for a in ap._cloneActions()
+		       if a.getId() != 'downloadBib']
+        ap._actions = new_actions
+
+    ap.addAction(
+	   id='searchForResearchProjects',
+	   name='Research Projects',
+	   action='string: ${portal_url}/research_project_summary_view',
+	   permission='View',
+	   category='portal_tabs',
+	   condition='',
+	   visible=0, # invisible for now as now page template written yet -> TODO
+    )
+
 def addToFactoryTool(self, out):
     # make new types use portal_factory
     ftool = getToolByName(self, 'portal_factory')
@@ -75,6 +94,7 @@ def addIndexesToCatalogTool(self, out):
         # add indexes and metadatas to the portal catalog
         ct = getToolByName(self, 'portal_catalog')
         for idx in CATALOG_INDEXES:
+	    print 'ATResearchProject: re-indexing index of name \'%s\'' % idx
             if idx['name'] in ct.indexes():
 	        ct.delIndex(idx['name'])
 		ct.addIndex(**idx)
@@ -102,6 +122,7 @@ def install(self):
  
     setupTool(self, out)
     addPrefsPanel(self, out)
+    addActions(self, out)
  
     installTypes(self, out, listTypes(PROJECTNAME), PROJECTNAME)
     out.write('%s\n' % listTypes(PROJECTNAME))
@@ -114,14 +135,32 @@ def install(self):
     out.write("Successfully installed %s." % PROJECTNAME)
     return out.getvalue()
 
+def removeActions(self):
+    """
+    removes the research projects actions from the actions tool
+    """
+    acttool = getToolByName(self, 'portal_actions')
+    actions = list(acttool._actions)
+    keep = []
+    for a in actions:
+        if a.id != 'searchForResearchProjects':
+            keep.append(a)
+            acttool._actions = tuple(keep)
+	    
 def removeFromActionProviders(self, out):
     """
-    removes portal_researchproject from the action providers
-    registered with the action tool
+    Old versions of ATResearchProject used portal_researchproject as ActionProvider.
+    This will be no longer supported in CMF 2.0 or higher.
+    
+    Removes portal_researchproject from the action providers
+    registered with the action tool. 
     """
     acttool = getToolByName (self, 'portal_actions')
-    if ATRP_TOOL_ID in acttool.listActionProviders():
-      acttool.deleteActionProvider(ATRP_TOOL_ID)
+    try:
+	if ATRP_TOOL_ID in acttool.listActionProviders():
+    	    acttool.deleteActionProvider(ATRP_TOOL_ID)
+    except:
+	pass	    
 
 def removePrefsPanel(self, out):
     cp = getToolByName(self, 'portal_controlpanel', None)
@@ -156,7 +195,7 @@ def removeMetadataFromCatalogTool(self, out):
 def uninstall(self):
     out = StringIO()
     removeFromActionProviders(self, out)
-    #removeActions(self)
+    removeActions(self)
     removePrefsPanel(self, out)
     removeIndexesFromCatalogTool(self, out)
     removeMetadataFromCatalogTool(self, out)
