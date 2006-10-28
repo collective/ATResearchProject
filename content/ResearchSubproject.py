@@ -131,28 +131,9 @@ class ResearchSubproject(BrowserDefaultMixin, OrderedBaseFolder):
       rsp_info = []
       for accessor in SUBPROJECT_INFOFIELD_ACCESSORS:
         rsp_info.extend(eval('self.%s(**kwargs)' % accessor))
+
       return rsp_info
 					      
-    security.declareProtected(permissions.ModifyPortalContent, 'setResearchSubprojectInfoFields')
-    def setResearchSubprojectInfoFields (self, value=None, migrate_superiors=True, **kwargs):
-      """set project information fields (value is ignored)
-      """
-      rsp_info = []
-      for accessor in SUBPROJECT_INFOFIELD_ACCESSORS:
-        rsp_info.extend(eval('self.%s(**kwargs)' % accessor))
-      self.getField('researchSubprojectInfoFields').set(self, rsp_info)
-      
-      if migrate_superiors:
-        # migrate through superior subprojects and set collect values in info fields
-        rsp_object = self.getSuperiorResearchSubprojectObject(**kwargs)
-        while rsp_object is not None:
-    	    rsp_object.setResearchSubprojectInfoFields (value, migrate_superiors=False, **kwargs)
-    	    rsp_object = rsp_object.getSuperiorResearchSubprojectObject(**kwargs)
-	
-        # update values for info field for mother research project
-        rp_object = self.getResearchProjectObject(**kwargs)
-        rp_object.setResearchProjectInfoFields (value, **kwargs)
-      										
     security.declareProtected(permissions.ModifyPortalContent, 'setResearchSubprojectOfficialTitleAndTitle')
     def setResearchSubprojectOfficialTitleAndTitle (self, value, **kwargs):
         """Duplicate Title into researchSubprojectTitle.

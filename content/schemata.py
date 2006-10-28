@@ -198,13 +198,16 @@ ATResearchProjectSchema =  BaseSchema.copy() +  Schema((
 		),
         ),
 	# generic field (hidden)
-	LinesField('researchProjectInfoFields',
+	ComputedField('researchProjectInfoFields',
                 searchable=1,
 		languageIndependent = False, 
-                widget=LinesWidget(
-		    visible = { 'edit': 'hidden', 'view': 'invisible', },
-		    i18n_domain = 'atresearchproject',
+                widget=ComputedWidget(
+		    i18n_domain = 'atresearchproject'
 		),
+		#widget=LinesWidget(
+		#    visible = { 'edit': 'hidden', 'view': 'invisible', },
+		#    i18n_domain = 'atresearchproject',
+		#),
         ),
 	LinesField('researchProjectProjectCoordinators',
                 searchable=1,
@@ -246,6 +249,7 @@ ATResearchProjectSchema =  BaseSchema.copy() +  Schema((
                 searchable=1,
 		languageIndependent = True, 
 		validators=('haveValidCharacters','haveValidExtendedFieldstructureTags', ),
+		accessor = 'getResearchProjectInheritedScientificStaffMembers'
                 widget=LinesWidget(
 		    label='Scientific Staff Members',
 		    label_msgid = "label_scientificstaffmembers_researchproject",
@@ -271,6 +275,7 @@ ATResearchProjectSchema =  BaseSchema.copy() +  Schema((
                 searchable=1,
 		languageIndependent = True, 
 		validators=('haveValidCharacters','haveValidExtendedFieldstructureTags', ),
+		accessor = 'getResearchProjectInheritedTechnicalStaffMembers'
                 widget=LinesWidget(
 		    label='Technical Staff Members',
 		    label_msgid = "label_technicalstaffmembers_researchproject",
@@ -296,6 +301,7 @@ ATResearchProjectSchema =  BaseSchema.copy() +  Schema((
                 searchable=1,
 		languageIndependent = True, 
 		validators=('haveValidCharacters','haveValidExtendedFieldstructureTags', ),
+		accessor = 'getResearchProjectInheritedStudentStaffMembers'
                 widget=LinesWidget(
 		    label='Student Staff Members',
 		    label_msgid = "label_studentstaffmembers_researchproject",
@@ -321,6 +327,7 @@ ATResearchProjectSchema =  BaseSchema.copy() +  Schema((
                 searchable=1,
 		languageIndependent = True, 
 		validators=('haveValidCharacters','haveValidExtendedFieldstructureTags', ),
+		accessor = 'getResearchProjectInheritedFormerStaffMembers'
                 widget=LinesWidget(
 		    label='Former Staff Members',
 		    label_msgid = "label_formerstaffmembers_researchproject",
@@ -346,6 +353,7 @@ ATResearchProjectSchema =  BaseSchema.copy() +  Schema((
                 searchable=1,
 		languageIndependent = True, 
 		validators=('haveValidCharacters','haveValidExtendedFieldstructureTags', ),
+		accessor = 'getResearchProjectInheritedFormerStudentStaffMembers'
                 widget=LinesWidget(
 		    label='Former Student Staff Members',
 		    label_msgid = "label_formerstudentstaffmembers_researchproject",
@@ -583,11 +591,10 @@ ATResearchSubprojectSchema =  BaseSchema.copy() +  Schema((
 		),
         ),
 	# generic field (hidden)
-	LinesField('researchSubprojectInfoFields',
+	ComputedField('researchSubprojectInfoFields',
                 searchable=1,
 		languageIndependent = False, 
-                widget=LinesWidget(
-		    visible = { 'edit': 'hidden', 'view': 'invisible', },
+                widget=ComputedWidget(
 		    i18n_domain = 'atresearchproject',
 		),
         ),
@@ -607,6 +614,7 @@ ATResearchSubprojectSchema =  BaseSchema.copy() +  Schema((
                 searchable=1,
 		languageIndependent = True, 
 		validators=('haveValidCharacters','haveValidExtendedFieldstructureTags', ),
+		accessor = 'getResearchSubprojectInheritedScientificStaffMembers'
                 widget=LinesWidget(
 		    label='Scientific Staff Members',
 		    label_msgid = "label_scientificstaffmembers_researchsubproject",
@@ -632,6 +640,7 @@ ATResearchSubprojectSchema =  BaseSchema.copy() +  Schema((
                 searchable=1,
 		languageIndependent = True, 
 		validators=('haveValidCharacters','haveValidExtendedFieldstructureTags', ),
+		accessor = 'getResearchSubprojectInheritedTechnicalStaffMembers'
                 widget=LinesWidget(
 		    label='Technical Staff Members',
 		    label_msgid = "label_technicalstaffmembers_researchsubproject",
@@ -656,7 +665,8 @@ ATResearchSubprojectSchema =  BaseSchema.copy() +  Schema((
 	LinesField('researchSubprojectStudentStaffMembers',
                 searchable=1,
 		languageIndependent = True, 
-		validators=('haveValidCharacters','haveValidExtendedFieldstructureTags', ),
+		validators = ('haveValidCharacters','haveValidExtendedFieldstructureTags', ),
+		accessor = 'getResearchSubprojectInheritedStudentStaffMembers'
                 widget=LinesWidget(
 		    label='Student Staff Members',
 		    label_msgid = "label_studentstaffmembers_researchsubproject",
@@ -682,6 +692,7 @@ ATResearchSubprojectSchema =  BaseSchema.copy() +  Schema((
                 searchable=1,
 		languageIndependent = True, 
 		validators=('haveValidCharacters','haveValidExtendedFieldstructureTags', ),
+		accessor = 'getResearchSubprojectInheritedFormerStaffMembers'
                 widget=LinesWidget(
 		    label='Former Staff Members',
 		    label_msgid = "label_formerstaffmembers_researchsubproject",
@@ -707,6 +718,7 @@ ATResearchSubprojectSchema =  BaseSchema.copy() +  Schema((
                 searchable=1,
 		languageIndependent = True, 
 		validators=('haveValidCharacters','haveValidExtendedFieldstructureTags', ),
+		accessor = 'getResearchSubprojectInheritedFormerStudentStaffMembers'
                 widget=LinesWidget(
 		    label='Former Student Staff Members',
 		    label_msgid = "label_formerstudentstaffmembers_researchsubproject",
