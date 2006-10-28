@@ -62,12 +62,10 @@ class Migration(object):
 		for attribute in new_attributes:
 		    for brain in brains[:10]:
 			if not shasattr(brain.getObject(), attribute, False):
-			    print 'Schema upgrade because of new attributes'
 			    return True
 		for attribute in removed_attributes:
 		    for brain in brains[:10]:
 			if shasattr(brain.getObject(), attribute, False):
-			    print 'Schema upgrade because of removed attributes'
 			    return True
 	
 	print >> self.out, u"    No general schema upgrade needed."
@@ -87,12 +85,13 @@ class Migration(object):
 	    
         ctool = getToolByName(self.site, 'portal_catalog')
 	atrp_types = [ ct['portal_type'] for ct in listTypes(PROJECTNAME) ]
-	brains = ctool(portal_type=atrp_types)
+	brains = ctool(portal_type=atrp_types, Language='all')
 	for brain in brains:
 	    obj = brain.getObject()
 	    ct = obj.portal_type
 	    if ct in ATRP_SCHEMA_MIGRATION.keys():
 		for remove_field in ATRP_SCHEMA_MIGRATION[ct]['removed']:
+		    print "Removing field ,,%s'' from item ,,%s'' (type: %s)" % (remove_field, obj.getId(), ct)
 		    delattr(obj, remove_field)
 	    obj._updateSchema()
 	    
@@ -109,7 +108,7 @@ class Migration(object):
 	print >> self.out, u"-----------------------------------------------"
 	ctool = getToolByName(self.site, 'portal_catalog')
 
-	brains = ctool(portal_type='ResearchProjectList')
+	brains = ctool(portal_type='ResearchProjectList', Language='all')
 	count = 0
 	if brains:
 	    for brain in brains:
@@ -123,7 +122,8 @@ class Migration(object):
 			    new_criterion.setValue(old_criterion.Value())
 			    obj.deleteCriterion(old_criterion.getId())
 			    obj_updated = True
-		if obj_updated:	    
+		if obj_updated:
+		    print "Modified criteria list of ResearchProjectList item ,,%s''" % obj.getId()
 		    count += 1
 		
 	if count == 0:		
@@ -131,5 +131,3 @@ class Migration(object):
 	else:
 	    print >> self.out, u"    Upgraded criteria of %s ResearchProjectList items." % count
 	print >> self.out
-																								     
-	

@@ -107,6 +107,11 @@ msgid "Research Project - Project Coordinator"
 msgstr ""
 
 #: ./config.py
+#. Default: "Research Project - Contact Person"
+msgid "Research Project - Contact Person"
+msgstr ""
+
+#: ./config.py
 #. Default: "Research Project - Contractor"
 msgid "Research Project - Contractor"
 msgstr ""

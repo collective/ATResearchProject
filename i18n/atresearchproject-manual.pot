@@ -51,6 +51,10 @@ msgstr ""
 msgid "Former student staff"
 msgstr ""
 
+#. Default: "Contact"
+msgid "Contact"
+msgstr ""
+
 #: ./skins/research_project_macros.pt
 #. Default: "External institute(s)"
 msgid "External institute(s)"
@@ -159,6 +163,16 @@ msgstr ""
 #: ./schemata.py
 #. Default: "If scientific coordination does not differ from project coordination, leave this field empty."
 msgid "help_scientificcoordinators_researchproject"
+msgstr ""
+
+#: ./schemata.py
+#. Default: "Contact"
+msgid "label_contactpersons_researchproject"
+msgstr ""
+
+#: ./schemata.py
+#. Default: "The contact person(s) is in charge of the research projects' PR work. Ideally, there is only one contact person, but this depends on your project. The name of this person should also be mentioned in one of the other staff/coordinators fields."
+msgid "help_contactpersons_researchproject"
 msgstr ""
 
 #: ./schemata.py
@@ -774,6 +788,11 @@ msgstr ""
 #: ./config.py
 #. Default: "Research Project - Project Coordinator"
 msgid "Research Project - Project Coordinator"
+msgstr ""
+
+#: ./config.py
+#. Default: "Research Project - Contact Person"
+msgid "Research Project - Contact Person"
 msgstr ""
 
 #: ./config.py
