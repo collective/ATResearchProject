@@ -209,12 +209,28 @@ class ResearchProject(BrowserDefaultMixin, OrderedBaseFolder):
       rawFieldValue = self.getField('researchProjectProjectCoordinators').get(self, **kwargs)
       return atrp_tool.structureExtendedLinesField(rawFieldValue,**kwargs)
       
+    security.declareProtected(permissions.View, 'getResearchProjectProjectCoordinators')
+    def getResearchProjectProjectCoordinators (self, **kwargs):
+      """we need to wrap this field as the user is allowed to enter extended text infomation
+      """
+      atrp_tool = getToolByName(self, 'portal_researchproject')
+      rawFieldValue = self.getField('researchProjectProjectCoordinators').get(self, **kwargs)
+      return atrp_tool.structureExtendedLinesField(rawFieldValue,**kwargs)
+      
     security.declareProtected(permissions.View, 'getResearchProjectScientificCoordinators')
     def getResearchProjectScientificCoordinators (self, **kwargs):
       """we need to wrap this field as the user is allowed to enter extended text infomation
       """
       atrp_tool = getToolByName(self, 'portal_researchproject')
       rawFieldValue = self.getField('researchProjectScientificCoordinators').get(self, **kwargs)
+      return atrp_tool.structureExtendedLinesField(rawFieldValue,**kwargs)
+      
+    security.declareProtected(permissions.View, 'getResearchProjectContactPersons')
+    def getResearchProjectContactPersons(self, **kwargs):
+      """we need to wrap this field as the user is allowed to enter extended text infomation
+      """
+      atrp_tool = getToolByName(self, 'portal_researchproject')
+      rawFieldValue = self.getField('researchProjectContactPersons').get(self, **kwargs)
       return atrp_tool.structureExtendedLinesField(rawFieldValue,**kwargs)
       
     security.declareProtected(permissions.View, 'getResearchProjectInheritedScientificStaffMembers')

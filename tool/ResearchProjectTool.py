@@ -462,6 +462,11 @@ class ResearchProjectSiteConfiguration(UniqueObject, SimpleItem, PropertyManager
 
       return subproject_objects	
 
+    def siteHasResearchFields(self):
+    
+	ctool = getToolByName(self, 'portal_catalog')
+	return ctool(portal_type=('ResearchField',)) and True or False
+
     def listWfFilteredResearchSubprojects(self, rp_object=None):
       
       query = {}

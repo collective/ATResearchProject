@@ -16,6 +16,7 @@ INFINITY = '2039/12/31'
 PROJECT_INFOFIELD_ACCESSORS = [
     'getResearchProjectProjectCoordinators', 
     'getResearchProjectScientificCoordinators',
+    'getResearchProjectContactPersons',
     'getResearchProjectInheritedScientificStaffMembers',
     'getResearchProjectInheritedTechnicalStaffMembers',
     'getResearchProjectInheritedStudentStaffMembers',
@@ -99,6 +100,12 @@ PROJECTLIST_CRITERIAFIELDS = [
         'index_type'    : text_index_type,
 	'ctypes'	: ('ATSimpleStringCriterion', )
     },
+    {
+	'portal_type'	: 'ResearchProject',
+	'field'		: ('researchProjectContactPersons', 'Research Project - Contact Persons', '',),
+        'index_type'    : text_index_type,
+	'ctypes'	: ('ATSimpleStringCriterion', )
+    },	
     {	
 	'portal_type'	: 'ResearchProject',
 	'field'		: ('researchProjectInvolvedDepartments', 'Research Project - Involved Department', '',),
