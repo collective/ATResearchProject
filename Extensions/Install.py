@@ -18,6 +18,8 @@ from Products.ATResearchProject.config import ALLOWED_CT_DEFAULTS
 from Products.ATResearchProject.config import CATALOG_INDEXES
 from Products.ATResearchProject.config import CATALOG_METADATA
 
+from Products.ATResearchProject.migrations import *
+
 from StringIO import StringIO
 
 def setupTool(self, out):
@@ -117,6 +119,16 @@ def addMetadataToCatalogTool(self, out):
 	        ct.addColumn(entry)
 	        out.write("Added '%s' to the catalog metadatas.\n" % entry)
 
+def autoMigration(self, out):
+    
+    migrations = (
+	atrpUNRELEASEDto04.Migration(self, out),
+    )
+    
+    for migration in migrations:
+	migration.migrate()
+	
+
 def install(self):
     out = StringIO()
  
@@ -127,6 +139,7 @@ def install(self):
     installTypes(self, out, listTypes(PROJECTNAME), PROJECTNAME)
     out.write('%s\n' % listTypes(PROJECTNAME))
     addToFactoryTool(self, out)
+    autoMigration(self, out)
     addIndexesToCatalogTool(self, out)
     addMetadataToCatalogTool(self, out)
     
@@ -168,11 +181,14 @@ def removePrefsPanel(self, out):
       cp.unregisterApplication(PROJECTNAME)
       
 def removeIndexesFromCatalogTool(self, out):
+
+    from Products.ATResearchProject.config import DEPRECATED_CATALOG_INDEXES
+    DEPRECATED_CATALOG_INDEXES = [ { 'name': name, 'type': 'DEPRECATED', } for name in DEPRECATED_CATALOG_INDEXES ]
     ctool = getToolByName(self, 'portal_catalog')
     if ctool:
         # add indexes and metadatas to the portal catalog
         ct = getToolByName(self, 'portal_catalog')
-        for idx in CATALOG_INDEXES:
+        for idx in CATALOG_INDEXES + DEPRECATED_CATALOG_INDEXES:
             if idx['name'] in ct.indexes():
 	        ct.delIndex(idx['name'])
 		out.write("Removed '%s' index from the catalog.\n" % idx['name'])
@@ -180,11 +196,13 @@ def removeIndexesFromCatalogTool(self, out):
 		out.write("Index '%s' (%s) not found in the catalog, nothing changed.\n" % (idx['name'], idx['type']))
 		
 def removeMetadataFromCatalogTool(self, out):
+
+    from Products.ATResearchProject.config import DEPRECATED_CATALOG_METADATA
     ctool = getToolByName(self, 'portal_catalog')
     if ctool:
         # add indexes and metadatas to the portal catalog
         ct = getToolByName(self, 'portal_catalog')
-        for entry in CATALOG_METADATA:
+        for entry in CATALOG_METADATA + DEPRECATED_CATALOG_METADATA:
 	    if entry in ct.schema():
 	        ct.delColumn(entry)
 		out.write("Found '%s' in the catalog metadatas, removed it.\n" % entry)

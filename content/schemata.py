@@ -16,15 +16,15 @@ from Products.CMFCore import permissions
 try:
     from Products.LinguaPlone.public import BaseSchema, Schema
     from Products.LinguaPlone.public import MetadataSchema
-    from Products.LinguaPlone.public import StringField, TextField, ReferenceField, BooleanField, DateTimeField, ImageField, LinesField
-    from Products.LinguaPlone.public import MultiSelectionWidget, TextAreaWidget, StringWidget, RichWidget, CalendarWidget, BooleanWidget, ImageWidget, LinesWidget, ReferenceWidget, InAndOutWidget
+    from Products.LinguaPlone.public import StringField, TextField, ReferenceField, BooleanField, DateTimeField, ImageField, LinesField, ComputedField
+    from Products.LinguaPlone.public import MultiSelectionWidget, TextAreaWidget, StringWidget, RichWidget, CalendarWidget, BooleanWidget, ImageWidget, LinesWidget, ReferenceWidget, InAndOutWidget, ComputedWidget
     from Products.LinguaPlone.public import AnnotationStorage
 except ImportError:
     # No multilingual support
     from Products.Archetypes.public import BaseSchema, Schema
     from Products.Archetypes.public import MetadataSchema
-    from Products.Archetypes.public import StringField, TextField, ReferenceField, BooleanField, DateTimeField, ImageField, LinesField
-    from Products.Archetypes.public import MultiSelectionWidget, TextAreaWidget, StringWidget, RichWidget, CalendarWidget, BooleanWidget, ImageWidget, LinesWidget, ReferenceWidget
+    from Products.Archetypes.public import StringField, TextField, ReferenceField, BooleanField, DateTimeField, ImageField, LinesField, ComputedField
+    from Products.Archetypes.public import MultiSelectionWidget, TextAreaWidget, StringWidget, RichWidget, CalendarWidget, BooleanWidget, ImageWidget, LinesWidget, ReferenceWidget, InAndOutWidget, ComputedWidget
     from Products.Archetypes.public import AnnotationStorage
 
 from DateTime import DateTime
@@ -249,7 +249,7 @@ ATResearchProjectSchema =  BaseSchema.copy() +  Schema((
                 searchable=1,
 		languageIndependent = True, 
 		validators=('haveValidCharacters','haveValidExtendedFieldstructureTags', ),
-		accessor = 'getResearchProjectInheritedScientificStaffMembers'
+		accessor = 'getResearchProjectInheritedScientificStaffMembers',
                 widget=LinesWidget(
 		    label='Scientific Staff Members',
 		    label_msgid = "label_scientificstaffmembers_researchproject",
@@ -275,7 +275,7 @@ ATResearchProjectSchema =  BaseSchema.copy() +  Schema((
                 searchable=1,
 		languageIndependent = True, 
 		validators=('haveValidCharacters','haveValidExtendedFieldstructureTags', ),
-		accessor = 'getResearchProjectInheritedTechnicalStaffMembers'
+		accessor = 'getResearchProjectInheritedTechnicalStaffMembers',
                 widget=LinesWidget(
 		    label='Technical Staff Members',
 		    label_msgid = "label_technicalstaffmembers_researchproject",
@@ -301,7 +301,7 @@ ATResearchProjectSchema =  BaseSchema.copy() +  Schema((
                 searchable=1,
 		languageIndependent = True, 
 		validators=('haveValidCharacters','haveValidExtendedFieldstructureTags', ),
-		accessor = 'getResearchProjectInheritedStudentStaffMembers'
+		accessor = 'getResearchProjectInheritedStudentStaffMembers',
                 widget=LinesWidget(
 		    label='Student Staff Members',
 		    label_msgid = "label_studentstaffmembers_researchproject",
@@ -327,7 +327,7 @@ ATResearchProjectSchema =  BaseSchema.copy() +  Schema((
                 searchable=1,
 		languageIndependent = True, 
 		validators=('haveValidCharacters','haveValidExtendedFieldstructureTags', ),
-		accessor = 'getResearchProjectInheritedFormerStaffMembers'
+		accessor = 'getResearchProjectInheritedFormerStaffMembers',
                 widget=LinesWidget(
 		    label='Former Staff Members',
 		    label_msgid = "label_formerstaffmembers_researchproject",
@@ -353,7 +353,7 @@ ATResearchProjectSchema =  BaseSchema.copy() +  Schema((
                 searchable=1,
 		languageIndependent = True, 
 		validators=('haveValidCharacters','haveValidExtendedFieldstructureTags', ),
-		accessor = 'getResearchProjectInheritedFormerStudentStaffMembers'
+		accessor = 'getResearchProjectInheritedFormerStudentStaffMembers',
                 widget=LinesWidget(
 		    label='Former Student Staff Members',
 		    label_msgid = "label_formerstudentstaffmembers_researchproject",
@@ -614,7 +614,7 @@ ATResearchSubprojectSchema =  BaseSchema.copy() +  Schema((
                 searchable=1,
 		languageIndependent = True, 
 		validators=('haveValidCharacters','haveValidExtendedFieldstructureTags', ),
-		accessor = 'getResearchSubprojectInheritedScientificStaffMembers'
+		accessor = 'getResearchSubprojectInheritedScientificStaffMembers',
                 widget=LinesWidget(
 		    label='Scientific Staff Members',
 		    label_msgid = "label_scientificstaffmembers_researchsubproject",
@@ -640,7 +640,7 @@ ATResearchSubprojectSchema =  BaseSchema.copy() +  Schema((
                 searchable=1,
 		languageIndependent = True, 
 		validators=('haveValidCharacters','haveValidExtendedFieldstructureTags', ),
-		accessor = 'getResearchSubprojectInheritedTechnicalStaffMembers'
+		accessor = 'getResearchSubprojectInheritedTechnicalStaffMembers',
                 widget=LinesWidget(
 		    label='Technical Staff Members',
 		    label_msgid = "label_technicalstaffmembers_researchsubproject",
@@ -666,7 +666,7 @@ ATResearchSubprojectSchema =  BaseSchema.copy() +  Schema((
                 searchable=1,
 		languageIndependent = True, 
 		validators = ('haveValidCharacters','haveValidExtendedFieldstructureTags', ),
-		accessor = 'getResearchSubprojectInheritedStudentStaffMembers'
+		accessor = 'getResearchSubprojectInheritedStudentStaffMembers',
                 widget=LinesWidget(
 		    label='Student Staff Members',
 		    label_msgid = "label_studentstaffmembers_researchsubproject",
@@ -692,7 +692,7 @@ ATResearchSubprojectSchema =  BaseSchema.copy() +  Schema((
                 searchable=1,
 		languageIndependent = True, 
 		validators=('haveValidCharacters','haveValidExtendedFieldstructureTags', ),
-		accessor = 'getResearchSubprojectInheritedFormerStaffMembers'
+		accessor = 'getResearchSubprojectInheritedFormerStaffMembers',
                 widget=LinesWidget(
 		    label='Former Staff Members',
 		    label_msgid = "label_formerstaffmembers_researchsubproject",
@@ -718,7 +718,7 @@ ATResearchSubprojectSchema =  BaseSchema.copy() +  Schema((
                 searchable=1,
 		languageIndependent = True, 
 		validators=('haveValidCharacters','haveValidExtendedFieldstructureTags', ),
-		accessor = 'getResearchSubprojectInheritedFormerStudentStaffMembers'
+		accessor = 'getResearchSubprojectInheritedFormerStudentStaffMembers',
                 widget=LinesWidget(
 		    label='Former Student Staff Members',
 		    label_msgid = "label_formerstudentstaffmembers_researchsubproject",

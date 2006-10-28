@@ -65,7 +65,7 @@ PROJECTLIST_CRITERIAFIELDS = [
     },	
     {
 	'portal_type'	: 'ResearchProject',
-	'field'		: ('researchProjectInfoFields', 'Search all Research Project Info Fields',
+	'field'		: ('getResearchProjectInfoFields', 'Search all Research Project Info Fields',
 			   'This criterion looks at all information fields in research project objects.',),
         'index_type'    : text_index_type,
 	'ctypes'	: ('ATSimpleStringCriterion', )
@@ -176,7 +176,7 @@ PROJECTLIST_CRITERIAFIELDS = [
     },	
     {
 	'portal_type'	: 'ResearchSubproject',
-	'field'		: ('researchSubprojectInfoFields', 'Search all Research Subproject Info Fields',
+	'field'		: ('getResearchSubprojectInfoFields', 'Search all Research Subproject Info Fields',
 			   'This criterion looks at all information fields in research subproject objects.',),
         'index_type'    : text_index_type,
 	'ctypes'	: ('ATSimpleStringCriterion', )
@@ -314,8 +314,10 @@ PROJECTLIST_SORTFIELDS = [
 
 
 # generated from the PROJECTLIST_CRITERIAFIELDS
-CATALOG_INDEXES = [ dict([('name',criterion['field'][0])] + [ (key, criterion['index_type'][key]) for key in criterion['index_type'].keys() ])  for criterion in (PROJECTLIST_CRITERIAFIELDS + PROJECTLIST_SORTFIELDS) if criterion['field'][0].startswith('research') ]
-CATALOG_METADATA = [ criterion['field'][0] for criterion in PROJECTLIST_SORTFIELDS if criterion['field'][0].startswith('research') ]
+CATALOG_INDEXES = [ dict([('name',criterion['field'][0])] + [ (key, criterion['index_type'][key]) for key in criterion['index_type'].keys() ])  for criterion in (PROJECTLIST_CRITERIAFIELDS + PROJECTLIST_SORTFIELDS) if criterion['field'][0].startswith('research') or criterion['field'][0].startswith('getResearch')]
+CATALOG_METADATA = [ criterion['field'][0] for criterion in PROJECTLIST_SORTFIELDS if criterion['field'][0].startswith('research') or criterion['field'][0].startswith('getResearch') ]
+DEPRECATED_CATALOG_INDEXES = [ 'researchProjectInfoFields', 'researchSubprojectInfoFields',]
+DEPRECATED_CATALOG_METADATA = []
 try:
   from myConfig import DEPARTMENT_DEFAULTS
 except:
