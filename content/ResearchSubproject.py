@@ -420,7 +420,8 @@ class ResearchSubproject(BrowserDefaultMixin, OrderedBaseFolder):
 
     security.declarePrivate('at_post_create_script')
     def at_post_create_script(self):
-	self.at_post_edit_script(self):
+
+	self.at_post_edit_script()
 
     security.declarePrivate('at_post_edit_script')
     def at_post_edit_script(self):
