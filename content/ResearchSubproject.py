@@ -418,6 +418,15 @@ class ResearchSubproject(BrowserDefaultMixin, OrderedBaseFolder):
 
         return None
 
+    security.declarePrivate('at_post_create_script')
+    def at_post_create_script(self):
+	self.at_post_edit_script(self):
+
+    security.declarePrivate('at_post_edit_script')
+    def at_post_edit_script(self):
+    
+	self.reindexSuperiorRPandRSPobjects()
+    
     def __bobo_traverse__(self, REQUEST, name):
 	"""
 	Transparent access to logo scales

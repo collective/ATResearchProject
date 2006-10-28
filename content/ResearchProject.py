@@ -137,7 +137,7 @@ class ResearchProject(BrowserDefaultMixin, OrderedBaseFolder):
       rp_info = []
       for accessor in PROJECT_INFOFIELD_ACCESSORS:
         rp_info.extend(eval('self.%s(**kwargs)' % accessor))
-      return rp_info      
+      return rp_info
 
     security.declareProtected(permissions.ModifyPortalContent, 'setResearchProjectOfficialTitleAndTitle')
     def setResearchProjectOfficialTitleAndTitle (self, value, **kwargs):
