@@ -290,7 +290,7 @@ class ResearchProjectList(ATTopic):
 
             	    query['review_state'] = navtool.wf_states_to_show
 
-        #print query
+        print query
 
         return query or None
 
@@ -343,7 +343,7 @@ class ResearchProjectList(ATTopic):
         """Return a list of fields for the sortable table.
         """
 	atrp_tool = getToolByName(self, 'portal_researchproject')
-	indexes = [ crit_field['field'][0] for crit_field in PROJECTLIST_CRITERIAFIELDS if (crit_field['field'][0].startswith('research')) and (crit_field['field'][0] not in ['researchProjectInfoFields', 'researchSubprojectInfoFields',]) ]
+	indexes = [ crit_field['field'][0] for crit_field in PROJECTLIST_CRITERIAFIELDS if (crit_field['field'][0].startswith('research') or crit_field['field'][0].startswith('getResearch')) and (crit_field['field'][0] not in ['getResearchProjectInfoFields', 'getResearchSubprojectInfoFields',]) ]
         table_fields = [ atrp_tool.getRPListCriteriaIndex(index) for index in  indexes ]
         return DisplayList([('Title', 'Title')] + [ (field.index, field.friendlyName or field.index) for field in table_fields ])
 

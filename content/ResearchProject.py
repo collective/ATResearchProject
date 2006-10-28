@@ -139,15 +139,6 @@ class ResearchProject(BrowserDefaultMixin, OrderedBaseFolder):
         rp_info.extend(eval('self.%s(**kwargs)' % accessor))
       return rp_info      
 
-    security.declareProtected(permissions.ModifyPortalContent, 'setResearchProjectInfoFields')
-    def setResearchProjectInfoFields (self, value=None, **kwargs):
-      """set project information fields (value is ignored)
-      """
-      rp_info = []
-      for accessor in PROJECT_INFOFIELD_ACCESSORS:
-        rp_info.extend(eval('self.%s(**kwargs)' % accessor))
-      self.getField('researchProjectInfoFields').set(self, rp_info)
-
     security.declareProtected(permissions.ModifyPortalContent, 'setResearchProjectOfficialTitleAndTitle')
     def setResearchProjectOfficialTitleAndTitle (self, value, **kwargs):
       """Duplicate Title into researchProjectTitle.

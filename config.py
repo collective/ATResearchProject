@@ -102,7 +102,7 @@ PROJECTLIST_CRITERIAFIELDS = [
     },
     {
 	'portal_type'	: 'ResearchProject',
-	'field'		: ('researchProjectContactPersons', 'Research Project - Contact Persons', '',),
+	'field'		: ('researchProjectContactPersons', 'Research Project - Contact Person', '',),
         'index_type'    : text_index_type,
 	'ctypes'	: ('ATSimpleStringCriterion', )
     },	

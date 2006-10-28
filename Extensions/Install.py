@@ -128,7 +128,6 @@ def autoMigration(self, out):
     for migration in migrations:
 	migration.migrate()
 	
-
 def install(self):
     out = StringIO()
  
@@ -137,11 +136,11 @@ def install(self):
     addActions(self, out)
  
     installTypes(self, out, listTypes(PROJECTNAME), PROJECTNAME)
-    out.write('%s\n' % listTypes(PROJECTNAME))
     addToFactoryTool(self, out)
-    autoMigration(self, out)
     addIndexesToCatalogTool(self, out)
     addMetadataToCatalogTool(self, out)
+
+    autoMigration(self, out)
     
     install_subskin(self, out, GLOBALS)
 

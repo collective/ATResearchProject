@@ -10,14 +10,6 @@ from Products.Archetypes.public import listTypes
 # myself
 from Products.ATResearchProject.config import PROJECTNAME
 
-ATRP_SCHEMA_MIGRATION = {
-    'ResearchProject': { 'new': [ 'researchProjectContactPersons',], 'removed': [ 'researchProjectInfoFields',], },
-    'ResearchSubproject': { 'new': [], 'removed': [ 'researchSubprojectInfoFields', ], },
-    'ResearchProjectInternalFolder': { 'new': [], 'removed': [], },
-    'ResearchProjectList': { 'new': [], 'removed': [], },
-    'ResearchField': { 'new': [], 'removed': [], },
-}
-
 ATRPLIST_CRITERIA_MIGRATION = [
     { 'old_index': 'researchProjectInfoFields', 'new_index': 'getResearchProjectInfoFields',},
     { 'old_index': 'researchSubprojectInfoFields', 'new_index': 'getResearchSubprojectInfoFields',},
@@ -39,66 +31,7 @@ class Migration(object):
         """
         print >> self.out
 	print >> self.out, u"Migrating ATResearchProject UNRELEASED -> 0.4"
-	if self.needsGeneralSchemaUpgrade():
-    	    self.generalSchemaUpgrade()
 	self.migrateATRPListsCriteria()
-	    
-
-    def needsGeneralSchemaUpgrade(self):
-        """Returns True if one of the first 5 ATRP items found
-           has missing schema fields; called by the installer to 
-	   figure out whether a schema update is needed."""
-        print >> self.out, u"general schema upgrade of ATResearchProject items"
-	print >> self.out, u"-------------------------------------------------"
-	ctool = getToolByName(self.site, 'portal_catalog')
-
-	for ct in ATRP_SCHEMA_MIGRATION.keys():
-	    brains = ctool(portal_type=ct)
-	    new_attributes = ATRP_SCHEMA_MIGRATION[ct]['new']
-	    removed_attributes =  ATRP_SCHEMA_MIGRATION[ct]['removed']
-
-	    # needs schema upgrade for authors field
-	    if brains:
-		for attribute in new_attributes:
-		    for brain in brains[:10]:
-			if not shasattr(brain.getObject(), attribute, False):
-			    return True
-		for attribute in removed_attributes:
-		    for brain in brains[:10]:
-			if shasattr(brain.getObject(), attribute, False):
-			    return True
-	
-	print >> self.out, u"    No general schema upgrade needed."
-	print >> self.out
-	
-	return False
-																								     
-    # migrate data from old to new schema
-    def generalSchemaUpgrade(self):
-        """perform a general AT schema upgrade"""
-
-        # logging to ZLog and to quick installer's report
-        print >> self.out, u'    ATResearchProject items need general schema upgrade!!! This might take a while...'
-        print u'***'
-        print u'*** ATResearchProject migration: ATResearchProject items need general schema upgrade!!! This might take a while...'
-        print u'***'
-	    
-        ctool = getToolByName(self.site, 'portal_catalog')
-	atrp_types = [ ct['portal_type'] for ct in listTypes(PROJECTNAME) ]
-	brains = ctool(portal_type=atrp_types, Language='all')
-	for brain in brains:
-	    obj = brain.getObject()
-	    ct = obj.portal_type
-	    if ct in ATRP_SCHEMA_MIGRATION.keys():
-		for remove_field in ATRP_SCHEMA_MIGRATION[ct]['removed']:
-		    print "Removing field ,,%s'' from item ,,%s'' (type: %s)" % (remove_field, obj.getId(), ct)
-		    delattr(obj, remove_field)
-	    obj._updateSchema()
-	    
-	print u'ATResearchProject migration: Upgraded schemata of %s items' % len(brains)
-	print
-	print >> self.out, u'    Upgraded schemata of %s items' % len(brains)
-	print >> self.out
 
     def migrateATRPListsCriteria(self):
         """Migrates ATRPList criteria if index ids have changed; called

@@ -204,10 +204,6 @@ ATResearchProjectSchema =  BaseSchema.copy() +  Schema((
                 widget=ComputedWidget(
 		    i18n_domain = 'atresearchproject'
 		),
-		#widget=LinesWidget(
-		#    visible = { 'edit': 'hidden', 'view': 'invisible', },
-		#    i18n_domain = 'atresearchproject',
-		#),
         ),
 	LinesField('researchProjectProjectCoordinators',
                 searchable=1,

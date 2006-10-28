@@ -127,6 +127,30 @@ class ResearchProjectSiteConfiguration(UniqueObject, SimpleItem, PropertyManager
 	else:
 	    raise AttributeError ('Index ' + str(index_name) + ' not found')
 
+    def memberIdToFullname(self, memberId):
+    
+	mtool = getToolByName(self, 'portal_membership')
+
+	text = ''
+	#if just the tag is given try to get the fullname
+        member = mtool.getMemberById(memberId)
+        if member:
+                    
+                if member.hasProperty('academic_title') and (member.getPropertyType('academic_title') == 'string') and member.getProperty('academic_title'):
+                    text = string.strip(member.getProperty('academic_title') + ' ' + member.getProperty('fullname'))
+                elif member.hasProperty('academictitle') and (member.getPropertyType('academictitle') == 'string') and member.getProperty('academictitle'):
+                    text = string.strip(member.getProperty('academictitle') + ' ' + member.getProperty('fullname'))
+                elif member.hasProperty('academic_title') and (member.getPropertyType('academic_title') == 'lines') and member.getProperty('academic_title'):
+                    text = string.strip(member.getProperty('academic_title')[0] + ' ' + member.getProperty('fullname'))
+		    try:
+		        text = string.strip(text + ' ' + member.getProperty('academic_title')[1])
+		    except IndexError:
+		        pass   
+                else:
+                    text = member.getProperty('fullname')
+		    
+	return text		 
+
     def structureExtendedLinesField(self, lines_field, **kwargs):
       """ parses the lines in the LinesField and searches for tags that add hyperref information to the 
       field text"""
@@ -152,53 +176,42 @@ class ResearchProjectSiteConfiguration(UniqueObject, SimpleItem, PropertyManager
 	#   o raw: do nothing, return the entire line as it is
         if formatType == 'plain':
         
-	  extendedLinesField.append(text)
+	    if text:
+		extendedLinesField.append(text)
+	    else:
+        	if len(string.split(tag,' ')) == 1:
+	    	    
+		    tagType = string.split(tag,':')[0][1:]
+		    tagContent = ':'.join(string.split(tag,':')[1:])[:-1]
+		    if (tagType == 'member') or (tagType == 'uid'):
+	    	
+			# see, if the specified memberId exists on this site and, if so, hyperlink the text to the member's home page
+			memberId = tagContent
+			fullname = self.memberIdToFullname(memberId)
+			if fullname:
+			    extendedLinesField.append(fullname)
         
 	elif formatType == 'structure':
         
 	  extended_field_structure = text
           # ignore tags for this line if more than one tag is specified for this line
           if len(string.split(tag,' ')) == 1:
-	    
+	    	    
 	    tagType = string.split(tag,':')[0][1:]
 	    tagContent = ':'.join(string.split(tag,':')[1:])[:-1]
 	    if (tagType == 'member') or (tagType == 'uid'):
+	    	
+		# see, if the specified memberId exists on this site and, if so, hyperlink the text to the member's home page
+		memberId = tagContent
+		text = self.memberIdToFullname(memberId)
 
-              # see, if the specified memberUid exists on this site and, if so, hyperlink the text to the member's home page
-	      memberUid = tagContent
-	      mtool = getToolByName(self, 'portal_membership')
-
-	      #if just the tag is given try to get the fullname
-              if not text:
-                member = mtool.getMemberById(memberUid)
-                if member:
-                    
-                    if member.hasProperty('academic_title') and (member.getPropertyType('academic_title') == 'string') and member.getProperty('academic_title'):
-                        text = string.strip(member.getProperty('academic_title') + ' ' + member.getProperty('fullname'))
-                    elif member.hasProperty('academictitle') and (member.getPropertyType('academictitle') == 'string') and member.getProperty('academictitle'):
-                        text = string.strip(member.getProperty('academictitle') + ' ' + member.getProperty('fullname'))
-                    elif member.hasProperty('academic_title') and (member.getPropertyType('academic_title') == 'lines') and member.getProperty('academic_title'):
-                        text = string.strip(member.getProperty('academic_title')[0] + ' ' + member.getProperty('fullname'))
-			try:
-			    text = string.strip(text + ' ' + member.getProperty('academic_title')[1])
-			except IndexError:
-			    pass   
-                    elif member.hasProperty('academictitle') and (member.getPropertyType('academictitle') == 'lines') and member.getProperty('academictitle'):
-                        
-			text = string.strip(member.getProperty('academictitle')[0] + ' ' + member.getProperty('fullname'))
-			try:
-			    text = string.strip(text + ' ' + member.getProperty('academictitle')[1])
-			except IndexError:
-			    pass    
-                    else:
-                        text = member.getProperty('fullname')
-		              
-	      # override if home page exists
-              if mtool.getHomeUrl(memberUid):
-                extended_field_structure = '<a href="%s">%s</a>' % (mtool.getHomeUrl(memberUid), text)
-	      else:
-	        extended_field_structure = text
-
+                # override if home page exists
+		mtool = getToolByName(self, 'portal_membership')
+		if mtool.getHomeUrl(memberId):
+		    extended_field_structure = '<a href="%s">%s</a>' % (mtool.getHomeUrl(memberId), text)
+		else:
+		    extended_field_structure = text
+									    
  	    elif tagType == 'url':
 	     
 	      url = tagContent
@@ -211,8 +224,8 @@ class ResearchProjectSiteConfiguration(UniqueObject, SimpleItem, PropertyManager
 	      if '@' in mailAddress:
                 extended_field_structure = '<a href="&#0109;ailto&#0058;' + mailAddress.replace('@', '&#0064;').replace(':', '&#0058;') + '">' + text + '</a>'
 
-          if extended_field_structure:
-              extendedLinesField.append(extended_field_structure)
+    	  if extended_field_structure:
+            extendedLinesField.append(extended_field_structure)
         
 	else:
         
