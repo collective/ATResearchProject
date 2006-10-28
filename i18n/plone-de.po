@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ATResearchProject 0.4.0\n"
 "POT-Creation-Date: 2005-12-30 23:31+0100\n"
-"PO-Revision-Date: 2006-01-29 12:04+0100\n"
+"PO-Revision-Date: 2006-10-28 19:57-0000\n"
 "Last-Translator: Mike Gabriel <m.gabriel@sunweavers.net>\n"
 "Language-Team: netzwerkteam OEZK <plone-developers@ecology.uni-kiel.de>\n"
 "MIME-Version: 1.0\n"
@@ -18,22 +18,22 @@ msgstr ""
 "X-Is-Fallback-For: de-at de-li de-lu de-ch de-de\n"
 
 #. Default: "Research Field"
-#: ResearchField.py
+#: content/ResearchField.py
 msgid "Research Field"
 msgstr "Forschungsthema"
 
 #. Default: "Research Project List"
-#: ResearchProjectList.py
+#: content/ResearchProjectList.py
 msgid "Research Project List"
 msgstr "Forschungsprojektliste"
 
 #. Default: "Research Project"
-#: ResearchProject.py
+#: content/ResearchProject.py
 msgid "Research Project"
 msgstr "Forschungsprojekt"
 
 #. Default: "Subproject"
-#: ResearchSubproject.py
+#: content/ResearchSubproject.py
 msgid "Subproject"
 msgstr "Teilprojekt"
 
@@ -43,22 +43,22 @@ msgid "Research Projects"
 msgstr "Forschungsprojekte"
 
 #. Default: "Use this content type to depict your institute's research fields. Afterwards, research projects and subprojects can easily reference existing research fields."
-#: ResearchField.py
+#: content/ResearchField.py
 msgid "description_edit_researchfield"
 msgstr "Mit diesem Inhaltstyp können Sie Forschungsthemen auf Ihrem Site präsentieren. Forschungs- und Teilprojekte lassen sich dann anschließend den auf dem Site vorhandenen Forschungsthemen zuordnen."
 
 #. Default: "Use this folderish content type to specify a research project search criterion. According to the specified search criterion, a research project list always renders a current list of research projects and subprojects on your site."
-#: ResearchProjectList.py
+#: content/ResearchProjectList.py
 msgid "description_edit_researchprojectlist"
 msgstr "Mit diesem Inhaltstyp können Sie ein Suchkriterium definieren, das ihnen stets eine - dem Suchkriterium entsprechende - aktuelle  Liste aller Forschungsrojekte und Teilprojekte auf diesem Site anzeigen wird."
 
 #. Default: "Use this folderish content type to characterize the set up of scientific research projects."
-#: ResearchProject.py
+#: content/ResearchProject.py
 msgid "description_edit_researchproject"
 msgstr "Ein Forschungsprojektordner beinhaltet Informationen zu Management, wiss. Koordination, Auftragebern etc. von Forschungsprojekten."
 
 #. Default: "A subproject folder offers the possbility to substructure a research project."
-#: ResearchSubproject.py
+#: content/ResearchSubproject.py
 msgid "description_edit_researchsubproject"
 msgstr "Eine Teilprojektordner erlaubt es, Forschungsprojekte zu untergliedern und deren tatsächliche Strukturen und Inhalte abzubilden. Teilprojektordner sind nur innerhalb von Forschungprojektordnern verfügbar."
 
@@ -92,20 +92,25 @@ msgstr "Verweisen Sie hier auf andere Site-Inhalte."
 msgid "label_add"
 msgstr "Hinzufügen"
 
-#: ./content/ResearchProjectInternalFolder.py
 #. Default: "research_subprojects_overview"
+#: content/ResearchProjectInternalFolder.py
 msgid "research_subprojects_overview"
 msgstr "Teilprojektübersicht"
 
-#. Default: "End of Research Project's runtime"
+#. Default: "Research Project - Keywords"
 #: config.py
-msgid "End of Research Project's runtime"
-msgstr "Forschungsprojekt - Ende der Laufzeit"
+msgid "Research Project - Keywords"
+msgstr "Forschungsprojekt - Stichwörter"
 
-#. Default: "End of Research Subproject's runtime"
+#. Default: "Research Project - Project Coordinator"
 #: config.py
-msgid "End of Research Subproject's runtime"
-msgstr "Teilprojekt - Ende der Laufzeit"
+msgid "Research Project - Project Coordinator"
+msgstr "Forschungsprojekt - Projektkoordinator"
+
+#. Default: "Research Project - Contact Person"
+#: config.py
+msgid "Research Project - Contact Person"
+msgstr "Forschungsprojekt - Kontaktperson"
 
 #. Default: "Research Project - Contractor"
 #: config.py
@@ -117,10 +122,25 @@ msgstr "Forschungsprojekt - Auftraggeber"
 msgid "Research Project - Third-party funded"
 msgstr "Forschungsprojekt - aus Drittmitteln finanziert"
 
-#. Default: "Research Project - Cooperation Partner"
+#. Default: "Research Project - Scientific Coordinator"
 #: config.py
-msgid "Research Project - Cooperation Partner"
-msgstr "Forschungsprojekt - Kooperationspartner"
+msgid "Research Project - Scientific Coordinator"
+msgstr "Forschungsprojekt - Wissenschaftl. Koordinator"
+
+#. Default: "Research Project - Scientific Staff Member"
+#: config.py
+msgid "Research Project - Scientific Staff Member"
+msgstr "Forschungsprojekt - Wissenschaftl. MitarbeiterIn"
+
+#. Default: "Research Project - Technical Staff Member"
+#: config.py
+msgid "Research Project - Technical Staff Member"
+msgstr "Forschungsprojekt - TechnischeR MitarbeiterIn"
+
+#. Default: "Research Project - Student Staff Member"
+#: config.py
+msgid "Research Project - Student Staff Member"
+msgstr "Forschungsprojekt - Studentische Hilfskraft"
 
 #. Default: "Research Project - Former Staff Member"
 #: config.py
@@ -132,85 +152,20 @@ msgstr "Forschungsprojekt - EhemaligeR MitarbeiterIn"
 msgid "Research Project - Former Student Staff Member"
 msgstr "Forschungsprojekt - Ehemalige Studentische Hilfskraft"
 
+#. Default: "Research Project - Cooperation Partner"
+#: config.py
+msgid "Research Project - Cooperation Partner"
+msgstr "Forschungsprojekt - Kooperationspartner"
+
 #. Default: "Research Project - Involved Department"
 #: config.py
 msgid "Research Project - Involved Department"
 msgstr "Forschungsprojekt - Involvierte Abteilung"
 
-#. Default: "Research Project - Keywords"
-#: config.py
-msgid "Research Project - Keywords"
-msgstr "Forschungsprojekt - Stichwörter"
-
-#. Default: "Research Project - Official Title"
-#: config.py
-msgid "Research Project - Official Title"
-msgstr "Forschungsprojekt - Offizieller Titel"
-
-#. Default: "Research Project - Project Coordinator"
-#: config.py
-msgid "Research Project - Project Coordinator"
-msgstr "Forschungsprojekt - Projektkoordinator"
-
-#. Default: "Research Project - Scientific Coordinator"
-#: config.py
-msgid "Research Project - Scientific Coordinator"
-msgstr "Forschungsprojekt - Wissenschaftl. Koordinator"
-
-#. Default: "Research Project - Scientific Staff Member"
-#: config.py
-msgid "Research Project - Scientific Staff Member"
-msgstr "Forschungsprojekt - Wissenschaftl. MitarbeiterIn"
-
-#. Default: "Research Project - Student Staff Member"
-#: config.py
-msgid "Research Project - Student Staff Member"
-msgstr "Forschungsprojekt - Studentische Hilfskraft"
-
-#. Default: "Research Project - Technical Staff Member"
-#: config.py
-msgid "Research Project - Technical Staff Member"
-msgstr "Forschungsprojekt - TechnischeR MitarbeiterIn"
-
-#. Default: "Research Project - Title"
-#: config.py
-msgid "Research Project - Title"
-msgstr "Forschungsprojekt - Titel"
-
-#. Default: "Research Subproject - Cooperation Partner"
-#: config.py
-msgid "Research Subproject - Cooperation Partner"
-msgstr "Teilprojekt - Kooperationspartner"
-
-#. Default: "Research Subproject - External Institute"
-#: config.py
-msgid "Research Subproject - External Institute"
-msgstr "Teilprojekt - Externes Institut"
-
-#. Default: "Research Subproject - Former Staff Member"
-#: config.py
-msgid "Research Subproject - Former Staff Member"
-msgstr "Teilprojekt - EhemaligeR MitarbeiterIn"
-
-#. Default: "Research Subproject - Former Student Staff Member"
-#: config.py
-msgid "Research Subproject - Former Student Staff Member"
-msgstr "Teilprojekt - Ehemalige Studentische Hilfskraft"
-
-#. Default: "Research Subproject - Involved Department"
-#: config.py
-msgid "Research Subproject - Involved Department"
-msgstr "Teilprojekt - Involvierte Abteilungen"
-
 #. Default: "Research Subproject - Keywords"
 #: config.py
 msgid "Research Subproject - Keywords"
 msgstr "Teilprojekt - Stichwörter"
-
-#. Default: "Research Subproject - Official Title"
-#: config.py
-msgid "Research Subproject - Official Title"
-msgstr "Teilprojekt - Offizieller Titel"
 
 #. Default: "Research Subproject - Scientific Coordinator"
 #: config.py
@@ -222,28 +177,78 @@ msgstr "Teilprojekt - Wissenschaftl. Koordinator"
 msgid "Research Subproject - Scientific Staff Member"
 msgstr "Teilprojekt - Wissenschaftl. MitarbeiterIn"
 
-#. Default: "Research Subproject - Student Staff Member"
-#: config.py
-msgid "Research Subproject - Student Staff Member"
-msgstr "Teilprojekt - Studentische Hilfskraft"
-
 #. Default: "Research Subproject - Technical Staff Member"
 #: config.py
 msgid "Research Subproject - Technical Staff Member"
 msgstr "Teilprojekt - TechnischeR MitarbeiterIn"
 
-#. Default: "Research Subproject - Title"
+#. Default: "Research Subproject - Student Staff Member"
 #: config.py
-msgid "Research Subproject - Title"
-msgstr "Teilprojekt - Titel"
+msgid "Research Subproject - Student Staff Member"
+msgstr "Teilprojekt - Studentische Hilfskraft"
+
+#. Default: "Research Subproject - Former Staff Member"
+#: config.py
+msgid "Research Subproject - Former Staff Member"
+msgstr "Teilprojekt - EhemaligeR MitarbeiterIn"
+
+#. Default: "Research Subproject - Former Student Staff Member"
+#: config.py
+msgid "Research Subproject - Former Student Staff Member"
+msgstr "Teilprojekt - Ehemalige Studentische Hilfskraft"
+
+#. Default: "Research Subproject - External Institute"
+#: config.py
+msgid "Research Subproject - External Institute"
+msgstr "Teilprojekt - Externes Institut"
+
+#. Default: "Research Subproject - Cooperation Partner"
+#: config.py
+msgid "Research Subproject - Cooperation Partner"
+msgstr "Teilprojekt - Kooperationspartner"
+
+#. Default: "Research Subproject - Involved Department"
+#: config.py
+msgid "Research Subproject - Involved Department"
+msgstr "Teilprojekt - Involvierte Abteilungen"
 
 #. Default: "Start of Research Project's runtime"
 #: config.py
 msgid "Start of Research Project's runtime"
 msgstr "Forschungsprojekt - Beginn der Laufzeit"
 
+#. Default: "End of Research Project's runtime"
+#: config.py
+msgid "End of Research Project's runtime"
+msgstr "Forschungsprojekt - Ende der Laufzeit"
+
+#. Default: "Research Project - Title"
+#: config.py
+msgid "Research Project - Title"
+msgstr "Forschungsprojekt - Titel"
+
+#. Default: "Research Project - Official Title"
+#: config.py
+msgid "Research Project - Official Title"
+msgstr "Forschungsprojekt - Offizieller Titel"
+
 #. Default: "Start of Research Subproject's runtime"
 #: config.py
 msgid "Start of Research Subproject's runtime"
 msgstr "Teilprojekt - Beginn der Laufzeit"
+
+#. Default: "End of Research Subproject's runtime"
+#: config.py
+msgid "End of Research Subproject's runtime"
+msgstr "Teilprojekt - Ende der Laufzeit"
+
+#. Default: "Research Subproject - Title"
+#: config.py
+msgid "Research Subproject - Title"
+msgstr "Teilprojekt - Titel"
+
+#. Default: "Research Subproject - Official Title"
+#: config.py
+msgid "Research Subproject - Official Title"
+msgstr "Teilprojekt - Offizieller Titel"
 

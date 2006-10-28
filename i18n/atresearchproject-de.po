@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ATResearchProject 0.4.0\n"
 "POT-Creation-Date: 2005-12-30 23:31+0100\n"
-"PO-Revision-Date: 2006-06-12 19:30+0100\n"
+"PO-Revision-Date: 2006-10-28 19:57-0000\n"
 "Last-Translator: Mike Gabriel <m.gabriel@sunweavers.net>\n"
 "Language-Team: netzwerkteam OEZK <plone-developers@ecology.uni-kiel.de>\n"
 "MIME-Version: 1.0\n"
@@ -20,6 +20,10 @@ msgstr ""
 #: skins/ATResearchProject/rplist_criterion_save.cpy:32
 msgid "Changes saved."
 msgstr "Änderungen wurde übernommen."
+
+#. Default: "Contact"
+msgid "Contact"
+msgstr "Kontakt"
 
 #. Default: "Contractor(s)"
 #: skins/ATResearchProject/research_project_macros.pt
@@ -60,6 +64,11 @@ msgstr "Ehem. stud. Hilfskräfte"
 #: skins/ATResearchProject/research_project_macros.pt
 msgid "Project coordination"
 msgstr "Projektkoordination"
+
+#. Default: "Research Project - Contact Person"
+#: config.py
+msgid "Research Project - Contact Person"
+msgstr "Forschungsprojekt - Kontaktperson"
 
 #. Default: "Research Project - Contractor"
 #: config.py
@@ -398,6 +407,11 @@ msgstr "Markieren Sie diese Checkbox, falls Sie &raquo;Teilprojekte&laquo; mit &
 msgid "help_comment_researchprojectlist"
 msgstr "Eine Forschungsprojektliste ist eine Zusammenstellung von Suchanfragekriterien zu Forschungs- und Teilprojekten. Charakterisieren Sie hier ihre unter dem Reiter &raquo;Kriterien&laquo; definierten Suchkriterien."
 
+#. Default: "The contact person(s) is in charge of the research projects' PR work. Ideally, there is only one contact person, but this depends on your project. The name of this person should also be mentioned in one of the other staff/coordinators fields."
+#: schemata.py
+msgid "help_contactpersons_researchproject"
+msgstr "Die Kontaktperson(en) dienen im Projekt als AnsprechpartnerInnen und gestalten ggf. die Öffentlichkeitsarbeit im Projekt. Idealerweise handelt es sich hierbei um eine einzige Person, allerdings hängt das vom Kontext des Forschungsprojekts ab. Der Name der Kontaktperson sollte auch in einem der anderen Felder für MitarbeiterInnen / KoordinatorInnen genannt werden."
+
 #. Default: "Contracting parties mostly provide the financial basis of research projects (e.g. &raquo;Greenpeace&laquo; - if you want to subtly link to the Greenpeace site use &raquo;Greenpeace &lt;url:http://www.greenpeace.com&gt;&laquo;)."
 #: schemata.py
 msgid "help_contractors_researchproject"
@@ -704,23 +718,23 @@ msgid "label_abstract_researchsubproject"
 msgstr "Zusammenfassung"
 
 #. Default: "Allowed Content Types"
+#: skins/ATResearchProject/prefs_atrptool_info.pt
 #: skins/ATResearchProject/prefs_atrptool_contenttypes.pt
 #: skins/ATResearchProject/prefs_atrptool_departments.pt
-#: skins/ATResearchProject/prefs_atrptool_info.pt
 msgid "label_atrptool_contenttypes"
 msgstr "Zulässige Inhaltstypen"
 
 #. Default: "Department Names"
+#: skins/ATResearchProject/prefs_atrptool_info.pt
 #: skins/ATResearchProject/prefs_atrptool_contenttypes.pt
 #: skins/ATResearchProject/prefs_atrptool_departments.pt
-#: skins/ATResearchProject/prefs_atrptool_info.pt
 msgid "label_atrptool_departments"
 msgstr "Abteilungsnamen"
 
 #. Default: "Information"
+#: skins/ATResearchProject/prefs_atrptool_info.pt
 #: skins/ATResearchProject/prefs_atrptool_contenttypes.pt
 #: skins/ATResearchProject/prefs_atrptool_departments.pt
-#: skins/ATResearchProject/prefs_atrptool_info.pt
 msgid "label_atrptool_info"
 msgstr "Information"
 
@@ -758,6 +772,11 @@ msgstr "Kommentar"
 #: skins/ATResearchProject/research_project_byline.pt
 msgid "label_composed_by_author"
 msgstr "verfasst von ${author}"
+
+#. Default: "Contact"
+#: schemata.py
+msgid "label_contactpersons_researchproject"
+msgstr "Kontakt"
 
 #. Default: "Contractor(s) or contracting Organization(s)"
 #: schemata.py
@@ -1090,14 +1109,14 @@ msgid "portaltype_researchfield"
 msgstr "Forschungsthema"
 
 #. Default: "Research Project"
-#: skins/ATResearchProject/prefs_atrptool_contenttypes.pt
 #: skins/ATResearchProject/research_project_macros.pt
+#: skins/ATResearchProject/prefs_atrptool_contenttypes.pt
 msgid "portaltype_researchproject"
 msgstr "Forschungsprojekt"
 
 #. Default: "Subproject"
-#: skins/ATResearchProject/prefs_atrptool_contenttypes.pt
 #: skins/ATResearchProject/research_project_macros.pt
+#: skins/ATResearchProject/prefs_atrptool_contenttypes.pt
 msgid "portaltype_subproject"
 msgstr "Teilprojekt"
 
@@ -1210,7 +1229,6 @@ msgstr "seit"
 
 #. Default: "Note: No research fields have been found on this site. Create some Research Fields at some other location on this site first, publish them and only then they can be referenced from within a Research Project. This feature is optional, so ignore it, if you do not want to define research fields on your site."
 #: skins/ATResearchProject/research_project_researchfieldreference_inandoutwidget.pt
-#: skins/ATResearchProject/research_project_researchfieldreference_referencewidget.pt
 msgid "widget_noresearchfieldsfound"
 msgstr "Hinweis: Auf Ihrem Site wurden keine Forschungsthemen gefunden. Um &raquo;Forschungsthemen&laquo; in &raquo;Forschungsprojekten&laquo; zu referenzieren, müssen erstere zunächst an einer anderen Stelle des Sites erstellt und dort zur Anzeige freigegeben (i.A. veröffentlicht) werden. Das Referenzieren von Forschungsthemen in Projekten ist optional, dieser Hinweis kann ignoriert werden, wenn Forschungthemen auf diesem Site nicht zur Anwendung kommen sollen."
 
