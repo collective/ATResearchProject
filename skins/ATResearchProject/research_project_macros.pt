@@ -600,7 +600,11 @@
           </tal:if>
         </tal:displayprojectcoordinators>
 
-        <tal:displaycontactpersons tal:define="contactPersons python: project.getResearchProjectContactPersons(extended_field_format='structure')">
+        </div>
+
+	<div style="padding-left: 24pt; margin-top: 4pt;">
+	
+	<tal:displaycontactpersons tal:define="contactPersons python: project.getResearchProjectContactPersons(extended_field_format='structure')">
           <tal:if tal:condition="python: here.getResearchProjectListDisplayContactPersonsResearchProjects() and project.getResearchProjectContactPersons()">
           <span i18n:domain="atresearchproject"
                 i18n:translate="">Contact</span>:

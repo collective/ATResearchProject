@@ -1095,7 +1095,8 @@ ATResearchProjectListSchema.moveField('researchProjectListDisplayResearchProject
 ATResearchProjectListSchema.moveField('researchProjectListDisplayHeadlineResearchProjects', after='researchProjectListDisplayResearchProjects')
 ATResearchProjectListSchema.moveField('researchProjectListDisplayRuntimeResearchProjects', after='researchProjectListDisplayHeadlineResearchProjects')
 ATResearchProjectListSchema.moveField('researchProjectListDisplayProjectCoordinatorsResearchProjects', after='researchProjectListDisplayRuntimeResearchProjects')
-ATResearchProjectListSchema.moveField('researchProjectListDisplayContractorsResearchProjects', after='researchProjectListDisplayProjectCoordinatorsResearchProjects')
+ATResearchProjectListSchema.moveField('researchProjectListDisplayContactPersonsResearchProjects', after='researchProjectListDisplayProjectCoordinatorsResearchProjects')
+ATResearchProjectListSchema.moveField('researchProjectListDisplayContractorsResearchProjects', after='researchProjectListDisplayContactPersonsResearchProjects')
 ATResearchProjectListSchema.moveField('researchProjectListDisplayAbstractsResearchProjects', after='researchProjectListDisplayContractorsResearchProjects')
 
 ATResearchProjectListSchema.moveField('researchProjectListDisplayResearchSubprojects', after='researchProjectListDisplayAbstractsResearchProjects')
@@ -1158,7 +1159,7 @@ ATResearchFieldSchema =  BaseSchema.copy() +  Schema((
         	    i18n_domain = 'atresearchproject',
 		),
 	),
-        BooleanField('researchFieldDisplayContactPerons',
+        BooleanField('researchFieldDisplayContactPersons',
                 required=False,
                 mode="rw",
                 default=True,
