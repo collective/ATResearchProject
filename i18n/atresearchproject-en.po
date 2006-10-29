@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ATResearchProject 0.4.0\n"
 "POT-Creation-Date: 2005-12-30 23:31+0100\n"
-"PO-Revision-Date: 2006-10-29 18:34-0000\n"
+"PO-Revision-Date: 2006-10-29 23:19-0000\n"
 "Last-Translator: Mike Gabriel <m.gabriel@sunweavers.net>\n"
 "Language-Team: netzwerkteam OEZK <plone-developers@ecology.uni-kiel.de>\n"
 "MIME-Version: 1.0\n"
@@ -22,6 +22,7 @@ msgid "Changes saved."
 msgstr "Changes saved."
 
 #. Default: "Contact"
+#: skins/ATResearchProject/research_project_macros.pt
 msgid "Contact"
 msgstr "Contact"
 
@@ -447,6 +448,11 @@ msgstr "Give a description for this research project list."
 msgid "help_display_abstracts_researchfield"
 msgstr "Tick this checkbox if you want abstracts of &raquo;Research Projects&laquo; to be displayed in the project list at the bottom of this &raquo;Research Field&laquo;."
 
+#. Default: "Tick this checkbox if you want the contact person(s) of &raquo;Research Projects&laquo; to be displayed in the project list at the bottom of this &raquo;Research Field&laquo;."
+#: schemata.py
+msgid "help_display_contactpersons_researchfield"
+msgstr ".Tick this checkbox if you want the contact person(s) of &raquo;Research Projects&laquo; to be displayed in the project list at the bottom of this &raquo;Research Field&laquo;."
+
 #. Default: "Tick this checkbox if you want the contracting parties of &raquo;Research Projects&laquo; to be displayed in the project list at the bottom of this &raquo;Research Field&laquo;."
 #: schemata.py
 msgid "help_display_contractors_researchfield"
@@ -476,6 +482,11 @@ msgstr "Tick this checkbox if you want &raquo;Research Subprojects&laquo; to be 
 #: schemata.py
 msgid "help_display_rpabstracts_researchprojectlist"
 msgstr "Tick this checkbox if you want abstracts (or keywords if no abstract is available) of &raquo;Research Projects&laquo; to be displayed in the non-tabular view of this &raquo;Research Project List&laquo;."
+
+#. Default: "Tick this checkbox if you want the contact person(s) of &raquo;Research Projects&laquo; to be displayed in the non-tabular view of this &raquo;Research Project List&laquo;. If you select the tabular view further below this option will be ignored."
+#: schemata.py
+msgid "help_display_rpcontactpersons_researchprojectlist"
+msgstr "Tick this checkbox if you want the contact person(s) of &raquo;Research Projects&laquo; to be displayed in the non-tabular view of this &raquo;Research Project List&laquo;. If you select the tabular view further below this option will be ignored."
 
 #. Default: "Tick this checkbox if you want the contracting parties of &raquo;Research Projects&laquo; to be displayed in the non-tabular view of this &raquo;Research Project List&laquo;."
 #: schemata.py
@@ -818,6 +829,11 @@ msgstr "Description"
 msgid "label_display_abstracts_researchfield"
 msgstr "Display Abstracts of Research Projects"
 
+#. Default: "Display Contact Person(s)"
+#: schemata.py
+msgid "label_display_contactpersons_researchfield"
+msgstr "Display Contact Person(s)"
+
 #. Default: "Display Project Contractors"
 #: schemata.py
 msgid "label_display_contractors_researchfield"
@@ -847,6 +863,11 @@ msgstr "Display Research Subprojects"
 #: schemata.py
 msgid "label_display_rpabstracts_researchprojectlist"
 msgstr "Display Abstracts (or Keywords) of Research Projects"
+
+#. Default: "Display Contact Person(s) of Research Projects"
+#: schemata.py
+msgid "label_display_rpcontactpersons_researchprojectlist"
+msgstr "Display Contact Person(s) of Research Projects"
 
 #. Default: "Display Contractors of Research Projects"
 #: schemata.py
