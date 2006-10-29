@@ -254,7 +254,7 @@
       </span>
         
       <!-- OTHER LINES FIELDS -->
-      <tal:loop tal:repeat="method python: [('Project coordination',here.getResearchProjectProjectCoordinators(extended_field_format='structure')),('Scientific coordination',here.getResearchProjectScientificCoordinators(extended_field_format='structure')),('Scientific staff',here.getResearchProjectInheritedScientificStaffMembers(extended_field_format='structure')),('Technical staff',here.getResearchProjectInheritedTechnicalStaffMembers(extended_field_format='structure')),('Student staff',here.getResearchProjectInheritedStudentStaffMembers(extended_field_format='structure')),('Former staff',here.getResearchProjectInheritedFormerStaffMembers(extended_field_format='structure')),('Former student staff',here.getResearchProjectInheritedFormerStudentStaffMembers(extended_field_format='structure')),('Cooperation partner(s)',here.getResearchProjectCooperationPartners(extended_field_format='structure')),('Contractor(s)',here.getResearchProjectContractors(extended_field_format='structure')),]">
+      <tal:loop tal:repeat="method python: [('Contact',here.getResearchProjectContactPersons(extended_field_format='structure')),('Project coordination',here.getResearchProjectProjectCoordinators(extended_field_format='structure')),('Scientific coordination',here.getResearchProjectScientificCoordinators(extended_field_format='structure')),('Scientific staff',here.getResearchProjectInheritedScientificStaffMembers(extended_field_format='structure')),('Technical staff',here.getResearchProjectInheritedTechnicalStaffMembers(extended_field_format='structure')),('Student staff',here.getResearchProjectInheritedStudentStaffMembers(extended_field_format='structure')),('Former staff',here.getResearchProjectInheritedFormerStaffMembers(extended_field_format='structure')),('Former student staff',here.getResearchProjectInheritedFormerStudentStaffMembers(extended_field_format='structure')),('Cooperation partner(s)',here.getResearchProjectCooperationPartners(extended_field_format='structure')),('Contractor(s)',here.getResearchProjectContractors(extended_field_format='structure')),]">
       
         <div tal:condition="python: method[1]">
           <b tal:content="python: method[0]"
@@ -510,6 +510,18 @@
 
 	<div style="padding-left: 24pt; margin-top: 4pt;">
 	
+        <tal:displaycontactpersons tal:define="contactPersons python: project.getResearchProjectContactPersons(extended_field_format='structure')">
+          <tal:if tal:condition="python: here.getResearchFieldDisplayContactPersons() and project.getResearchProjectContactPersons()">
+          <span i18n:domain="atresearchproject"
+                i18n:translate="">Contact</span>:
+            <span tal:replace="structure python: contactPersons[0]" /><tal:list tal:condition="python: contactPersons[1:]" tal:repeat="item python: contactPersons[1:]">; <span tal:replace="structure item" /></tal:list>
+          </tal:if>
+        </tal:displaycontactpersons>
+        
+        </div>
+	
+	<div style="padding-left: 24pt; margin-top: 4pt;">
+	
         <tal:displaycontractors tal:define="projectContractors python: project.getResearchProjectContractors(extended_field_format='structure')">
           <tal:if tal:condition="python: here.getResearchFieldDisplayContractors() and project.getResearchProjectContractors()">
           <span i18n:domain="atresearchproject"
@@ -587,6 +599,14 @@
             <span tal:replace="structure python: projectCoordinators[0]" /><tal:list tal:condition="python: projectCoordinators[1:]" tal:repeat="item python: projectCoordinators[1:]">; <span tal:replace="structure item" /></tal:list>
           </tal:if>
         </tal:displayprojectcoordinators>
+
+        <tal:displaycontactpersons tal:define="contactPersons python: project.getResearchProjectContactPersons(extended_field_format='structure')">
+          <tal:if tal:condition="python: here.getResearchProjectListDisplayContactPersonsResearchProjects() and project.getResearchProjectContactPersons()">
+          <span i18n:domain="atresearchproject"
+                i18n:translate="">Contact</span>:
+            <span tal:replace="structure python: contactPersons[0]" /><tal:list tal:condition="python: contactPersons[1:]" tal:repeat="item python: contactPersons[1:]">; <span tal:replace="structure item" /></tal:list>
+          </tal:if>
+        </tal:displaycontactpersons>
         
         </div>
 

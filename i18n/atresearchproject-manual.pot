@@ -621,6 +621,16 @@ msgid "help_display_rpprojectcoordinators_researchprojectlist"
 msgstr ""
 
 #: ./schemata.py
+#. Default: "Display Contact Person(s) of Research Projects"
+msgid "label_display_rpcontactpersons_researchprojectlist"
+msgstr ""
+
+#: ./schemata.py
+#. Default: "Tick this checkbox if you want the contact person(s) of &raquo;Research Projects&laquo; to be displayed in the non-tabular view of this &raquo;Research Project List&laquo;. If you select the tabular view further below this option will be ignored."
+msgid "help_display_rpcontactpersons_researchprojectlist"
+msgstr ""
+
+#: ./schemata.py
 #. Default: "Display Research Subroject Runtime"
 msgid "label_display_rspruntime_researchprojectlist"
 msgstr ""
@@ -748,6 +758,16 @@ msgstr ""
 #: ./schemata.py
 #. Default: "Tick this checkbox if you want the project coordinator(s) of &raquo;Research Projects&laquo; to be displayed in the project list at the bottom of this &raquo;Research Field&laquo;."
 msgid "help_display_projectcoordinators_researchfield"
+msgstr ""
+
+#: ./schemata.py
+#. Default: "Display Contact Person(s)"
+msgid "label_display_contactpersons_researchfield"
+msgstr ""
+
+#: ./schemata.py
+#. Default: "Tick this checkbox if you want the contact person(s) of &raquo;Research Projects&laquo; to be displayed in the project list at the bottom of this &raquo;Research Field&laquo;."
+msgid "help_display_contactpersons_researchfield"
 msgstr ""
 
 #: ./schemata.py
