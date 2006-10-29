@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: ATResearchProject svn/trunk\n"
-"POT-Creation-Date: 2006-10-29 18:36+0000\n"
+"POT-Creation-Date: 2006-10-29 23:14+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -25,6 +25,7 @@ msgid "Changes saved."
 msgstr ""
 
 #. Default: "Contact"
+#: ./skins/ATResearchProject/research_project_macros.pt
 msgid "Contact"
 msgstr ""
 
@@ -450,6 +451,11 @@ msgstr ""
 msgid "help_display_abstracts_researchfield"
 msgstr ""
 
+#. Default: "Tick this checkbox if you want the contact person(s) of &raquo;Research Projects&laquo; to be displayed in the project list at the bottom of this &raquo;Research Field&laquo;."
+#: ./schemata.py
+msgid "help_display_contactpersons_researchfield"
+msgstr ""
+
 #. Default: "Tick this checkbox if you want the contracting parties of &raquo;Research Projects&laquo; to be displayed in the project list at the bottom of this &raquo;Research Field&laquo;."
 #: ./schemata.py
 msgid "help_display_contractors_researchfield"
@@ -478,6 +484,11 @@ msgstr ""
 #. Default: "Tick this checkbox if you want abstracts (or keywords if no abstract is available) of &raquo;Research Projects&laquo; to be displayed in the non-tabular view of this &raquo;Research Project List&laquo;."
 #: ./schemata.py
 msgid "help_display_rpabstracts_researchprojectlist"
+msgstr ""
+
+#. Default: "Tick this checkbox if you want the contact person(s) of &raquo;Research Projects&laquo; to be displayed in the non-tabular view of this &raquo;Research Project List&laquo;. If you select the tabular view further below this option will be ignored."
+#: ./schemata.py
+msgid "help_display_rpcontactpersons_researchprojectlist"
 msgstr ""
 
 #. Default: "Tick this checkbox if you want the contracting parties of &raquo;Research Projects&laquo; to be displayed in the non-tabular view of this &raquo;Research Project List&laquo;."
@@ -821,6 +832,11 @@ msgstr ""
 msgid "label_display_abstracts_researchfield"
 msgstr ""
 
+#. Default: "Display Contact Person(s)"
+#: ./schemata.py
+msgid "label_display_contactpersons_researchfield"
+msgstr ""
+
 #. Default: "Display Project Contractors"
 #: ./schemata.py
 msgid "label_display_contractors_researchfield"
@@ -849,6 +865,11 @@ msgstr ""
 #. Default: "Display Abstracts (or Keywords) of Research Projects"
 #: ./schemata.py
 msgid "label_display_rpabstracts_researchprojectlist"
+msgstr ""
+
+#. Default: "Display Contact Person(s) of Research Projects"
+#: ./schemata.py
+msgid "label_display_rpcontactpersons_researchprojectlist"
 msgstr ""
 
 #. Default: "Display Contractors of Research Projects"
