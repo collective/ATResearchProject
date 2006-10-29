@@ -334,7 +334,7 @@ class ResearchProjectSiteConfiguration(UniqueObject, SimpleItem, PropertyManager
 
       return False
 
-    def listResearchProjects(self, sort_on='', sort_order=''):
+    def listResearchProjects(self, sort_on='', sort_order='', Language=''):
       
       query = {}
       ctool = getToolByName(self, 'portal_catalog')
@@ -350,11 +350,13 @@ class ResearchProjectSiteConfiguration(UniqueObject, SimpleItem, PropertyManager
         query['sort_on'] = sort_on
       if sort_order:
          query['sort_order'] = sort_order
+      if Language:
+         query['Language'] = Language
       rawresult = ctool(**query)
 		
       return rawresult
       
-    def listWfFilteredResearchProjects(self, sort_on='', sort_order=''):
+    def listWfFilteredResearchProjects(self, sort_on='', sort_order='', Language=''):
       
       query = {}
       ctool = getToolByName(self, 'portal_catalog')
@@ -372,6 +374,8 @@ class ResearchProjectSiteConfiguration(UniqueObject, SimpleItem, PropertyManager
          query['sort_on'] = sort_on
       if sort_order:
          query['sort_order'] = sort_order
+      if Language:
+         query['Language'] = Language
       rawresult = ctool(**query)
 		
       return rawresult
@@ -424,6 +428,11 @@ class ResearchProjectSiteConfiguration(UniqueObject, SimpleItem, PropertyManager
 	
       return DisplayList(researchFieldDisplayList)	
 
+    def siteHasResearchFields(self):
+    
+	ctool = getToolByName(self, 'portal_catalog')
+	return ctool(portal_type=('ResearchField',)) and True or False
+
     def getResearchProjectsListForField(self, topic, sort_on='', sort_order=''):
 
       researchProjectList = []
@@ -446,7 +455,7 @@ class ResearchProjectSiteConfiguration(UniqueObject, SimpleItem, PropertyManager
 	
       return researchProjectList
 
-    def listResearchSubprojects(self, rp_object=None):
+    def listResearchSubprojects(self, rp_object=None, Language=''):
       
       query = {}
       subproject_objects = []
@@ -466,8 +475,9 @@ class ResearchProjectSiteConfiguration(UniqueObject, SimpleItem, PropertyManager
                        'depth': 1000,
                        }
       query['portal_type'] = ('ResearchSubproject')
-      #if ntp.getProperty('enable_wf_state_filtering', False):
-      #   query['review_state'] = ntp.wf_states_to_show
+      if Language:
+        query['Language'] = Language
+
       rawresult = ctool(**query)
       
       for brain_obj in rawresult:
@@ -475,12 +485,7 @@ class ResearchProjectSiteConfiguration(UniqueObject, SimpleItem, PropertyManager
 
       return subproject_objects	
 
-    def siteHasResearchFields(self):
-    
-	ctool = getToolByName(self, 'portal_catalog')
-	return ctool(portal_type=('ResearchField',)) and True or False
-
-    def listWfFilteredResearchSubprojects(self, rp_object=None):
+    def listWfFilteredResearchSubprojects(self, rp_object=None, Language=''):
       
       query = {}
       subproject_objects = []
@@ -502,6 +507,9 @@ class ResearchProjectSiteConfiguration(UniqueObject, SimpleItem, PropertyManager
       query['portal_type'] = ('ResearchSubproject')
       if ntp.getProperty('enable_wf_state_filtering', False):
          query['review_state'] = ntp.wf_states_to_show
+      if Language:
+        query['Language'] = Language
+
       rawresult = ctool(**query)
       
       for brain_obj in rawresult:

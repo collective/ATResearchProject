@@ -124,6 +124,12 @@ class ResearchSubproject(BrowserDefaultMixin, OrderedBaseFolder):
 
       return None
 
+    security.declareProtected(permissions.View, 'getResearchProjectInfoFields')
+    def getResearchProjectInfoFields (self, **kwargs):
+      """get empty research project information fields
+      """
+      return []
+					      
     security.declareProtected(permissions.View, 'getResearchSubprojectInfoFields')
     def getResearchSubprojectInfoFields (self, **kwargs):
       """get all subproject information fields
@@ -131,7 +137,6 @@ class ResearchSubproject(BrowserDefaultMixin, OrderedBaseFolder):
       rsp_info = []
       for accessor in SUBPROJECT_INFOFIELD_ACCESSORS:
         rsp_info.extend(eval('self.%s(**kwargs)' % accessor))
-
       return rsp_info
 					      
     security.declareProtected(permissions.ModifyPortalContent, 'setResearchSubprojectOfficialTitleAndTitle')
@@ -243,9 +248,10 @@ class ResearchSubproject(BrowserDefaultMixin, OrderedBaseFolder):
         """acquire all sublevel subprojects' scientific staff members
         """
         atrp_tool = getToolByName(self, 'portal_researchproject')
+	lang = self.isTranslatable() and self.getLanguage() or ''
         if self.getResearchSubprojectInheritScientificStaffMembers():
             raw_staff_members_list = list(self.getField('researchSubprojectScientificStaffMembers').get(self, **kwargs))
-            subproject_objects = atrp_tool.listWfFilteredResearchSubprojects(self)
+            subproject_objects = atrp_tool.listWfFilteredResearchSubprojects(self, Language=lang)
             for subproject_object in subproject_objects:
                 for line in subproject_object.getResearchSubprojectScientificStaffMembers():
                     
@@ -262,9 +268,10 @@ class ResearchSubproject(BrowserDefaultMixin, OrderedBaseFolder):
         """acquire all sublevel subprojects' technical staff members
         """
         atrp_tool = getToolByName(self, 'portal_researchproject')
+	lang = self.isTranslatable() and self.getLanguage() or ''
         if self.getResearchSubprojectInheritTechnicalStaffMembers():
             raw_staff_members_list = list(self.getField('researchSubprojectTechnicalStaffMembers').get(self, **kwargs))
-            subproject_objects = atrp_tool.listWfFilteredResearchSubprojects(self)
+            subproject_objects = atrp_tool.listWfFilteredResearchSubprojects(self, Language=lang)
             for subproject_object in subproject_objects:
                 for line in subproject_object.getResearchSubprojectTechnicalStaffMembers():
         
@@ -281,9 +288,10 @@ class ResearchSubproject(BrowserDefaultMixin, OrderedBaseFolder):
         """acquire all sublevel subprojects' student staff members
         """
         atrp_tool = getToolByName(self, 'portal_researchproject')
+	lang = self.isTranslatable() and self.getLanguage() or ''
         if self.getResearchSubprojectInheritStudentStaffMembers():
             raw_staff_members_list = list(self.getField('researchSubprojectStudentStaffMembers').get(self, **kwargs))
-            subproject_objects = atrp_tool.listWfFilteredResearchSubprojects(self)
+            subproject_objects = atrp_tool.listWfFilteredResearchSubprojects(self, Language=lang)
             for subproject_object in subproject_objects:
                 for line in subproject_object.getResearchSubprojectStudentStaffMembers():
         
@@ -300,9 +308,10 @@ class ResearchSubproject(BrowserDefaultMixin, OrderedBaseFolder):
         """acquire all sublevel subprojects' former staff members
         """
         atrp_tool = getToolByName(self, 'portal_researchproject')
+	lang = self.isTranslatable() and self.getLanguage() or ''
         if self.getResearchSubprojectInheritFormerStaffMembers():
             raw_staff_members_list = list(self.getField('researchSubprojectFormerStaffMembers').get(self, **kwargs))
-            subproject_objects = atrp_tool.listWfFilteredResearchSubprojects(self)
+            subproject_objects = atrp_tool.listWfFilteredResearchSubprojects(self, Language=lang)
             for subproject_object in subproject_objects:
                 for line in subproject_object.getResearchSubprojectFormerStaffMembers():
         
@@ -319,9 +328,10 @@ class ResearchSubproject(BrowserDefaultMixin, OrderedBaseFolder):
         """acquire all sublevel subprojects' former student staff members
         """
         atrp_tool = getToolByName(self, 'portal_researchproject')
+	lang = self.isTranslatable() and self.getLanguage() or ''
         if self.getResearchSubprojectInheritFormerStudentStaffMembers():
             raw_staff_members_list = list(self.getField('researchSubprojectFormerStudentStaffMembers').get(self, **kwargs))
-            subproject_objects = atrp_tool.listWfFilteredResearchSubprojects(self)
+            subproject_objects = atrp_tool.listWfFilteredResearchSubprojects(self, Language=lang)
             for subproject_object in subproject_objects:
                 for line in subproject_object.getResearchSubprojectFormerStudentStaffMembers():
         
@@ -418,16 +428,22 @@ class ResearchSubproject(BrowserDefaultMixin, OrderedBaseFolder):
 
         return None
 
-    security.declarePrivate('at_post_create_script')
     def at_post_create_script(self):
+	""" tending subproject info fields of LinguaPlone objects
+	"""
+	reindexed_objects = self.reindexSuperiorRPandRSPobjects()
+	reindexed_objects.append(self)
+        self.reindexTranslationObjects(objects=reindexed_objects)
+        OrderedBaseFolder.at_post_create_script(self)
 
-	self.at_post_edit_script()
-
-    security.declarePrivate('at_post_edit_script')
     def at_post_edit_script(self):
-    
-	self.reindexSuperiorRPandRSPobjects()
-    
+	""" tending subproject info fields of LinguaPlone objects
+	"""
+	reindexed_objects = self.reindexSuperiorRPandRSPobjects()
+	reindexed_objects.append(self)
+        self.reindexTranslationObjects(objects=reindexed_objects)
+        OrderedBaseFolder.at_post_edit_script(self)
+
     def __bobo_traverse__(self, REQUEST, name):
 	"""
 	Transparent access to logo scales

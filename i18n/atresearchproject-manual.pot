@@ -171,7 +171,7 @@ msgid "label_contactpersons_researchproject"
 msgstr ""
 
 #: ./schemata.py
-#. Default: "The contact person(s) is in charge of the research projects' PR work. Ideally, there is only one contact person, but this depends on your project. The name of this person should also be mentioned in one of the other staff/coordinators fields."
+#. Default: "The contact person(s) is/are in charge of the research projects' public relation work. Ideally, there is only one contact person, but this depends on your project setup. If the contact person is also assigned with other tasks within the project, do not forget to mention the persons name in one of the other staff/coordinators fields."
 msgid "help_contactpersons_researchproject"
 msgstr ""
 
