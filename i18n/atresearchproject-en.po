@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ATResearchProject 0.4.0\n"
 "POT-Creation-Date: 2005-12-30 23:31+0100\n"
-"PO-Revision-Date: 2006-10-28 19:53-0000\n"
+"PO-Revision-Date: 2006-10-29 18:34-0000\n"
 "Last-Translator: Mike Gabriel <m.gabriel@sunweavers.net>\n"
 "Language-Team: netzwerkteam OEZK <plone-developers@ecology.uni-kiel.de>\n"
 "MIME-Version: 1.0\n"
@@ -407,10 +407,10 @@ msgstr "Tick this checkbox if you want &raquo;Research Subprojects&laquo; to be 
 msgid "help_comment_researchprojectlist"
 msgstr "A research project list is a composition of search criteria. Here you should describe the characteristics of your search criteria for this research project list."
 
-#. Default: "The contact person(s) is in charge of the research projects' PR work. Ideally, there is only one contact person, but this depends on your project. The name of this person should also be mentioned in one of the other staff/coordinators fields."
+#. Default: "The contact person(s) is/are in charge of the research projects' public relation work. Ideally, there is only one contact person, but this depends on your project setup. If the contact person is also assigned with other tasks within the project, do not forget to mention the persons name in one of the other staff/coordinators fields."
 #: schemata.py
 msgid "help_contactpersons_researchproject"
-msgstr "The contact person(s) is in charge of the research projects' PR work. Ideally, there is only one contact person, but this depends on your project. The name of this person should also be mentioned in one of the other staff/coordinators fields."
+msgstr "he contact person(s) is/are in charge of the research projects' public relation work. Ideally, there is only one contact person, but this depends on your project setup. If the contact person is also assigned with other tasks within the project, do not forget to mention the persons name in one of the other staff/coordinators fields."
 
 #. Default: "Contracting parties mostly provide the financial basis of research projects (e.g. &raquo;Greenpeace&laquo; - if you want to subtly link to the Greenpeace site use &raquo;Greenpeace &lt;url:http://www.greenpeace.com&gt;&laquo;)."
 #: schemata.py
