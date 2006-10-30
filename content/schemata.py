@@ -870,10 +870,7 @@ ATResearchProjectListSchema =  ATTopicSchema.copy() +  Schema((
                                  "by using the criteria from this Smart Folder."),
                     description_msgid="help_inherit_criteria",
                     i18n_domain = "plone",
-                    # Only show when the parent object is a Topic also,
-                    # for some reason the checkcondition passes the
-                    #template as 'object', and the object as 'folder'.
-                    condition = "python:folder.getParentNode().portal_type == 'ResearchProjectList'"
+                    condition = "python:folder.getParentNode().portal_type == 'ResearchProjectList'",
                 ),
         ),        
         BooleanField('researchProjectListDisplayResearchProjects',
