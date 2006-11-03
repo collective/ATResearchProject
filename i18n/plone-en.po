@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ATResearchProject 0.4.0\n"
 "POT-Creation-Date: 2005-12-30 23:31+0100\n"
-"PO-Revision-Date: 2006-10-28 19:53-0000\n"
+"PO-Revision-Date: 2006-11-03 16:29-0000\n"
 "Last-Translator: Mike Gabriel <m.gabriel@sunweavers.net>\n"
 "Language-Team: netzwerkteam OEZK <plone-developers@ecology.uni-kiel.de>\n"
 "MIME-Version: 1.0\n"
@@ -251,4 +251,159 @@ msgstr "Research Subproject - Title"
 #: config.py
 msgid "Research Subproject - Official Title"
 msgstr "Research Subproject - Official Title"
+
+#. Default: "Keywords (Research Project)"
+#: catalog indexes
+msgid "researchProjectKeywords"
+msgstr "Keywords (Research Project)"
+
+#. Default: "Project Coordinators (Research Project)"
+#: catalog indexes
+msgid "researchProjectProjectCoordinator"
+msgstr "Project Coordinators (Research Project)"
+
+#. Default: "Contact Persons (Research Project)"
+#: catalog indexes
+msgid "researchProjectContactPerson"
+msgstr "Contact Persons (Research Project)"
+
+#. Default: "Contractors (Research Project)"
+#: catalog indexes
+msgid "researchProjectContractors"
+msgstr "Contractors (Research Project)"
+
+#. Default: "Third-party funded (Research Project)"
+#: catalog indexes
+msgid "researchProjectThirdPartyFunded"
+msgstr "Third-party funded (Research Project)"
+
+#. Default: "Scientific Coordinators (Research Project)"
+#: catalog indexes
+msgid "researchProjectScientificCoordinator"
+msgstr "Scientific Coordinators (Research Project)"
+
+#. Default: "Scientific Staff Members (Research Project)"
+#: catalog indexes
+msgid "researchProjectScientificStaffMembers"
+msgstr "Scientific Staff Members (Research Project)"
+
+#. Default: "Technical Staff Members (Research Project)"
+#: catalog indexes
+msgid "researchProjectTechnicalStaffMembers"
+msgstr "Technical Staff Members (Research Project)"
+
+#. Default: "Student Staff Members (Research Project)"
+#: catalog indexes
+msgid "researchProjectStudentStaffMembers"
+msgstr "Student Staff Members (Research Project)"
+
+#. Default: "Former Staff Members (Research Project)"
+#: catalog indexes
+msgid "researchProjectFormerStaffMembers"
+msgstr "Former Staff Members (Research Project)"
+
+#. Default: "Former Student Staff Members (Research Project)"
+#: catalog indexes
+msgid "researchProjectFormerStudentStaffMembers"
+msgstr "Former Student Staff Members (Research Project)"
+
+#. Default: "Cooperation Partners (Research Project)"
+#: catalog indexes
+msgid "researchProjectCooperationPartners"
+msgstr "Cooperation Partners (Research Project)"
+
+#. Default: "Involved Departments (Research Project)"
+#: catalog indexes
+msgid "researchProjectInvolvedDepartments"
+msgstr "Involved Departments (Research Project)"
+
+#. Default: "Keywords (Research Subproject)"
+#: catalog indexes
+msgid "researchSubprojectKeywords"
+msgstr "Keywords (Research Subproject)"
+
+#. Default: "Scientific Coordinators (Research Subproject)"
+#: catalog indexes
+msgid "researchSubprojectScientificCoordinators"
+msgstr "Scientific Coordinators (Research Subproject)"
+
+#. Default: "Scientific Staff Members (Research Subproject)"
+#: catalog indexes
+msgid "researchSubprojectScientificStaffMembers"
+msgstr "Scientific Staff Members (Research Subproject)"
+
+#. Default: "Technical Staff Members (Research Subproject)"
+#: catalog indexes
+msgid "researchSubprojectTechnicalStaffMembers"
+msgstr "Technical Staff Members (Research Subproject)"
+
+#. Default: "Student Staff Members (Research Subproject)"
+#: catalog indexes
+msgid "researchSubprojectStudentStaffMembers"
+msgstr "Student Staff Members (Research Subproject)"
+
+#. Default: "Former Staff Members (Research Subproject)"
+#: catalog indexes
+msgid "researchSubprojectFormerStaffMembers"
+msgstr "Former Staff Members (Research Subproject)"
+
+#. Default: "Former Student Staff Members (Research Subproject)"
+#: catalog indexes
+msgid "researchSubprojectFormerStudentStaffMembers"
+msgstr "Former Student Staff Members (Research Subproject)"
+
+#. Default: "External Institutes (Research Subproject)"
+#: catalog indexes
+msgid "researchSubprojectExternalInstitutes"
+msgstr "External Institutes (Research Subproject)"
+
+#. Default: "Cooperation Partners (Research Subproject)"
+#: catalog indexes
+msgid "researchSubprojectCooperationPartners"
+msgstr "Cooperation Partners (Research Subproject)"
+
+#. Default: "Involved Departments (Research Subproject)"
+#: catalog indexes
+msgid "researchSubprojectInvolvedDepartments"
+msgstr "Involved Departments (Research Subproject)"
+
+#. Default: "Runtime Start (Research Project)"
+#: catalog indexes
+msgid "researchProjectRuntimeStart"
+msgstr "Runtime Start (Research Project)"
+
+#. Default: "Runtime End (Research Project)"
+#: catalog indexes
+msgid "researchProjectRuntimeEnd"
+msgstr "Runtime End (Research Project)"
+
+#. Default: "Title (Research Project)"
+#: catalog indexes
+msgid "researchProjectTitle"
+msgstr "Title (Research Project)"
+
+#. Default: "Official Title (Research Project)"
+#: catalog indexes
+msgid "researchProjectOfficialTitle"
+msgstr "Official Title (Research Project)"
+
+#. Default: "Runtime Start (Research Subproject)"
+#: catalog indexes
+msgid "researchSubprojectRuntimeStart"
+msgstr "Runtime Start (Research Subproject)"
+
+#. Default: "Runtime End (Research Subproject)"
+#: catalog indexes
+msgid "researchSubprojectRuntimeEnd"
+msgstr "Runtime End (Research Subproject)"
+
+#. Default: "Title (Research Subproject)"
+#: catalog indexes
+msgid "researchSubprojectTitle"
+msgstr "Title (Research Subproject)"
+
+#. Default: "Official Title (Research Subproject)"
+#: catalog indexes
+msgid "researchSubprojectOfficialTitle"
+msgstr "Official Title (Research Subproject)"
 
