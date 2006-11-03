@@ -407,3 +407,12 @@ msgstr "Teilprojekttitel"
 msgid "researchSubprojectOfficialTitle"
 msgstr "Offizieller Titel (Teilprojekt)"
 
+#: catalog indexes
+#. Default: "Research Subproject Info Fields"
+msgid "researchSubprojectInfoFields"
+msgstr "Teilprojekt Informationen"
+
+#: catalog indexes
+#. Default: "Research Project Info Fields"
+msgid "researchProjectInfoFields"
+msgstr "Forschungsprojekt Informationen"
