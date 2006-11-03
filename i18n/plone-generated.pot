@@ -251,3 +251,160 @@ msgstr ""
 msgid "Research Subproject - Official Title"
 msgstr ""
 
+#: catalog indexes
+#. Default: "Keywords (Research Project)"
+msgid "researchProjectKeywords"
+msgstr ""
+
+#: catalog indexes
+#. Default: "Project Coordinators (Research Project)"
+msgid "researchProjectProjectCoordinator"
+msgstr ""
+
+#: catalog indexes
+#. Default: "Contact Persons (Research Project)"
+msgid "researchProjectContactPerson"
+msgstr ""
+
+#: catalog indexes
+#. Default: "Contractors (Research Project)"
+msgid "researchProjectContractors"
+msgstr ""
+
+#: catalog indexes
+#. Default: "Third-party funded (Research Project)"
+msgid "researchProjectThirdPartyFunded"
+msgstr ""
+
+#: catalog indexes
+#. Default: "Scientific Coordinators (Research Project)"
+msgid "researchProjectScientificCoordinator"
+msgstr ""
+
+#: catalog indexes
+#. Default: "Scientific Staff Members (Research Project)"
+msgid "researchProjectScientificStaffMembers"
+msgstr ""
+
+#: catalog indexes
+#. Default: "Technical Staff Members (Research Project)"
+msgid "researchProjectTechnicalStaffMembers"
+msgstr ""
+
+#: catalog indexes
+#. Default: "Student Staff Members (Research Project)"
+msgid "researchProjectStudentStaffMembers"
+msgstr ""
+
+#: catalog indexes
+#. Default: "Former Staff Members (Research Project)"
+msgid "researchProjectFormerStaffMembers"
+msgstr ""
+
+#: catalog indexes
+#. Default: "Former Student Staff Members (Research Project)"
+msgid "researchProjectFormerStudentStaffMembers"
+msgstr ""
+
+#: catalog indexes
+#. Default: "Cooperation Partners (Research Project)"
+msgid "researchProjectCooperationPartners"
+msgstr ""
+
+#: catalog indexes
+#. Default: "Involved Departments (Research Project)"
+msgid "researchProjectInvolvedDepartments"
+msgstr ""
+
+#: catalog indexes
+#. Default: "Keywords (Research Subproject)"
+msgid "researchSubprojectKeywords"
+msgstr ""
+
+#: catalog indexes
+#. Default: "Scientific Coordinators (Research Subproject)"
+msgid "researchSubprojectScientificCoordinators"
+msgstr ""
+
+#: catalog indexes
+#. Default: "Scientific Staff Members (Research Subproject)"
+msgid "researchSubprojectScientificStaffMembers"
+msgstr ""
+
+#: catalog indexes
+#. Default: "Technical Staff Members (Research Subproject)"
+msgid "researchSubprojectTechnicalStaffMembers"
+msgstr ""
+
+#: catalog indexes
+#. Default: "Student Staff Members (Research Subproject)"
+msgid "researchSubprojectStudentStaffMembers"
+msgstr ""
+
+#: catalog indexes
+#. Default: "Former Staff Members (Research Subproject)"
+msgid "researchSubprojectFormerStaffMembers"
+msgstr ""
+
+#: catalog indexes
+#. Default: "Former Student Staff Members (Research Subproject)"
+msgid "researchSubprojectFormerStudentStaffMembers"
+msgstr ""
+
+#: catalog indexes
+#. Default: "External Institutes (Research Subproject)"
+msgid "researchSubprojectExternalInstitutes"
+msgstr ""
+
+#: catalog indexes
+#. Default: "Cooperation Partners (Research Subproject)"
+msgid "researchSubprojectCooperationPartners"
+msgstr ""
+
+#: catalog indexes
+#. Default: "Involved Departments (Research Subproject)"
+msgid "researchSubprojectInvolvedDepartments"
+msgstr ""
+
+#: catalog indexes
+#. Default: "Runtime Start (Research Project)"
+msgid "researchProjectRuntimeStart"
+msgstr ""
+
+#: catalog indexes
+#. Default: "Runtime End (Research Project)"
+msgid "researchProjectRuntimeEnd"
+msgstr ""
+
+#: catalog indexes
+#. Default: "Title (Research Project)"
+msgid "researchProjectTitle"
+msgstr ""
+
+#: catalog indexes
+#. Default: "Official Title (Research Project)"
+msgid "researchProjectOfficialTitle"
+msgstr ""
+
+#: catalog indexes
+#. Default: "Runtime Start (Research Subproject)"
+msgid "researchSubprojectRuntimeStart"
+msgstr ""
+
+#: catalog indexes
+#. Default: "Runtime End (Research Subproject)"
+msgid "researchSubprojectRuntimeEnd"
+msgstr ""
+
+#: catalog indexes
+#. Default: "Title (Research Subproject)"
+msgid "researchSubprojectTitle"
+msgstr ""
+
+#: catalog indexes
+#. Default: "Official Title (Research Subproject)"
+msgid "researchSubprojectOfficialTitle"
+msgstr ""
+
+
+
