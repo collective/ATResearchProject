@@ -476,7 +476,7 @@
 	<td style="vertical-align: top;padding-left:4pt;">
 
 	<b><a href="" tal:attributes="href project/absolute_url">
-  	  <span tal:content="project/Title" tal:omit-tag="" /></a></b>
+  	  <span tal:content="project/title_or_id" tal:omit-tag="" /></a></b>
 
         </td>
 
@@ -571,7 +571,7 @@
 	   tal:attributes="href project/absolute_url;
 	                   class string:$project_wf_state_class visualIconPadding">
   	  
-  	    <span tal:content="project/Title" tal:omit-tag="" /></a>  
+  	    <span tal:content="project/title_or_id" tal:omit-tag="" /></a>  
         
 	</b>
 
@@ -690,7 +690,7 @@
 	   tal:attributes="href subproject/absolute_url;
 	                   class string:$subproject_wf_state_class visualIconPadding">
   	  
-	    <span tal:content="subproject/Title" tal:omit-tag="" /></a>  
+	    <span tal:content="subproject/title_or_id" tal:omit-tag="" /></a>  
         
 	</b>
 
