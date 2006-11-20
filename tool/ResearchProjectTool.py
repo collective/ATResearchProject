@@ -203,7 +203,8 @@ class ResearchProjectSiteConfiguration(UniqueObject, SimpleItem, PropertyManager
 	    	
 		# see, if the specified memberId exists on this site and, if so, hyperlink the text to the member's home page
 		memberId = tagContent
-		text = self.memberIdToFullname(memberId)
+		if not text:
+		    text = self.memberIdToFullname(memberId)
 
                 # override if home page exists
 		mtool = getToolByName(self, 'portal_membership')
@@ -225,7 +226,10 @@ class ResearchProjectSiteConfiguration(UniqueObject, SimpleItem, PropertyManager
                 extended_field_structure = '<a href="&#0109;ailto&#0058;' + mailAddress.replace('@', '&#0064;').replace(':', '&#0058;') + '">' + text + '</a>'
 
     	  if extended_field_structure:
-            extendedLinesField.append(extended_field_structure)
+    	    extendedLinesField.append(extended_field_structure)
+	  else:
+	    # append in raw format as something went wrong during mailto, member or url rendering...
+	    extendedLinesField.append('<tt>%s</tt>' % line.replace('<', '&lt;').replace('>', '&gt;'))
         
 	else:
         

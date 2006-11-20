@@ -113,7 +113,7 @@ class ResearchField(BrowserDefaultMixin, BaseContent):
       wftool = getToolByName(self, 'portal_workflow')
       reviewstate = wftool.getInfoFor(self, 'review_state')
       if not(navtool and wftool) or (reviewstate in navtool.wf_states_to_show):
-        return '%s - %s (/%s)' % (putils.pretty_title_or_id(self), self.Description(), self.virtual_url_path())
+        return '%s - %s (/%s)' % (putils.pretty_title_or_id(self), self.Description(), self.virtual_url_path())	
       else:
         return '%s: %s - %s (/%s)' % (self.translate(putils.getReviewStateTitleFor(self)), putils.pretty_title_or_id(self), self.Description(), self.virtual_url_path())
 		 
