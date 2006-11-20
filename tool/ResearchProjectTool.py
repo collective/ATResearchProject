@@ -229,7 +229,7 @@ class ResearchProjectSiteConfiguration(UniqueObject, SimpleItem, PropertyManager
     	    extendedLinesField.append(extended_field_structure)
 	  else:
 	    # append in raw format as something went wrong during mailto, member or url rendering...
-	    extendedLinesField.append('<tt>%s</tt>' % line.replace('<', '&lt;').replace('>', '&gt;'))
+	    extendedLinesField.append('<tt>Could not resolve: %s</tt>' % line.replace('<', '&lt;').replace('>', '&gt;'))
         
 	else:
         
