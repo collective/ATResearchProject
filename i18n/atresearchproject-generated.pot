@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: ATResearchProject svn/trunk\n"
-"POT-Creation-Date: 2006-11-03 16:24+0000\n"
+"POT-Creation-Date: 2006-12-07 21:17+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -309,6 +309,16 @@ msgstr ""
 #. Default: "Title"
 #: ./skins/ATResearchProject/research_project_list_view.pt
 msgid "Title"
+msgstr ""
+
+#. Default: "Back to ${atname}:"
+#: ./skins/ATResearchProject/research_project_macros.pt
+msgid "back_to_rplist"
+msgstr ""
+
+#. Default: "Back to ${atname}:"
+#: ./skins/ATResearchProject/research_project_macros.pt
+msgid "back_to_researchfield"
 msgstr ""
 
 #. Default: "For now please use the ZMI's PropertyManager of the PortalTypes tool to manage the allowed content types in folderish ATResearchProject objects."

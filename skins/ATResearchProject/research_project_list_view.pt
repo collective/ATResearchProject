@@ -121,25 +121,14 @@
                                     tal:content="structure python:here.research_project_formatCatalogMetadata(value)" />
                                 <td valign="top"
 				    tal:condition="python: field == 'Title'">
-                                    <a href="#" tal:attributes="href url">
+                                    <a href="#" tal:attributes="href python: '%s?came_from=%s&amp;came_from_title=%s&amp;came_from_atname=%s' % (url, here.absolute_url(), here.title_or_id(), here.archetype_name)">
                                         <img src="#"
                                              height="16"
                                              width="16"
                                              tal:attributes="src icon"/>
                                     </a>
 
-                                    <a href="#" tal:condition="python: obj.portal_type == 'Image'"
-                                                tal:attributes="href string:${url}/view"
-                                                tal:content="title_or_id" />
-
-                                    <a href="#"
-                                       tal:condition="python: obj.portal_type == 'Link'"
-                                       tal:attributes="href obj/getRemoteUrl;"
-                                       class="link-plain"
-                                       tal:content="title_or_id" />
-
-                                    <a href="#" tal:condition="python: obj.portal_type not in ['Link', 'Image']"
-                                                tal:attributes="href url"
+                                    <a href="#" tal:attributes="href python: '%s?came_from=%s&amp;came_from_title=%s&amp;came_from_description=%s&amp;came_from_atname=%s' % (url, here.absolute_url(), here.title_or_id(), here.Description(), here.archetype_name)"
                                                 tal:content="title_or_id" />
 
                                 </td>

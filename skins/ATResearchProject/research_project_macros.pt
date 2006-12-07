@@ -183,6 +183,29 @@
   
 </metal:abstract>
 
+<metal:camefrom metal:define-macro="camefrom">
+
+    <p class="discreet"
+       tal:define="came_from request/came_from | nothing;
+                   came_from_title request/came_from_title | nothing;
+                   came_from_description python: getattr(request, 'came_from_description', '');
+                   came_from_atname request/came_from_atname | nothing;"
+       tal:condition="came_from">
+	<span tal:condition="python: came_from_atname == 'Research Field'" 
+	      i18n:domain="atresearchproject" 
+	      i18n:translate="back_to_researchfield">Back to <span i18n:name="atname" i18n:domain="plone" i18n:translate="" tal:content="came_from_atname"/>:</span>
+	<span tal:condition="python: came_from_atname == 'Research Project List'" 
+	      i18n:domain="atresearchproject" 
+	      i18n:translate="back_to_rplist">Back to <span i18n:name="atname" i18n:domain="plone" i18n:translate="" tal:content="came_from_atname"/>:</span>
+	<a href="" title=""
+	   tal:attributes="href came_from;
+	                   title string:${came_from_description};">
+	    <span tal:content="string:${came_from_title}" />
+	</a>
+    </p>
+
+</metal:camefrom>
+
 <metal:projectinfo metal:define-macro="projectinfo">
 
   <div align="center">
@@ -435,7 +458,7 @@
     
 <metal:relatedprojects-listing metal:define-macro="relatedprojects-listing">
     <tal:research-projects tal:define="atrp_tool here/portal_researchproject;
-			  	       projectlist  python: atrp_tool.getWfFilteredResearchProjectsListForField(here, sort_on='researchProjectRuntimeStart', sort_order='reverse')"
+			  	       projectlist  python: atrp_tool.getWfFilteredResearchProjectsListForField(here, sort_on='researchProjectRuntimeStart', sort_order='reverse');"
                            tal:condition="projectlist">
       
       <hr style="clear:both;"/>
@@ -446,7 +469,10 @@
       
       <table cellspacing="0" cellpadding="0" border="0">
 
-      <tal:project-list repeat="project projectlist">
+      <tal:project-list tal:repeat="project projectlist">
+                        
+      <tal:state-defines tal:define="project_wf_state project/review_state | python: here.portal_workflow.getInfoFor(project, 'review_state', '');
+	                             project_wf_state_class python:'state-' + normalizeString(project_wf_state);">
 
 	<tr>
         <tal:boolswitch tal:condition="here/getResearchFieldDisplayProjectRuntime">
@@ -475,7 +501,11 @@
         
 	<td style="vertical-align: top;padding-left:4pt;">
 
-	<b><a href="" tal:attributes="href project/absolute_url">
+	<b><a class=""
+	      href="" 
+	      tal:attributes="href python:'%s?came_from=%s&amp;came_from_title=%s&amp;came_from_description=%s&amp;came_from_atname=%s' % (project.absolute_url(),here.absolute_url(),here.title_or_id(),here.Description(),here.archetype_name);
+		              class string:$project_wf_state_class visualIconPadding">
+				      
   	  <span tal:content="project/title_or_id" tal:omit-tag="" /></a></b>
 
         </td>
@@ -546,6 +576,7 @@
 
 	</tr>
 
+      </tal:state-defines>
       </tal:project-list>
       </table>
 
@@ -567,8 +598,8 @@
           tal:condition="python: [ role for role in project_roles if role in ('Manager', 'Reviewer', 'Owner', ) ] or (navtool and (project_wf_state in navtool.getProperty('wf_states_to_show')))">
           
         <b class="contenttype-researchproject">
-	<a class="" href="" 
-	   tal:attributes="href project/absolute_url;
+	<a class="" href=""
+	   tal:attributes="href python: '%s?came_from=%s&amp;came_from_title=%s&amp;came_from_description=%s&amp;came_from_atname=%s' % (project.absolute_url(),here.absolute_url(),here.title_or_id(),here.Description(),here.archetype_name);
 	                   class string:$project_wf_state_class visualIconPadding">
   	  
   	    <span tal:content="project/title_or_id" tal:omit-tag="" /></a>  

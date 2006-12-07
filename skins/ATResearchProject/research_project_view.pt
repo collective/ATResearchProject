@@ -24,6 +24,8 @@
 
   <metal:block metal:use-macro="here/research_project_macros/macros/projecthead" />
 
+  <metal:block metal:use-macro="here/research_project_macros/macros/camefrom" />
+
   <metal:block metal:use-macro="here/research_project_macros/macros/projectabstract" />
 
   <metal:block metal:use-macro="here/research_project_macros/macros/projectinfo" />
@@ -76,7 +78,7 @@
     </metal:slot>				   
       
   </metal:block>
-  
+
   </metal:main-macro>
 </metal:main>
 </body>
