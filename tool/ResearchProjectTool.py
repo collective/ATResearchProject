@@ -167,8 +167,9 @@ class ResearchProjectSiteConfiguration(UniqueObject, SimpleItem, PropertyManager
       for line in lines_field:
       
         # a tag is a phrase enclosed by "<>". No blanks are allowed between the brackets
-        text = string.rstrip(' '.join([ word for word in string.split(line, ' ') if word[0]+word[len(word)-1] != '<>' ]))
-        tag = string.rstrip(' '.join([ word for word in string.split(line, ' ') if word[0]+word[len(word)-1] == '<>' ]))
+	print line
+        text = string.rstrip(' '.join([ word for word in string.split(line, ' ') if word != '<%s>' % word[1:-1] ]))
+        tag = string.rstrip(' '.join([ word for word in string.split(line, ' ') if word == '<%s>' % word[1:-1] ]))
         
 	# we have three format types: 
 	#   o plain: no hyperrefs, strip the tags of the line
