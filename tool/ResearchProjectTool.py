@@ -522,4 +522,29 @@ class ResearchProjectSiteConfiguration(UniqueObject, SimpleItem, PropertyManager
 
       return subproject_objects	
 
+    def listWfStatesForATRPTypes(self, filter_similar=1):
+
+        wtool = getToolByName(self, 'portal_workflow')
+        rp_chain = wtool.getChainForPortalType('ResearchProject')
+        rsp_chain = wtool.getChainForPortalType('ResearchSubproject')
+        uniq_chain = []
+        dummy = [ uniq_chain.append(ch) for ch in list(rp_chain)+list(rsp_chain) if ch not in uniq_chain ]
+        ATRP_states = []
+        for statesByWorkflow in [ wtool.getWorkflowById(wf_id).states.objectValues() for wf_id in uniq_chain ]:
+            ATRP_states.extend(statesByWorkflow)
+        
+        result = []
+        dup_keys = {}
+        for state in ATRP_states:
+        
+            key = '%s:%s' % (state.title, state.getId(), )
+            if not filter_similar:
+                result.append((state.title, state.getId(), ))
+            else:
+                if not dup_keys.has_key(key):
+                    result.append((state.title, state.getId(), ))
+                dup_keys[key] = 1
+
+        return result
+
 InitializeClass(ResearchProjectSiteConfiguration)

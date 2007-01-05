@@ -72,11 +72,11 @@ def addActions(self, out):
     ap.addAction(
 	   id='searchForResearchProjects',
 	   name='Research Projects',
-	   action='string: ${portal_url}/research_project_summary_view',
+	   action='string: ${portal_url}/research_project_search_form',
 	   permission='View',
 	   category='portal_tabs',
 	   condition='',
-	   visible=0, # invisible for now as now page template written yet -> TODO
+	   visible=1,
     )
 
 def addToFactoryTool(self, out):

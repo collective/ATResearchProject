@@ -1,0 +1,204 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      lang="en"
+      metal:use-macro="here/main_template/macros/master"
+      i18n:domain="atresearchproject">
+
+<metal:head fill-slot="top_slot"
+            tal:define="dummy python:request.set('disable_border',1)" />
+
+<div metal:fill-slot="main">
+
+    <h1 i18n:translate="atrp_sf_heading_search">Research Project Search Form</h1>
+
+    <p i18n:translate="atrp_sf_description_search">
+    This search form enables you to find research projects and subprojects on the site by
+    specifying one or more search terms.
+    </p>
+
+  	<form action="search"
+          method="get"
+          name="atrp_search"
+          tal:define="DateTime python:modules['DateTime'].DateTime">
+
+        <fieldset>
+
+            <legend i18n:domain="plone" i18n:translate="legend_search_terms">Search Terms</legend>
+
+            <div class="field">
+                <label for="SearchableText" i18n:domain="plone" i18n:translate="label_search_text">Search Text</label>
+
+                <div class="formHelp" i18n:translate="atrp_sf_help_search_text">
+                For a simple text search, enter your search term
+                here. Multiple words may be found by combining
+                them with <strong>AND</strong> and <strong>OR</strong>.
+                The text in this field will be matched with
+                projects' (official) title, abstracts, info fields and main contents.
+                </div>
+
+                <input type="text"
+                       id="SearchableText"
+                       name="SearchableText"
+                       size="25"
+                       tabindex=""
+                       tal:attributes="tabindex tabindex/next;"
+                       />
+            </div>
+
+            <div class="field">
+                <label for="Title" i18n:translate="atrp_sf_label_title">Title</label>
+
+                <div class="formHelp" i18n:translate="atrp_sf_help_search_title">
+                Return research projects / subprojects matching this short title /official title.
+                </div>
+
+                <input type="text"
+                       id="Title"
+                       name="Title"
+                       size="25"
+                       tabindex=""
+                       tal:attributes="tabindex tabindex/next;"
+                       />
+            </div>
+
+            <!-- div class="field">
+                <label for="created" i18n:translate="label_new_items_since">New items since</label>
+
+                <div class="formHelp" i18n:translate="help_search_new_items_since">
+                Return items added since you were last logged on, the last week, etc.
+                </div>
+    
+                <tal:datetime define="today python:DateTime().earliestTime()">
+                <select name="created:list:date"
+                        id="created"
+                        tabindex=""
+                        tal:attributes="tabindex tabindex/next;"
+                        tal:define="yesterday python:(today-1).Date();
+                                    lastweek python:(today-7).Date();
+                                    lastmonth python:(today-31).Date();
+                                    ever string:1970/02/01;">
+                    <option value="#"
+                            tal:condition="not: isAnon"
+                            tal:attributes="value python:member is not None and member.getProperty('last_login_time') or today"
+                            i18n:translate="last_login">Last log-in</option>
+                    <option value="#" tal:attributes="value yesterday" i18n:translate="time_yesterday"> Yesterday </option>
+                    <option value="#" tal:attributes="value lastweek" i18n:translate="time_last_week"> Last week </option>
+                    <option value="#" tal:attributes="value lastmonth" i18n:translate="time_last_month"> Last month </option>
+                    <option value="#" tal:attributes="value ever" selected="selected" i18n:translate="time_ever"> Ever </option>
+                </select>
+                </tal:datetime>
+
+                <input type="hidden" name="created_usage" value="range:min" />
+            </div -->
+    
+            <div class="field" tal:define="portal_types portal/portal_types">
+                <label i18n:translate="label_item_type">Type</label>
+
+                <div class="formHelp" i18n:translate="help_search_item_type">
+                Return items of a specific type.
+                </div>
+    
+                <div style="float:left; margin-right: 2em;"
+                     tal:define="allTypes python:putils.getUserFriendlyTypes(typesList=['ResearchProject', 'ResearchSubproject',]);">
+                    <tal:tabindex define="tabindex tabindex/next">
+                    <select multiple="multiple"
+                            name="portal_type:list"
+                            id="portal_type"
+                            >
+                        <option
+                            tal:repeat="type allTypes"
+                            value="#"
+                            class="noborder"
+                            selected="selected"
+                            tabindex=""
+                            tal:attributes="value type;
+                                            tabindex tabindex;
+                                            id string:portal_type_${type}">
+                        <span i18n:translate=""
+                          tal:content="python: portal_types.getTypeInfo(type).Title()"
+                          /> (<span tal:content="type" />)
+                        </option>
+                    </select>
+                    <br />
+                    </tal:tabindex>
+                </div>
+            </div>
+
+            <div class="visualClear" id="clear-space-before-author"><!-- --></div>
+            <br />
+
+            <!-- div class="field">
+                <label for="Creator" i18n:translate="label_author">Author</label>
+
+                <div class="formHelp" i18n:translate="help_search_author">
+                Return items created by a particular person.
+                </div>
+    
+                <tal:creators tal:define="creators python:portal.portal_catalog.uniqueValuesFor('Creator')">
+                    <select name="Creator"
+                            id="Creator"
+                            tabindex=""
+                            tal:attributes="tabindex tabindex/next;"
+                            tal:condition="python: len(creators) &lt;= 30">
+                        <option value="" i18n:translate="label_any_author">Any Author</option>
+                        <metal:block tal:repeat="creator creators">
+                            <option value="" tal:attributes="value creator" tal:content="creator"> username </option>
+                        </metal:block>
+                    </select>
+    
+                    <input name="Creator"
+                           tabindex=""
+                           tal:attributes="tabindex tabindex/next;"
+                           tal:condition="python: len(creators) &gt; 30 " />
+                </tal:creators>
+            </div -->
+    
+            <div class="field"
+                 tal:condition="python: not here.portal_membership.isAnonymousUser()">
+    
+                <label for="review_state" i18n:translate="label_review_status">Review status</label>
+
+                <div class="formHelp" i18n:translate="help_search_review_status">
+                You may search for items based on their
+                review state. If you wish to constrain results to items
+                in certain states, select them from this list.
+                </div>
+    
+                <tal:states define="navtree_props portal_properties/navtree_properties;
+                                    states python: here.portal_researchproject.listWfStatesForATRPTypes();"
+                            repeat="state states">
+                    <input class="noborder"
+                           type="checkbox"
+                           name="review_state:list"
+                           checked="checked"
+                           tal:attributes="value python:state[1];
+                                           id python:normalizeString(state[1]);" />
+                    <label for=""
+                           tal:attributes="for python:normalizeString(state[1])"
+                           i18n:domain="plone"
+                           i18n:translate=""
+                           tal:content="python:state[0] or state[1]"
+                           />
+                    <br />
+                </tal:states>
+            </div>
+
+            <div class="visualClear" id="clear-space-before-submit"><!-- --></div>
+
+            <div class="formControls">
+                <input class="context"
+                       tabindex=""
+                       type="submit"
+                       name="submit"
+                       value="Search"
+                       i18n:attributes="value label_search;"
+                       tal:attributes="tabindex tabindex/next;"
+                       />
+            </div>
+
+        </fieldset>
+    
+    </form>
+
+</div>
+
+</html>
