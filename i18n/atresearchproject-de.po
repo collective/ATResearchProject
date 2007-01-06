@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ATResearchProject 0.4.0\n"
 "POT-Creation-Date: 2005-12-30 23:31+0100\n"
-"PO-Revision-Date: 2007-01-06 23:16+0100\n"
+"PO-Revision-Date: 2007-01-07 00:07+0100\n"
 "Last-Translator: SuperUser <root@phoenix.ecology.uni-kiel.de>\n"
 "Language-Team: netzwerkteam OEZK <plone-developers@ecology.uni-kiel.de>\n"
 "MIME-Version: 1.0\n"
@@ -347,7 +347,7 @@ msgstr "Genzen Sie Ihre Suche noch weiter ein, indem Sie Informationen zur Proje
 #. Default: "For a simple text search, enter your search term here. Multiple words may be found by combining them with <strong>AND</strong> and <strong>OR</strong>. The text in this field will be matched with projects' (official) title, abstracts, info fields and main contents."
 #: skins/ATResearchProject/research_project_search_form.pt
 msgid "atrpsearch_help_search_text"
-msgstr "Geben Sie für eine einfache Textsuche hier Ihren Suchbegriff ein. Mehrere Wörter können Sie durch <strong>AND</strong> und <strong>OR</strong> kombinieren. Es werden die Titel und Beschreibungen, Zusammenfassungen, Infofelder und der Haupttexte durchsucht."
+msgstr "Geben Sie für eine einfache Textsuche hier Ihren Suchbegriff ein. Mehrere Wörter können Sie durch <strong>AND</strong> und <strong>OR</strong> kombinieren. Es werden die Titel und Beschreibungen, Zusammenfassungen, Infofelder und die Haupttexte durchsucht."
 
 #. Default: "Return research projects / subprojects matching this short (portal) title."
 #: skins/ATResearchProject/research_project_search_form.pt
