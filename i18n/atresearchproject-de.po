@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ATResearchProject 0.4.0\n"
 "POT-Creation-Date: 2005-12-30 23:31+0100\n"
-"PO-Revision-Date: 2007-01-06 22:47+0100\n"
+"PO-Revision-Date: 2007-01-06 23:16+0100\n"
 "Last-Translator: SuperUser <root@phoenix.ecology.uni-kiel.de>\n"
 "Language-Team: netzwerkteam OEZK <plone-developers@ecology.uni-kiel.de>\n"
 "MIME-Version: 1.0\n"
@@ -317,7 +317,7 @@ msgstr "Es konnten leider keine Forschungsprojekte / Teilprojekte gefunden werde
 #. Default: "This search form enables you to find research projects and subprojects on the site by specifying one or more search terms."
 #: skins/ATResearchProject/research_project_search_form.pt
 msgid "atrpsearch_description_search"
-msgstr "Mit diesem Suchformular können sie diese Website unter Verwendung eines oder mehrerer Suchkriterien nach Forschungsprojekten und Teilprojekten im Portal durchsuchen."
+msgstr "Mit diesem Suchformular können sie diese Website unter Verwendung eines oder mehrerer Suchkriterien nach Forschungsprojekten und Teilprojekten  durchsuchen."
 
 #. Default: "Research Project Search Form"
 #: skins/ATResearchProject/research_project_search_form.pt
@@ -427,7 +427,7 @@ msgstr "Dieses Kriterium nicht verwenden"
 #. Default: "Show only third-party funded projects"
 #: skins/ATResearchProject/research_project_search_form.pt
 msgid "atrpsearch_thirdpartyfunded_true"
-msgstr "Nur Drittmittelprojekte anzeigen"
+msgstr "fNur Drittmittelprojekte anzeigen"
 
 #. Default: "Back to ${atname} :"
 #: skins/ATResearchProject/research_project_macros.pt
