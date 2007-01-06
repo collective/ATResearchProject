@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ATResearchProject 0.4.0\n"
 "POT-Creation-Date: 2005-12-30 23:31+0100\n"
-"PO-Revision-Date: 2006-12-07 22:18+0100\n"
+"PO-Revision-Date: 2007-01-06 22:47+0100\n"
 "Last-Translator: SuperUser <root@phoenix.ecology.uni-kiel.de>\n"
 "Language-Team: netzwerkteam OEZK <plone-developers@ecology.uni-kiel.de>\n"
 "MIME-Version: 1.0\n"
@@ -265,6 +265,7 @@ msgstr "Studentische Hilfskräfte"
 
 #. Default: "Subprojects"
 #: skins/ATResearchProject/research_project_macros.pt
+#: skins/ATResearchProject/research_project_search.pt
 msgid "Subprojects"
 msgstr "Teilprojekte"
 
@@ -308,15 +309,135 @@ msgstr "Dieses Kriterium durchsucht alle Textpassagen in Teilprojekt-Objekten na
 msgid "Title"
 msgstr "Titel"
 
-#. Default: "Back to ${atname}:"
-#: skins/ATResearchProject/research_project_macros.pt
-msgid "back_to_rplist"
-msgstr "Zurück zur ${atname}:"
+#. Default: "No research (sub)projects matching your search criteria were found."
+#: skins/ATResearchProject/research_project_search.pt
+msgid "atrpsearch_description_no_results_found"
+msgstr "Es konnten leider keine Forschungsprojekte / Teilprojekte gefunden werden, auf die Ihre Suchkriterien zutreffen."
 
-#. Default: "Back to ${atname}:"
+#. Default: "This search form enables you to find research projects and subprojects on the site by specifying one or more search terms."
+#: skins/ATResearchProject/research_project_search_form.pt
+msgid "atrpsearch_description_search"
+msgstr "Mit diesem Suchformular können sie diese Website unter Verwendung eines oder mehrerer Suchkriterien nach Forschungsprojekten und Teilprojekten im Portal durchsuchen."
+
+#. Default: "Research Project Search Form"
+#: skins/ATResearchProject/research_project_search_form.pt
+msgid "atrpsearch_heading_search"
+msgstr "Suche nach Forschungsprojekten"
+
+#. Default: "Research Project Search Results"
+#: skins/ATResearchProject/research_project_search.pt
+msgid "atrpsearch_heading_search_results"
+msgstr "Suche nach Forschungsprojekten - Suchergebnisse"
+
+#. Default: "Return research projects / subprojects matching this official project title."
+#: skins/ATResearchProject/research_project_search_form.pt
+msgid "atrpsearch_help_search_officialtitle"
+msgstr "Liefert Forschungsprojekte / Teilprojekte zurück, in deren Offiziellem Projekttitel Ihre Suchbegriffe vorkommen."
+
+#. Default: "Enter one or several names of persons, institutions or cooperation partners here. Multiple words/names may be found by combining them with <strong>AND</strong> and <strong>OR</strong>."
+#: skins/ATResearchProject/research_project_search_form.pt
+msgid "atrpsearch_help_search_persons"
+msgstr "Geben Sie für eine Suche nach Personen, Auftraggebern oder Kooperationspartnern hier Ihren Suchbegriff ein. Mehrere Personen/Namen können Sie durch <strong>AND</strong> und <strong>OR</strong> kombinieren."
+
+#. Default: "Narrow your search down by specifying information on runtime start and end of research projects / subprojects."
+#: skins/ATResearchProject/research_project_search_form.pt
+msgid "atrpsearch_help_search_runtime"
+msgstr "Genzen Sie Ihre Suche noch weiter ein, indem Sie Informationen zur Projektlaufzeit spezifizieren."
+
+#. Default: "For a simple text search, enter your search term here. Multiple words may be found by combining them with <strong>AND</strong> and <strong>OR</strong>. The text in this field will be matched with projects' (official) title, abstracts, info fields and main contents."
+#: skins/ATResearchProject/research_project_search_form.pt
+msgid "atrpsearch_help_search_text"
+msgstr "Geben Sie für eine einfache Textsuche hier Ihren Suchbegriff ein. Mehrere Wörter können Sie durch <strong>AND</strong> und <strong>OR</strong> kombinieren. Es werden die Titel und Beschreibungen, Zusammenfassungen, Infofelder und der Haupttexte durchsucht."
+
+#. Default: "Return research projects / subprojects matching this short (portal) title."
+#: skins/ATResearchProject/research_project_search_form.pt
+msgid "atrpsearch_help_search_title"
+msgstr "Liefert Forschungsprojekte / Teilprojekte zurück, in deren (Portal-)Titel Ihre Suchbegriffe vorkommen."
+
+#. Default: "Select here if you want only third-party funded projects shown in the lists of search results."
+#: skins/ATResearchProject/research_project_search_form.pt
+msgid "atrpsearch_help_thirdpartyfunded"
+msgstr "Wählen Sie hier, ob nur Drittmittelprojekte oder nur Projekte, finanziert aus Eigenmitteln, in den Suchergebnissen angezeigt werden sollen."
+
+#. Default: "Persons, Contractors, Cooperation Partners"
+#: skins/ATResearchProject/research_project_search_form.pt
+msgid "atrpsearch_label_infofields"
+msgstr "Personen, Auftraggeber, Kooperationspartner"
+
+#. Default: "Official Project Title"
+#: skins/ATResearchProject/research_project_search_form.pt
+msgid "atrpsearch_label_officialtitle"
+msgstr "Offizieller Projekttitel"
+
+#. Default: "Research Project / Subproject Runtime"
+#: skins/ATResearchProject/research_project_search_form.pt
+msgid "atrpsearch_label_projectruntime"
+msgstr "Forschungsprojekt / Teilprojekt Laufzeit"
+
+#. Default: "Third-party funded Research Projects"
+#: skins/ATResearchProject/research_project_search_form.pt
+msgid "atrpsearch_label_thirdpartyfunded"
+msgstr "Forschungsprojekte, finanziert aus Drittmitteln"
+
+#. Default: "Date Range for Project / Subproject Runtime"
+#: skins/ATResearchProject/research_project_search_form.pt
+msgid "atrpsearch_legend_runtime_range"
+msgstr "Zeitraumangaben für Projekt- / Teilprojektlaufzeit"
+
+#. Default: "Do not use project runtime in search request"
+#: skins/ATResearchProject/research_project_search_form.pt
+msgid "atrpsearch_no_runtime"
+msgstr "Die Projektlaufzeit nicht als Suchkriterium verwenden"
+
+#. Default: "Do only show active (sub)projects"
+#: skins/ATResearchProject/research_project_search_form.pt
+msgid "atrpsearch_runtime_activeprojects"
+msgstr "Nur laufende (Teil-)Projekte anzeigen"
+
+#. Default: "Do only show closed (sub)projects"
+#: skins/ATResearchProject/research_project_search_form.pt
+msgid "atrpsearch_runtime_closedprojects"
+msgstr "Nur abgeschlossene (Teil-)Projekte anzeigen"
+
+#. Default: "Use a specific date range as given below:"
+#: skins/ATResearchProject/research_project_search_form.pt
+msgid "atrpsearch_runtime_daterange"
+msgstr "Ich möchte einen genauen Zeitraum (siehe unten) angeben:"
+
+#. Default: "Project work ended in date range:"
+#: skins/ATResearchProject/research_project_search_form.pt
+msgid "atrpsearch_runtime_end_range"
+msgstr "Projekt endete im Zeitraum:"
+
+#. Default: "Project work started in date range:"
+#: skins/ATResearchProject/research_project_search_form.pt
+msgid "atrpsearch_runtime_start_range"
+msgstr "Projektbeginn war im folgenden Zeitraum:"
+
+#. Default: "Show self-financed project only"
+#: skins/ATResearchProject/research_project_search_form.pt
+msgid "atrpsearch_thirdpartyfunded_false"
+msgstr "Nur Projekte, finanziert aus Eigenmitteln, anzeigen"
+
+#. Default: "Do not use this criterion"
+#: skins/ATResearchProject/research_project_search_form.pt
+msgid "atrpsearch_thirdpartyfunded_none"
+msgstr "Dieses Kriterium nicht verwenden"
+
+#. Default: "Show only third-party funded projects"
+#: skins/ATResearchProject/research_project_search_form.pt
+msgid "atrpsearch_thirdpartyfunded_true"
+msgstr "Nur Drittmittelprojekte anzeigen"
+
+#. Default: "Back to ${atname} :"
 #: skins/ATResearchProject/research_project_macros.pt
 msgid "back_to_researchfield"
 msgstr "Zurück zum ${atname}:"
+
+#. Default: "Back to ${atname} :"
+#: skins/ATResearchProject/research_project_macros.pt
+msgid "back_to_rplist"
+msgstr "Zurück zur ${atname}:"
 
 #. Default: "For now please use the ZMI's PropertyManager of the PortalTypes tool to manage the allowed content types in folderish ATResearchProject objects."
 #: skins/ATResearchProject/prefs_atrptool_contenttypes.pt

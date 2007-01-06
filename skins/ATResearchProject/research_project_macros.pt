@@ -631,7 +631,7 @@
 	            i18n:name="percentage">23%</span>%]
 	</span>
 	
-	<span class="discreet" tal:condition="python: request.has_key('is_atrp_search')" i18n:translate="results_by_author">
+	<span class="discreet" tal:condition="python: request.has_key('is_atrp_search')" i18n:domain="plone" i18n:translate="results_by_author">
 	    by <span tal:omit-tag="" tal:content="topic/Creator" i18n:name="author">Author</span>,
 	    <span tal:omit-tag="" tal:content="python:here.toLocalizedTime(topic.ModificationDate, long_format=1)" i18n:name="date">Modification Date</span>
 	</span>

@@ -47,10 +47,10 @@
             </div>
 
             <div class="field">
-                <label for="Title" i18n:translate="atrpsearch_label_title">Title</label>
+                <label for="Title" i18n:domain="plone" i18n:translate="label_title">Title</label>
 
                 <div class="formHelp" i18n:translate="atrpsearch_help_search_title">
-                Return research projects / subprojects matching this short title /official title.
+                Return research projects / subprojects matching this short (portal) title.
                 </div>
 
                 <input type="text"
@@ -63,9 +63,25 @@
             </div>
 
             <div class="field">
-                <label for="getResearchProjectInfoFields" i18n:domain="atresearchproject" i18n:translate="atrpsearch_label_infofields">Persons, Contractors, Cooperation Partners</label>
+                <label for="Title" i18n:translate="atrpsearch_label_officialtitle">Official Project Title</label>
 
-                <div class="formHelp" i18n:translate="atrpsearch_help_search_text">
+                <div class="formHelp" i18n:translate="atrpsearch_help_search_officialtitle">
+                Return research projects / subprojects matching this official project title.
+                </div>
+
+                <input type="text"
+                       id="Description"
+                       name="Description"
+                       size="25"
+                       tabindex=""
+                       tal:attributes="tabindex tabindex/next;"
+                       />
+            </div>
+
+            <div class="field">
+                <label for="getResearchProjectInfoFields" i18n:translate="atrpsearch_label_infofields">Persons, Contractors, Cooperation Partners</label>
+
+                <div class="formHelp" i18n:translate="atrpsearch_help_search_persons">
 		Enter one or several names of persons, institutions or cooperation partners here. 
 		Multiple words/names may be found by combining
                 them with <strong>AND</strong> and <strong>OR</strong>.
@@ -84,42 +100,41 @@
 
 		<label for="" i18n:translate="atrpsearch_label_projectruntime">Research Project / Subproject Runtime</label>
 
-            	<div class="formHelp" i18n:translate="help_search_new_items_since">
+            	<div class="formHelp" i18n:translate="atrpsearch_help_search_runtime">
             	Narrow your search down by specifying information on runtime start and end of 
-		research projects / subprojects. Please assure of not forming a contradictory 
-		search request here.
+		research projects / subprojects.
             	</div>
     
 		<tal:datetime define="today python: DateTime().earliestTime()">
 		    
 		    <input checked="checked" type="radio" name="runtime:string" id="runtime_none" value=""
-			   tal:attributes="value string:">
-		    <label for="runtime_none">Do not use project runtime in search request</label>
+			   tal:attributes="value string:" />
+		    <label for="runtime_none" i18n:translate="atrpsearch_no_runtime">Do not use project runtime in search request</label>
 
 		    <br />
 
 		    <input type="radio" name="runtime:string" id="runtime_active-projects" value=""
-			   tal:attributes="value string:active-projects">
-		    <label for="runtime_active-projects">Do only show active (sub)projects</label>
+			   tal:attributes="value string:active-projects" />
+		    <label for="runtime_active-projects" i18n:translate="atrpsearch_runtime_activeprojects">Do only show active (sub)projects</label>
 		    
 		    <br />
 		    
 		    <input type="radio" name="runtime:string" id="runtime_closed-projects" value=""
-			   tal:attributes="value string:closed-projects">
-		    <label for="runtime_closed-projects">Do only show closed (sub)projects</label>
+			   tal:attributes="value string:closed-projects" />
+		    <label for="runtime_closed-projects" i18n:translate="atrpsearch_runtime_closedprojects">Do only show closed (sub)projects</label>
 		    
 		    <br />
 
 		    <input type="radio" name="runtime:string" id="runtime_use-date-range" value=""
-			   tal:attributes="value string:use-date-range">
-		    <label for="runtime_use-date-range">Use a specific date range as given below:</label>
+			   tal:attributes="value string:use-date-range" />
+		    <label for="runtime_use-date-range" i18n:translate="atrpsearch_runtime_daterange">Use a specific date range as given below:</label>
 		    
 		    <fieldset>
-		    <legend>Date Range for Project / Subproject Runtime</legend>
+		    <legend i18n:translate="atrpsearch_legend_runtime_range">Date Range for Project / Subproject Runtime</legend>
 
     			<input type="checkbox" name="runtime_start:string" id="runtime_start" value=""
-			       tal:attributes="value string:true">
-			<label for="runtime_start">Project work started in date range:</label>
+			       tal:attributes="value string:true" />
+			<label for="runtime_start" i18n:translate="atrpsearch_runtime_start_range">Project work started in date range:</label>
 
 			<div style="padding-left: 2em; padding-top:0.5em;">
 			<div style="float:left;">
@@ -154,8 +169,8 @@
 		        <br />
 			
 			<input type="checkbox" name="runtime_end:string" id="runtime_end" value=""
-		    	       tal:attributes="value string:true">
-			<label for="runtime_start">Project work ended in date range:</label>
+		    	       tal:attributes="value string:true" />
+			<label for="runtime_start" i18n:translate="atrpsearch_runtime_end_range">Project work ended in date range:</label>
 
 			<div style="padding-left: 2em; padding-top:0.5em;">
 			<div style="float:left;">
@@ -195,9 +210,9 @@
             </div>
     
             <div class="field">
-                <label for="" i18n:domain="atresearchproject" i18n:translate="atrpsearch_label_thirdpartyfunded">Third-party funded Research Projects</label>
+                <label for="" i18n:translate="atrpsearch_label_thirdpartyfunded">Third-party funded Research Projects</label>
 
-                <div class="formHelp" i18n:translate="atrpsearch_help_search_text">
+                <div class="formHelp" i18n:translate="atrpsearch_help_thirdpartyfunded">
 		Select here if you want only third-party funded projects shown in the lists of search results.
                 </div>
 
@@ -208,27 +223,27 @@
 		       value=""
                        tabindex=""
                        tal:attributes="tabindex tabindex/next;"
-                       /><label for="researchProjectThirdPartyFunded_none">Do not use this criterion</label><br />
+                       /><label for="researchProjectThirdPartyFunded_none" i18n:translate="atrpsearch_thirdpartyfunded_none">Do not use this criterion</label><br />
                 <input type="radio"
                        id="researchProjectThirdPartyFunded_true"
                        name="researchProjectThirdPartyFunded:string"
 		       value="True"
                        tabindex=""
                        tal:attributes="tabindex tabindex/next;"
-                       /><label for="researchProjectThirdPartyFunded_true">Show only third-party funded projects</label><br />
+                       /><label for="researchProjectThirdPartyFunded_true" i18n:translate="atrpsearch_thirdpartyfunded_true">Show only third-party funded projects</label><br />
                 <input type="radio"
                        id="researchProjectThirdPartyFunded_false"
                        name="researchProjectThirdPartyFunded:string"
 		       value="False"
                        tabindex=""
                        tal:attributes="tabindex tabindex/next;"
-                       /><label for="researchProjectThirdPartyFunded_false">Show self-financed project only</label><br />
+                       /><label for="researchProjectThirdPartyFunded_false" i18n:translate="atrpsearch_thirdpartyfunded_false">Show self-financed project only</label><br />
             </div>
 
             <div class="field" tal:define="portal_types portal/portal_types">
-                <label i18n:translate="label_item_type">Type</label>
+                <label i18n:domain="plone" i18n:translate="label_item_type">Type</label>
 
-                <div class="formHelp" i18n:translate="help_search_item_type">
+                <div class="formHelp" i18n:domain="plone" i18n:translate="help_search_item_type">
                 Return items of a specific type.
                 </div>
     
@@ -248,7 +263,7 @@
                             tal:attributes="value type;
                                             tabindex tabindex;
                                             id string:portal_type_${type}">
-                        <span i18n:translate=""
+                        <span i18n:domain="plone" i18n:translate=""
                           tal:content="python: portal_types.getTypeInfo(type).Title()"
                           /> (<span tal:content="type" />)
                         </option>
@@ -262,6 +277,7 @@
             <br />
 
             <div class="field"
+	         i18n:domain="plone" 
                  tal:condition="python: not here.portal_membership.isAnonymousUser()">
     
                 <label for="review_state" i18n:translate="label_review_status">Review status</label>
@@ -293,7 +309,8 @@
 
             <div class="visualClear" id="clear-space-before-submit"><!-- --></div>
 
-            <div class="formControls">
+            <div class="formControls"
+	         i18n:domain="plone">
                 <input class="context"
                        tabindex=""
                        type="submit"

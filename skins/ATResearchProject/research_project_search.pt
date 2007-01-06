@@ -57,7 +57,7 @@
     <h1 i18n:translate="atrpsearch_heading_search_results">Research Project Search Results</h1>
     
     <div tal:condition="not: results">
-        <p><strong i18n:translate="atrpsearch_description_no_results_found">No research project matching your search criteria were found.</strong></p>
+        <p><strong i18n:translate="atrpsearch_description_no_results_found">No research (sub)projects matching your search criteria were found.</strong></p>
     </div>
 
     <p i18n:domain="plone" i18n:translate="search_results_advanced">
