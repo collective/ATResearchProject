@@ -290,7 +290,7 @@ class ResearchProjectList(ATTopic):
 
             	    query['review_state'] = navtool.wf_states_to_show
 
-        #print query
+        print query
 
         return query or None
 

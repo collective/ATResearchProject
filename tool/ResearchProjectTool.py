@@ -167,8 +167,7 @@ class ResearchProjectSiteConfiguration(UniqueObject, SimpleItem, PropertyManager
       for line in lines_field:
       
         # a tag is a phrase enclosed by "<>". No blanks are allowed between the brackets
-	print line
-        text = string.rstrip(' '.join([ word for word in string.split(line, ' ') if word != '<%s>' % word[1:-1] ]))
+	text = string.rstrip(' '.join([ word for word in string.split(line, ' ') if word != '<%s>' % word[1:-1] ]))
         tag = string.rstrip(' '.join([ word for word in string.split(line, ' ') if word == '<%s>' % word[1:-1] ]))
         
 	# we have three format types: 
@@ -546,5 +545,27 @@ class ResearchProjectSiteConfiguration(UniqueObject, SimpleItem, PropertyManager
                 dup_keys[key] = 1
 
         return result
+
+    def addMissingResearchProjectsToSearchResult(self, project_brains=[], subproject_brains=[]):
+    
+	catalog = getToolByName(self, 'portal_catalog')
+	
+	# convert brains to list objects
+	results = [ brain for brain in project_brains ]
+	if project_brains and subproject_brains:
+	    results += [ brain for brain in subproject_brains ]
+	elif not project_brains:
+	    results = [ brain for brain in subproject_brains ]
+	        
+	for sp_brain in subproject_brains:
+	    
+	    sp = sp_brain.getObject()
+	    rp = sp.getResearchProjectObject()
+	    if rp not in [ brain.getObject() for brain in results ]:
+		res = [ brain for brain in catalog(path={'query': '/'.join(rp.getPhysicalPath()[:-1]), 'depth': 1,}, id=rp.getId()) ]
+		if len(res):
+		    results = results + res
+	    
+	return results
 
 InitializeClass(ResearchProjectSiteConfiguration)

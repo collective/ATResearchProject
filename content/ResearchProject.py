@@ -427,21 +427,25 @@ class ResearchProject(BrowserDefaultMixin, OrderedBaseFolder):
       query = {}
       ctool = getToolByName(self, 'portal_catalog')
       putils = getToolByName(self, 'plone_utils')
+      ntp = getToolByName(self, 'portal_properties').navtree_properties
+      mtool = getToolByName(self, 'portal_membership')
       currentPath = '/'.join(self.getPhysicalPath())
       parentPath = '/'.join('/'.join(self.getPhysicalPath()).split('/')[:-1])
       query['path'] = {'query': parentPath,
                        'depth': 1000,
 		      }
       query['sort_on'] = 'getObjPositionInParent'	      
-      #query['portal_type'] = ('ResearchProject', 'ResearchSubproject','ResearchProjectInternalFolder','BibliographyList','BibliographyTopic',)
-      
+      if mtool.isAnonymousUser() and ntp.getProperty('enable_wf_state_filtering', False):
+	query['review_state'] = ntp.wf_states_to_show
+		       
       rawresult = ctool(**query)
       
       result = {}
       for item in [ rawitem for rawitem in rawresult if rawitem.getPath().startswith(currentPath) ]:
         path = item.getPath()
         item_url = item.getURL()
-        data = {
+	if (item.review_state in ntp.wf_states_to_show) or [ role for role in mtool.getAuthenticatedMember().getRolesInContext(item.getObject()) if role in ['Owner', 'Reviewer', 'Manager'] ]: 
+    	    data = {
 	    'path' : path,
 	    'Title': putils.pretty_title_or_id(item),
 	    'icon': item.getIcon,
@@ -450,9 +454,9 @@ class ResearchProject(BrowserDefaultMixin, OrderedBaseFolder):
 	    'review_state': item.review_state,
 	    'Description': item.Description,
 	    'children': [],
-	}
-	self._addToResearchProjectTree(result, data)
-	
+	    }
+	    self._addToResearchProjectTree(result, data)
+
       if result.has_key(currentPath):
         return result[currentPath]
       else:

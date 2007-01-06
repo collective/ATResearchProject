@@ -17,7 +17,7 @@
 
   	<form action="research_project_search"
           method="get"
-          name="atrp_search"
+          name="research_project_search_form"
           tal:define="DateTime python:modules['DateTime'].DateTime">
 
         <input type="hidden" name="is_atrp_search" />
@@ -80,36 +80,151 @@
                        />
             </div>
 
-            <!-- div class="field">
-                <label for="created" i18n:translate="label_new_items_since">New items since</label>
+            <div class="field">
 
-                <div class="formHelp" i18n:translate="help_search_new_items_since">
-                Return items added since you were last logged on, the last week, etc.
+		<label for="" i18n:translate="atrpsearch_label_projectruntime">Research Project / Subproject Runtime</label>
+
+            	<div class="formHelp" i18n:translate="help_search_new_items_since">
+            	Narrow your search down by specifying information on runtime start and end of 
+		research projects / subprojects. Please assure of not forming a contradictory 
+		search request here.
+            	</div>
+    
+		<tal:datetime define="today python: DateTime().earliestTime()">
+		    
+		    <input checked="checked" type="radio" name="runtime:string" id="runtime_none" value=""
+			   tal:attributes="value string:">
+		    <label for="runtime_none">Do not use project runtime in search request</label>
+
+		    <br />
+
+		    <input type="radio" name="runtime:string" id="runtime_active-projects" value=""
+			   tal:attributes="value string:active-projects">
+		    <label for="runtime_active-projects">Do only show active (sub)projects</label>
+		    
+		    <br />
+		    
+		    <input type="radio" name="runtime:string" id="runtime_closed-projects" value=""
+			   tal:attributes="value string:closed-projects">
+		    <label for="runtime_closed-projects">Do only show closed (sub)projects</label>
+		    
+		    <br />
+
+		    <input type="radio" name="runtime:string" id="runtime_use-date-range" value=""
+			   tal:attributes="value string:use-date-range">
+		    <label for="runtime_use-date-range">Use a specific date range as given below:</label>
+		    
+		    <fieldset>
+		    <legend>Date Range for Project / Subproject Runtime</legend>
+
+    			<input type="checkbox" name="runtime_start:string" id="runtime_start" value=""
+			       tal:attributes="value string:true">
+			<label for="runtime_start">Project work started in date range:</label>
+
+			<div style="padding-left: 2em; padding-top:0.5em;">
+			<div style="float:left;">
+			<tal:use-calendar-macro tal:define="id string:runtime_start_rangeA;
+			                                    formname string:research_project_search_form;
+                                                            show_hm python: False;
+							    show_ymd python: True;
+							    inputname id;
+							    inputvalue python: today.Date();
+							    tabindex tabindex/next;">
+    
+			<metal:calendar-start metal:use-macro="here/calendar_macros/macros/calendarDatePickerBox|here/calendar_slots/macros/calendarDatePickerBox" />
+		        </tal:use-calendar-macro>
+			</div>
+			<div style="float:left;">
+			&nbsp;&nbsp;&mdash;&nbsp;&nbsp;
+			</div>
+			<div>
+			<tal:use-calendar-macro tal:define="id string:runtime_start_rangeB;
+			                                    formname string:research_project_search_form;
+                                                            show_hm python: False;
+							    show_ymd python: True;
+							    inputname id;
+							    inputvalue python: today.Date();
+							    tabindex tabindex/next;">
+    
+			<metal:calendar-start metal:use-macro="here/calendar_macros/macros/calendarDatePickerBox|here/calendar_slots/macros/calendarDatePickerBox" />
+		        </tal:use-calendar-macro>
+			</div>
+			
+			</div>
+		        <br />
+			
+			<input type="checkbox" name="runtime_end:string" id="runtime_end" value=""
+		    	       tal:attributes="value string:true">
+			<label for="runtime_start">Project work ended in date range:</label>
+
+			<div style="padding-left: 2em; padding-top:0.5em;">
+			<div style="float:left;">
+			<tal:use-calendar-macro tal:define="id string:runtime_end_rangeA;
+			                                    formname string:research_project_search_form;
+                                                            show_hm python: False;
+							    show_ymd python: True;
+							    inputname id;
+							    inputvalue python: today.Date();
+							    tabindex tabindex/next;">
+    
+			<metal:calendar-start metal:use-macro="here/calendar_macros/macros/calendarDatePickerBox|here/calendar_slots/macros/calendarDatePickerBox" />
+		        </tal:use-calendar-macro>
+			</div>
+			<div style="float:left;">
+			&nbsp;&nbsp;&mdash;&nbsp;&nbsp;
+			</div>
+			<div>
+			<tal:use-calendar-macro tal:define="id string:runtime_end_rangeB;
+			                                    formname string:research_project_search_form;
+                                                            show_hm python: False;
+							    show_ymd python: True;
+							    inputname id;
+							    inputvalue python: today.Date();
+							    tabindex tabindex/next;">
+    
+			<metal:calendar-start metal:use-macro="here/calendar_macros/macros/calendarDatePickerBox|here/calendar_slots/macros/calendarDatePickerBox" />
+		        </tal:use-calendar-macro>
+			</div>
+			
+			</div>
+
+		    </fieldset>
+		    
+		</tal:datetime>
+		
+            </div>
+    
+            <div class="field">
+                <label for="" i18n:domain="atresearchproject" i18n:translate="atrpsearch_label_thirdpartyfunded">Third-party funded Research Projects</label>
+
+                <div class="formHelp" i18n:translate="atrpsearch_help_search_text">
+		Select here if you want only third-party funded projects shown in the lists of search results.
                 </div>
-    
-                <tal:datetime define="today python:DateTime().earliestTime()">
-                <select name="created:list:date"
-                        id="created"
-                        tabindex=""
-                        tal:attributes="tabindex tabindex/next;"
-                        tal:define="yesterday python:(today-1).Date();
-                                    lastweek python:(today-7).Date();
-                                    lastmonth python:(today-31).Date();
-                                    ever string:1970/02/01;">
-                    <option value="#"
-                            tal:condition="not: isAnon"
-                            tal:attributes="value python:member is not None and member.getProperty('last_login_time') or today"
-                            i18n:translate="last_login">Last log-in</option>
-                    <option value="#" tal:attributes="value yesterday" i18n:translate="time_yesterday"> Yesterday </option>
-                    <option value="#" tal:attributes="value lastweek" i18n:translate="time_last_week"> Last week </option>
-                    <option value="#" tal:attributes="value lastmonth" i18n:translate="time_last_month"> Last month </option>
-                    <option value="#" tal:attributes="value ever" selected="selected" i18n:translate="time_ever"> Ever </option>
-                </select>
-                </tal:datetime>
 
-                <input type="hidden" name="created_usage" value="range:min" />
-            </div -->
-    
+                <input checked="checked" 
+		       type="radio"
+                       id="researchProjectThirdPartyFunded_none"
+                       name="researchProjectThirdPartyFunded:string"
+		       value=""
+                       tabindex=""
+                       tal:attributes="tabindex tabindex/next;"
+                       /><label for="researchProjectThirdPartyFunded_none">Do not use this criterion</label><br />
+                <input type="radio"
+                       id="researchProjectThirdPartyFunded_true"
+                       name="researchProjectThirdPartyFunded:string"
+		       value="True"
+                       tabindex=""
+                       tal:attributes="tabindex tabindex/next;"
+                       /><label for="researchProjectThirdPartyFunded_true">Show only third-party funded projects</label><br />
+                <input type="radio"
+                       id="researchProjectThirdPartyFunded_false"
+                       name="researchProjectThirdPartyFunded:string"
+		       value="False"
+                       tabindex=""
+                       tal:attributes="tabindex tabindex/next;"
+                       /><label for="researchProjectThirdPartyFunded_false">Show self-financed project only</label><br />
+            </div>
+
             <div class="field" tal:define="portal_types portal/portal_types">
                 <label i18n:translate="label_item_type">Type</label>
 
@@ -146,38 +261,12 @@
             <div class="visualClear" id="clear-space-before-author"><!-- --></div>
             <br />
 
-            <!-- div class="field">
-                <label for="Creator" i18n:translate="label_author">Author</label>
-
-                <div class="formHelp" i18n:translate="help_search_author">
-                Return items created by a particular person.
-                </div>
-    
-                <tal:creators tal:define="creators python:portal.portal_catalog.uniqueValuesFor('Creator')">
-                    <select name="Creator"
-                            id="Creator"
-                            tabindex=""
-                            tal:attributes="tabindex tabindex/next;"
-                            tal:condition="python: len(creators) &lt;= 30">
-                        <option value="" i18n:translate="label_any_author">Any Author</option>
-                        <metal:block tal:repeat="creator creators">
-                            <option value="" tal:attributes="value creator" tal:content="creator"> username </option>
-                        </metal:block>
-                    </select>
-    
-                    <input name="Creator"
-                           tabindex=""
-                           tal:attributes="tabindex tabindex/next;"
-                           tal:condition="python: len(creators) &gt; 30 " />
-                </tal:creators>
-            </div -->
-    
             <div class="field"
                  tal:condition="python: not here.portal_membership.isAnonymousUser()">
     
                 <label for="review_state" i18n:translate="label_review_status">Review status</label>
 
-                <div class="formHelp" i18n:translate="help_search_review_status">
+                <div class="formHelp" i18n:domain="plone" i18n:translate="help_search_review_status">
                 You may search for items based on their
                 review state. If you wish to constrain results to items
                 in certain states, select them from this list.

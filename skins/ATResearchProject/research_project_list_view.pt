@@ -37,7 +37,8 @@
         </p>
 
 	<metal:listingmacro define-macro="listing">
-        <tal:portaltype-loop define="portal_types python: (('ResearchProject', 'Research Projects', here.getResearchProjectListDisplayResearchProjects(), here.getResearchProjectListDisplayHeadlineResearchProjects()), ('ResearchSubproject','Subprojects', here.getResearchProjectListDisplayResearchSubprojects(), here.getResearchProjectListDisplayHeadlineResearchSubprojects() and not here.getResearchProjectListCascadeResearchSubprojects()))"
+        <tal:portaltype-loop condition="here/listCriteria"
+			     define="portal_types python: (('ResearchProject', 'Research Projects', here.getResearchProjectListDisplayResearchProjects(), here.getResearchProjectListDisplayHeadlineResearchProjects()), ('ResearchSubproject','Subprojects', here.getResearchProjectListDisplayResearchSubprojects(), here.getResearchProjectListDisplayHeadlineResearchSubprojects() and not here.getResearchProjectListCascadeResearchSubprojects()))"
 	                     repeat="portal_type portal_types">
 	
           <tal:if condition="python: portal_type[2]">
@@ -156,20 +157,21 @@
                 No subprojects have been found matching this context.
             </p>
 
-            <p class="discreet"
-               tal:condition="python: (not here.listCriteria() and ((portal_type[0] == 'ResearchProject') or ((portal_type[0] == 'ResearchSubproject') and not here.getResearchProjectListCascadeResearchSubprojects())))"
-               i18n:domain="atcontenttypes"
-               i18n:translate="description_no_criteria_in_topic">
-                There are currently no criteria on which to search.
-                Please add them using the 'criteria' tab.
-            </p>
-
             <!-- Navigation -->
             <div metal:use-macro="here/batch_macros/macros/navigation" />
 
           </tal:topiccontents>
           </tal:if>
 	</tal:portaltype-loop>  
+
+        <p class="discreet"
+               tal:condition="python: not here.listCriteria()"
+               i18n:domain="atcontenttypes"
+               i18n:translate="description_no_criteria_in_topic">
+                There are currently no criteria on which to search.
+                Please add them using the 'criteria' tab.
+        </p>
+
         </metal:listingmacro>
     </metal:body>
 

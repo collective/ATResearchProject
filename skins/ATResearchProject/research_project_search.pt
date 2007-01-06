@@ -15,12 +15,35 @@
 <div metal:fill-slot="main"
      tal:define="use_types_blacklist request/use_types_blacklist | python:True;
 
-    		 req_portal_types python: request.get('portal_type');
+    		 runtime python: request.get('runtime');
+		 use_date_range python: runtime == 'use-date-range';
+		 use_date_range_runtime_start python: use_date_range and request.get('runtime_start') == 'true';
+		 use_date_range_runtime_end python: use_date_range and request.get('runtime_end') == 'true';
 
-    		 dummy python: request.set('portal_type', ('ResearchProject',));
+		 today python: DateTime().earliestTime();
+
+    		 req_portal_types python: request.get('portal_type');
+		 dummy python: request.set('portal_type', ('ResearchProject',));
+
+		 dummy python: (runtime == 'active-projects') and request.set('researchProjectRuntimeEnd', {'query': today.Date(), 'range': 'min', });
+		 dummy python: (runtime == 'closed-projects') and request.set('researchProjectRuntimeEnd', {'query': today.Date(), 'range': 'max', });
+		 dummy python: use_date_range_runtime_start and request.set('researchProjectRuntimeStart', {'query': (DateTime(request.get('runtime_start_rangeA')), DateTime(request.get('runtime_start_rangeB'))), 'range': 'min:max'});
+		 dummy python: use_date_range_runtime_end and request.set('researchProjectRuntimeEnd', {'query': (DateTime(request.get('runtime_end_rangeA')), DateTime(request.get('runtime_end_rangeB'))), 'range': 'min:max'});
+
+		 dummy python: (request.get('researchProjectThirdPartyFunded') == 'True') and request.set('researchProjectThirdPartyFunded', [1, True, '1', 'True']);
+		 dummy python: (request.get('researchProjectThirdPartyFunded') == 'False') and request.set('researchProjectThirdPartyFunded', [0, False, '0', 'False']);
+
                  project_results python: (('ResearchProject' in req_portal_types) and here.queryCatalog(REQUEST=request,use_types_blacklist=use_types_blacklist)) or [];
 
     		 dummy python: request.set('portal_type', ('ResearchSubproject',));
+
+		 dummy python: request.set('researchProjectRuntimeStart', '');
+		 dummy python: request.set('researchProjectRuntimeEnd', '');
+		 dummy python: (runtime == 'active-projects') and request.set('researchSubprojectRuntimeEnd', {'query': today.Date(), 'range': 'min', });
+		 dummy python: (runtime == 'closed-projects') and request.set('researchSubprojectRuntimeEnd', {'query': today.Date(), 'range': 'max', });
+		 dummy python: use_date_range_runtime_start and request.set('researchSubprojectRuntimeStart', {'query': (DateTime(request.get('runtime_start_rangeA')), DateTime(request.get('runtime_start_rangeB'))), 'range': 'min:max'});
+		 dummy python: use_date_range_runtime_end and request.set('researchSubprojectRuntimeEnd', {'query': (DateTime(request.get('runtime_end_rangeA')), DateTime(request.get('runtime_end_rangeB'))), 'range': 'min:max'});
+
     		 dummy python: request.has_key('getResearchProjectInfoFields') and request.set('getResearchSubprojectInfoFields', request.get('getResearchProjectInfoFields'));
                  subproject_results python: (('ResearchSubproject' in req_portal_types) and here.queryCatalog(REQUEST=request,use_types_blacklist=use_types_blacklist)) or [];
 		 
