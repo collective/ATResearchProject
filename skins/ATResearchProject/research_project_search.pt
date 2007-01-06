@@ -1,0 +1,99 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      lang="en"
+      metal:use-macro="here/main_template/macros/master"
+      i18n:domain="atresearchproject">
+
+<metal:block metal:fill-slot="head_slot">
+    <link rel="alternate" title="RSS 1.0" type="application/rss+xml"
+          tal:condition="request/SearchableText|nothing"
+          tal:attributes="href string:$here_url/search_rss?${request/QUERY_STRING}"/>
+</metal:block>
+
+<metal:block fill-slot="top_slot"
+             tal:define="dummy python:request.set('disable_border',1)" />
+
+<div metal:fill-slot="main"
+     tal:define="use_types_blacklist request/use_types_blacklist | python:True;
+
+    		 req_portal_types python: request.get('portal_type');
+
+    		 dummy python: request.set('portal_type', ('ResearchProject',));
+                 project_results python: (('ResearchProject' in req_portal_types) and here.queryCatalog(REQUEST=request,use_types_blacklist=use_types_blacklist)) or [];
+
+    		 dummy python: request.set('portal_type', ('ResearchSubproject',));
+    		 dummy python: request.has_key('getResearchProjectInfoFields') and request.set('getResearchSubprojectInfoFields', request.get('getResearchProjectInfoFields'));
+                 subproject_results python: (('ResearchSubproject' in req_portal_types) and here.queryCatalog(REQUEST=request,use_types_blacklist=use_types_blacklist)) or [];
+		 
+		 results python: ('ResearchProject' in req_portal_types) and here.portal_researchproject.addMissingResearchProjectsToSearchResult(project_brains=project_results, subproject_brains=subproject_results) or subproject_results;
+		
+                 desc_length site_properties/search_results_description_length;
+                 desc_ellipsis site_properties/ellipsis;
+                 searchterm request/SearchableText|nothing;
+                 use_view_action site_properties/typesUseViewActionInListings|python:();">
+
+    <h1 i18n:translate="atrpsearch_heading_search_results">Research Project Search Results</h1>
+    
+    <div tal:condition="not: results">
+        <p><strong i18n:translate="atrpsearch_description_no_results_found">No research project matching your search criteria were found.</strong></p>
+    </div>
+
+    <p i18n:domain="plone" i18n:translate="search_results_advanced">
+    Did you not find what you were looking for? Try the
+    <span i18n:name="advanced_search">
+    <a href=""
+       i18n:translate="search_results_advanced_link"
+       tal:attributes="href string:$portal_url/search_form">Advanced Search</a>
+    </span>
+    for more precise search options.
+    </p>
+
+    <div tal:condition="results">
+    
+        <strong i18n:domain="plone" i18n:translate="batch_x_items_matching_your_criteria">
+            <span i18n:name="number" tal:omit-tag="" tal:content="python:len(results)">234</span> items matching your criteria.
+        </strong>
+
+        <tal:syndicate condition="syntool/isSiteSyndicationAllowed">
+        <a href="" tal:attributes="href string:$here_url/search_rss?${request/QUERY_STRING}">
+        <img i18n:domain="plone"
+	     i18n:attributes="title title_rss_feed; alt label_rss_feed;"
+             tal:attributes="src string:$portal_url/rss.gif"
+             src="rss.gif"
+             alt="RSS Feed"
+             title="RSS feed of these search results" />
+        </a>
+        </tal:syndicate>
+
+        <!-- Search results -->
+
+	<tal:results tal:define="topicContents results;
+	                         search_form_name python: here.translate(domain='atresearchproject', msgid='atrp_search_form_name', default='Research Project Search Form');
+				 project_brains python: [ brain for brain in results if brain.portal_type == 'ResearchProject' ];
+				 subproject_brains python: [ brain for brain in results if brain.portal_type == 'ResearchSubproject' ];">
+
+        <tal:projects-found tal:condition="project_brains">
+	    
+	    <br />
+	    <br />
+
+	    <metal:research-project metal:use-macro="here/research_project_macros/macros/researchprojects-listing" />
+	    
+	</tal:projects-found>    
+	
+	<tal:subprojects-only-found tal:define="dummy python: request.set('is_atrsp_search', 1);"
+			            tal:condition="python: not project_brains and subproject_brains">
+	    <h4 i18n:domain="atresearchproject"
+	        i18n:translate="">Subprojects</h4>
+									  
+    	    <metal:research-project metal:use-macro="here/research_project_macros/macros/researchsubprojects-listing" />
+
+	</tal:subprojects-only-found>    
+	
+	</tal:results>
+
+    </div>
+</div>
+
+
+</html>
+

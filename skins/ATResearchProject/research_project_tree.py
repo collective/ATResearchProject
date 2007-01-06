@@ -29,11 +29,11 @@ def researchProjectTree(subtree):
 
   for brainObject in subtree:
 
-    if (brainObject['portal_type'] in projectTypes) and (brainObject['review_state'] == 'published'):
+    if (brainObject['portal_type'] in projectTypes):
       print '<ul>'
       print '<li style="list-style: none; list-style-image: none;">'
       print '<div class="contenttype-%s visualIconPadding">' % context.plone_utils.normalizeString(brainObject['portal_type'])
-      print '<a href="%s"><b>' %  brainObject['absolute_url']
+      print '<a href="%s"><b class="state-%s">' %  (brainObject['absolute_url'], context.plone_utils.normalizeString(brainObject['review_state']))
       print '%s' % brainObject['Title']
       print '</b></a>'
       print '<div>'

@@ -8,18 +8,20 @@
 
 <div metal:fill-slot="main">
 
-    <h1 i18n:translate="atrp_sf_heading_search">Research Project Search Form</h1>
+    <h1 i18n:translate="atrpsearch_heading_search">Research Project Search Form</h1>
 
-    <p i18n:translate="atrp_sf_description_search">
+    <p i18n:translate="atrpsearch_description_search">
     This search form enables you to find research projects and subprojects on the site by
     specifying one or more search terms.
     </p>
 
-  	<form action="search"
+  	<form action="research_project_search"
           method="get"
           name="atrp_search"
           tal:define="DateTime python:modules['DateTime'].DateTime">
 
+        <input type="hidden" name="is_atrp_search" />
+	
         <fieldset>
 
             <legend i18n:domain="plone" i18n:translate="legend_search_terms">Search Terms</legend>
@@ -27,7 +29,7 @@
             <div class="field">
                 <label for="SearchableText" i18n:domain="plone" i18n:translate="label_search_text">Search Text</label>
 
-                <div class="formHelp" i18n:translate="atrp_sf_help_search_text">
+                <div class="formHelp" i18n:translate="atrpsearch_help_search_text">
                 For a simple text search, enter your search term
                 here. Multiple words may be found by combining
                 them with <strong>AND</strong> and <strong>OR</strong>.
@@ -45,15 +47,33 @@
             </div>
 
             <div class="field">
-                <label for="Title" i18n:translate="atrp_sf_label_title">Title</label>
+                <label for="Title" i18n:translate="atrpsearch_label_title">Title</label>
 
-                <div class="formHelp" i18n:translate="atrp_sf_help_search_title">
+                <div class="formHelp" i18n:translate="atrpsearch_help_search_title">
                 Return research projects / subprojects matching this short title /official title.
                 </div>
 
                 <input type="text"
                        id="Title"
                        name="Title"
+                       size="25"
+                       tabindex=""
+                       tal:attributes="tabindex tabindex/next;"
+                       />
+            </div>
+
+            <div class="field">
+                <label for="getResearchProjectInfoFields" i18n:domain="atresearchproject" i18n:translate="atrpsearch_label_infofields">Persons, Contractors, Cooperation Partners</label>
+
+                <div class="formHelp" i18n:translate="atrpsearch_help_search_text">
+		Enter one or several names of persons, institutions or cooperation partners here. 
+		Multiple words/names may be found by combining
+                them with <strong>AND</strong> and <strong>OR</strong>.
+                </div>
+
+                <input type="text"
+                       id="getResearchProjectInfoFields"
+                       name="getResearchProjectInfoFields"
                        size="25"
                        tabindex=""
                        tal:attributes="tabindex tabindex/next;"

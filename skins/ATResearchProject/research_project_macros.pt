@@ -503,10 +503,10 @@
 
 	<b><a class=""
 	      href="" 
-	      tal:attributes="href python:'%s?came_from=%s&amp;came_from_title=%s&amp;came_from_description=%s&amp;came_from_atname=%s' % (project.absolute_url(),here.absolute_url(),here.title_or_id(),here.Description(),here.archetype_name);
+	      tal:attributes="href python:'%s?came_from=%s&amp;came_from_title=%s&amp;came_from_description=%s&amp;came_from_atname=%s' % (project.absolute_url(),here.absolute_url(),here.pretty_title_or_id(),here.Description(),here.archetype_name);
 		              class string:$project_wf_state_class visualIconPadding">
 				      
-  	  <span tal:content="project/title_or_id" tal:omit-tag="" /></a></b>
+  	  <span tal:content="project/pretty_title_or_id" tal:omit-tag="" /></a></b>
 
         </td>
 
@@ -551,7 +551,6 @@
         </div>
 	
 	<div style="padding-left: 24pt; margin-top: 4pt;">
-	
         <tal:displaycontractors tal:define="projectContractors python: project.getResearchProjectContractors(extended_field_format='structure')">
           <tal:if tal:condition="python: here.getResearchFieldDisplayContractors() and project.getResearchProjectContractors()">
           <span i18n:domain="atresearchproject"
@@ -584,29 +583,33 @@
 
 </metal:relatedprojects-listing>    
     
-<!-- ResearchProjectList MACROS -->
+<!-- ResearchProjectList MACROS / also used for Research Project Search Results -->
 
 <metal:researchprojects-listing metal:define-macro="researchprojects-listing">
 
-  <tal:project-list tal:repeat="project python: [ topic.getObject() for topic in topicContents ]">
-
+  <tal:define tal:define="archetype_name python: (request.has_key('is_atrp_search') and search_form_name) or here.archetype_name;
+                          project_brains python: [ topic for topic in topicContents if topic.portal_type == 'ResearchProject' ];
+			  subproject_brains python: [ topic for topic in topicContents if topic.portal_type == 'ResearchSubproject' ];">
+  <tal:project-list tal:repeat="topic topicContents">
+  
     <div i18n:domain="atresearchproject"
-    	 tal:define="project_roles python: mtool.getAuthenticatedMember().getRolesInContext(project);
+    	 tal:define="project topic/getObject;
+		     project_roles python: mtool.getAuthenticatedMember().getRolesInContext(project);
                      project_wf_state project/review_state | python: here.portal_workflow.getInfoFor(project, 'review_state', '');
 	             project_wf_state_class python:'state-' + normalizeString(project_wf_state);
                      navtool here/portal_properties/navtree_properties | nothing" 
-          tal:condition="python: [ role for role in project_roles if role in ('Manager', 'Reviewer', 'Owner', ) ] or (navtool and (project_wf_state in navtool.getProperty('wf_states_to_show')))">
+          tal:condition="python: (project.portal_type == 'ResearchProject') and ([ role for role in project_roles if role in ('Manager', 'Reviewer', 'Owner', ) ] or (navtool and (project_wf_state in navtool.getProperty('wf_states_to_show'))))">
           
         <b class="contenttype-researchproject">
 	<a class="" href=""
-	   tal:attributes="href python: '%s?came_from=%s&amp;came_from_title=%s&amp;came_from_description=%s&amp;came_from_atname=%s' % (project.absolute_url(),here.absolute_url(),here.title_or_id(),here.Description(),here.archetype_name);
+	   tal:attributes="href python: '%s?came_from=%s&amp;came_from_title=%s&amp;came_from_description=%s&amp;came_from_atname=%s' % (project.absolute_url(),here.absolute_url(),here.pretty_title_or_id(),here.Description(),archetype_name);
 	                   class string:$project_wf_state_class visualIconPadding">
   	  
-  	    <span tal:content="project/title_or_id" tal:omit-tag="" /></a>  
+  	    <span tal:content="project/pretty_title_or_id" tal:omit-tag="" /></a>  
         
 	</b>
 
-        <tal:runtime tal:condition="here/getResearchProjectListDisplayRuntimeResearchProjects">
+        <tal:runtime tal:condition="python: request.has_key('is_atrp_search') or here.getResearchProjectListDisplayRuntimeResearchProjects()">
         <span tal:condition="python: (project.portal_type == 'ResearchProject') and project.getResearchProjectRuntimeEnd()" tal:omit-tag="">
           (<span tal:replace="python: project.toLocalizedTime(project.getResearchProjectRuntimeStart(), long_format=0)" />
           <span>-</span>
@@ -617,6 +620,22 @@
         </span>
         </tal:runtime>
 
+        <span class="discreet"
+              title="Relevance"
+              tal:condition="python: request.has_key('is_atrp_search') and topic.data_record_normalized_score_"
+	      i18n:domain="plone"
+              i18n:translate="label_relevance_percentage"
+              i18n:attributes="title title_relevance;">
+             [<span tal:content="topic/data_record_normalized_score_"
+            	    tal:omit-tag=""
+	            i18n:name="percentage">23%</span>%]
+	</span>
+	
+	<span class="discreet" tal:condition="python: request.has_key('is_atrp_search')" i18n:translate="results_by_author">
+	    by <span tal:omit-tag="" tal:content="topic/Creator" i18n:name="author">Author</span>,
+	    <span tal:omit-tag="" tal:content="python:here.toLocalizedTime(topic.ModificationDate, long_format=1)" i18n:name="date">Modification Date</span>
+	</span>
+																													      
         <tal:description tal:condition="project/Description">
             <br /><span tal:replace="structure project/Description" tal:omit-tag="" />
         </tal:description>
@@ -624,7 +643,7 @@
 	<div style="padding-left: 24pt; margin-top: 4pt;">
 	
         <tal:displayprojectcoordinators tal:define="projectCoordinators python: project.getResearchProjectProjectCoordinators(extended_field_format='structure')">
-          <tal:if tal:condition="python: here.getResearchProjectListDisplayProjectCoordinatorsResearchProjects() and project.getResearchProjectProjectCoordinators()">
+          <tal:if tal:condition="python: (request.has_key('is_atrp_search') or here.getResearchProjectListDisplayProjectCoordinatorsResearchProjects()) and project.getResearchProjectProjectCoordinators()">
           <span i18n:domain="atresearchproject"
                 i18n:translate="">Project coordination</span>:
             <span tal:replace="structure python: projectCoordinators[0]" /><tal:list tal:condition="python: projectCoordinators[1:]" tal:repeat="item python: projectCoordinators[1:]">; <span tal:replace="structure item" /></tal:list>
@@ -636,7 +655,7 @@
 	<div style="padding-left: 24pt; margin-top: 4pt;">
 	
 	<tal:displaycontactpersons tal:define="contactPersons python: project.getResearchProjectContactPersons(extended_field_format='structure')">
-          <tal:if tal:condition="python: here.getResearchProjectListDisplayContactPersonsResearchProjects() and project.getResearchProjectContactPersons()">
+          <tal:if tal:condition="python: (request.has_key('is_atrp_search') or here.getResearchProjectListDisplayContactPersonsResearchProjects()) and project.getResearchProjectContactPersons()">
           <span i18n:domain="atresearchproject"
                 i18n:translate="">Contact</span>:
             <span tal:replace="structure python: contactPersons[0]" /><tal:list tal:condition="python: contactPersons[1:]" tal:repeat="item python: contactPersons[1:]">; <span tal:replace="structure item" /></tal:list>
@@ -648,7 +667,7 @@
 	<div style="padding-left: 24pt; margin-top: 4pt;">
 	
         <tal:displaycontractors tal:define="projectContractors python: project.getResearchProjectContractors(extended_field_format='structure')">
-          <tal:if tal:condition="python: here.getResearchProjectListDisplayContractorsResearchProjects() and project.getResearchProjectContractors()">
+          <tal:if tal:condition="python: (request.has_key('is_atrp_search') or here.getResearchProjectListDisplayContractorsResearchProjects()) and project.getResearchProjectContractors()">
           <span i18n:domain="atresearchproject"
                 i18n:translate="">Contractor(s)</span>:
             <span tal:replace="structure python: projectContractors[0]" /><tal:list tal:condition="python: projectContractors[1:]" tal:repeat="item python: projectContractors[1:]">; <span tal:replace="structure item" /></tal:list>
@@ -659,7 +678,7 @@
 
 	<p class="discreet" 
            style="padding-left: 24pt; margin-top: 4pt; text-align: justify;" 
-           tal:condition="here/getResearchProjectListDisplayAbstractsResearchProjects">
+           tal:condition="python: request.has_key('is_atrp_search') or here.getResearchProjectListDisplayAbstractsResearchProjects()">
            
 	   <span tal:condition="project/getResearchProjectAbstract"
 		 tal:replace="structure project/getResearchProjectAbstract" 
@@ -678,16 +697,16 @@
 	
 	<p class="discreet" 
            style="padding-left: 2ex;" 
-           tal:condition="not: here/getResearchProjectListDisplayAbstractsResearchProjects" />
+           tal:condition="python: not request.has_key('is_atrp_search') and not here.getResearchProjectListDisplayAbstractsResearchProjects()" />
 
 	<div style="padding-left: 24pt;"
-	     tal:define="cascaded_subprojects python: project.listResearchSubprojects(filter_wf_states=True)"
-	     tal:condition="python: here.getResearchProjectListCascadeResearchSubprojects() and cascaded_subprojects">
+	     tal:define="cascaded_subprojects python: project.listResearchSubprojects(filter_wf_states=not request.has_key('is_atrp_search'))"
+	     tal:condition="python: (request.has_key('is_atrp_search') or here.getResearchProjectListCascadeResearchSubprojects()) and cascaded_subprojects">
 
-	     <tal:cascaded-subprojects define="dummy python: here.setPortalTypeToQuery('ResearchSubproject');
-	                                       topicContents python:here.queryCatalog(batch=False);">
+	     <tal:cascaded-subprojects define="dummy python: request.has_key('is_atrp_search') or here.setPortalTypeToQuery('ResearchSubproject');
+	                                       topicContents python: (request.has_key('is_atrp_search') and [ subtopic for subtopic in subproject_brains if subtopic.getObject() in cascaded_subprojects ]) or (not request.has_key('is_atrp_search') and here.queryCatalog(batch=False)) or [];">
 	     
-  	       <h4 tal:condition="python: here.getResearchProjectListDisplayHeadlineResearchSubprojects() and topicContents"
+  	       <h4 tal:condition="python: (request.has_key('is_atrp_search') or here.getResearchProjectListDisplayHeadlineResearchSubprojects()) and topicContents"
 	           i18n:domain="atresearchproject"
 	  	   i18n:translate="">Subprojects</h4>
 	     
@@ -697,35 +716,37 @@
 	     
 	</div>
 
-    </div>
+    </div>    
     
   </tal:project-list>			   
-      			 
+  
+  </tal:define>
+        			 
 </metal:researchprojects-listing>    
 
 <metal:researchsubprojects-listing metal:define-macro="researchsubprojects-listing">
 
   <tal:subproject-list tal:repeat="subproject python: [ topic.getObject() for topic in topicContents ]">
 
-    <tal:cascade-filter tal:condition="python: not here.getResearchProjectListCascadeResearchSubprojects() or subproject in cascaded_subprojects">
+    <tal:cascade-filter tal:condition="python: (request.has_key('is_atrsp_search') or (not request.has_key('is_atrp_search') and not here.getResearchProjectListCascadeResearchSubprojects())) or subproject in cascaded_subprojects">
 
       <div i18n:domain="atresearchproject"
     	   tal:define="subproject_roles python: mtool.getAuthenticatedMember().getRolesInContext(subproject);
                        subproject_wf_state subproject/review_state | python: wtool.getInfoFor(subproject, 'review_state', '');
 	               subproject_wf_state_class python:'state-' + normalizeString(subproject_wf_state);
                        navtool here/portal_properties/navtree_properties | nothing;" 
-           tal:condition="python: [ role for role in subproject_roles if role in ('Manager', 'Reviewer', 'Owner', ) ] or (navtool and (subproject_wf_state in navtool.getProperty('wf_states_to_show')))">
+           tal:condition="python: (subproject.portal_type == 'ResearchSubproject') and ([ role for role in subproject_roles if role in ('Manager', 'Reviewer', 'Owner', ) ] or (navtool and (subproject_wf_state in navtool.getProperty('wf_states_to_show'))))">
 
         <b class="contenttype-researchsubproject">
 	<a class="" href="" 
 	   tal:attributes="href subproject/absolute_url;
 	                   class string:$subproject_wf_state_class visualIconPadding">
   	  
-	    <span tal:content="subproject/title_or_id" tal:omit-tag="" /></a>  
+	    <span tal:content="subproject/pretty_title_or_id" tal:omit-tag="" /></a>  
         
 	</b>
 
-        <tal:runtime tal:condition="here/getResearchProjectListDisplayRuntimeResearchSubprojects">
+        <tal:runtime tal:condition="python: request.has_key('is_atrp_search') or here.getResearchProjectListDisplayRuntimeResearchSubprojects()">
         <span tal:condition="python: (subproject.portal_type == 'ResearchSubproject') and subproject.getResearchSubprojectRuntimeEnd()" tal:omit-tag="">
           (<span tal:replace="python: subproject.toLocalizedTime(subproject.researchSubprojectRuntimeStart, long_format=0)" />
           <span>-</span>
@@ -735,7 +756,7 @@
           (<span i18n:translate="view_since">since</span> <span tal:replace="python: subproject.toLocalizedTime(subproject.researchSubprojectRuntimeStart, long_format=0)" />)
         </span>
         </tal:runtime>
-          
+
         <tal:description tal:condition="subproject/Description">
             <br /><span tal:replace="structure subproject/Description" tal:omit-tag="" />
         </tal:description>
@@ -743,7 +764,7 @@
 	<div style="padding-left: 24pt; margin-top: 4pt;">
 	
         <tal:displaysubprojectcoordinators tal:define="subprojectCoordinators python: subproject.getResearchSubprojectScientificCoordinators(extended_field_format='structure')">
-          <tal:if tal:condition="python: here.getResearchProjectListDisplayScientificCoordinatorsResearchSubprojects() and subproject.getResearchSubprojectScientificCoordinators()">
+          <tal:if tal:condition="python: (request.has_key('is_atrp_search') or here.getResearchProjectListDisplayScientificCoordinatorsResearchSubprojects()) and subproject.getResearchSubprojectScientificCoordinators()">
           <span i18n:domain="atresearchproject"
                 i18n:translate="">Scientific coordination</span>:
             <span tal:replace="structure python: subprojectCoordinators[0]" /><tal:list tal:condition="python: subprojectCoordinators[1:]" tal:repeat="item python: subprojectCoordinators[1:]">; <span tal:replace="structure item" /></tal:list>
@@ -754,7 +775,7 @@
 
 	<p class="discreet" 
            style="padding-left: 24pt; margin-top: 4pt; text-align: justify;" 
-           tal:condition="here/getResearchProjectListDisplayAbstractsResearchSubprojects">
+           tal:condition="python: request.has_key('is_atrp_search') or here.getResearchProjectListDisplayAbstractsResearchSubprojects()">
 	   
 	   <span tal:condition="subproject/getResearchSubprojectAbstract"
 	         tal:replace="structure subproject/getResearchSubprojectAbstract" 
@@ -774,7 +795,7 @@
 
 	<p class="discreet" 
            style="padding-left: 2ex;" 
-           tal:condition="not: here/getResearchProjectListDisplayAbstractsResearchSubprojects" />
+           tal:condition="python: not request.has_key('is_atrp_search') and not here.getResearchProjectListDisplayAbstractsResearchSubprojects()" />
 
       </div>
 
