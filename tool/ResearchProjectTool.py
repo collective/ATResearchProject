@@ -569,7 +569,7 @@ class ResearchProjectSiteConfiguration(UniqueObject, SimpleItem, PropertyManager
     
 	catalog = getToolByName(self, 'portal_catalog')
 	
-	# convert brains to list objects
+	# convert brains (LazyMaps) to list objects
 	results = [ brain for brain in project_brains ]
 	if project_brains and subproject_brains:
 	    results += [ brain for brain in subproject_brains ]

@@ -42,7 +42,6 @@
                  project_results python: (('ResearchProject' in req_portal_types) and here.queryCatalog(REQUEST=request,use_types_blacklist=use_types_blacklist)) or [];
 
     		 dummy python: request.set('portal_type', ('ResearchSubproject',));
-
 		 dummy python: request.set('researchProjectRuntimeStart', '');
 		 dummy python: request.set('researchProjectRuntimeEnd', '');
 		 dummy python: (runtime == 'active-projects') and request.set('researchSubprojectRuntimeEnd', {'query': today.Date(), 'range': 'min', });
@@ -51,6 +50,7 @@
 		 dummy python: use_date_range_runtime_end and request.set('researchSubprojectRuntimeEnd', {'query': (DateTime(request.get('runtime_end_rangeA')), DateTime(request.get('runtime_end_rangeB'))), 'range': 'min:max'});
 
     		 dummy python: request.has_key('getResearchProjectInfoFields') and request.set('getResearchSubprojectInfoFields', request.get('getResearchProjectInfoFields'));
+		 dummy python: request.set('getResearchProjectInfoFields', '');
                  subproject_results python: (('ResearchSubproject' in req_portal_types) and here.queryCatalog(REQUEST=request,use_types_blacklist=use_types_blacklist)) or [];
 		 
 		 results python: ('ResearchProject' in req_portal_types) and atrp_tool.addMissingResearchProjectsToSearchResult(project_brains=project_results, subproject_brains=subproject_results) or subproject_results;
@@ -62,7 +62,7 @@
                  use_view_action site_properties/typesUseViewActionInListings|python:();">
 
     <h1 i18n:translate="atrpsearch_heading_search_results">Research Project Search Results</h1>
-    
+
     <div tal:condition="not: results">
         <p><strong i18n:translate="atrpsearch_description_no_results_found">No research (sub)projects matching your search criteria were found.</strong></p>
     </div>
