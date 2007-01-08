@@ -323,8 +323,12 @@ try:
 except:
   DEPARTMENT_DEFAULTS = {'department_ids': ['UNCONFIGURED'],'department_urls': [],'department_names': ['Not configured yet, visit portal control panel!'],}
 
+USE_MYCONFIG=False
 try:
-  from myConfig import ALLOWED_CT_DEFAULTS
+  if USE_MYCONFIG:
+    from myConfig import ALLOWED_CT_DEFAULTS
+  else:
+    raise
 except:
   ALLOWED_CT_DEFAULTS = {
     'allowed_content_types_researchproject': (

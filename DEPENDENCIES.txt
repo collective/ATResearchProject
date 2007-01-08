@@ -1,5 +1,12 @@
-ATResearchProjects depends on Zope 2.8.x / Plone 2.1.x and some other Products:
+ATResearchProject has been tested with 
+
+  o Zope 2.8.x/Plone 2.1.x
+  o Zope 2.9.x/Plone 2.5.x
+
+As an add-on ATResearchProject optionally feels 
+better if the following product(s) to be installed:
 
   o TextIndexNG2
+
 
   
