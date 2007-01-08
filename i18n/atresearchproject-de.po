@@ -427,7 +427,7 @@ msgstr "Dieses Kriterium nicht verwenden"
 #. Default: "Show only third-party funded projects"
 #: skins/ATResearchProject/research_project_search_form.pt
 msgid "atrpsearch_thirdpartyfunded_true"
-msgstr "fNur Drittmittelprojekte anzeigen"
+msgstr "Nur Drittmittelprojekte anzeigen"
 
 #. Default: "Back to ${atname} :"
 #: skins/ATResearchProject/research_project_macros.pt

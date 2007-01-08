@@ -44,9 +44,18 @@ from Products.ATResearchProject.config import ATRP_TOOL_NAME
 from Products.ATResearchProject.config import PROJECTLIST_CRITERIAFIELDS
 from Products.ATResearchProject.config import PROJECTLIST_SORTFIELDS
 
-
 from Products.ATContentTypes.tool.topic import TopicIndex
 view_permission = ManagePortal
+
+umlaute={
+	'\xc3\xa4': 'ae',
+	'\xc3\x84': 'Ae',
+	'\xc3\xb6': 'oe', 
+	'\xc3\x96': 'Oe',
+	'\xc3\xbc': 'ue',
+	'\xc3\x9c': 'Ue',
+	'\xc3\x9f': 'ss',
+}
 
 class ResearchProjectSiteConfiguration(UniqueObject, SimpleItem, PropertyManager):
     """Tool for managing site-wide research project variables
@@ -87,8 +96,7 @@ class ResearchProjectSiteConfiguration(UniqueObject, SimpleItem, PropertyManager
          'mode':'w',
          },
         )
-
-
+	
     def __init__(self):
         self.department_ids = PersistentList()
         self.department_urls = PersistentList()
@@ -155,6 +163,7 @@ class ResearchProjectSiteConfiguration(UniqueObject, SimpleItem, PropertyManager
       """ parses the lines in the LinesField and searches for tags that add hyperref information to the 
       field text"""
       
+      putils = getToolByName(self, 'plone_utils')
       extendedLinesField = []
     
       # detect the output format for the lines in the LinesField 
@@ -174,10 +183,15 @@ class ResearchProjectSiteConfiguration(UniqueObject, SimpleItem, PropertyManager
 	#   o plain: no hyperrefs, strip the tags of the line
 	#   o structure: tags define hyperrefs for each line
 	#   o raw: do nothing, return the entire line as it is
-        if formatType == 'plain':
+        if formatType in ('plain', 'catalog'):
         
 	    if text:
+		if formatType == 'catalog':
+		    text = self.replaceUmlaute(text)
+		    text = putils.normalizeString(text).replace('-', ' ')
+		
 		extendedLinesField.append(text)
+		
 	    else:
         	if len(string.split(tag,' ')) == 1:
 	    	    
@@ -189,7 +203,12 @@ class ResearchProjectSiteConfiguration(UniqueObject, SimpleItem, PropertyManager
 			memberId = tagContent
 			fullname = self.memberIdToFullname(memberId)
 			if fullname:
+			    if formatType == 'catalog':
+				fullname = self.replaceUmlaute(fullname)
+			    	fullname = putils.normalizeString(fullname).replace('-', ' ')
 			    extendedLinesField.append(fullname)
+			    
+	    		    
         
 	elif formatType == 'structure':
         
@@ -568,4 +587,11 @@ class ResearchProjectSiteConfiguration(UniqueObject, SimpleItem, PropertyManager
 	    
 	return results
 
+    def replaceUmlaute(self, text):
+	
+	for u in umlaute.keys():
+	    text = text.replace(u, umlaute[u])
+	    	    
+	return text
+	
 InitializeClass(ResearchProjectSiteConfiguration)

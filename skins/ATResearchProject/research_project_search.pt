@@ -14,6 +14,12 @@
 
 <div metal:fill-slot="main"
      tal:define="use_types_blacklist request/use_types_blacklist | python:True;
+    		 navtool here/portal_properties/navtree_properties | nothing;
+		 atrp_tool here/portal_researchproject;
+		 dummy python: request.set('SearchableText', atrp_tool.replaceUmlaute(request.get('SearchableText')));
+		 dummy python: request.set('getResearchProjectInfoFields', atrp_tool.replaceUmlaute(request.get('getResearchProjectInfoFields')));
+		 dummy python: request.set('Title', atrp_tool.replaceUmlaute(request.get('Title')));
+		 dummy python: request.set('Description', atrp_tool.replaceUmlaute(request.get('Description')));
 
     		 runtime python: request.get('runtime');
 		 use_date_range python: runtime == 'use-date-range';
@@ -47,7 +53,8 @@
     		 dummy python: request.has_key('getResearchProjectInfoFields') and request.set('getResearchSubprojectInfoFields', request.get('getResearchProjectInfoFields'));
                  subproject_results python: (('ResearchSubproject' in req_portal_types) and here.queryCatalog(REQUEST=request,use_types_blacklist=use_types_blacklist)) or [];
 		 
-		 results python: ('ResearchProject' in req_portal_types) and here.portal_researchproject.addMissingResearchProjectsToSearchResult(project_brains=project_results, subproject_brains=subproject_results) or subproject_results;
+		 results python: ('ResearchProject' in req_portal_types) and atrp_tool.addMissingResearchProjectsToSearchResult(project_brains=project_results, subproject_brains=subproject_results) or subproject_results;
+		 results python: [ result for result in results if [ role for role in mtool.getAuthenticatedMember().getRolesInContext(result.getObject()) if role in ['Manager', 'Reviewer', 'Owner'] ] or (navtool and result.review_state in navtool.getProperty('wf_states_to_show')) ];
 		
                  desc_length site_properties/search_results_description_length;
                  desc_ellipsis site_properties/ellipsis;

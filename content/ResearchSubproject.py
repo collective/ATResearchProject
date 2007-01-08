@@ -196,55 +196,55 @@ class ResearchSubproject(BrowserDefaultMixin, OrderedBaseFolder):
       return rawFieldValue
 
     security.declareProtected(permissions.View, 'getResearchSubprojectScientificCoordinators')
-    def getResearchSubprojectScientificCoordinators (self, **kwargs):
+    def getResearchSubprojectScientificCoordinators (self, extended_field_format='catalog', **kwargs):
       """we need to wrap this field as the user is allowed to enter extended text infomation
       """
       atrp_tool = getToolByName(self, 'portal_researchproject')
       rawFieldValue = self.getField('researchSubprojectScientificCoordinators').get(self, **kwargs)
-      return atrp_tool.structureExtendedLinesField(rawFieldValue,**kwargs)
+      return atrp_tool.structureExtendedLinesField(rawFieldValue, extended_field_format=extended_field_format, **kwargs)
 
     security.declareProtected(permissions.View, 'getResearchSubprojectScientificStaffMembers')
-    def getResearchSubprojectScientificStaffMembers (self, **kwargs):
+    def getResearchSubprojectScientificStaffMembers (self, extended_field_format='catalog', **kwargs):
       """we need to wrap this field as the user is allowed to enter extended text infomation
       """
       atrp_tool = getToolByName(self, 'portal_researchproject')
       rawFieldValue = self.getField('researchSubprojectScientificStaffMembers').get(self, **kwargs)
-      return atrp_tool.structureExtendedLinesField(rawFieldValue,**kwargs)
+      return atrp_tool.structureExtendedLinesField(rawFieldValue, extended_field_format=extended_field_format, **kwargs)
 
     security.declareProtected(permissions.View, 'getResearchSubprojectTechnicalStaffMembers')
-    def getResearchSubprojectTechnicalStaffMembers (self, **kwargs):
+    def getResearchSubprojectTechnicalStaffMembers (self, extended_field_format='catalog', **kwargs):
       """we need to wrap this field as the user is allowed to enter extended text infomation
       """
       atrp_tool = getToolByName(self, 'portal_researchproject')
       rawFieldValue = self.getField('researchSubprojectTechnicalStaffMembers').get(self, **kwargs)
-      return atrp_tool.structureExtendedLinesField(rawFieldValue,**kwargs)
+      return atrp_tool.structureExtendedLinesField(rawFieldValue, extended_field_format=extended_field_format, **kwargs)
 
     security.declareProtected(permissions.View, 'getResearchSubprojectStudentStaffMembers')
-    def getResearchSubprojectStudentStaffMembers (self, **kwargs):
+    def getResearchSubprojectStudentStaffMembers (self, extended_field_format='catalog', **kwargs):
       """we need to wrap this field as the user is allowed to enter extended text infomation
       """
       atrp_tool = getToolByName(self, 'portal_researchproject')
       rawFieldValue = self.getField('researchSubprojectStudentStaffMembers').get(self, **kwargs)
-      return atrp_tool.structureExtendedLinesField(rawFieldValue,**kwargs)
+      return atrp_tool.structureExtendedLinesField(rawFieldValue, extended_field_format=extended_field_format, **kwargs)
 
     security.declareProtected(permissions.View, 'getResearchSubprojectFormerStaffMembers')
-    def getResearchSubprojectFormerStaffMembers (self, **kwargs):
+    def getResearchSubprojectFormerStaffMembers (self, extended_field_format='catalog', **kwargs):
       """we need to wrap this field as the user is allowed to enter extended text infomation
       """
       atrp_tool = getToolByName(self, 'portal_researchproject')
       rawFieldValue = self.getField('researchSubprojectFormerStaffMembers').get(self, **kwargs)
-      return atrp_tool.structureExtendedLinesField(rawFieldValue,**kwargs)
+      return atrp_tool.structureExtendedLinesField(rawFieldValue, extended_field_format=extended_field_format, **kwargs)
 
     security.declareProtected(permissions.View, 'getResearchSubprojectFormerStudentStaffMembers')
-    def getResearchSubprojectFormerStudentStaffMembers (self, **kwargs):
+    def getResearchSubprojectFormerStudentStaffMembers (self, extended_field_format='catalog', **kwargs):
       """we need to wrap this field as the user is allowed to enter extended text infomation
       """
       atrp_tool = getToolByName(self, 'portal_researchproject')
       rawFieldValue = self.getField('researchSubprojectFormerStudentStaffMembers').get(self, **kwargs)
-      return atrp_tool.structureExtendedLinesField(rawFieldValue,**kwargs)
+      return atrp_tool.structureExtendedLinesField(rawFieldValue, extended_field_format=extended_field_format, **kwargs)
 
     security.declareProtected(permissions.View, 'getResearchSubprojectInheritedScientificStaffMembers')
-    def getResearchSubprojectInheritedScientificStaffMembers (self, **kwargs):
+    def getResearchSubprojectInheritedScientificStaffMembers (self, extended_field_format='catalog', **kwargs):
         """acquire all sublevel subprojects' scientific staff members
         """
         atrp_tool = getToolByName(self, 'portal_researchproject')
@@ -253,7 +253,7 @@ class ResearchSubproject(BrowserDefaultMixin, OrderedBaseFolder):
             raw_staff_members_list = list(self.getField('researchSubprojectScientificStaffMembers').get(self, **kwargs))
             subproject_objects = atrp_tool.listWfFilteredResearchSubprojects(self, Language=lang)
             for subproject_object in subproject_objects:
-                for line in subproject_object.getResearchSubprojectScientificStaffMembers():
+                for line in subproject_object.getResearchSubprojectScientificStaffMembers(extended_field_format='raw'):
                     
                     # this bit of code has to be more versatile, filter multiple staff member names regardless of title etc.
                     # make it a tool method!!!
@@ -261,10 +261,10 @@ class ResearchSubproject(BrowserDefaultMixin, OrderedBaseFolder):
                         raw_staff_members_list.append(line)
         else:
             raw_staff_members_list = self.getField('researchSubprojectScientificStaffMembers').get(self, **kwargs)
-        return atrp_tool.structureExtendedLinesField(raw_staff_members_list,**kwargs)
+        return atrp_tool.structureExtendedLinesField(raw_staff_members_list, extended_field_format=extended_field_format, **kwargs)
 
     security.declareProtected(permissions.View, 'getResearchSubprojectInheritedTechnicalStaffMembers')
-    def getResearchSubprojectInheritedTechnicalStaffMembers (self, **kwargs):
+    def getResearchSubprojectInheritedTechnicalStaffMembers (self,  extended_field_format='catalog', **kwargs):
         """acquire all sublevel subprojects' technical staff members
         """
         atrp_tool = getToolByName(self, 'portal_researchproject')
@@ -273,7 +273,7 @@ class ResearchSubproject(BrowserDefaultMixin, OrderedBaseFolder):
             raw_staff_members_list = list(self.getField('researchSubprojectTechnicalStaffMembers').get(self, **kwargs))
             subproject_objects = atrp_tool.listWfFilteredResearchSubprojects(self, Language=lang)
             for subproject_object in subproject_objects:
-                for line in subproject_object.getResearchSubprojectTechnicalStaffMembers():
+                for line in subproject_object.getResearchSubprojectTechnicalStaffMembers(extended_field_format='raw'):
         
                     # this bit of code has to be more versatile, filter multiple staff member names regardless of title etc.
                     # make it a tool method!!!
@@ -281,10 +281,10 @@ class ResearchSubproject(BrowserDefaultMixin, OrderedBaseFolder):
                         raw_staff_members_list.append(line)
         else:
             raw_staff_members_list = self.getField('researchSubprojectTechnicalStaffMembers').get(self, **kwargs)
-        return atrp_tool.structureExtendedLinesField(raw_staff_members_list,**kwargs)
+        return atrp_tool.structureExtendedLinesField(raw_staff_members_list, extended_field_format=extended_field_format, **kwargs)
 
     security.declareProtected(permissions.View, 'getResearchSubprojectInheritedStudentStaffMembers')
-    def getResearchSubprojectInheritedStudentStaffMembers (self, **kwargs):
+    def getResearchSubprojectInheritedStudentStaffMembers (self, extended_field_format='catalog', **kwargs):
         """acquire all sublevel subprojects' student staff members
         """
         atrp_tool = getToolByName(self, 'portal_researchproject')
@@ -293,7 +293,7 @@ class ResearchSubproject(BrowserDefaultMixin, OrderedBaseFolder):
             raw_staff_members_list = list(self.getField('researchSubprojectStudentStaffMembers').get(self, **kwargs))
             subproject_objects = atrp_tool.listWfFilteredResearchSubprojects(self, Language=lang)
             for subproject_object in subproject_objects:
-                for line in subproject_object.getResearchSubprojectStudentStaffMembers():
+                for line in subproject_object.getResearchSubprojectStudentStaffMembers(extended_field_format='raw'):
         
                     # this bit of code has to be more versatile, filter multiple staff member names regardless of title etc.
                     # make it a tool method!!!
@@ -301,10 +301,10 @@ class ResearchSubproject(BrowserDefaultMixin, OrderedBaseFolder):
                         raw_staff_members_list.append(line)
         else:
             raw_staff_members_list = self.getField('researchSubprojectStudentStaffMembers').get(self, **kwargs)
-        return atrp_tool.structureExtendedLinesField(raw_staff_members_list,**kwargs)
+        return atrp_tool.structureExtendedLinesField(raw_staff_members_list, extended_field_format=extended_field_format, **kwargs)
 
     security.declareProtected(permissions.View, 'getResearchSubprojectInheritedFormerStaffMembers')
-    def getResearchSubprojectInheritedFormerStaffMembers (self, **kwargs):
+    def getResearchSubprojectInheritedFormerStaffMembers (self, extended_field_format='catalog', **kwargs):
         """acquire all sublevel subprojects' former staff members
         """
         atrp_tool = getToolByName(self, 'portal_researchproject')
@@ -313,7 +313,7 @@ class ResearchSubproject(BrowserDefaultMixin, OrderedBaseFolder):
             raw_staff_members_list = list(self.getField('researchSubprojectFormerStaffMembers').get(self, **kwargs))
             subproject_objects = atrp_tool.listWfFilteredResearchSubprojects(self, Language=lang)
             for subproject_object in subproject_objects:
-                for line in subproject_object.getResearchSubprojectFormerStaffMembers():
+                for line in subproject_object.getResearchSubprojectFormerStaffMembers(extended_field_format='raw'):
         
                     # this bit of code has to be more versatile, filter multiple staff member names regardless of title etc.
                     # make it a tool method!!!
@@ -321,10 +321,10 @@ class ResearchSubproject(BrowserDefaultMixin, OrderedBaseFolder):
                         raw_staff_members_list.append(line)
         else:
             raw_staff_members_list = self.getField('researchSubprojectFormerStaffMembers').get(self, **kwargs)
-        return atrp_tool.structureExtendedLinesField(raw_staff_members_list,**kwargs)
+        return atrp_tool.structureExtendedLinesField(raw_staff_members_list, extended_field_format=extended_field_format, **kwargs)
 
     security.declareProtected(permissions.View, 'getResearchSubprojectInheritedFormerStudentStaffMembers')
-    def getResearchSubprojectInheritedFormerStudentStaffMembers (self, **kwargs):
+    def getResearchSubprojectInheritedFormerStudentStaffMembers (self, extended_field_format='catalog', **kwargs):
         """acquire all sublevel subprojects' former student staff members
         """
         atrp_tool = getToolByName(self, 'portal_researchproject')
@@ -333,7 +333,7 @@ class ResearchSubproject(BrowserDefaultMixin, OrderedBaseFolder):
             raw_staff_members_list = list(self.getField('researchSubprojectFormerStudentStaffMembers').get(self, **kwargs))
             subproject_objects = atrp_tool.listWfFilteredResearchSubprojects(self, Language=lang)
             for subproject_object in subproject_objects:
-                for line in subproject_object.getResearchSubprojectFormerStudentStaffMembers():
+                for line in subproject_object.getResearchSubprojectFormerStudentStaffMembers(extended_field_format='raw'):
         
                     # this bit of code has to be more versatile, filter multiple staff member names regardless of title etc.
                     # make it a tool method!!!
@@ -341,26 +341,26 @@ class ResearchSubproject(BrowserDefaultMixin, OrderedBaseFolder):
                         raw_staff_members_list.append(line)
         else:
             raw_staff_members_list = self.getField('researchSubprojectFormerStudentStaffMembers').get(self, **kwargs)
-        return atrp_tool.structureExtendedLinesField(raw_staff_members_list,**kwargs)
+        return atrp_tool.structureExtendedLinesField(raw_staff_members_list, extended_field_format=extended_field_format, **kwargs)
 
     security.declareProtected(permissions.View, 'getResearchSubprojectExternalInstitutes')
-    def getResearchSubprojectExternalInstitutes (self, **kwargs):
+    def getResearchSubprojectExternalInstitutes (self, extended_field_format='catalog', **kwargs):
       """we need to wrap this field as the user is allowed to enter extended text infomation
       """
       atrp_tool = getToolByName(self, 'portal_researchproject')
       rawFieldValue = self.getField('researchSubprojectExternalInstitutes').get(self, **kwargs)
-      return atrp_tool.structureExtendedLinesField(rawFieldValue,**kwargs)
+      return atrp_tool.structureExtendedLinesField(rawFieldValue, extended_field_format=extended_field_format, **kwargs)
 
     security.declareProtected(permissions.View, 'getResearchSubprojectCooperationPartners')
-    def getResearchSubprojectCooperationPartners (self, **kwargs):
+    def getResearchSubprojectCooperationPartners (self, extended_field_format='catalog', **kwargs):
       """we need to wrap this field as the user is allowed to enter extended text infomation
       """
       atrp_tool = getToolByName(self, 'portal_researchproject')
       rawFieldValue = self.getField('researchSubprojectCooperationPartners').get(self, **kwargs)
-      return atrp_tool.structureExtendedLinesField(rawFieldValue,**kwargs)
+      return atrp_tool.structureExtendedLinesField(rawFieldValue, extended_field_format=extended_field_format, **kwargs)
 
     security.declareProtected(permissions.View, 'getResearchSubprojectExternalLinks')
-    def getResearchSubprojectExternalLinks (self, **kwargs):
+    def getResearchSubprojectExternalLinks (self, extended_field_format='catalog', **kwargs):
 	"""we need to wrap this field as the user is allowed to enter extended text infomation
 	"""
 	atrp_tool = getToolByName(self, 'portal_researchproject')
@@ -378,7 +378,7 @@ class ResearchSubproject(BrowserDefaultMixin, OrderedBaseFolder):
 	    else:
 	        external_links_list.append('%s <url:%s>' % (external_link, external_link))
 							      
-	return atrp_tool.structureExtendedLinesField(external_links_list,**kwargs)
+	return atrp_tool.structureExtendedLinesField(external_links_list, extended_field_format=extended_field_format, **kwargs)
 																				          
     security.declareProtected(permissions.View, 'getResearchSubprojectInvolvedDepartmentsLongname')
     def getResearchSubprojectInvolvedDepartmentsLongname(self, **kwargs):
