@@ -318,13 +318,22 @@ CATALOG_INDEXES = [ dict([('name',criterion['field'][0])] + [ (key, criterion['i
 CATALOG_METADATA = [ criterion['field'][0] for criterion in PROJECTLIST_SORTFIELDS if criterion['field'][0].startswith('research') or criterion['field'][0].startswith('getResearch') ]
 DEPRECATED_CATALOG_INDEXES = [ 'researchProjectInfoFields', 'researchSubprojectInfoFields',]
 DEPRECATED_CATALOG_METADATA = []
+
+##
+## HARD-CODED CUSTOMIZATIONS: refer to myConfig.py for adapting ATResearchProject to your site setup
+##
+USE_MYCONFIG=False
+
 try:
-  from myConfig import DEPARTMENT_DEFAULTS
+  if USE_MYCONFIG:
+    from myConfig import DEPARTMENT_DEFAULTS
+  else:
+    raise
 except:
   DEPARTMENT_DEFAULTS = {'department_ids': ['UNCONFIGURED'],'department_urls': [],'department_names': ['Not configured yet, visit portal control panel!'],}
 
-USE_MYCONFIG=False
 try:
+  # refer to myConfig.py for adapting ATResearchProject to your site setup.
   if USE_MYCONFIG:
     from myConfig import ALLOWED_CT_DEFAULTS
   else:
