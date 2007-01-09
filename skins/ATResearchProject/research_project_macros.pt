@@ -757,6 +757,22 @@
         </span>
         </tal:runtime>
 
+        <span class="discreet"
+              title="Relevance"
+              tal:condition="python: request.has_key('is_atrp_search') and topic.data_record_normalized_score_"
+	      i18n:domain="plone"
+              i18n:translate="label_relevance_percentage"
+              i18n:attributes="title title_relevance;">
+             [<span tal:content="topic/data_record_normalized_score_"
+            	    tal:omit-tag=""
+	            i18n:name="percentage">23%</span>%]
+	</span>
+	
+	<span class="discreet" tal:condition="python: request.has_key('is_atrp_search')" i18n:domain="plone" i18n:translate="results_by_author">
+	    by <span tal:omit-tag="" tal:content="topic/Creator" i18n:name="author">Author</span>,
+	    <span tal:omit-tag="" tal:content="python:here.toLocalizedTime(topic.ModificationDate, long_format=1)" i18n:name="date">Modification Date</span>
+	</span>
+																													      
         <tal:description tal:condition="subproject/Description">
             <br /><span tal:replace="structure subproject/Description" tal:omit-tag="" />
         </tal:description>
