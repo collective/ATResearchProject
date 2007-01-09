@@ -9,6 +9,11 @@ from Products.Archetypes.Extensions.utils import installTypes, install_subskin
 
 from Products.CMFCore.utils import getToolByName
 
+try:
+    import transaction
+except:
+    from Products.Archetypes import transaction
+
 from Products.ATResearchProject.config import PROJECTNAME
 from Products.ATResearchProject.config import ATRP_TOOL_ID
 from Products.ATResearchProject.config import ATRP_TOOL_NAME
@@ -105,7 +110,7 @@ def addIndexesToCatalogTool(self, out):
 	    else:
 		ct.addIndex(**idx)
 		ct.reindexIndex(idx['name'], REQUEST=None)
-		out.write("Added and reindexed '%s' (%s) to the catalog.\n" % (idx['name'], idx['type']))
+		out.write("Added and reindexed '%s' (%s) to the catalog.\n" % (idx['name'], idx['type']))	
 		    
 def addMetadataToCatalogTool(self, out):
     ctool = getToolByName(self, 'portal_catalog')
@@ -140,6 +145,7 @@ def install(self):
     addIndexesToCatalogTool(self, out)
     addMetadataToCatalogTool(self, out)
 
+    transaction.savepoint(optimistic=True)
     autoMigration(self, out)
     
     install_subskin(self, out, GLOBALS)

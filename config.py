@@ -72,13 +72,13 @@ PROJECTLIST_CRITERIAFIELDS = [
     },	
     {
 	'portal_type'	: 'ResearchProject',
-	'field'		: ('researchProjectRuntimeStart','Start of Research Project\'s runtime',''),
+	'field'		: ('getResearchProjectRuntimeStart','Start of Research Project\'s runtime',''),
         'index_type'    : { 'type': 'DateIndex', },
 	'ctypes'	: ('ATDateRangeCriterion', 'ATFriendlyDateCriteria',)
     },	
     {
 	'portal_type'	: 'ResearchProject',
-	'field'		: ('researchProjectRuntimeEnd','End of Research Project\'s runtime',''),
+	'field'		: ('getResearchProjectRuntimeEnd','End of Research Project\'s runtime',''),
         'index_type'    : { 'type': 'DateIndex', },
 	'ctypes'	: ('ATDateRangeCriterion', 'ATFriendlyDateCriteria', )
     },	
@@ -183,13 +183,13 @@ PROJECTLIST_CRITERIAFIELDS = [
     },	
     {
 	'portal_type'	: 'ResearchSubproject',
-	'field'		: ('researchSubprojectRuntimeStart','Start of Research Subproject\'s runtime',''),
+	'field'		: ('getResearchSubprojectRuntimeStart','Start of Research Subproject\'s runtime',''),
         'index_type'    : { 'type': 'DateIndex', },
 	'ctypes'	: ('ATDateRangeCriterion', 'ATFriendlyDateCriteria',)
     },	
     {
 	'portal_type'	: 'ResearchSubproject',
-	'field'		: ('researchSubprojectRuntimeEnd','End of Research Subproject\'s runtime',''),
+	'field'		: ('getResearchSubprojectRuntimeEnd','End of Research Subproject\'s runtime',''),
         'index_type'    : { 'type': 'DateIndex', },
 	'ctypes'	: ('ATDateRangeCriterion', 'ATFriendlyDateCriteria',)
     },	
@@ -264,13 +264,13 @@ PROJECTLIST_CRITERIAFIELDS = [
 PROJECTLIST_SORTFIELDS = [
     {
 	'portal_type'	: 'ResearchProject',
-	'field'		: ('researchProjectRuntimeStart','Start of Research Project\'s runtime',''),
+	'field'		: ('getResearchProjectRuntimeStart','Start of Research Project\'s runtime',''),
         'index_type'    : { 'type': 'DateIndex', },
 	'ctypes'	: ('ATSortCriterion', 'ATDateRangeCriterion', 'ATFriendlyDateCriteria',)
     },	
     {
 	'portal_type'	: 'ResearchProject',
-	'field'		: ('researchProjectRuntimeEnd','End of Research Project\'s runtime',''),
+	'field'		: ('getResearchProjectRuntimeEnd','End of Research Project\'s runtime',''),
         'index_type'    : { 'type': 'DateIndex', },
 	'ctypes'	: ('ATSortCriterion', 'ATDateRangeCriterion', 'ATFriendlyDateCriteria',)
     },	
@@ -288,13 +288,13 @@ PROJECTLIST_SORTFIELDS = [
     },	
     {
 	'portal_type'	: 'ResearchSubproject',
-	'field'		: ('researchSubprojectRuntimeStart','Start of Research Subproject\'s runtime',''),
+	'field'		: ('getResearchSubprojectRuntimeStart','Start of Research Subproject\'s runtime',''),
         'index_type'    : { 'type': 'DateIndex', },
 	'ctypes'	: ('ATSortCriterion', 'ATDateRangeCriterion', 'ATFriendlyDateCriteria',)
     },	
     {
 	'portal_type'	: 'ResearchSubproject',
-	'field'		: ('researchSubprojectRuntimeEnd','End of Research Subproject\'s runtime',''),
+	'field'		: ('getResearchSubprojectRuntimeEnd','End of Research Subproject\'s runtime',''),
         'index_type'    : { 'type': 'DateIndex', },
 	'ctypes'	: ('ATSortCriterion', 'ATDateRangeCriterion', 'ATFriendlyDateCriteria',)
     },	

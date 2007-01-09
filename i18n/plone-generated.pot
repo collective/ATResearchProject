@@ -368,12 +368,12 @@ msgstr ""
 
 #: catalog indexes
 #. Default: "Runtime Start (Research Project)"
-msgid "researchProjectRuntimeStart"
+msgid "getResearchProjectRuntimeStart"
 msgstr ""
 
 #: catalog indexes
 #. Default: "Runtime End (Research Project)"
-msgid "researchProjectRuntimeEnd"
+msgid "getResearchProjectRuntimeEnd"
 msgstr ""
 
 #: catalog indexes
@@ -388,12 +388,12 @@ msgstr ""
 
 #: catalog indexes
 #. Default: "Runtime Start (Research Subproject)"
-msgid "researchSubprojectRuntimeStart"
+msgid "getResearchSubprojectRuntimeStart"
 msgstr ""
 
 #: catalog indexes
 #. Default: "Runtime End (Research Subproject)"
-msgid "researchSubprojectRuntimeEnd"
+msgid "getResearchSubprojectRuntimeEnd"
 msgstr ""
 
 #: catalog indexes

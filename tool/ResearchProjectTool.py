@@ -594,4 +594,12 @@ class ResearchProjectSiteConfiguration(UniqueObject, SimpleItem, PropertyManager
 	    	    
 	return text
 	
+    def delKeyValueFromRequest(self, key, REQUEST=None):
+	
+	if REQUEST and REQUEST.other.has_key(key):
+	    del REQUEST.other[key]
+	if REQUEST and REQUEST.form.has_key(key):
+	    del REQUEST.form[key]
+	return REQUEST
+	
 InitializeClass(ResearchProjectSiteConfiguration)

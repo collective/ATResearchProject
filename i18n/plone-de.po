@@ -369,12 +369,12 @@ msgstr " Involvierte Abteilungen (Teilprojekt)"
 
 #. Default: "Runtime Start (Research Project)"
 #: catalog indexes
-msgid "researchProjectRuntimeStart"
+msgid "getResearchProjectRuntimeStart"
 msgstr "Laufzeitbeginn  (Forschungsprojekt)"
 
 #. Default: "Runtime End (Research Project)"
 #: catalog indexes
-msgid "researchProjectRuntimeEnd"
+msgid "getResearchProjectRuntimeEnd"
 msgstr "Laufzeitende (Forschungsprojekt)"
 
 #. Default: "Title (Research Project)"
@@ -389,12 +389,12 @@ msgstr "Offizieller Titel (Forschungsprojekt)"
 
 #. Default: "Runtime Start (Research Subproject)"
 #: catalog indexes
-msgid "researchSubprojectRuntimeStart"
+msgid "getResearchSubprojectRuntimeStart"
 msgstr "Laufzeitbeginn (Teilprojekt)"
 
 #. Default: "Runtime End (Research Subproject)"
 #: catalog indexes
-msgid "researchSubprojectRuntimeEnd"
+msgid "getResearchSubprojectRuntimeEnd"
 msgstr "Laufzeitende (Teilprojekt)"
 
 #. Default: "Title (Research Subproject)"

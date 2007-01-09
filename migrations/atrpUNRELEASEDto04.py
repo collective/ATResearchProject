@@ -13,6 +13,10 @@ from Products.ATResearchProject.config import PROJECTNAME
 ATRPLIST_CRITERIA_MIGRATION = [
     { 'old_index': 'researchProjectInfoFields', 'new_index': 'getResearchProjectInfoFields',},
     { 'old_index': 'researchSubprojectInfoFields', 'new_index': 'getResearchSubprojectInfoFields',},
+    { 'old_index': 'researchProjectRuntimeStart', 'new_index': 'getResearchProjectRuntimeStart',},
+    { 'old_index': 'researchProjectRuntimeEnd', 'new_index': 'getResearchProjectRuntimeEnd',},
+    { 'old_index': 'researchSubprojectRuntimeStart', 'new_index': 'getResearchSubprojectRuntimeStart',},
+    { 'old_index': 'researchSubprojectRuntimeEnd', 'new_index': 'getResearchSubprojectRuntimeEnd',},
 ]
 
 class Migration(object):
@@ -32,6 +36,8 @@ class Migration(object):
         print >> self.out
 	print >> self.out, u"Migrating ATResearchProject UNRELEASED -> 0.4"
 	self.migrateATRPListsCriteria()
+	self.removeDeprecatedIndexes()
+	self.removeDeprecatedMetadata()
 
     def migrateATRPListsCriteria(self):
         """Migrates ATRPList criteria if index ids have changed; called
@@ -52,7 +58,13 @@ class Migration(object):
 			if migrate_field_dict['old_index'] in old_criterion.getId():
 			    # we assume that the new field may be combined with the same criteria type as the old field
 			    new_criterion = obj.addCriterion(field=migrate_field_dict['new_index'], criterion_type=old_criterion.meta_type)
-			    new_criterion.setValue(old_criterion.Value())
+			    
+			    for fieldName in  [ field.getName() for field in new_criterion.Schema().fields() if field.getName() not in ['id', 'field'] ]:
+				accessor = old_criterion.Schema().getField(fieldName).getAccessor(obj)
+				mutator = new_criterion.Schema().getField(fieldName).getMutator(obj)
+				if accessor is not None:
+				    mutator(accessor())
+			    
 			    obj.deleteCriterion(old_criterion.getId())
 			    obj_updated = True
 		if obj_updated:
@@ -64,3 +76,12 @@ class Migration(object):
 	else:
 	    print >> self.out, u"    Upgraded criteria of %s ResearchProjectList items." % count
 	print >> self.out
+
+    def removeDeprecatedIndexes(self):
+    
+	return True
+	
+    def removeDeprecatedMetadata(self):
+    
+	return True
+		

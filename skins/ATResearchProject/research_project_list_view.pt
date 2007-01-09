@@ -9,6 +9,7 @@
 <metal:main_macro define-macro="main">
     <metal:body define-macro="body_macro">
 
+	<tal:define tal:define="topicContents python: [];">
         <div metal:use-macro="here/document_actions/macros/document_actions">
              Document actions (print, sendto etc)
         </div>
@@ -37,8 +38,8 @@
         </p>
 
 	<metal:listingmacro define-macro="listing">
-        <tal:portaltype-loop condition="here/listCriteria"
-			     define="portal_types python: (('ResearchProject', 'Research Projects', here.getResearchProjectListDisplayResearchProjects(), here.getResearchProjectListDisplayHeadlineResearchProjects()), ('ResearchSubproject','Subprojects', here.getResearchProjectListDisplayResearchSubprojects(), here.getResearchProjectListDisplayHeadlineResearchSubprojects() and not here.getResearchProjectListCascadeResearchSubprojects()))"
+        <tal:portaltype-loop condition="python: here.listCriteria() or here.getAcquireCriteria()"
+			     define="portal_types python: (('ResearchProject', 'Research Projects', here.getResearchProjectListDisplayResearchProjects(), here.getResearchProjectListDisplayHeadlineResearchProjects()), ('ResearchSubproject','Subprojects', here.getResearchProjectListDisplayResearchSubprojects(), here.getResearchProjectListDisplayHeadlineResearchSubprojects() and not here.getResearchProjectListCascadeResearchSubprojects()));"
 	                     repeat="portal_type portal_types">
 	
           <tal:if condition="python: portal_type[2]">
@@ -165,7 +166,7 @@
 	</tal:portaltype-loop>  
 
         <p class="discreet"
-               tal:condition="python: not here.listCriteria()"
+               tal:condition="python: not here.listCriteria() and not (here.getAcquireCriteria() and topicContents)"
                i18n:domain="atcontenttypes"
                i18n:translate="description_no_criteria_in_topic">
                 There are currently no criteria on which to search.
@@ -173,6 +174,7 @@
         </p>
 
         </metal:listingmacro>
+    </tal:define>
     </metal:body>
 
     <metal:subtopics-listing define-macro="folderlisting_macro">

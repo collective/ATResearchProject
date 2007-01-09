@@ -369,12 +369,12 @@ msgstr "Involved Departments (Research Subproject)"
 
 #. Default: "Runtime Start (Research Project)"
 #: catalog indexes
-msgid "researchProjectRuntimeStart"
+msgid "getResearchProjectRuntimeStart"
 msgstr "Runtime Start (Research Project)"
 
 #. Default: "Runtime End (Research Project)"
 #: catalog indexes
-msgid "researchProjectRuntimeEnd"
+msgid "getResearchProjectRuntimeEnd"
 msgstr "Runtime End (Research Project)"
 
 #. Default: "Title (Research Project)"
@@ -389,12 +389,12 @@ msgstr "Official Title (Research Project)"
 
 #. Default: "Runtime Start (Research Subproject)"
 #: catalog indexes
-msgid "researchSubprojectRuntimeStart"
+msgid "getResearchSubprojectRuntimeStart"
 msgstr "Runtime Start (Research Subproject)"
 
 #. Default: "Runtime End (Research Subproject)"
 #: catalog indexes
-msgid "researchSubprojectRuntimeEnd"
+msgid "getResearchSubprojectRuntimeEnd"
 msgstr "Runtime End (Research Subproject)"
 
 #. Default: "Title (Research Subproject)"

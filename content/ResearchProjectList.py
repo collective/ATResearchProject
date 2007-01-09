@@ -179,27 +179,27 @@ class ResearchProjectList(ATTopic):
                 except: 
                     pass
         
-        # we have to reinstitute some standard index fields, if we have acquired criterias from "superior"
+        # we have to reinstitute some standard index fields, if we have acquired criteria from "superior"
         try:	    
-            if query['sort_on'] == 'sortable_title' and (portal_type_to_query == 'ResearchProject'):
+            if query['sort_on'] == 'sortable_title' and (self.portal_type_to_query == 'ResearchProject'):
                 query['sort_on'] == 'titleResearchProject'
-            if query['sort_on'] == 'sortable_title' and (portal_type_to_query == 'ResearchSubroject'):
+            if query['sort_on'] == 'sortable_title' and (self.portal_type_to_query == 'ResearchSubroject'):
                 query['sort_on'] == 'titleResearchSubproject'
         except:
             pass
 	    
-        if query.has_key('SearchableText') and (portal_type_to_query == 'ResearchProject'):
-            query['searchableResearchProjectText'] == query['SearchableText']
+        if query.has_key('SearchableText') and (self.portal_type_to_query == 'ResearchProject'):
+            query['searchableResearchProjectText'] = query['SearchableText']
 	    del query['SearchableText']
-        if query.has_key('SearchableText') and (portal_type_to_query == 'ResearchSubroject'):
-            query['searchableResearchSubprojectText'] == query['SearchableText']
+        if query.has_key('SearchableText') and (self.portal_type_to_query == 'ResearchSubroject'):
+            query['searchableResearchSubprojectText'] = query['SearchableText']
 	    del query['SearchableText']
 
-        if query.has_key('path') and (portal_type_to_query == 'ResearchProject'):
-            query['pathResearchProject'] == query['path']
+        if query.has_key('path') and (self.portal_type_to_query == 'ResearchProject'):
+            query['pathResearchProject'] = query['path']
     	    del query['path']
-        if query.has_key('path') and (portal_type_to_query == 'ResearchSubroject'):
-            query['pathResearchSubproject'] == query['path']
+        if query.has_key('path') and (self.portal_type_to_query == 'ResearchSubroject'):
+            query['pathResearchSubproject'] = query['path']
 	    del query['path']
     
         #print "0. %s: %s" % (self.portal_type_to_query, query)

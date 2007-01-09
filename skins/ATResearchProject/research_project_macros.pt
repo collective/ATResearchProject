@@ -458,7 +458,7 @@
     
 <metal:relatedprojects-listing metal:define-macro="relatedprojects-listing">
     <tal:research-projects tal:define="atrp_tool here/portal_researchproject;
-			  	       projectlist  python: atrp_tool.getWfFilteredResearchProjectsListForField(here, sort_on='researchProjectRuntimeStart', sort_order='reverse');"
+			  	       projectlist  python: atrp_tool.getWfFilteredResearchProjectsListForField(here, sort_on='getResearchProjectRuntimeStart', sort_order='reverse');"
                            tal:condition="projectlist">
       
       <hr style="clear:both;"/>
