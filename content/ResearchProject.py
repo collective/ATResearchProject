@@ -200,6 +200,11 @@ class ResearchProject(BrowserDefaultMixin, OrderedBaseFolder):
       rawFieldValue = self.getField('researchProjectProjectCoordinators').get(self, **kwargs)
       return atrp_tool.structureExtendedLinesField(rawFieldValue, extended_field_format=extended_field_format, **kwargs)
       
+    security.declareProtected(permissions.View, 'editResearchProjectProjectCoordinators')
+    def editResearchProjectProjectCoordinators (self, extended_field_format='raw', **kwargs):
+	""" edit needs raw field access """
+	return self.getResearchProjectProjectCoordinators(extended_field_format=extended_field_format, **kwargs)
+
     security.declareProtected(permissions.View, 'getResearchProjectScientificCoordinators')
     def getResearchProjectScientificCoordinators (self, extended_field_format='catalog', **kwargs):
       """we need to wrap this field as the user is allowed to enter extended text infomation
@@ -208,6 +213,11 @@ class ResearchProject(BrowserDefaultMixin, OrderedBaseFolder):
       rawFieldValue = self.getField('researchProjectScientificCoordinators').get(self, **kwargs)
       return atrp_tool.structureExtendedLinesField(rawFieldValue, extended_field_format=extended_field_format, **kwargs)
       
+    security.declareProtected(permissions.View, 'editResearchProjectScientificCoordinators')
+    def editResearchProjectScientificCoordinators (self, extended_field_format='raw', **kwargs):
+	""" edit needs raw field access """
+	return self.getResearchProjectScientificCoordinators(extended_field_format=extended_field_format, **kwargs)
+
     security.declareProtected(permissions.View, 'getResearchProjectContactPersons')
     def getResearchProjectContactPersons(self, extended_field_format='catalog', **kwargs):
       """we need to wrap this field as the user is allowed to enter extended text infomation
@@ -216,6 +226,11 @@ class ResearchProject(BrowserDefaultMixin, OrderedBaseFolder):
       rawFieldValue = self.getField('researchProjectContactPersons').get(self, **kwargs)
       return atrp_tool.structureExtendedLinesField(rawFieldValue, extended_field_format=extended_field_format, **kwargs)
       
+    security.declareProtected(permissions.View, 'editResearchProjectContactPersons')
+    def editResearchProjectContactPersons (self, extended_field_format='raw', **kwargs):
+	""" edit needs raw field access """
+	return self.getResearchProjectContactPersons (extended_field_format=extended_field_format, **kwargs)
+
     security.declareProtected(permissions.View, 'getResearchProjectInheritedScientificStaffMembers')
     def getResearchProjectInheritedScientificStaffMembers (self, extended_field_format='catalog', **kwargs):
         """acquire all subprojects' scientific staff members
@@ -322,13 +337,18 @@ class ResearchProject(BrowserDefaultMixin, OrderedBaseFolder):
         return atrp_tool.structureExtendedLinesField(raw_staff_members_list, extended_field_format=extended_field_format, **kwargs)
       
     security.declareProtected(permissions.View, 'getResearchProjectScientificStaffMembers')
-    def getResearchProjectScientificStaffMembers (self,extended_field_format='catalog',  **kwargs):
+    def getResearchProjectScientificStaffMembers (self, extended_field_format='catalog',  **kwargs):
         """we need to wrap this field as the user is allowed to enter extended text infomation
         """
         atrp_tool = getToolByName(self, 'portal_researchproject')
         raw_staff_members_list = self.getField('researchProjectScientificStaffMembers').get(self, **kwargs)
         return atrp_tool.structureExtendedLinesField(raw_staff_members_list, extended_field_format=extended_field_format, **kwargs)
       
+    security.declareProtected(permissions.View, 'editResearchProjectScientificStaffMembers')
+    def editResearchProjectScientificStaffMembers (self, extended_field_format='raw', **kwargs):
+	""" edit needs raw field access """
+	return self.getResearchProjectScientificStaffMembers (extended_field_format=extended_field_format, **kwargs)
+
     security.declareProtected(permissions.View, 'getResearchProjectTechnicalStaffMembers')
     def getResearchProjectTechnicalStaffMembers (self, extended_field_format='catalog', **kwargs):
         """we need to wrap this field as the user is allowed to enter extended text infomation
@@ -337,6 +357,11 @@ class ResearchProject(BrowserDefaultMixin, OrderedBaseFolder):
         raw_staff_members_list = self.getField('researchProjectTechnicalStaffMembers').get(self, **kwargs)
         return atrp_tool.structureExtendedLinesField(raw_staff_members_list, extended_field_format=extended_field_format, **kwargs)
       
+    security.declareProtected(permissions.View, 'editResearchProjectTechnicalStaffMembers')
+    def editResearchProjectTechnicalStaffMembers (self, extended_field_format='raw', **kwargs):
+	""" edit needs raw field access """
+	return self.getResearchProjectTechnicalStaffMembers (extended_field_format=extended_field_format, **kwargs)
+
     security.declareProtected(permissions.View, 'getResearchProjectStudentStaffMembers')
     def getResearchProjectStudentStaffMembers (self, extended_field_format='catalog', **kwargs):
         """we need to wrap this field as the user is allowed to enter extended text infomation
@@ -345,6 +370,11 @@ class ResearchProject(BrowserDefaultMixin, OrderedBaseFolder):
         raw_staff_members_list = self.getField('researchProjectStudentStaffMembers').get(self, **kwargs)
         return atrp_tool.structureExtendedLinesField(raw_staff_members_list, extended_field_format=extended_field_format, **kwargs)
       
+    security.declareProtected(permissions.View, 'editResearchProjectStudentStaffMembers')
+    def editResearchProjectStudentStaffMembers (self, extended_field_format='raw', **kwargs):
+	""" edit needs raw field access """
+	return self.getResearchProjectStudentStaffMembers (extended_field_format=extended_field_format, **kwargs)
+
     security.declareProtected(permissions.View, 'getResearchProjectFormerStaffMembers')
     def getResearchProjectFormerStaffMembers (self, extended_field_format='catalog', **kwargs):
         """we need to wrap this field as the user is allowed to enter extended text infomation
@@ -353,6 +383,11 @@ class ResearchProject(BrowserDefaultMixin, OrderedBaseFolder):
         raw_staff_members_list = self.getField('researchProjectFormerStaffMembers').get(self, **kwargs)
         return atrp_tool.structureExtendedLinesField(raw_staff_members_list, extended_field_format=extended_field_format, **kwargs)
       
+    security.declareProtected(permissions.View, 'editResearchProjectFormerStaffMembers')
+    def editResearchProjectFormerStaffMembers (self, extended_field_format='raw', **kwargs):
+	""" edit needs raw field access """
+	return self.getResearchProjectFormerStaffMembers (extended_field_format=extended_field_format, **kwargs)
+
     security.declareProtected(permissions.View, 'getResearchProjectFormerStudentStaffMembers')
     def getResearchProjectFormerStudentStaffMembers (self, extended_field_format='catalog', **kwargs):
         """we need to wrap this field as the user is allowed to enter extended text infomation
@@ -361,6 +396,11 @@ class ResearchProject(BrowserDefaultMixin, OrderedBaseFolder):
         raw_staff_members_list = self.getField('researchProjectFormerStudentStaffMembers').get(self, **kwargs)
         return atrp_tool.structureExtendedLinesField(raw_staff_members_list, extended_field_format=extended_field_format, **kwargs)
       
+    security.declareProtected(permissions.View, 'editResearchProjectFormerStudentStaffMembers')
+    def editResearchProjectFormerStudentStaffMembers (self, extended_field_format='raw', **kwargs):
+	""" edit needs raw field access """
+	return self.getResearchProjectFormerStudentStaffMembers (extended_field_format=extended_field_format, **kwargs)
+
     security.declareProtected(permissions.View, 'getResearchProjectCooperationPartners')
     def getResearchProjectCooperationPartners (self, extended_field_format='catalog', **kwargs):
       """we need to wrap this field as the user is allowed to enter extended text infomation
@@ -369,6 +409,11 @@ class ResearchProject(BrowserDefaultMixin, OrderedBaseFolder):
       rawFieldValue = self.getField('researchProjectCooperationPartners').get(self, **kwargs)
       return atrp_tool.structureExtendedLinesField(rawFieldValue, extended_field_format=extended_field_format, **kwargs)
       
+    security.declareProtected(permissions.View, 'editResearchProjectCooperationPartners')
+    def editResearchProjectCooperationPartners (self, extended_field_format='raw', **kwargs):
+	""" edit needs raw field access """
+	return self.getResearchProjectCooperationPartners (extended_field_format=extended_field_format, **kwargs)
+
     security.declareProtected(permissions.View, 'getResearchProjectContractors')
     def getResearchProjectContractors (self, extended_field_format='catalog', **kwargs):
       """we need to wrap this field as the user is allowed to enter extended text infomation
@@ -377,6 +422,11 @@ class ResearchProject(BrowserDefaultMixin, OrderedBaseFolder):
       rawFieldValue = self.getField('researchProjectContractors').get(self, **kwargs)
       return atrp_tool.structureExtendedLinesField(rawFieldValue, extended_field_format=extended_field_format, **kwargs)
       
+    security.declareProtected(permissions.View, 'editResearchProjectContractors')
+    def editResearchProjectContractors (self, extended_field_format='raw', **kwargs):
+	""" edit needs raw field access """
+	return self.getResearchProjectContractors (extended_field_format=extended_field_format, **kwargs)
+
     security.declareProtected(permissions.View, 'getResearchProjectExternalLinks')
     def getResearchProjectExternalLinks (self, extended_field_format='catalog', **kwargs):
         """we need to wrap this field as the user is allowed to enter extended text infomation
@@ -398,6 +448,11 @@ class ResearchProject(BrowserDefaultMixin, OrderedBaseFolder):
                 
         return atrp_tool.structureExtendedLinesField(external_links_list, extended_field_format=extended_field_format, **kwargs)
       
+    security.declareProtected(permissions.View, 'editResearchProjectExternalLinks')
+    def editResearchProjectExternalLinks (self, extended_field_format='raw', **kwargs):
+	""" edit needs raw field access """
+	return self.getResearchProjectExternalLinks (extended_field_format=extended_field_format, **kwargs)
+
     def _addToResearchProjectTree(self, result, data):
         """Adds a piece of content to the result tree."""
         path = data['path']
