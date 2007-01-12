@@ -264,38 +264,6 @@
                        /><label for="researchProjectThirdPartyFunded_false" i18n:translate="atrpsearch_thirdpartyfunded_false">Show self-financed project only</label><br />
             </div>
 
-            <div class="field" tal:define="portal_types portal/portal_types">
-                <label i18n:domain="plone" i18n:translate="label_item_type">Type</label>
-
-                <div class="formHelp" i18n:domain="plone" i18n:translate="help_search_item_type">
-                Return items of a specific type.
-                </div>
-    
-                <div tal:define="allTypes python:putils.getUserFriendlyTypes(typesList=['ResearchProject', 'ResearchSubproject',]);">
-                    <tal:tabindex define="tabindex tabindex/next">
-                    <select multiple="multiple"
-                            name="portal_type:list"
-                            id="portal_type"
-                            >
-                        <option
-                            tal:repeat="type allTypes"
-                            value="#"
-                            class="noborder"
-                            selected="selected"
-                            tabindex=""
-                            tal:attributes="value type;
-                                            tabindex tabindex;
-                                            id string:portal_type_${type}">
-                        <span i18n:domain="plone" i18n:translate=""
-                          tal:content="python: portal_types.getTypeInfo(type).Title()"
-                          /> (<span tal:content="type" />)
-                        </option>
-                    </select>
-                    <br />
-                    </tal:tabindex>
-                </div>
-            </div>
-
             <div class="field" tal:define="atrp_tool portal/portal_researchproject">
                 
                 <label i18n:translate="atrpsearch_label_departments">Departments</label>
@@ -344,6 +312,38 @@
                        tabindex=""
                        tal:attributes="tabindex tabindex/next;"
                        /><label for="deparments_logic_OR" i18n:translate="atrpsearch_departments_logic_or">List projects that either of the selected departments has contributed to</label><br />
+                </div>
+            </div>
+
+            <div class="field" tal:define="portal_types portal/portal_types">
+                <label i18n:domain="plone" i18n:translate="label_item_type">Type</label>
+
+                <div class="formHelp" i18n:domain="plone" i18n:translate="help_search_item_type">
+                Return items of a specific type.
+                </div>
+    
+                <div tal:define="allTypes python:putils.getUserFriendlyTypes(typesList=['ResearchProject', 'ResearchSubproject',]);">
+                    <tal:tabindex define="tabindex tabindex/next">
+                    <select multiple="multiple"
+                            name="portal_type:list"
+                            id="portal_type"
+                            >
+                        <option
+                            tal:repeat="type allTypes"
+                            value="#"
+                            class="noborder"
+                            selected="selected"
+                            tabindex=""
+                            tal:attributes="value type;
+                                            tabindex tabindex;
+                                            id string:portal_type_${type}">
+                        <span i18n:domain="plone" i18n:translate=""
+                          tal:content="python: portal_types.getTypeInfo(type).Title()"
+                          /> (<span tal:content="type" />)
+                        </option>
+                    </select>
+                    <br />
+                    </tal:tabindex>
                 </div>
             </div>
 
