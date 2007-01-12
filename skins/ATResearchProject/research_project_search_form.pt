@@ -6,6 +6,28 @@
 <metal:head fill-slot="top_slot"
             tal:define="dummy python:request.set('disable_border',1)" />
 
+
+  <metal:javascriptslot fill-slot="javascript_head_slot">
+      <script type="text/javascript">
+      //<!--
+
+        function selectRadio(name, id){
+          for (var i = 0; (input = document.getElementsByTagName('input').item(i)); i++) {
+
+            if (input.name == name) {
+
+                if (input.id == id) input.checked = true;
+                else input.checked = false;
+
+            }
+          }
+        }
+
+       //-->
+       </script>
+  </metal:javascriptslot>
+
+
 <div metal:fill-slot="main">
 
     <h1 i18n:translate="atrpsearch_heading_search">Research Project Search Form</h1>
@@ -133,6 +155,7 @@
 		    <legend i18n:translate="atrpsearch_legend_runtime_range">Date Range for Project / Subproject Runtime</legend>
 
     			<input type="checkbox" name="runtime_start:string" id="runtime_start" value=""
+                               onClick="javascript:if ( this.checked ) { selectRadio('runtime:string', 'runtime_use-date-range'); }"
 			       tal:attributes="value string:true" />
 			<label for="runtime_start" i18n:translate="atrpsearch_runtime_start_range">Project work started in date range:</label>
 
@@ -169,6 +192,7 @@
 		        <br />
 			
 			<input type="checkbox" name="runtime_end:string" id="runtime_end" value=""
+                               onClick="javascript:if ( this.checked ) { selectRadio('runtime:string', 'runtime_use-date-range'); }"
 		    	       tal:attributes="value string:true" />
 			<label for="runtime_start" i18n:translate="atrpsearch_runtime_end_range">Project work ended in date range:</label>
 
@@ -247,8 +271,7 @@
                 Return items of a specific type.
                 </div>
     
-                <div style="float:left; margin-right: 2em;"
-                     tal:define="allTypes python:putils.getUserFriendlyTypes(typesList=['ResearchProject', 'ResearchSubproject',]);">
+                <div tal:define="allTypes python:putils.getUserFriendlyTypes(typesList=['ResearchProject', 'ResearchSubproject',]);">
                     <tal:tabindex define="tabindex tabindex/next">
                     <select multiple="multiple"
                             name="portal_type:list"
@@ -270,6 +293,57 @@
                     </select>
                     <br />
                     </tal:tabindex>
+                </div>
+            </div>
+
+            <div class="field" tal:define="atrp_tool portal/portal_researchproject">
+                
+                <label i18n:translate="atrpsearch_label_departments">Departments</label>
+
+                <div class="formHelp" i18n:translate="atrpsearch_help_departments">
+                Confine search to selected departments.
+                </div>
+    
+                <div style="clear:both" />
+                <div style="float:left;" tal:define="allDeps python:atrp_tool.getDepartmentDisplayList();">
+                    <tal:tabindex define="tabindex tabindex/next">
+                    <select multiple="multiple"
+                            name="departments:list"
+                            id="departments"
+                            >
+                        <option
+                            tal:repeat="dep python: allDeps.items()"
+                            value="#"
+                            class="noborder"
+                            tabindex=""
+                            tal:attributes="value python: dep[0];
+                                            tabindex tabindex;
+                                            id python:'department_%s' % dep[0]">
+                        <span i18n:domain="plone" i18n:translate=""
+                          tal:content="python: dep[1]"
+                          />
+                        </option>
+                    </select>
+                    <br />
+                    </tal:tabindex>
+                </div>
+
+                <div style="float:left;">
+                <input type="radio"
+                       id="departments_logic_AND"
+                       name="departments_logic:string"
+		       value="AND"
+                       tabindex=""
+                       tal:attributes="tabindex tabindex/next;"
+                       /><label for="departments_logic_AND" i18n:translate="atrpsearch_departments_logic_and">All selected departments must have participated in project</label><br />
+                <input type="radio"
+                       checked="checked"
+                       id="departments_logic_OR"
+                       name="departments_logic:string"
+		       value="OR"
+                       tabindex=""
+                       tal:attributes="tabindex tabindex/next;"
+                       /><label for="deparments_logic_OR" i18n:translate="atrpsearch_departments_logic_or">List projects that either of the selected departments has contributed to</label><br />
                 </div>
             </div>
 

@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ATResearchProject 0.4.0\n"
 "POT-Creation-Date: 2005-12-30 23:31+0100\n"
-"PO-Revision-Date: 2007-01-07 00:07+0100\n"
-"Last-Translator: SuperUser <root@phoenix.ecology.uni-kiel.de>\n"
+"PO-Revision-Date: 2007-01-10 13:14-0000\n"
+"Last-Translator: Mike Gabriel <m.gabriel@sunweavers.net>\n"
 "Language-Team: netzwerkteam OEZK <plone-developers@ecology.uni-kiel.de>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
@@ -218,8 +218,8 @@ msgid "Research Subproject - Website Path"
 msgstr "Teilprojekt - Website Pfad"
 
 #. Default: "Scientific coordination"
-#: skins/ATResearchProject/research_project_macros.pt
 #: skins/ATResearchProject/research_subprojects_overview.pt
+#: skins/ATResearchProject/research_project_macros.pt
 msgid "Scientific coordination"
 msgstr "Wissenschaftl. Koordination"
 
@@ -309,6 +309,16 @@ msgstr "Dieses Kriterium durchsucht alle Textpassagen in Teilprojekt-Objekten na
 msgid "Title"
 msgstr "Titel"
 
+#. Default: "All selected departments must have participated in project"
+#: skins/ATResearchProject/research_project_search_form.pt
+msgid "atrpsearch_departments_logic_and"
+msgstr "Nur Projekte, an denen alle ausgewählten Abteilungen beteiligt waren"
+
+#. Default: "List projects that either of the selected departments has contributed to"
+#: skins/ATResearchProject/research_project_search_form.pt
+msgid "atrpsearch_departments_logic_or"
+msgstr "Projekte, an denen eine der gewählten Abteilungen beteiligt war"
+
 #. Default: "No research (sub)projects matching your search criteria were found."
 #: skins/ATResearchProject/research_project_search.pt
 msgid "atrpsearch_description_no_results_found"
@@ -328,6 +338,11 @@ msgstr "Suche nach Forschungsprojekten"
 #: skins/ATResearchProject/research_project_search.pt
 msgid "atrpsearch_heading_search_results"
 msgstr "Suche nach Forschungsprojekten - Suchergebnisse"
+
+#. Default: "Confine search to selected departments."
+#: skins/ATResearchProject/research_project_search_form.pt
+msgid "atrpsearch_help_departments"
+msgstr "Suche eingrenzen auf ausgewählte Abteilungen"
 
 #. Default: "Return research projects / subprojects matching this official project title."
 #: skins/ATResearchProject/research_project_search_form.pt
@@ -358,6 +373,11 @@ msgstr "Liefert Forschungsprojekte / Teilprojekte zurück, in deren (Portal-)Tit
 #: skins/ATResearchProject/research_project_search_form.pt
 msgid "atrpsearch_help_thirdpartyfunded"
 msgstr "Wählen Sie hier, ob nur Drittmittelprojekte oder nur Projekte, finanziert aus Eigenmitteln, in den Suchergebnissen angezeigt werden sollen."
+
+#. Default: "Departments"
+#: skins/ATResearchProject/research_project_search_form.pt
+msgid "atrpsearch_label_departments"
+msgstr "Abteilungen"
 
 #. Default: "Persons, Contractors, Cooperation Partners"
 #: skins/ATResearchProject/research_project_search_form.pt
@@ -860,23 +880,23 @@ msgid "label_abstract_researchsubproject"
 msgstr "Zusammenfassung"
 
 #. Default: "Allowed Content Types"
+#: skins/ATResearchProject/prefs_atrptool_departments.pt
 #: skins/ATResearchProject/prefs_atrptool_info.pt
 #: skins/ATResearchProject/prefs_atrptool_contenttypes.pt
-#: skins/ATResearchProject/prefs_atrptool_departments.pt
 msgid "label_atrptool_contenttypes"
 msgstr "Zulässige Inhaltstypen"
 
 #. Default: "Department Names"
+#: skins/ATResearchProject/prefs_atrptool_departments.pt
 #: skins/ATResearchProject/prefs_atrptool_info.pt
 #: skins/ATResearchProject/prefs_atrptool_contenttypes.pt
-#: skins/ATResearchProject/prefs_atrptool_departments.pt
 msgid "label_atrptool_departments"
 msgstr "Abteilungsnamen"
 
 #. Default: "Information"
+#: skins/ATResearchProject/prefs_atrptool_departments.pt
 #: skins/ATResearchProject/prefs_atrptool_info.pt
 #: skins/ATResearchProject/prefs_atrptool_contenttypes.pt
-#: skins/ATResearchProject/prefs_atrptool_departments.pt
 msgid "label_atrptool_info"
 msgstr "Information"
 
@@ -1363,8 +1383,8 @@ msgid "view_researchsubproject_infohead"
 msgstr "Teilprojektinformationen"
 
 #. Default: "Keywords"
-#: skins/ATResearchProject/research_project_macros.pt
 #: skins/ATResearchProject/research_subprojects_overview.pt
+#: skins/ATResearchProject/research_project_macros.pt
 msgid "view_researchsubproject_keywords"
 msgstr "Stichwörter"
 
@@ -1374,8 +1394,8 @@ msgid "view_researchsubproject_runtime"
 msgstr "Teilprojektlaufzeit"
 
 #. Default: "since"
-#: skins/ATResearchProject/research_project_macros.pt
 #: skins/ATResearchProject/research_subprojects_overview.pt
+#: skins/ATResearchProject/research_project_macros.pt
 msgid "view_since"
 msgstr "seit"
 

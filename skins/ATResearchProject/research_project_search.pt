@@ -40,11 +40,15 @@
 		 dummy python: (request.get('researchProjectThirdPartyFunded') == 'True') and request.set('researchProjectThirdPartyFunded', [1, True, '1', 'True']);
 		 dummy python: (request.get('researchProjectThirdPartyFunded') == 'False') and request.set('researchProjectThirdPartyFunded', [0, False, '0', 'False']);
 
+                 departments_logic python: request.has_key('departments_logic') and ' %s ' % request.get('departments_logic') or '';
+                 dummy python: request.has_key('departments') and request.set('researchProjectInvolvedDepartments', departments_logic.join(request.get('departments')));
+
                  project_results python: (('ResearchProject' in req_portal_types) and here.queryCatalog(REQUEST=request,use_types_blacklist=use_types_blacklist)) or [];
 
     		 dummy python: request.set('portal_type', ('ResearchSubproject',));
 		 request python: atrp_tool.delKeyValueFromRequest('getResearchProjectRuntimeStart', REQUEST=request);
 		 request python: atrp_tool.delKeyValueFromRequest('getResearchProjectRuntimeEnd', REQUEST=request);
+		 request python: atrp_tool.delKeyValueFromRequest('researchProjectInvolvedDepartments', REQUEST=request);
 		 dummy python: (runtime == 'active-projects') and request.set('getResearchSubprojectRuntimeEnd', {'query': today.Date(), 'range': 'min', });
 		 dummy python: (runtime == 'closed-projects') and request.set('getResearchSubprojectRuntimeEnd', {'query': today.Date(), 'range': 'max', });
 		 dummy python: use_date_range_runtime_start and request.set('getResearchSubprojectRuntimeStart', {'query': (DateTime(request.get('runtime_start_rangeA')), DateTime(request.get('runtime_start_rangeB'))), 'range': 'min:max'});
@@ -52,6 +56,9 @@
 
     		 dummy python: request.has_key('getResearchProjectInfoFields') and request.set('getResearchSubprojectInfoFields', request.get('getResearchProjectInfoFields'));
 		 request python: atrp_tool.delKeyValueFromRequest('getResearchProjectInfoFields', REQUEST=request);
+
+                 dummy python: request.has_key('departments') and request.set('researchSubprojectInvolvedDepartments', departments_logic.join(request.get('departments')));
+
 	         subproject_results python: (('ResearchSubproject' in req_portal_types) and here.queryCatalog(REQUEST=request,use_types_blacklist=use_types_blacklist)) or [];
 		 
 		 results python: ('ResearchProject' in req_portal_types) and atrp_tool.addMissingResearchProjectsToSearchResult(project_brains=project_results, subproject_brains=subproject_results) or subproject_results;

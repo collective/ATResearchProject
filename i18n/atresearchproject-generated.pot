@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: ATResearchProject svn/trunk\n"
-"POT-Creation-Date: 2007-01-06 21:47+0000\n"
+"POT-Creation-Date: 2007-01-10 13:09+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -221,8 +221,8 @@ msgid "Research Subproject - Website Path"
 msgstr ""
 
 #. Default: "Scientific coordination"
-#: ./skins/ATResearchProject/research_project_macros.pt
 #: ./skins/ATResearchProject/research_subprojects_overview.pt
+#: ./skins/ATResearchProject/research_project_macros.pt
 msgid "Scientific coordination"
 msgstr ""
 
@@ -312,6 +312,16 @@ msgstr ""
 msgid "Title"
 msgstr ""
 
+#. Default: "All selected departments must have participated in project"
+#: ./skins/ATResearchProject/research_project_search_form.pt
+msgid "atrpsearch_departments_logic_and"
+msgstr ""
+
+#. Default: "List projects that either of the selected departments has contributed to"
+#: ./skins/ATResearchProject/research_project_search_form.pt
+msgid "atrpsearch_departments_logic_or"
+msgstr ""
+
 #. Default: "No research (sub)projects matching your search criteria were found."
 #: ./skins/ATResearchProject/research_project_search.pt
 msgid "atrpsearch_description_no_results_found"
@@ -330,6 +340,11 @@ msgstr ""
 #. Default: "Research Project Search Results"
 #: ./skins/ATResearchProject/research_project_search.pt
 msgid "atrpsearch_heading_search_results"
+msgstr ""
+
+#. Default: "Confine search to selected departments."
+#: ./skins/ATResearchProject/research_project_search_form.pt
+msgid "atrpsearch_help_departments"
 msgstr ""
 
 #. Default: "Return research projects / subprojects matching this official project title."
@@ -360,6 +375,11 @@ msgstr ""
 #. Default: "Select here if you want only third-party funded projects shown in the lists of search results."
 #: ./skins/ATResearchProject/research_project_search_form.pt
 msgid "atrpsearch_help_thirdpartyfunded"
+msgstr ""
+
+#. Default: "Departments"
+#: ./skins/ATResearchProject/research_project_search_form.pt
+msgid "atrpsearch_label_departments"
 msgstr ""
 
 #. Default: "Persons, Contractors, Cooperation Partners"
@@ -863,23 +883,23 @@ msgid "label_abstract_researchsubproject"
 msgstr ""
 
 #. Default: "Allowed Content Types"
+#: ./skins/ATResearchProject/prefs_atrptool_departments.pt
 #: ./skins/ATResearchProject/prefs_atrptool_info.pt
 #: ./skins/ATResearchProject/prefs_atrptool_contenttypes.pt
-#: ./skins/ATResearchProject/prefs_atrptool_departments.pt
 msgid "label_atrptool_contenttypes"
 msgstr ""
 
 #. Default: "Department Names"
+#: ./skins/ATResearchProject/prefs_atrptool_departments.pt
 #: ./skins/ATResearchProject/prefs_atrptool_info.pt
 #: ./skins/ATResearchProject/prefs_atrptool_contenttypes.pt
-#: ./skins/ATResearchProject/prefs_atrptool_departments.pt
 msgid "label_atrptool_departments"
 msgstr ""
 
 #. Default: "Information"
+#: ./skins/ATResearchProject/prefs_atrptool_departments.pt
 #: ./skins/ATResearchProject/prefs_atrptool_info.pt
 #: ./skins/ATResearchProject/prefs_atrptool_contenttypes.pt
-#: ./skins/ATResearchProject/prefs_atrptool_departments.pt
 msgid "label_atrptool_info"
 msgstr ""
 
@@ -1366,8 +1386,8 @@ msgid "view_researchsubproject_infohead"
 msgstr ""
 
 #. Default: "Keywords"
-#: ./skins/ATResearchProject/research_project_macros.pt
 #: ./skins/ATResearchProject/research_subprojects_overview.pt
+#: ./skins/ATResearchProject/research_project_macros.pt
 msgid "view_researchsubproject_keywords"
 msgstr ""
 
@@ -1377,8 +1397,8 @@ msgid "view_researchsubproject_runtime"
 msgstr ""
 
 #. Default: "since"
-#: ./skins/ATResearchProject/research_project_macros.pt
 #: ./skins/ATResearchProject/research_subprojects_overview.pt
+#: ./skins/ATResearchProject/research_project_macros.pt
 msgid "view_since"
 msgstr ""
 
