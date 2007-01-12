@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ATResearchProject 0.4.0\n"
 "POT-Creation-Date: 2005-12-30 23:31+0100\n"
-"PO-Revision-Date: 2007-01-10 13:10-0000\n"
+"PO-Revision-Date: 2007-01-12 20:16-0000\n"
 "Last-Translator: Mike Gabriel <m.gabriel@sunweavers.net>\n"
 "Language-Team: netzwerkteam OEZK <plone-developers@ecology.uni-kiel.de>\n"
 "MIME-Version: 1.0\n"
@@ -309,12 +309,12 @@ msgstr "This criterion looks at all searchable text passages in research subproj
 msgid "Title"
 msgstr "Title"
 
-#. Default: "All selected departments must participate in project"
+#. Default: "All selected departments must have participated in project"
 #: skins/ATResearchProject/research_project_search_form.pt
 msgid "atrpsearch_departments_logic_and"
 msgstr "All selected departments must have participated in project"
 
-#. Default: "List projects that either of the selected departments contributes to"
+#. Default: "List projects that either of the selected departments has contributed to"
 #: skins/ATResearchProject/research_project_search_form.pt
 msgid "atrpsearch_departments_logic_or"
 msgstr "List projects that either of the selected departments has contributed to"
@@ -339,10 +339,10 @@ msgstr "Research Project Search Form"
 msgid "atrpsearch_heading_search_results"
 msgstr "Research Project Search Results"
 
-#. Default: "Confine search to selected departments."
+#. Default: "Confine search to selected departments. If you do not want to use the departments search criterion, leave this field untouched."
 #: skins/ATResearchProject/research_project_search_form.pt
 msgid "atrpsearch_help_departments"
-msgstr "Confine search to selected departments."
+msgstr "Confine search to selected departments. If you do not want to use the departments search criterion, leave this field untouched."
 
 #. Default: "Return research projects / subprojects matching this official project title."
 #: skins/ATResearchProject/research_project_search_form.pt

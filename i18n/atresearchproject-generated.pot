@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: ATResearchProject svn/trunk\n"
-"POT-Creation-Date: 2007-01-10 13:09+0000\n"
+"POT-Creation-Date: 2007-01-12 20:15+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -342,7 +342,7 @@ msgstr ""
 msgid "atrpsearch_heading_search_results"
 msgstr ""
 
-#. Default: "Confine search to selected departments."
+#. Default: "Confine search to selected departments. If you do not want to use the departments search criterion, leave this field untouched."
 #: ./skins/ATResearchProject/research_project_search_form.pt
 msgid "atrpsearch_help_departments"
 msgstr ""

@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ATResearchProject 0.4.0\n"
 "POT-Creation-Date: 2005-12-30 23:31+0100\n"
-"PO-Revision-Date: 2007-01-10 13:14-0000\n"
+"PO-Revision-Date: 2007-01-12 20:17-0000\n"
 "Last-Translator: Mike Gabriel <m.gabriel@sunweavers.net>\n"
 "Language-Team: netzwerkteam OEZK <plone-developers@ecology.uni-kiel.de>\n"
 "MIME-Version: 1.0\n"
@@ -339,10 +339,10 @@ msgstr "Suche nach Forschungsprojekten"
 msgid "atrpsearch_heading_search_results"
 msgstr "Suche nach Forschungsprojekten - Suchergebnisse"
 
-#. Default: "Confine search to selected departments."
+#. Default: "Confine search to selected departments. If you do not want to use the departments search criterion, leave this field untouched."
 #: skins/ATResearchProject/research_project_search_form.pt
 msgid "atrpsearch_help_departments"
-msgstr "Suche eingrenzen auf ausgewählte Abteilungen"
+msgstr "Suche eingrenzen auf ausgewählte Abteilungen. Wenn Sie dieses Suchkriterium nicht verwenden möchten, lassen Sie dieses Feld frei."
 
 #. Default: "Return research projects / subprojects matching this official project title."
 #: skins/ATResearchProject/research_project_search_form.pt

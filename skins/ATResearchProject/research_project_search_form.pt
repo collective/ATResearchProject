@@ -301,7 +301,7 @@
                 <label i18n:translate="atrpsearch_label_departments">Departments</label>
 
                 <div class="formHelp" i18n:translate="atrpsearch_help_departments">
-                Confine search to selected departments.
+                Confine search to selected departments. If you do not want to use the departments search criterion, leave this field untouched.
                 </div>
     
                 <div style="clear:both" />
