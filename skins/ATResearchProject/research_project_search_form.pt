@@ -232,6 +232,8 @@
 		</tal:datetime>
 		
             </div>
+
+            <div style="clear:both;" />
     
             <div class="field">
                 <label for="" i18n:translate="atrpsearch_label_thirdpartyfunded">Third-party funded Research Projects</label>
@@ -314,6 +316,8 @@
                        /><label for="deparments_logic_OR" i18n:translate="atrpsearch_departments_logic_or">List projects that either of the selected departments has contributed to</label><br />
                 </div>
             </div>
+
+            <div style="clear:both;" />
 
             <div class="field" tal:define="portal_types portal/portal_types">
                 <label i18n:domain="plone" i18n:translate="label_item_type">Type</label>
