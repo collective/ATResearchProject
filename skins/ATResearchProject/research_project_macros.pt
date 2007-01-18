@@ -602,7 +602,15 @@
           
         <b class="contenttype-researchproject">
 	<a class="" href=""
+	   tal:condition="python: not request.has_key('is_atrp_search')"
 	   tal:attributes="href python: '%s?came_from=%s&amp;came_from_title=%s&amp;came_from_description=%s&amp;came_from_atname=%s' % (project.absolute_url(),here.absolute_url(),here.pretty_title_or_id(),here.Description(),archetype_name);
+	                   class string:$project_wf_state_class visualIconPadding">
+  	  
+  	    <span tal:content="project/pretty_title_or_id" tal:omit-tag="" /></a>  
+        
+	<a class="" href=""
+	   tal:condition="python: request.has_key('is_atrp_search')"
+	   tal:attributes="href python: '%s?came_from=%s&amp;came_from_title=%s&amp;came_from_description=%s&amp;came_from_atname=%s' % (project.absolute_url(),portal.absolute_url()+'/research_project_search_form', project.translate(domain='atresearchproject', msgid='atrpsearch_heading_search', default='Research Project Search Form'),'',archetype_name);
 	                   class string:$project_wf_state_class visualIconPadding">
   	  
   	    <span tal:content="project/pretty_title_or_id" tal:omit-tag="" /></a>  

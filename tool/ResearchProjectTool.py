@@ -548,9 +548,15 @@ class ResearchProjectSiteConfiguration(UniqueObject, SimpleItem, PropertyManager
         uniq_chain = []
         dummy = [ uniq_chain.append(ch) for ch in list(rp_chain)+list(rsp_chain) if ch not in uniq_chain ]
         ATRP_states = []
-        for statesByWorkflow in [ wtool.getWorkflowById(wf_id).states.objectValues() for wf_id in uniq_chain ]:
+        for statesByWorkflow in [ wtool.getWorkflowById(wf_id).states.objectValues() for wf_id in uniq_chain if wtool.getWorkflowById(wf_id) ]:
             ATRP_states.extend(statesByWorkflow)
-        
+
+
+        # TODO: When using CMFPlacefulWorkflow the retrieved ATRP_states might be an empty list.
+        #       For this case let us for now just return the standard workflow states
+        if not ATRP_states:
+            return [ ('Private', 'private'), ('Public Draft', 'visible'), ('Pending', 'pending'), ('Published', 'published'), ]
+
         result = []
         dup_keys = {}
         for state in ATRP_states:
