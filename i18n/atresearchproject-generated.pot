@@ -372,7 +372,7 @@ msgstr ""
 msgid "atrpsearch_help_search_title"
 msgstr ""
 
-#. Default: "Select here if you want only third-party funded projects shown in the lists of search results."
+#. Default: "Select here if you want only third-party funded projects shown in the list of search results."
 #: ./skins/ATResearchProject/research_project_search_form.pt
 msgid "atrpsearch_help_thirdpartyfunded"
 msgstr ""

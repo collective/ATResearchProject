@@ -369,10 +369,10 @@ msgstr "For a simple text search, enter your search term here. Multiple words ma
 msgid "atrpsearch_help_search_title"
 msgstr "Return research projects / subprojects matching this short (portal) title."
 
-#. Default: "Select here if you want only third-party funded projects shown in the lists of search results."
+#. Default: "Select here if you want only third-party funded projects shown in the list of search results."
 #: skins/ATResearchProject/research_project_search_form.pt
 msgid "atrpsearch_help_thirdpartyfunded"
-msgstr "Select here if you want only third-party funded projects shown in the lists of search results."
+msgstr "Select here if you want only third-party funded projects shown in the list of search results."
 
 #. Default: "Departments"
 #: skins/ATResearchProject/research_project_search_form.pt

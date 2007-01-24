@@ -241,7 +241,7 @@
                 <label for="" i18n:translate="atrpsearch_label_thirdpartyfunded">Third-party funded Research Projects</label>
 
                 <div class="formHelp" i18n:translate="atrpsearch_help_thirdpartyfunded">
-		Select here if you want only third-party funded projects shown in the lists of search results.
+		Select here if you want only third-party funded projects shown in the list of search results.
                 </div>
 
                 <input checked="checked" 

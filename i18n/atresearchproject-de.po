@@ -369,7 +369,7 @@ msgstr "Geben Sie für eine einfache Textsuche hier Ihren Suchbegriff ein. Mehre
 msgid "atrpsearch_help_search_title"
 msgstr "Liefert Forschungsprojekte / Teilprojekte zurück, in deren (Portal-)Titel Ihre Suchbegriffe vorkommen."
 
-#. Default: "Select here if you want only third-party funded projects shown in the lists of search results."
+#. Default: "Select here if you want only third-party funded projects shown in the list of search results."
 #: skins/ATResearchProject/research_project_search_form.pt
 msgid "atrpsearch_help_thirdpartyfunded"
 msgstr "Wählen Sie hier, ob nur Drittmittelprojekte oder nur Projekte, finanziert aus Eigenmitteln, in den Suchergebnissen angezeigt werden sollen."
