@@ -183,11 +183,11 @@ class ResearchProject(BrowserDefaultMixin, OrderedBaseFolder):
       self.getField('researchProjectRuntimeEnd').set(self, value, **kwargs)
       
     security.declareProtected(permissions.View, 'getResearchProjectRuntimeEnd')
-    def getResearchProjectRuntimeEnd (self, **kwargs):
+    def getResearchProjectRuntimeEnd (self, resolve_infinity=False, **kwargs):
       """we need to wrap this field for open ended projects
       """
       rawFieldValue = self.getField('researchProjectRuntimeEnd').get(self, **kwargs)
-      if str(rawFieldValue) == INFINITY:
+      if resolve_infinity and (str(rawFieldValue) == INFINITY):
         return None
         
       return rawFieldValue

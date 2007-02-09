@@ -263,17 +263,17 @@
   <div i18n:domain="atresearchproject">
 
       <!-- PROJECT RUNTIME -->
-      <span tal:condition="here/getResearchProjectRuntimeEnd" tal:omit-tag="">
+      <span tal:condition="python: here.getResearchProjectRuntimeEnd(resolve_infinity=True)" tal:omit-tag="">
         <b i18n:translate="view_researchproject_runtime">Runtime</b><b>:</b>
-          <span tal:replace="python: here.toLocalizedTime(here.getResearchProjectRuntimeStart(), long_format=0)" />
+          <span tal:replace="python: here.toLocalizedTime(here.getResearchProjectRuntimeStart(resolve_infinity=True), long_format=0)" />
           <span i18n:translate="word_till" tal:omit-tag="">until</span>
-          <span tal:replace="python: here.toLocalizedTime(here.getResearchProjectRuntimeEnd(), long_format=0)" />
+          <span tal:replace="python: here.toLocalizedTime(here.getResearchProjectRuntimeEnd(resolve_infinity=True), long_format=0)" />
       </span>
           
-      <span tal:condition="not: here/getResearchProjectRuntimeEnd" tal:omit-tag="">
+      <span tal:condition="python: not here.getResearchProjectRuntimeEnd(resolve_infinity=True)" tal:omit-tag="">
         <b i18n:translate="view_researchproject_runtime">Runtime</b><b>:</b>
           <span i18n:translate="view_capital_since" tal:omit-tag="">Since</span>
-          <span tal:replace="python: here.toLocalizedTime(here.getResearchProjectRuntimeStart(), long_format=0)" />
+          <span tal:replace="python: here.toLocalizedTime(here.getResearchProjectRuntimeStart(resolve_infinity=True), long_format=0)" />
       </span>
         
       <!-- OTHER LINES FIELDS -->
@@ -476,24 +476,24 @@
 
 	<tr>
         <tal:boolswitch tal:condition="here/getResearchFieldDisplayProjectRuntime">
-	<tal:td tal:condition="project/getResearchProjectRuntimeEnd">
+	<tal:td tal:condition="python: project.getResearchProjectRuntimeEnd(resolve_infinity=True)">
 	<td style="vertical-align: top; width: 1em;">
 
           <nobr><b>
-            <span tal:replace="python: project.toLocalizedTime(project.getResearchProjectRuntimeStart(), long_format=0)" />
+            <span tal:replace="python: project.toLocalizedTime(project.getResearchProjectRuntimeStart(resolve_infinity=True), long_format=0)" />
             -
-            <span tal:replace="python: project.toLocalizedTime(project.getResearchProjectRuntimeEnd(), long_format=0)" /></b>
+            <span tal:replace="python: project.toLocalizedTime(project.getResearchProjectRuntimeEnd(resolve_infinity=True), long_format=0)" /></b>
           </nobr>
         </td>
         </tal:td>
             
-	<tal:td tal:condition="not: project/getResearchProjectRuntimeEnd">
+	<tal:td tal:condition="python: project.getResearchProjectRuntimeEnd(resolve_infinity=True)">
         <td style="vertical-align: top; width: 1em;">
 
           <nobr><b>
             <span i18n:domain="atresearchproject"
                   i18n:translate="view_capital_since" tal:omit-tag="">Since</span>
-            <span tal:replace="python: project.toLocalizedTime(project.getResearchProjectRuntimeStart(), long_format=0)" /></b>
+            <span tal:replace="python: project.toLocalizedTime(project.getResearchProjectRuntimeStart(resolve_infinity=True), long_format=0)" /></b>
           </nobr>
         </td>
         </tal:td>
@@ -618,13 +618,13 @@
 	</b>
 
         <tal:runtime tal:condition="python: request.has_key('is_atrp_search') or here.getResearchProjectListDisplayRuntimeResearchProjects()">
-        <span tal:condition="python: (project.portal_type == 'ResearchProject') and project.getResearchProjectRuntimeEnd()" tal:omit-tag="">
-          (<span tal:replace="python: project.toLocalizedTime(project.getResearchProjectRuntimeStart(), long_format=0)" />
+        <span tal:condition="python: (project.portal_type == 'ResearchProject') and project.getResearchProjectRuntimeEnd(resolve_infinity=True)" tal:omit-tag="">
+          (<span tal:replace="python: project.toLocalizedTime(project.getResearchProjectRuntimeStart(resolve_infinity=True), long_format=0)" />
           <span>-</span>
-          <span tal:replace="python: project.toLocalizedTime(project.getResearchProjectRuntimeEnd(), long_format=0)" />)
+          <span tal:replace="python: project.toLocalizedTime(project.getResearchProjectRuntimeEnd(resolve_infinity=True), long_format=0)" />)
         </span>
-        <span tal:condition="python: (project.portal_type == 'ResearchProject') and (not project.getResearchProjectRuntimeEnd())" tal:omit-tag="">
-          (<span i18n:translate="view_since">since</span> <span tal:replace="python: project.toLocalizedTime(project.getResearchProjectRuntimeStart(), long_format=0)" />)
+        <span tal:condition="python: (project.portal_type == 'ResearchProject') and (not project.getResearchProjectRuntimeEnd(resolve_infinity=True))" tal:omit-tag="">
+          (<span i18n:translate="view_since">since</span> <span tal:replace="python: project.toLocalizedTime(project.getResearchProjectRuntimeStart(resolve_infinity=True), long_format=0)" />)
         </span>
         </tal:runtime>
 
