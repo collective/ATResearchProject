@@ -4,7 +4,7 @@ ATResearchProject has been tested with
   o Zope 2.9.x/Plone 2.5.x
 
 As an add-on ATResearchProject optionally feels 
-better if the following product(s) to be installed:
+better if the following product(s) are installed:
 
   o TextIndexNG2
 
