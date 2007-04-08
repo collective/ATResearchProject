@@ -316,8 +316,8 @@ PROJECTLIST_SORTFIELDS = [
 # generated from the PROJECTLIST_CRITERIAFIELDS
 CATALOG_INDEXES = [ dict([('name',criterion['field'][0])] + [ (key, criterion['index_type'][key]) for key in criterion['index_type'].keys() ])  for criterion in (PROJECTLIST_CRITERIAFIELDS + PROJECTLIST_SORTFIELDS) if criterion['field'][0].startswith('research') or criterion['field'][0].startswith('getResearch')]
 CATALOG_METADATA = [ criterion['field'][0] for criterion in PROJECTLIST_SORTFIELDS if criterion['field'][0].startswith('research') or criterion['field'][0].startswith('getResearch') ]
-DEPRECATED_CATALOG_INDEXES = [ 'researchProjectInfoFields', 'researchSubprojectInfoFields',]
-DEPRECATED_CATALOG_METADATA = []
+DEPRECATED_CATALOG_INDEXES = [ 'researchProjectInfoFields', 'researchSubprojectInfoFields','researchProjectRuntimeStart','researchProjectRuntimeEnd','researchSubprojectRuntimeStart','researchSubprojectRuntimeEnd', ]
+DEPRECATED_CATALOG_METADATA = [ 'researchProjectRuntimeStart','researchProjectRuntimeEnd','researchSubprojectRuntimeStart','researchSubprojectRuntimeEnd' ]
 
 ##
 ## HARD-CODED CUSTOMIZATIONS: refer to myConfig.py for adapting ATResearchProject to your site setup
