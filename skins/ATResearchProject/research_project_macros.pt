@@ -375,14 +375,14 @@
   <div i18n:domain="atresearchproject">
 
       <!-- SUBPROJECT RUNTIME -->
-      <span tal:condition="here/getResearchSubprojectRuntimeEnd" tal:omit-tag="">
+      <span tal:condition="python: here.getResearchSubprojectRuntimeEnd(resolve_infinity=True)" tal:omit-tag="">
         <b i18n:translate="view_researchsubproject_runtime">Runtime</b><b>:</b>
           <span tal:replace="python: here.toLocalizedTime(here.getResearchSubprojectRuntimeStart(), long_format=0)" />
           <span i18n:translate="word_till" tal:omit-tag="">until</span>
           <span tal:replace="python: here.toLocalizedTime(here.getResearchSubprojectRuntimeEnd(), long_format=0)" />
       </span>
           
-      <span tal:condition="not: here/getResearchSubprojectRuntimeEnd" tal:omit-tag="">
+      <span tal:condition="python: not here.getResearchSubprojectRuntimeEnd(resolve_infinity=True)" tal:omit-tag="">
         <b i18n:translate="view_researchsubproject_runtime">Runtime</b><b>:</b>
           <span i18n:translate="view_capital_since" tal:omit-tag="">Since</span>
           <span tal:replace="python: here.toLocalizedTime(here.getResearchSubprojectRuntimeStart(), long_format=0)" />
@@ -755,12 +755,12 @@
 	</b>
 
         <tal:runtime tal:condition="python: request.has_key('is_atrp_search') or here.getResearchProjectListDisplayRuntimeResearchSubprojects()">
-        <span tal:condition="python: (subproject.portal_type == 'ResearchSubproject') and subproject.getResearchSubprojectRuntimeEnd()" tal:omit-tag="">
+        <span tal:condition="python: (subproject.portal_type == 'ResearchSubproject') and subproject.getResearchSubprojectRuntimeEnd(resolve_infinity=True)" tal:omit-tag="">
           (<span tal:replace="python: subproject.toLocalizedTime(subproject.researchSubprojectRuntimeStart, long_format=0)" />
           <span>-</span>
           <span tal:replace="python: subproject.toLocalizedTime(subproject.researchSubprojectRuntimeEnd, long_format=0)" />)
         </span>
-        <span tal:condition="python: (subproject.portal_type == 'ResearchSubproject') and (not subproject.getResearchSubprojectRuntimeEnd())" tal:omit-tag="">
+        <span tal:condition="python: (subproject.portal_type == 'ResearchSubproject') and (not subproject.getResearchSubprojectRuntimeEnd(resolve_infinity=True))" tal:omit-tag="">
           (<span i18n:translate="view_since">since</span> <span tal:replace="python: subproject.toLocalizedTime(subproject.researchSubprojectRuntimeStart, long_format=0)" />)
         </span>
         </tal:runtime>
