@@ -36,7 +36,7 @@ from Products.ATResearchProject.config import ATRP_TOOL_ID
 from Products.ATResearchProject.config import ALLOWED_CT_DEFAULTS
 
 from schemata import ATResearchFieldSchema
-
+from Products.ATResearchProject.utils import _encode, _decode
 """
 ResearchField.py: Content type to store referencable research field information.
 """
@@ -113,9 +113,9 @@ class ResearchField(BrowserDefaultMixin, BaseContent):
       wftool = getToolByName(self, 'portal_workflow')
       reviewstate = wftool.getInfoFor(self, 'review_state')
       if not(navtool and wftool) or (reviewstate in navtool.wf_states_to_show):
-        return '%s - %s (/%s)' % (putils.pretty_title_or_id(self), self.Description(), self.virtual_url_path())	
+        return '%s - %s (/%s)' % (_decode(putils.pretty_title_or_id(self)), _decode(self.Description()), self.virtual_url_path())
       else:
-        return '%s: %s - %s (/%s)' % (self.translate(putils.getReviewStateTitleFor(self)), putils.pretty_title_or_id(self), self.Description(), self.virtual_url_path())
+        return '%s: %s - %s (/%s)' % (self.translate(putils.getReviewStateTitleFor(self)), _decode(putils.pretty_title_or_id(self)), _decode(self.Description()), self.virtual_url_path())
 		 
     security.declareProtected(permissions.View, 'getResearchFieldExternalLinks')
     def getResearchFieldExternalLinks (self, **kwargs):
