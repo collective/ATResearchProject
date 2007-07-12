@@ -114,9 +114,8 @@
                                                field python: field.replace('getResearch','research');
 			                       value python: topic.getField(field) and topic.getFieldValue(topic.getField(field).accessor, extended_field_format='structure');">
                                 <td valign="top" align="center"
-				    tal:condition="python: ('Runtime' in field) and (value != None)">
-                                    <span tal:content="structure python:toLocalizedTime(value, long_format=0)" />
-                                </td>
+				    tal:condition="python: ('Runtime' in field) and (value != None)"
+                                    tal:content="structure python:toLocalizedTime(value, long_format=0)" />                              
                                 <td valign="top"
 				    tal:condition="python: ('Runtime' in field) and (value == None)"
                                     tal:content="string: " />
