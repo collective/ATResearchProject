@@ -109,12 +109,14 @@
                                                 obj_type obj/portal_type;
                                                 obj_typeinfo python: here.portal_types.getTypeInfo(obj_type);
                                                 icon python:portal_url+'/'+ obj_typeinfo.getIcon();
-                                                title_or_id obj/pretty_title_or_id">
+                                                title_or_id obj/pretty_title_or_id;">
                             <tal:block define="topic python: obj.getObject();
+                                               field python: field.replace('getResearch','research');
 			                       value python: topic.getField(field) and topic.getFieldValue(topic.getField(field).accessor, extended_field_format='structure');">
                                 <td valign="top" align="center"
-				    tal:condition="python: ('Runtime' in field) and (value != None)"
-                                    tal:content="structure python:here.toLocalizedTime(value, long_format=0)" />
+				    tal:condition="python: ('Runtime' in field) and (value != None)">
+                                    <span tal:content="structure python:toLocalizedTime(value, long_format=0)" />
+                                </td>
                                 <td valign="top"
 				    tal:condition="python: ('Runtime' in field) and (value == None)"
                                     tal:content="string: " />
