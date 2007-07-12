@@ -322,7 +322,7 @@ DEPRECATED_CATALOG_METADATA = [ 'researchProjectRuntimeStart', 'researchProjectR
 ##
 ## HARD-CODED CUSTOMIZATIONS: refer to myConfig.py for adapting ATResearchProject to your site setup
 ##
-USE_MYCONFIG=False
+USE_MYCONFIG=True
 
 try:
   if USE_MYCONFIG:
