@@ -258,39 +258,47 @@ class ResearchProjectSiteConfiguration(UniqueObject, SimpleItem, PropertyManager
 
     def getDepartmentLongnameById(self, short_name):
       
-      departmentIDs = list(self.department_ids)
-      departmentNames = self.department_names
+        departmentIDs = list(self.department_ids)
+        departmentNames = self.department_names
 
-      if hasattr(self, 'portal_languages'):
-        lang_tool = getToolByName (self, 'portal_languages')
-        lang = lang_tool.getPreferredLanguage()
-	if self.getProperty('department_names-%s' % lang):
-	  departmentNames = self.getProperty('department_names-%s' % lang)
+        try:
+            if hasattr(self, 'portal_languages'):
+                lang_tool = getToolByName (self, 'portal_languages')
+                lang = lang_tool.getPreferredLanguage()
+	        if self.getProperty('department_names-%s' % lang):
+	            departmentNames = self.getProperty('department_names-%s' % lang)
       
-      idPos = departmentIDs.index(short_name)
+                idPos = departmentIDs.index(short_name)
       
-      try:
-        return departmentNames[idPos]
-      except IndexError:
-        return departmentIDs[idPos]
+            try:
+                return departmentNames[idPos]
+            except IndexError:
+                return departmentIDs[idPos]
+        
+        except ValueError:
+                return ''  
 	  
     def getDepartmentUrlById(self, short_name):
       
-      departmentIDs = list(self.department_ids)
-      departmentURLs = self.department_urls
+        departmentIDs = list(self.department_ids)
+        
+        try:
+            departmentURLs = self.department_urls
 
-      if hasattr(self, 'portal_languages'):
-        lang_tool = getToolByName (self, 'portal_languages')
-        lang = lang_tool.getPreferredLanguage()
-	if self.getProperty('department_urls-%s' % lang):
-	  departmentURLs = self.getProperty('department_urls-%s' % lang)
+            if hasattr(self, 'portal_languages'):
+                lang_tool = getToolByName (self, 'portal_languages')
+                lang = lang_tool.getPreferredLanguage()
+	        if self.getProperty('department_urls-%s' % lang):
+	            departmentURLs = self.getProperty('department_urls-%s' % lang)
       
-      idPos = departmentIDs.index(short_name)
+            idPos = departmentIDs.index(short_name)
       
-      try:
-        return departmentURLs[idPos]
-      except IndexError:
-        return ''
+            try:
+                return departmentURLs[idPos]
+            except IndexError:
+                return ''
+        except ValueError:
+                return ''  
 	  
     def getDepartmentDisplayList(self):
       

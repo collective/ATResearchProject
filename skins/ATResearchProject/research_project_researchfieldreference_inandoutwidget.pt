@@ -15,7 +15,7 @@
 
         <a href="#"
            tal:define="obj python:targets[0]"
-           tal:condition="not:field/multiValued"
+           tal:condition="python: not field.multiValued and checkPermission('View', obj)"
            tal:attributes="href obj/absolute_url; class python:obj.portal_type.replace(' ', '_')"
            tal:content="python:obj.Title() or obj.absolute_url(relative=1)">
           Sole target object's title
@@ -23,23 +23,18 @@
 
         <ul tal:condition="field/multiValued">
           <li tal:repeat="obj targets">
+            <tal:checkperm tal:condition="python: checkPermission('View', obj)">
             <a href="#"
                tal:attributes="href obj/absolute_url; class python:obj.portal_type.replace(' ', '_')"
                tal:content="python:obj.Title() or obj.absolute_url(relative=1)">
               Target Title
             </a>
+            </tal:checkperm>
           </li>
         </ul>
 
       </tal:block>
      </tal:block>
-
-      <tal:block 
-            tal:condition="not:python:hasattr(field, 'relationship')"
-            tal:define="vocab python:field.Vocabulary(here);
-                        value python:accessor();
-                        display python:here.displayValue(vocab, value);"
-            tal:replace="structure display" />
 
     </metal:view_macro>
 
