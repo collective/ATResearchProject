@@ -14,7 +14,8 @@
 #
 
 __old_name__ = 'Products.ATResearchProject.ResearchProjectList'
-
+from zope.interface import implements
+from OFS.interfaces import IItem
 from Acquisition import aq_parent, aq_inner
 
 from Products.CMFCore import permissions
@@ -55,8 +56,7 @@ class ResearchProjectList(ATTopic):
     """Content type for dynamic listings of research projects / subprojects.
     """
 
-    __implements__  = (ATTopic.__implements__,
-		      )
+    implements(IItem)
 
     schema 	    = ATResearchProjectListSchema
 
@@ -125,7 +125,7 @@ class ResearchProjectList(ATTopic):
 	"""return criterion object"""
 	for criterion in self.listCriteria():
 	    if criterion.Field() in [ crit_field['field'][0] for crit_field in PROJECTLIST_SORTFIELDS if crit_field['portal_type'] == self.getPortalTypeToQuery() ]:
-    		if IATTopicSortCriterion.isImplementedBy(criterion):
+    		if IATTopicSortCriterion.providedBy(criterion):
 		    return criterion
 	return None
     

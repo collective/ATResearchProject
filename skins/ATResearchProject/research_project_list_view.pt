@@ -10,9 +10,7 @@
     <metal:body define-macro="body_macro">
 
 	<tal:define tal:define="topicContents python: [];">
-        <div metal:use-macro="here/document_actions/macros/document_actions">
-             Document actions (print, sendto etc)
-        </div>
+         <div tal:replace="structure provider:plone.documentactions" />
 
         <h1 tal:content="here/title_or_id" class="documentFirstHeading">
             Title or id

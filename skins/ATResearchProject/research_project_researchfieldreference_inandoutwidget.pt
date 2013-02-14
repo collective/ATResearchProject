@@ -59,12 +59,13 @@
                         tal:attributes="name string:${fieldName}_options;
                                         id string:${fieldName}_options;
                                         size widget/size;
-                                        tabindex tabindex/next;
+                                        tabindex tabindex/next|nothing;
                                         onDblClick string:javascript:rf_inout_moveKeywords('${fieldName}_options','${fieldName}','${fieldName}')">
       
                         <tal:block tal:repeat="vocab_item vocab">
+						 
                           <option
-                            tal:define="label python:here.translate(vocab.getMsgId(vocab_item), default=vocab.getValue(vocab_item))"
+                            tal:define="label python:here.translate(vocab.getValue(vocab_item), default=vocab.getValue(vocab_item)).split('-').pop(0)"
                             tal:condition="python:test(here.unicodeTestIn(vocab_item, value), 0, 1)"
                             tal:attributes="value vocab_item;"
                             tal:content="label">
@@ -97,14 +98,14 @@
                               tal:attributes="name string:${fieldName}:list;
                                               id string:${fieldName};
                                               size widget/size;
-                                              tabindex tabindex/next;
+                                              tabindex tabindex/next|nothing;
                                               onDblClick string:javascript:rf_inout_moveKeywords('${fieldName}','${fieldName}_options','${fieldName}')">
   
                         <tal:block tal:repeat="single_value value">
                         <option
                            tal:condition="python:test(here.unicodeTestIn(single_value, vocab), 1, 0)"
                            tal:attributes="value single_value;"
-                           tal:content="python:here.translate(vocab.getMsgId(single_value), default=vocab.getValue(single_value))"
+                           tal:content="python:here.translate(vocab.getValue(single_value), default=vocab.getValue(single_value))"
                            selected="selected">
                           option
                         </option>

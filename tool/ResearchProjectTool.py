@@ -24,6 +24,8 @@ except:
   from Products.Archetypes.public import DisplayList
   
 # Zope stuff
+from zope.interface import implements
+from OFS.interfaces import IItem
 from Globals import InitializeClass
 from AccessControl import ClassSecurityInfo
 import AccessControl.Owned
@@ -68,7 +70,7 @@ class ResearchProjectSiteConfiguration(UniqueObject, SimpleItem, PropertyManager
     title = ATRP_TOOL_NAME
     plone_tool = True
     
-    __implements__ = (SimpleItem.__implements__,)
+    implements(IItem)
     
     security = ClassSecurityInfo()
     infoPage = PageTemplateFile(WWW_DIR + '/research_project_tool_zmi.pt', globals())
@@ -170,8 +172,8 @@ class ResearchProjectSiteConfiguration(UniqueObject, SimpleItem, PropertyManager
       if kwargs.get('extended_field_format', False):
         formatType = kwargs.get('extended_field_format')
       else:
-        formatType = 'raw'
-    
+        formatType = 'structure'
+      
       # go through each line
       for line in lines_field:
       
@@ -227,8 +229,13 @@ class ResearchProjectSiteConfiguration(UniqueObject, SimpleItem, PropertyManager
 
                 # override if home page exists
 		mtool = getToolByName(self, 'portal_membership')
-		if mtool.getHomeUrl(memberId):
-		    extended_field_structure = '<a href="%s">%s</a>' % (mtool.getHomeUrl(memberId), text)
+		member = mtool.getMemberById(memberId)
+		# if mtool.getHomeUrl(memberId):
+		    # extended_field_structure = '<a href="%s">%s</a>' % (mtool.getHomeUrl(memberId), text)
+		# else:
+		    # extended_field_structure = text
+		if member.getProperty("home_page"):
+		    extended_field_structure = '<a href="%s">%s</a>' % (member.getProperty("home_page"), text)
 		else:
 		    extended_field_structure = text
 									    

@@ -9,7 +9,7 @@
 ##title=ResearchProjectList Criterion Set Sort
 
 REQUEST=context.REQUEST
-from Products.CMFPlone import transaction_note
+from Products.CMFPlone.utils import transaction_note
 
 for field, reversed, portal_type in ((rp_field, rp_reversed, 'ResearchProject'), (rsp_field, rsp_reversed, 'ResearchSubproject')):
 

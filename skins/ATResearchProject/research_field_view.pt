@@ -8,28 +8,26 @@
   <metal:main fill-slot="main">
     <metal:main-macro metal:define-macro="main">
 
-    <div metal:use-macro="here/document_actions/macros/document_actions">
-      Document actions (print, sendto etc)
-    </div>
+    <div tal:replace="structure provider:plone.documentactions" />
 	   
-    <h1 class="documentFirstHeading">
-      <span i18n:domain="atresearchproject"
-            i18n:translate="portaltype_researchfield" tal:omit-tag="">Research Field</span>: <span tal:content="object_title">Title or id</span>
-    </h1>
-			      
-    <div metal:use-macro="here/document_byline/macros/byline">
-       Document byline
-    </div>
+    <div class='reasearchheader'>
+      <h1  class='documentFirstHeading '> <span i18n:domain="atresearchproject"
+            i18n:translate="portaltype_researchfield" tal:omit-tag="">Research Field</span> : </h1>    
 
+			<span metal:use-macro="context/kss_generic_macros/macros/generic_title_view">
+                                     Generic KSS Title. Is rendered with class="documentFirstHeading".
+                                 </span>
+ 
+	 </div>		      
+    
 
     <!-- DESCRIPTION -->
-    <p class="documentDescription"
-       tal:condition="here/Description">
-       <span tal:content="here/Description" tal:omit-tag="" />
-    </p>
+     <div metal:use-macro="context/kss_generic_macros/macros/generic_description_view">
+                                     Generic KSS Description. Is rendered with class="documentDescription".
+                                 </div>
 
     <!-- BODY -->
-    <span tal:content="structure python: here.getBody(mimetype='text/html')"/>
+	<span metal:use-macro="python:context.widget('body', mode='view')" />
 
     <!-- EXTERNAL LINKS -->
     <div tal:condition="here/getResearchFieldExternalLinks"

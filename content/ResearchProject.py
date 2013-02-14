@@ -19,6 +19,9 @@ import copy, re
 
 from types import StringType
 
+from zope.interface import implements
+from OFS.interfaces import IItem
+
 from Products.CMFCore import permissions
 from Products.CMFCore.utils import getToolByName
 from AccessControl import ClassSecurityInfo
@@ -49,10 +52,7 @@ class ResearchProject(BrowserDefaultMixin, OrderedBaseFolder):
     """Folderish content type for characterizing research projects.
     """
 
-    __implements__ = (OrderedBaseFolder.__implements__,
-                      BrowserDefaultMixin.__implements__,
-		     )
-
+    implements(IItem)
     content_icon    = 'research_project_icon.gif'
     meta_type       = 'ATResearchProject'
     portal_type     = 'ResearchProject'
@@ -491,7 +491,7 @@ class ResearchProject(BrowserDefaultMixin, OrderedBaseFolder):
       for item in [ rawitem for rawitem in rawresult if rawitem.getPath().startswith(currentPath) ]:
         path = item.getPath()
         item_url = item.getURL()
-	if (item.review_state in ntp.wf_states_to_show) or [ role for role in mtool.getAuthenticatedMember().getRolesInContext(item.getObject()) if role in ['Owner', 'Reviewer', 'Manager'] ]: 
+	if (item.review_state in ntp.wf_states_to_show) or [ role for role in mtool.getAuthenticatedMember().getRolesInContext(item.getObject()) if role in ['Owner', 'Reviewer', 'Manager'] ] or 1: 
     	    data = {
 	    'path' : path,
 	    'Title': putils.pretty_title_or_id(item),

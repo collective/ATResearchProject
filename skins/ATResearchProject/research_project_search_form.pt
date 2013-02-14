@@ -58,13 +58,13 @@
                 The text in this field will be matched with
                 projects' (official) title, abstracts, info fields and main contents.
                 </div>
-
+                
                 <input type="text"
                        id="SearchableText"
                        name="SearchableText"
                        size="25"
                        tabindex=""
-                       tal:attributes="tabindex tabindex/next;"
+                       tal:attributes="tabindex tabindex/next|nothing"
                        />
             </div>
 
@@ -80,7 +80,7 @@
                        name="Title"
                        size="25"
                        tabindex=""
-                       tal:attributes="tabindex tabindex/next;"
+                       tal:attributes="tabindex tabindex/next|nothing"
                        />
             </div>
 
@@ -96,7 +96,7 @@
                        name="Description"
                        size="25"
                        tabindex=""
-                       tal:attributes="tabindex tabindex/next;"
+                       tal:attributes="tabindex tabindex/next|nothing"
                        />
             </div>
 
@@ -114,7 +114,7 @@
                        name="getResearchProjectInfoFields"
                        size="25"
                        tabindex=""
-                       tal:attributes="tabindex tabindex/next;"
+                       tal:attributes="tabindex tabindex/next|nothing"
                        />
             </div>
 
@@ -169,7 +169,7 @@
 							    show_ymd python: True;
 							    inputname id;
 							    inputvalue python: today.Date();
-							    tabindex tabindex/next;">
+							    tabindex tabindex/next|nothing">
     
 			<metal:calendar-start metal:use-macro="here/calendar_macros/macros/calendarDatePickerBox|here/calendar_slots/macros/calendarDatePickerBox" />
 		        </tal:use-calendar-macro>
@@ -184,7 +184,7 @@
 							    show_ymd python: True;
 							    inputname id;
 							    inputvalue python: today.Date();
-							    tabindex tabindex/next;">
+							    tabindex tabindex/next|nothing">
     
 			<metal:calendar-start metal:use-macro="here/calendar_macros/macros/calendarDatePickerBox|here/calendar_slots/macros/calendarDatePickerBox" />
 		        </tal:use-calendar-macro>
@@ -206,7 +206,7 @@
 							    show_ymd python: True;
 							    inputname id;
 							    inputvalue python: today.Date();
-							    tabindex tabindex/next;">
+							    tabindex tabindex/next|nothing">
     
 			<metal:calendar-start metal:use-macro="here/calendar_macros/macros/calendarDatePickerBox|here/calendar_slots/macros/calendarDatePickerBox" />
 		        </tal:use-calendar-macro>
@@ -221,7 +221,7 @@
 							    show_ymd python: True;
 							    inputname id;
 							    inputvalue python: today.Date();
-							    tabindex tabindex/next;">
+							    tabindex tabindex/next|nothing">
     
 			<metal:calendar-start metal:use-macro="here/calendar_macros/macros/calendarDatePickerBox|here/calendar_slots/macros/calendarDatePickerBox" />
 		        </tal:use-calendar-macro>
@@ -250,27 +250,29 @@
                        name="researchProjectThirdPartyFunded:string"
 		       value=""
                        tabindex=""
-                       tal:attributes="tabindex tabindex/next;"
+                       tal:attributes="tabindex tabindex/next|nothing"
                        /><label for="researchProjectThirdPartyFunded_none" i18n:translate="atrpsearch_thirdpartyfunded_none">Do not use this criterion</label><br />
                 <input type="radio"
                        id="researchProjectThirdPartyFunded_true"
                        name="researchProjectThirdPartyFunded:string"
 		       value="True"
                        tabindex=""
-                       tal:attributes="tabindex tabindex/next;"
+                       tal:attributes="tabindex tabindex/next|nothing"
                        /><label for="researchProjectThirdPartyFunded_true" i18n:translate="atrpsearch_thirdpartyfunded_true">Show only third-party funded projects</label><br />
                 <input type="radio"
                        id="researchProjectThirdPartyFunded_false"
                        name="researchProjectThirdPartyFunded:string"
 		       value="False"
                        tabindex=""
-                       tal:attributes="tabindex tabindex/next;"
+                       tal:attributes="tabindex tabindex/next|nothing;"
                        /><label for="researchProjectThirdPartyFunded_false" i18n:translate="atrpsearch_thirdpartyfunded_false">Show self-financed project only</label><br />
             </div>
 
             <div class="visualClear" id="clear-space-before-author"><!-- --></div>
 
-            <div class="field" tal:define="atrp_tool portal/portal_researchproject">
+            <div class="field" tal:define=" portal context/@@plone_portal_state/portal;
+			
+											atrp_tool portal/portal_researchproject">
                 
                 <label i18n:translate="atrpsearch_label_departments">Departments</label>
 
@@ -280,7 +282,7 @@
     
                 <div style="clear:both" />
                 <div style="float:left;" tal:define="allDeps python:atrp_tool.getDepartmentDisplayList();">
-                    <tal:tabindex define="tabindex tabindex/next">
+                    <tal:tabindex define="tabindex tabindex/next|nothing">
                     <select multiple="multiple"
                             name="departments:list"
                             id="departments"
@@ -291,7 +293,7 @@
                             class="noborder"
                             tabindex=""
                             tal:attributes="value python: dep[0];
-                                            tabindex tabindex;
+                                           tabindex tabindex/next|nothing;
                                             id python:'department_%s' % dep[0]">
                         <span i18n:domain="plone" i18n:translate=""
                           tal:content="python: dep[1]"
@@ -308,7 +310,7 @@
                        name="departments_logic:string"
 		       value="AND"
                        tabindex=""
-                       tal:attributes="tabindex tabindex/next;"
+                       tal:attributes="tabindex tabindex/next|nothing;"
                        /><label for="departments_logic_AND" i18n:translate="atrpsearch_departments_logic_and">All selected departments must have participated in project</label><br />
                 <input type="radio"
                        checked="checked"
@@ -316,22 +318,26 @@
                        name="departments_logic:string"
 		       value="OR"
                        tabindex=""
-                       tal:attributes="tabindex tabindex/next;"
+                       tal:attributes="tabindex tabindex/next|nothing;"
                        /><label for="deparments_logic_OR" i18n:translate="atrpsearch_departments_logic_or">List projects that either of the selected departments has contributed to</label><br />
                 </div>
             </div>
 
             <div class="visualClear" id="clear-space-before-author"><!-- --></div>
 
-            <div class="field" tal:define="portal_types portal/portal_types">
+            <div class="field" tal:define="portal context/@@plone_portal_state/portal;
+			                               portal_types portal/portal_types">
                 <label i18n:domain="plone" i18n:translate="label_item_type">Type</label>
 
                 <div class="formHelp" i18n:domain="plone" i18n:translate="help_search_item_type">
                 Return items of a specific type.
                 </div>
     
-                <div tal:define="allTypes python:putils.getUserFriendlyTypes(typesList=['ResearchProject', 'ResearchSubproject',]);">
-                    <tal:tabindex define="tabindex tabindex/next">
+                <div tal:define="
+				portal here/portal_url/getPortalObject;
+                putils nocall:portal/plone_utils;
+				allTypes python:putils.getUserFriendlyTypes(typesList=['ResearchProject', 'ResearchSubproject',]);">
+                    <tal:tabindex define="tabindex tabindex/next|nothing">
                     <select multiple="multiple"
                             name="portal_type:list"
                             id="portal_type"
@@ -343,7 +349,7 @@
                             selected="selected"
                             tabindex=""
                             tal:attributes="value type;
-                                            tabindex tabindex;
+                                            tabindex tabindex/next|nothing;
                                             id string:portal_type_${type}">
                         <span i18n:domain="plone" i18n:translate=""
                           tal:content="python: portal_types.getTypeInfo(type).Title()"
@@ -369,7 +375,8 @@
                 in certain states, select them from this list.
                 </div>
     
-                <tal:states define="navtree_props portal_properties/navtree_properties;
+                <tal:states define="portal_properties context/portal_properties;
+									navtree_props portal_properties/navtree_properties;
                                     states python: here.portal_researchproject.listWfStatesForATRPTypes();"
                             repeat="state states">
                     <input class="noborder"
@@ -377,9 +384,10 @@
                            name="review_state:list"
                            checked="checked"
                            tal:attributes="value python:state[1];
-                                           id python:normalizeString(state[1]);" />
+                                           id python:state[1];" />
                     <label for=""
-                           tal:attributes="for python:normalizeString(state[1])"
+                           tal:attributes="
+						   for python:state[1]"
                            i18n:domain="plone"
                            i18n:translate=""
                            tal:content="python:state[0] or state[1]"
@@ -398,7 +406,7 @@
                        name="submit"
                        value="Search"
                        i18n:attributes="value label_search;"
-                       tal:attributes="tabindex tabindex/next;"
+                       tal:attributes="tabindex tabindex/next|nothing;"
                        />
             </div>
 

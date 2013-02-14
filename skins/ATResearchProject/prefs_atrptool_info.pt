@@ -12,20 +12,20 @@
        i18n:domain="atresearchproject"
        tal:condition="python:checkPermission('Manage groups', here)">
 
-    <ul class="contentViews">
+    <ul class="contentViews" tal:define="template_id template/getId; url context/@@plone_context_state/object_url;">
        <li class="selected">
            <a href=""
-              tal:attributes="href string:$here_url/$template_id"
+              tal:attributes="href string:$url/$template_id"
               i18n:translate="label_atrptool_info">Information</a>
        </li>
        <li class="">
            <a href=""
-              tal:attributes="href string:$here_url/prefs_atrptool_departments"
+              tal:attributes="href string:$url/prefs_atrptool_departments"
               i18n:translate="label_atrptool_departments">Department Names</a>
        </li>
        <li class="">
            <a href=""
-              tal:attributes="href string:$here_url/prefs_atrptool_contenttypes"
+              tal:attributes="href string:$url//prefs_atrptool_contenttypes"
               i18n:translate="label_atrptool_contenttypes">Allowed Content Types</a>
        </li>
     </ul>

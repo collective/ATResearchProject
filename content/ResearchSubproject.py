@@ -24,7 +24,8 @@ try:
 except ImportError:
     # No multilingual support
     from Products.Archetypes.public import OrderedBaseFolder, registerType
-
+from zope.interface import implements
+from OFS.interfaces import IItem
 from Products.CMFCore import permissions
 from Products.CMFCore.utils import getToolByName
 from Products.CMFDynamicViewFTI.browserdefault import BrowserDefaultMixin
@@ -42,9 +43,7 @@ class ResearchSubproject(BrowserDefaultMixin, OrderedBaseFolder):
     """Folderish content type to hold information on a scientific subproject that is situated in a research project folder.
     """
 
-    __implements__ = (OrderedBaseFolder.__implements__,
-                      BrowserDefaultMixin.__implements__,
-		     ) 
+    implements(IItem)
                      
     implicitly_addable = False		     
     content_icon    = 'research_subproject_icon.gif'

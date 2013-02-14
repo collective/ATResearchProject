@@ -20,7 +20,8 @@ import re
 from Products.CMFCore import permissions
 from Products.CMFCore.utils import getToolByName
 from AccessControl import ClassSecurityInfo
-
+from zope.interface import implements
+from OFS.interfaces import IItem
 try:
   from Products.LinguaPlone.public import BaseContent
   from Products.LinguaPlone.public import registerType
@@ -45,9 +46,7 @@ class ResearchField(BrowserDefaultMixin, BaseContent):
     """Content type for characterizing research fields.
     """
 
-    __implements__ = (BaseContent.__implements__,
-                      BrowserDefaultMixin.__implements__,
-		     )
+    implements(IItem)
 
     content_icon    = 'research_field_icon.gif'
     meta_type       = 'ATResearchField'

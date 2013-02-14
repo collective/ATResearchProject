@@ -8,9 +8,7 @@
 
 <metal:head metal:define-macro="projecthead">
 
-  <div metal:use-macro="here/document_actions/macros/document_actions">
-       Document actions (print, sendto etc)
-  </div>
+  <div tal:replace="structure provider:plone.documentactions" />
     
   <h1 class="documentFirstHeading">
     <span tal:condition="python: here.portal_type == 'ResearchProject'" tal:omit-tag="">
@@ -18,12 +16,9 @@
     <span tal:condition="python: here.portal_type == 'ResearchSubproject'" tal:omit-tag="">
       <span i18n:domain="atresearchproject" i18n:translate="portaltype_subproject" tal:omit-tag="">Subproject</span>:</span>
 	  
-    <span tal:content="object_title">Title or id</span>
+    <span tal:content="here/title_or_id">Title or id</span>
   </h1>
 
-  <div metal:use-macro="here/research_project_byline/macros/byline">
-       Document byline
-  </div>
 
   <p class="discreet"
      tal:condition="python: here.portal_type == 'ResearchSubproject'"
@@ -55,9 +50,9 @@
   
         <td class="atrpAbstractBar">
           <span class="atrpAbstractHead">
-            <span tal:condition="here/getResearchProjectOfficialTitle"
-                  tal:replace="structure here/getResearchProjectOfficialTitle" tal:omit-tag="">Official Title
-            </span>
+
+                  <span metal:use-macro="python:context.widget('researchProjectOfficialTitle', mode='view')" tal:condition="here/getResearchProjectOfficialTitle"/>
+
           </span>
         </td>
         </tr>
@@ -68,7 +63,7 @@
             tal:condition="python: here.getResearchProjectAbstract() or here.getResearchProjectKeywords()">
           <p tal:condition="here/getResearchProjectAbstract">
               <b i18n:translate="view_researchproject_abstract">Abstract</b><b>: </b>
-              <span tal:replace="structure here/getResearchProjectAbstract" />
+              	<span metal:use-macro="python:context.widget('researchProjectAbstract', mode='view')" />
           </p>                                                 
           <p class="discreet" tal:condition="python: here.getResearchProjectKeywords() and here.getResearchProjectAbstract()">
               <b i18n:translate="view_researchproject_keywords">Keywords</b><b>:</b><br />
@@ -406,7 +401,7 @@
 
 <metal:body metal:define-macro="projectbody">
 
-  <span tal:content="structure python: here.getBody(mimetype='text/html')"/>
+<span metal:use-macro="python:context.widget('body', mode='view')" />
 
   <br />
   
@@ -442,7 +437,6 @@
 
 <metal:foot metal:define-macro="projectfoot">
 
-  <div style="clear:both;" />
   
   <!-- INVOLVED DEPARTMENTS -->
   <metal:slot metal:define-slot="projectDepartments">
@@ -472,7 +466,7 @@
       <tal:project-list tal:repeat="project projectlist">
                         
       <tal:state-defines tal:define="project_wf_state project/review_state | python: here.portal_workflow.getInfoFor(project, 'review_state', '');
-	                             project_wf_state_class python:'state-' + normalizeString(project_wf_state);">
+	                             project_wf_state_class python:'state-' + project_wf_state;">
 
 	<tr>
         <tal:boolswitch tal:condition="here/getResearchFieldDisplayProjectRuntime">
@@ -594,11 +588,12 @@
   
     <div i18n:domain="atresearchproject"
     	 tal:define="project topic/getObject;
+		             mtool context/portal_membership;
 		     project_roles python: mtool.getAuthenticatedMember().getRolesInContext(project);
                      project_wf_state project/review_state | python: here.portal_workflow.getInfoFor(project, 'review_state', '');
-	             project_wf_state_class python:'state-' + normalizeString(project_wf_state);
+	             project_wf_state_class python:'state-' + project_wf_state;
                      navtool here/portal_properties/navtree_properties | nothing" 
-          tal:condition="python: (project.portal_type == 'ResearchProject') and ([ role for role in project_roles if role in ('Manager', 'Reviewer', 'Owner', ) ] or (navtool and (project_wf_state in navtool.getProperty('wf_states_to_show'))))">
+          tal:condition="python: (project.portal_type == 'ResearchProject') ">
           
         <b class="contenttype-researchproject">
 	<a class="" href=""
@@ -739,9 +734,10 @@
     <tal:cascade-filter tal:condition="python: (request.has_key('is_atrsp_search') or (not request.has_key('is_atrp_search') and not here.getResearchProjectListCascadeResearchSubprojects())) or subproject in cascaded_subprojects">
 
       <div i18n:domain="atresearchproject"
-    	   tal:define="subproject_roles python: mtool.getAuthenticatedMember().getRolesInContext(subproject);
+    	   tal:define="mtool context/portal_membership;
+					   subproject_roles python: mtool.getAuthenticatedMember().getRolesInContext(subproject);
                        subproject_wf_state subproject/review_state | python: wtool.getInfoFor(subproject, 'review_state', '');
-	               subproject_wf_state_class python:'state-' + normalizeString(subproject_wf_state);
+	               subproject_wf_state_class python:'state-' + subproject_wf_state;
                        navtool here/portal_properties/navtree_properties | nothing;" 
            tal:condition="python: (subproject.portal_type == 'ResearchSubproject') and ([ role for role in subproject_roles if role in ('Manager', 'Reviewer', 'Owner', ) ] or (navtool and (subproject_wf_state in navtool.getProperty('wf_states_to_show'))))">
 

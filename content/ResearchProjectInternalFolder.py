@@ -16,7 +16,8 @@
 __old_name__ = 'Products.ATResearchProject.ResearchProjectInternalFolder'
 
 import copy
-
+from zope.interface import implements
+from OFS.interfaces import IItem
 from Products.CMFCore import permissions
 from Products.CMFCore.utils import getToolByName
 from AccessControl import ClassSecurityInfo
@@ -44,8 +45,7 @@ class ResearchProjectInternalFolder(ATFolder):
        Only difference from ATFolder is the list of allowed_content_types. 
     """
 
-    __implements__ = (ATFolder.__implements__,
-		     )
+    implements(IItem)
 
     security = ClassSecurityInfo()
 
